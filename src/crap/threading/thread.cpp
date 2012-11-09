@@ -28,15 +28,15 @@ namespace crap
 
 thread::thread( runnable* run )
 {
-    THREAD_CREATE( _thread, thread::starter, run);
-    CRAP_ASSERT_DEBUG( _thread != THREAD_NULL, "Thread coudn't be started");
+	THREAD_CREATE( _thread, thread::starter, run);
+	CRAP_ASSERT_DEBUG( _thread != THREAD_NULL, "Thread coudn't be started");
 
-    _runnable = run;
+	_runnable = run;
 }
 
 thread::~thread()
 {
-    if( !kill_thread() )
+	if( !kill_thread() )
 		wait_for_thread();
 	delete _runnable;
 
@@ -45,38 +45,38 @@ thread::~thread()
 THREAD_RETURN thread::THREAD_STARTER( ptr )
 {
 	CRAP_ASSERT_DEBUG( THREAD_CANCEL_SETUP == 0, "Could not setup thread cancel type" );
-	
-    runnable* run = static_cast< runnable* >( ptr );
+
+	runnable* run = static_cast< runnable* >( ptr );
 #if defined(CRAP_PLATFORM_WIN)
 	run->start();
 	return 0x00;
 #else
-    return run->start();
+	return run->start();
 #endif
 }
 
 bool thread::wait_for_thread() const
 {
-    if( !_runnable->_is_running )
-        return false;
+	if( !_runnable->_is_running )
+		return false;
 
-    return THREAD_JOIN( _thread ) == THREAD_ZERO;
+	return THREAD_JOIN( _thread ) == THREAD_ZERO;
 }
 
 bool thread::kill_thread()
 {
-    if(!_runnable->_is_running)
-        return false;
+	if(!_runnable->_is_running)
+		return false;
 
-    bool success = THREAD_KILL( _thread );
-    if( success )
-    	_runnable->_is_running = false;
-    return success;
+	bool success = THREAD_KILL( _thread );
+	if( success )
+		_runnable->_is_running = false;
+	return success;
 }
 
 THREAD_HANDLE thread::thread_id()
 {
-    return _thread;
+	return _thread;
 }
 
 }	// namespace crap

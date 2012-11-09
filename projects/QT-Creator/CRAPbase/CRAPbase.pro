@@ -56,7 +56,8 @@ HEADERS += \
     ../../../src/crap/threading/runnable.h \
     ../../../src/crap/threading/mutex.h \
     ../../../src/crap/types/string.h \
-    ../../../src/crap/types/staticstring.h
+    ../../../src/crap/types/staticstring.h \
+    ../../../src/crap/threading/functorthread.h
 
 SOURCES += \
     ../../../src/crap/control/time.cpp \
