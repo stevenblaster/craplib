@@ -24,7 +24,7 @@
 #ifndef CRAP_CONTROL_TIME_H
 #define CRAP_CONTROL_TIME_H
 
-#include "types/staticstring.h"
+#include "types/staticrap::cstring.h"
 
 //lib namespace
 namespace crap

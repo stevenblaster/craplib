@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file staticstring.h
+//		@file staticrap::cstring.h
 //
 //	Creator:
 //		Steffen Kopany <steffen@kopany.at>
@@ -43,19 +43,19 @@ private:
 public:
     explicit static_string( void );
     static_string( const static_string& other );
-    static_string( cstring* format, ... );
+    static_string( crap::cstring* format, ... );
 
     static_string& operator=( const static_string& other );
-    static_string& operator=( cstring* cstr );
+    static_string& operator=( crap::cstring* cstr );
 
     static_string& operator+=( const static_string& other );
-    static_string& operator+=( cstring* cstr );
+    static_string& operator+=( crap::cstring* cstr );
 
     bool operator==( const static_string& other ) const;
-    bool operator==( cstring* cstr ) const;
+    bool operator==( crap::cstring* cstr ) const;
 
     bool operator!=( const static_string& other ) const;
-    bool operator!=( cstring* cstr ) const;
+    bool operator!=( crap::cstring* cstr ) const;
 
     c8& operator[]( size_t32 index );
     const c8& operator[]( size_t32 index ) const;
@@ -64,17 +64,17 @@ public:
     friend std::ostream& operator<<( std::ostream& theStream, const static_string<U>& theString );
 
     void concat( const static_string& other );
-    void concat( cstring* cstr );
+    void concat( crap::cstring* cstr );
 
     bool compare( const static_string& other ) const;
-    bool compare( cstring* cstr ) const;
+    bool compare( crap::cstring* cstr ) const;
 
     bool contains( const static_string& other );
-    bool contains( cstring* cstr );
+    bool contains( crap::cstring* cstr );
     bool contains( const c8& other );
 
     i32 search( const static_string<S>& other );
-    i32 search( cstring* cstr );
+    i32 search( crap::cstring* cstr );
     i32 search( const c8& other );
 
     static_string substr( size_t32 start, size_t32 length );
@@ -103,7 +103,7 @@ static_string<S>::static_string( const static_string<S>& other )
 }
 
 template<size_t32 S>
-static_string<S>::static_string( cstring* format, ... )
+static_string<S>::static_string( crap::cstring* format, ... )
 {
 	CRAP_ASSERT_DEBUG( strlen(format)<S, "Cstring is too long" );
 	memset( _memory, 0, S);
@@ -123,7 +123,7 @@ static_string<S>& static_string<S>::operator=( const static_string<S>& other )
 }
 
 template<size_t32 S>
-static_string<S>& static_string<S>::operator=( cstring* cstr )
+static_string<S>& static_string<S>::operator=( crap::cstring* cstr )
 {
     CRAP_ASSERT_DEBUG(strlen(cstr)<S, "Cstring is too long");
 
@@ -140,7 +140,7 @@ static_string<S>& static_string<S>::operator+=( const static_string<S>& other )
 }
 
 template<size_t32 S>
-static_string<S>& static_string<S>::operator+=( cstring* cstr )
+static_string<S>& static_string<S>::operator+=( crap::cstring* cstr )
 {
     concat(cstr);
     return *this;
@@ -153,7 +153,7 @@ bool static_string<S>::operator==( const static_string<S>& other ) const
 }
 
 template<size_t32 S>
-bool static_string<S>::operator==( cstring* cstr) const
+bool static_string<S>::operator==( crap::cstring* cstr) const
 {
     return compare(cstr);
 }
@@ -165,7 +165,7 @@ bool static_string<S>::operator!=( const static_string<S>& other ) const
 }
 
 template<size_t32 S>
-bool static_string<S>::operator!=( cstring* cstr) const
+bool static_string<S>::operator!=( crap::cstring* cstr) const
 {
     return !compare(cstr);
 }
@@ -194,8 +194,8 @@ std::ostream& operator<<(std::ostream& theStream, const crap::static_string<U>& 
 template<size_t32 S>
 void static_string<S>::concat( const static_string<S>& other )
 {
-    size_t32 otherLength = strlen( reinterpret_cast<cstring*>(other._memory) );
-    size_t32 myLength = strlen( reinterpret_cast<cstring*>(_memory) );
+    size_t32 otherLength = strlen( reinterpret_cast<crap::cstring*>(other._memory) );
+    size_t32 myLength = strlen( reinterpret_cast<crap::cstring*>(_memory) );
 
     CRAP_ASSERT_DEBUG(otherLength+myLength < S, "Concating would overflow static_string size");
 
@@ -203,10 +203,10 @@ void static_string<S>::concat( const static_string<S>& other )
 }
 
 template<size_t32 S>
-void static_string<S>::concat( cstring* cstr )
+void static_string<S>::concat( crap::cstring* cstr )
 {
     size_t32 otherLength = strlen( cstr );
-    size_t32 myLength = strlen( reinterpret_cast<cstring*>(_memory) );
+    size_t32 myLength = strlen( reinterpret_cast<crap::cstring*>(_memory) );
 
     CRAP_ASSERT_DEBUG(otherLength+myLength < S, "Concating would overflow static_string size");
 
@@ -216,14 +216,14 @@ void static_string<S>::concat( cstring* cstr )
 template<size_t32 S>
 bool static_string<S>::compare( const static_string<S>& other ) const
 {
-    if( strlen( reinterpret_cast<cstring*>(_memory)) != strlen( reinterpret_cast<cstring*>(other._memory) ))
+    if( strlen( reinterpret_cast<crap::cstring*>(_memory)) != strlen( reinterpret_cast<crap::cstring*>(other._memory) ))
         return false;
 
-	return memcmp( _memory, other._memory, strlen( reinterpret_cast<cstring*>(_memory) ) ) == 0;
+	return memcmp( _memory, other._memory, strlen( reinterpret_cast<crap::cstring*>(_memory) ) ) == 0;
 }
 
 template<size_t32 S>
-bool static_string<S>::compare( cstring* cstr ) const
+bool static_string<S>::compare( crap::cstring* cstr ) const
 {
     if( strlen( _memory ) != strlen( cstr ) )
         return false;
@@ -238,7 +238,7 @@ bool static_string<S>::contains( const static_string<S>& other )
 }
 
 template<size_t32 S>
-bool static_string<S>::contains( cstring* cstr )
+bool static_string<S>::contains( crap::cstring* cstr )
 {
     return search(cstr) != -1;
 }
@@ -252,8 +252,8 @@ bool static_string<S>::contains( const c8& other )
 template<size_t32 S>
 i32 static_string<S>::search( const static_string<S>& other )
 {
-    size_t32 otherSize = strlen(reinterpret_cast<cstring*>(other._memory));
-    size_t32 mySize = strlen(reinterpret_cast<cstring*>(_memory));
+    size_t32 otherSize = strlen(reinterpret_cast<crap::cstring*>(other._memory));
+    size_t32 mySize = strlen(reinterpret_cast<crap::cstring*>(_memory));
 
     if(mySize < otherSize)
         return -1;
@@ -267,10 +267,10 @@ i32 static_string<S>::search( const static_string<S>& other )
 }
 
 template<size_t32 S>
-i32 static_string<S>::search( cstring* cstr )
+i32 static_string<S>::search( crap::cstring* cstr )
 {
     size_t32 otherSize = strlen( cstr );
-    size_t32 mySize = strlen( reinterpret_cast<cstring*>(_memory) );
+    size_t32 mySize = strlen( reinterpret_cast<crap::cstring*>(_memory) );
 
     if( mySize < otherSize )
         return -1;
@@ -358,7 +358,7 @@ template<size_t32 S>
 void static_string<S>::trim()
 {
     size_t32 startPos = 0;
-    size_t32 endPos = strlen(reinterpret_cast<cstring*>( &_memory[0] ));
+    size_t32 endPos = strlen(reinterpret_cast<crap::cstring*>( &_memory[0] ));
 
     for(size_t32 i=0; i<endPos; ++i)
     {
@@ -394,7 +394,7 @@ void static_string<S>::trim()
 template<size_t32 S>
 size_t32 static_string<S>::size() const
 {
-    return strlen(reinterpret_cast<cstring*>(&_memory[0]));
+    return strlen(reinterpret_cast<crap::cstring*>(&_memory[0]));
 }
 
 //typedefs

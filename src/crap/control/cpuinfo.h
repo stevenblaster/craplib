@@ -27,7 +27,7 @@
 #include <intrin.h>
 #endif
 
-#include "types/staticstring.h"
+#include "types/staticrap::cstring.h"
 
 //MACROS!!!
 

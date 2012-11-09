@@ -19,7 +19,7 @@
 //
 ////////////////////////////////////////////////////////
 
-#include "types/staticstring.h"
+#include "types/staticrap::cstring.h"
 #include "control/cpuinfo.h"
 
 namespace crap

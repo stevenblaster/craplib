@@ -93,7 +93,7 @@ typedef uint32_t u32;
 
 typedef intptr_t iptr;
 typedef uintptr_t uptr;
-typedef const char cstring;
+typedef const char crap::cstring;
 
 //windows overrides
 #if !defined(CRAP_PLATFORM_WIN)
