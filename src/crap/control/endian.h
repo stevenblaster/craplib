@@ -152,7 +152,7 @@ void* endian::swap_bytes<2>( void* swapMe )
 #if defined(CRAP_COMPILER_VC)
 	u16& ref = *( ( u16* )swapMe );
 	ref = _byteswap_ushort( ref );
-	return ref;
+	return &ref;
 #else // other platform
 	u8* bytes = (u8*)swapMe;
 	u8 tmp = bytes[0];

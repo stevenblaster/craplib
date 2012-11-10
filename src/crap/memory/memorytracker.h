@@ -149,14 +149,10 @@ class MemoryTracker
 	/* operator new/delete
 	 * Description: Default overloading of operator new and
 	 * 	delete using malloc and free to avoid memory-management */
-	void* operator new (std::size_t size) throw (std::bad_alloc);
-	void* operator new (std::size_t size, const std::nothrow_t& nothrow_constant) throw();
-	void* operator new[] (std::size_t size) throw (std::bad_alloc);
-	void* operator new[] (std::size_t size, const std::nothrow_t& nothrow_constant) throw();
+	void* operator new (std::size_t size) throw ();
+	void* operator new[] (std::size_t size) throw ();
 	void operator delete (void* pointer) throw ();
-	void operator delete (void* pointer, const std::nothrow_t& nothrow_constant) throw();
 	void operator delete[] (void* pointer) throw ();
-	void operator delete[] (void* pointer, const std::nothrow_t& nothrow_constant) throw();
 };
 
 }	// namespace crap
