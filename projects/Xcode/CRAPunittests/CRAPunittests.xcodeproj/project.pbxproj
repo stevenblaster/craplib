@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B5036D48164F00440060C85A /* config_compilers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D1D164F00430060C85A /* config_compilers.cpp */; };
+		B5036D49164F00440060C85A /* config_endianess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D1E164F00430060C85A /* config_endianess.cpp */; };
+		B5036D4A164F00440060C85A /* config_math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D1F164F00430060C85A /* config_math.cpp */; };
+		B5036D4B164F00440060C85A /* config_memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D20164F00430060C85A /* config_memory.cpp */; };
+		B5036D4C164F00440060C85A /* config_platforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D21164F00430060C85A /* config_platforms.cpp */; };
+		B5036D4D164F00440060C85A /* config_processors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D22164F00430060C85A /* config_processors.cpp */; };
+		B5036D4E164F00440060C85A /* config_simd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D23164F00430060C85A /* config_simd.cpp */; };
+		B5036D4F164F00440060C85A /* config_threading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D24164F00430060C85A /* config_threading.cpp */; };
+		B5036D50164F00440060C85A /* config_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D25164F00430060C85A /* config_types.cpp */; };
+		B5036D51164F00440060C85A /* container_binarytree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D26164F00430060C85A /* container_binarytree.cpp */; };
+		B5036D52164F00440060C85A /* container_bitmask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D27164F00430060C85A /* container_bitmask.cpp */; };
+		B5036D53164F00440060C85A /* container_bitset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D28164F00430060C85A /* container_bitset.cpp */; };
+		B5036D54164F00440060C85A /* container_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D29164F00430060C85A /* container_list.cpp */; };
+		B5036D55164F00440060C85A /* container_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D2A164F00430060C85A /* container_map.cpp */; };
+		B5036D56164F00440060C85A /* container_pair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D2B164F00430060C85A /* container_pair.cpp */; };
+		B5036D57164F00440060C85A /* container_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D2C164F00430060C85A /* container_queue.cpp */; };
+		B5036D58164F00440060C85A /* container_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D2D164F00430060C85A /* container_stack.cpp */; };
+		B5036D59164F00440060C85A /* container_treenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D2E164F00430060C85A /* container_treenode.cpp */; };
+		B5036D5A164F00440060C85A /* container_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D2F164F00430060C85A /* container_vector.cpp */; };
+		B5036D5B164F00440060C85A /* control_asserts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D30164F00430060C85A /* control_asserts.cpp */; };
+		B5036D5C164F00440060C85A /* control_breakpoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D31164F00430060C85A /* control_breakpoints.cpp */; };
+		B5036D5D164F00440060C85A /* control_checkvtable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D32164F00430060C85A /* control_checkvtable.cpp */; };
+		B5036D5E164F00440060C85A /* control_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D33164F00430060C85A /* control_compare.cpp */; };
+		B5036D5F164F00440060C85A /* control_converter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D34164F00430060C85A /* control_converter.cpp */; };
+		B5036D60164F00440060C85A /* control_copyobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D35164F00430060C85A /* control_copyobject.cpp */; };
+		B5036D61164F00440060C85A /* control_cpuinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D36164F00430060C85A /* control_cpuinfo.cpp */; };
+		B5036D62164F00440060C85A /* control_endian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D37164F00430060C85A /* control_endian.cpp */; };
+		B5036D63164F00440060C85A /* control_limits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D38164F00430060C85A /* control_limits.cpp */; };
+		B5036D64164F00440060C85A /* control_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D39164F00430060C85A /* control_time.cpp */; };
+		B5036D65164F00440060C85A /* control_zero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D3A164F00430060C85A /* control_zero.cpp */; };
+		B5036D66164F00440060C85A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D3B164F00430060C85A /* main.cpp */; };
+		B5036D67164F00440060C85A /* math_math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D3C164F00430060C85A /* math_math.cpp */; };
+		B5036D68164F00440060C85A /* math_random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D3D164F00430060C85A /* math_random.cpp */; };
+		B5036D69164F00440060C85A /* threading_functorthread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D3E164F00430060C85A /* threading_functorthread.cpp */; };
+		B5036D6A164F00440060C85A /* threading_mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D3F164F00430060C85A /* threading_mutex.cpp */; };
+		B5036D6B164F00440060C85A /* threading_runnable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D40164F00430060C85A /* threading_runnable.cpp */; };
+		B5036D6C164F00440060C85A /* threading_scopelock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D41164F00430060C85A /* threading_scopelock.cpp */; };
+		B5036D6D164F00440060C85A /* threading_semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D42164F00430060C85A /* threading_semaphore.cpp */; };
+		B5036D6E164F00440060C85A /* threading_sleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D43164F00430060C85A /* threading_sleep.cpp */; };
+		B5036D6F164F00440060C85A /* threading_thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D44164F00430060C85A /* threading_thread.cpp */; };
+		B5036D70164F00440060C85A /* types_staticstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D45164F00440060C85A /* types_staticstring.cpp */; };
+		B5036D71164F00440060C85A /* types_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5036D46164F00440060C85A /* types_string.cpp */; };
+		B5EC3E6D164ED3720053AEF0 /* libCRAPbasic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EC3E6B164ED3720053AEF0 /* libCRAPbasic.a */; };
+		B5EC3E6E164ED3720053AEF0 /* libUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EC3E6C164ED3720053AEF0 /* libUnitTest.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5EC3E07164ED1E30053AEF0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B5036D1D164F00430060C85A /* config_compilers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_compilers.cpp; path = ../../../src/crapunittests/config_compilers.cpp; sourceTree = "<group>"; };
+		B5036D1E164F00430060C85A /* config_endianess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_endianess.cpp; path = ../../../src/crapunittests/config_endianess.cpp; sourceTree = "<group>"; };
+		B5036D1F164F00430060C85A /* config_math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_math.cpp; path = ../../../src/crapunittests/config_math.cpp; sourceTree = "<group>"; };
+		B5036D20164F00430060C85A /* config_memory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_memory.cpp; path = ../../../src/crapunittests/config_memory.cpp; sourceTree = "<group>"; };
+		B5036D21164F00430060C85A /* config_platforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_platforms.cpp; path = ../../../src/crapunittests/config_platforms.cpp; sourceTree = "<group>"; };
+		B5036D22164F00430060C85A /* config_processors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_processors.cpp; path = ../../../src/crapunittests/config_processors.cpp; sourceTree = "<group>"; };
+		B5036D23164F00430060C85A /* config_simd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_simd.cpp; path = ../../../src/crapunittests/config_simd.cpp; sourceTree = "<group>"; };
+		B5036D24164F00430060C85A /* config_threading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_threading.cpp; path = ../../../src/crapunittests/config_threading.cpp; sourceTree = "<group>"; };
+		B5036D25164F00430060C85A /* config_types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_types.cpp; path = ../../../src/crapunittests/config_types.cpp; sourceTree = "<group>"; };
+		B5036D26164F00430060C85A /* container_binarytree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_binarytree.cpp; path = ../../../src/crapunittests/container_binarytree.cpp; sourceTree = "<group>"; };
+		B5036D27164F00430060C85A /* container_bitmask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_bitmask.cpp; path = ../../../src/crapunittests/container_bitmask.cpp; sourceTree = "<group>"; };
+		B5036D28164F00430060C85A /* container_bitset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_bitset.cpp; path = ../../../src/crapunittests/container_bitset.cpp; sourceTree = "<group>"; };
+		B5036D29164F00430060C85A /* container_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_list.cpp; path = ../../../src/crapunittests/container_list.cpp; sourceTree = "<group>"; };
+		B5036D2A164F00430060C85A /* container_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_map.cpp; path = ../../../src/crapunittests/container_map.cpp; sourceTree = "<group>"; };
+		B5036D2B164F00430060C85A /* container_pair.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_pair.cpp; path = ../../../src/crapunittests/container_pair.cpp; sourceTree = "<group>"; };
+		B5036D2C164F00430060C85A /* container_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_queue.cpp; path = ../../../src/crapunittests/container_queue.cpp; sourceTree = "<group>"; };
+		B5036D2D164F00430060C85A /* container_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_stack.cpp; path = ../../../src/crapunittests/container_stack.cpp; sourceTree = "<group>"; };
+		B5036D2E164F00430060C85A /* container_treenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_treenode.cpp; path = ../../../src/crapunittests/container_treenode.cpp; sourceTree = "<group>"; };
+		B5036D2F164F00430060C85A /* container_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = container_vector.cpp; path = ../../../src/crapunittests/container_vector.cpp; sourceTree = "<group>"; };
+		B5036D30164F00430060C85A /* control_asserts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_asserts.cpp; path = ../../../src/crapunittests/control_asserts.cpp; sourceTree = "<group>"; };
+		B5036D31164F00430060C85A /* control_breakpoints.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_breakpoints.cpp; path = ../../../src/crapunittests/control_breakpoints.cpp; sourceTree = "<group>"; };
+		B5036D32164F00430060C85A /* control_checkvtable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_checkvtable.cpp; path = ../../../src/crapunittests/control_checkvtable.cpp; sourceTree = "<group>"; };
+		B5036D33164F00430060C85A /* control_compare.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_compare.cpp; path = ../../../src/crapunittests/control_compare.cpp; sourceTree = "<group>"; };
+		B5036D34164F00430060C85A /* control_converter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_converter.cpp; path = ../../../src/crapunittests/control_converter.cpp; sourceTree = "<group>"; };
+		B5036D35164F00430060C85A /* control_copyobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_copyobject.cpp; path = ../../../src/crapunittests/control_copyobject.cpp; sourceTree = "<group>"; };
+		B5036D36164F00430060C85A /* control_cpuinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_cpuinfo.cpp; path = ../../../src/crapunittests/control_cpuinfo.cpp; sourceTree = "<group>"; };
+		B5036D37164F00430060C85A /* control_endian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_endian.cpp; path = ../../../src/crapunittests/control_endian.cpp; sourceTree = "<group>"; };
+		B5036D38164F00430060C85A /* control_limits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_limits.cpp; path = ../../../src/crapunittests/control_limits.cpp; sourceTree = "<group>"; };
+		B5036D39164F00430060C85A /* control_time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_time.cpp; path = ../../../src/crapunittests/control_time.cpp; sourceTree = "<group>"; };
+		B5036D3A164F00430060C85A /* control_zero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = control_zero.cpp; path = ../../../src/crapunittests/control_zero.cpp; sourceTree = "<group>"; };
+		B5036D3B164F00430060C85A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../src/crapunittests/main.cpp; sourceTree = "<group>"; };
+		B5036D3C164F00430060C85A /* math_math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_math.cpp; path = ../../../src/crapunittests/math_math.cpp; sourceTree = "<group>"; };
+		B5036D3D164F00430060C85A /* math_random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_random.cpp; path = ../../../src/crapunittests/math_random.cpp; sourceTree = "<group>"; };
+		B5036D3E164F00430060C85A /* threading_functorthread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_functorthread.cpp; path = ../../../src/crapunittests/threading_functorthread.cpp; sourceTree = "<group>"; };
+		B5036D3F164F00430060C85A /* threading_mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_mutex.cpp; path = ../../../src/crapunittests/threading_mutex.cpp; sourceTree = "<group>"; };
+		B5036D40164F00430060C85A /* threading_runnable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_runnable.cpp; path = ../../../src/crapunittests/threading_runnable.cpp; sourceTree = "<group>"; };
+		B5036D41164F00430060C85A /* threading_scopelock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_scopelock.cpp; path = ../../../src/crapunittests/threading_scopelock.cpp; sourceTree = "<group>"; };
+		B5036D42164F00430060C85A /* threading_semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_semaphore.cpp; path = ../../../src/crapunittests/threading_semaphore.cpp; sourceTree = "<group>"; };
+		B5036D43164F00430060C85A /* threading_sleep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_sleep.cpp; path = ../../../src/crapunittests/threading_sleep.cpp; sourceTree = "<group>"; };
+		B5036D44164F00430060C85A /* threading_thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = threading_thread.cpp; path = ../../../src/crapunittests/threading_thread.cpp; sourceTree = "<group>"; };
+		B5036D45164F00440060C85A /* types_staticstring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = types_staticstring.cpp; path = ../../../src/crapunittests/types_staticstring.cpp; sourceTree = "<group>"; };
+		B5036D46164F00440060C85A /* types_string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = types_string.cpp; path = ../../../src/crapunittests/types_string.cpp; sourceTree = "<group>"; };
+		B5036D47164F00440060C85A /* unittest_precompiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unittest_precompiled.h; path = ../../../src/crapunittests/unittest_precompiled.h; sourceTree = "<group>"; };
+		B5EC3E09164ED1E30053AEF0 /* CRAPunittests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CRAPunittests; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5EC3E6B164ED3720053AEF0 /* libCRAPbasic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCRAPbasic.a; path = "../../../../../Library/Developer/Xcode/DerivedData/CRAPengine-cjjvuffoxcqvtebzibjrctogwiqe/Build/Products/Debug/libCRAPbasic.a"; sourceTree = "<group>"; };
+		B5EC3E6C164ED3720053AEF0 /* libUnitTest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUnitTest.a; path = "../../../../../Library/Developer/Xcode/DerivedData/CRAPengine-cjjvuffoxcqvtebzibjrctogwiqe/Build/Products/Debug/libUnitTest.a"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5EC3E06164ED1E30053AEF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5EC3E6D164ED3720053AEF0 /* libCRAPbasic.a in Frameworks */,
+				B5EC3E6E164ED3720053AEF0 /* libUnitTest.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5EC3DFE164ED1E30053AEF0 = {
+			isa = PBXGroup;
+			children = (
+				B5036D1D164F00430060C85A /* config_compilers.cpp */,
+				B5036D1E164F00430060C85A /* config_endianess.cpp */,
+				B5036D1F164F00430060C85A /* config_math.cpp */,
+				B5036D20164F00430060C85A /* config_memory.cpp */,
+				B5036D21164F00430060C85A /* config_platforms.cpp */,
+				B5036D22164F00430060C85A /* config_processors.cpp */,
+				B5036D23164F00430060C85A /* config_simd.cpp */,
+				B5036D24164F00430060C85A /* config_threading.cpp */,
+				B5036D25164F00430060C85A /* config_types.cpp */,
+				B5036D26164F00430060C85A /* container_binarytree.cpp */,
+				B5036D27164F00430060C85A /* container_bitmask.cpp */,
+				B5036D28164F00430060C85A /* container_bitset.cpp */,
+				B5036D29164F00430060C85A /* container_list.cpp */,
+				B5036D2A164F00430060C85A /* container_map.cpp */,
+				B5036D2B164F00430060C85A /* container_pair.cpp */,
+				B5036D2C164F00430060C85A /* container_queue.cpp */,
+				B5036D2D164F00430060C85A /* container_stack.cpp */,
+				B5036D2E164F00430060C85A /* container_treenode.cpp */,
+				B5036D2F164F00430060C85A /* container_vector.cpp */,
+				B5036D30164F00430060C85A /* control_asserts.cpp */,
+				B5036D31164F00430060C85A /* control_breakpoints.cpp */,
+				B5036D32164F00430060C85A /* control_checkvtable.cpp */,
+				B5036D33164F00430060C85A /* control_compare.cpp */,
+				B5036D34164F00430060C85A /* control_converter.cpp */,
+				B5036D35164F00430060C85A /* control_copyobject.cpp */,
+				B5036D36164F00430060C85A /* control_cpuinfo.cpp */,
+				B5036D37164F00430060C85A /* control_endian.cpp */,
+				B5036D38164F00430060C85A /* control_limits.cpp */,
+				B5036D39164F00430060C85A /* control_time.cpp */,
+				B5036D3A164F00430060C85A /* control_zero.cpp */,
+				B5036D3B164F00430060C85A /* main.cpp */,
+				B5036D3C164F00430060C85A /* math_math.cpp */,
+				B5036D3D164F00430060C85A /* math_random.cpp */,
+				B5036D3E164F00430060C85A /* threading_functorthread.cpp */,
+				B5036D3F164F00430060C85A /* threading_mutex.cpp */,
+				B5036D40164F00430060C85A /* threading_runnable.cpp */,
+				B5036D41164F00430060C85A /* threading_scopelock.cpp */,
+				B5036D42164F00430060C85A /* threading_semaphore.cpp */,
+				B5036D43164F00430060C85A /* threading_sleep.cpp */,
+				B5036D44164F00430060C85A /* threading_thread.cpp */,
+				B5036D45164F00440060C85A /* types_staticstring.cpp */,
+				B5036D46164F00440060C85A /* types_string.cpp */,
+				B5036D47164F00440060C85A /* unittest_precompiled.h */,
+				B5EC3E6B164ED3720053AEF0 /* libCRAPbasic.a */,
+				B5EC3E6C164ED3720053AEF0 /* libUnitTest.a */,
+				B5EC3E0A164ED1E30053AEF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5EC3E0A164ED1E30053AEF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC3E09164ED1E30053AEF0 /* CRAPunittests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5EC3E08164ED1E30053AEF0 /* CRAPunittests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5EC3E13164ED1E30053AEF0 /* Build configuration list for PBXNativeTarget "CRAPunittests" */;
+			buildPhases = (
+				B5EC3E05164ED1E30053AEF0 /* Sources */,
+				B5EC3E06164ED1E30053AEF0 /* Frameworks */,
+				B5EC3E07164ED1E30053AEF0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CRAPunittests;
+			productName = CRAPunittests;
+			productReference = B5EC3E09164ED1E30053AEF0 /* CRAPunittests */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5EC3E00164ED1E30053AEF0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = B5EC3E03164ED1E30053AEF0 /* Build configuration list for PBXProject "CRAPunittests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B5EC3DFE164ED1E30053AEF0;
+			productRefGroup = B5EC3E0A164ED1E30053AEF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5EC3E08164ED1E30053AEF0 /* CRAPunittests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5EC3E05164ED1E30053AEF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5036D48164F00440060C85A /* config_compilers.cpp in Sources */,
+				B5036D49164F00440060C85A /* config_endianess.cpp in Sources */,
+				B5036D4A164F00440060C85A /* config_math.cpp in Sources */,
+				B5036D4B164F00440060C85A /* config_memory.cpp in Sources */,
+				B5036D4C164F00440060C85A /* config_platforms.cpp in Sources */,
+				B5036D4D164F00440060C85A /* config_processors.cpp in Sources */,
+				B5036D4E164F00440060C85A /* config_simd.cpp in Sources */,
+				B5036D4F164F00440060C85A /* config_threading.cpp in Sources */,
+				B5036D50164F00440060C85A /* config_types.cpp in Sources */,
+				B5036D51164F00440060C85A /* container_binarytree.cpp in Sources */,
+				B5036D52164F00440060C85A /* container_bitmask.cpp in Sources */,
+				B5036D53164F00440060C85A /* container_bitset.cpp in Sources */,
+				B5036D54164F00440060C85A /* container_list.cpp in Sources */,
+				B5036D55164F00440060C85A /* container_map.cpp in Sources */,
+				B5036D56164F00440060C85A /* container_pair.cpp in Sources */,
+				B5036D57164F00440060C85A /* container_queue.cpp in Sources */,
+				B5036D58164F00440060C85A /* container_stack.cpp in Sources */,
+				B5036D59164F00440060C85A /* container_treenode.cpp in Sources */,
+				B5036D5A164F00440060C85A /* container_vector.cpp in Sources */,
+				B5036D5B164F00440060C85A /* control_asserts.cpp in Sources */,
+				B5036D5C164F00440060C85A /* control_breakpoints.cpp in Sources */,
+				B5036D5D164F00440060C85A /* control_checkvtable.cpp in Sources */,
+				B5036D5E164F00440060C85A /* control_compare.cpp in Sources */,
+				B5036D5F164F00440060C85A /* control_converter.cpp in Sources */,
+				B5036D60164F00440060C85A /* control_copyobject.cpp in Sources */,
+				B5036D61164F00440060C85A /* control_cpuinfo.cpp in Sources */,
+				B5036D62164F00440060C85A /* control_endian.cpp in Sources */,
+				B5036D63164F00440060C85A /* control_limits.cpp in Sources */,
+				B5036D64164F00440060C85A /* control_time.cpp in Sources */,
+				B5036D65164F00440060C85A /* control_zero.cpp in Sources */,
+				B5036D66164F00440060C85A /* main.cpp in Sources */,
+				B5036D67164F00440060C85A /* math_math.cpp in Sources */,
+				B5036D68164F00440060C85A /* math_random.cpp in Sources */,
+				B5036D69164F00440060C85A /* threading_functorthread.cpp in Sources */,
+				B5036D6A164F00440060C85A /* threading_mutex.cpp in Sources */,
+				B5036D6B164F00440060C85A /* threading_runnable.cpp in Sources */,
+				B5036D6C164F00440060C85A /* threading_scopelock.cpp in Sources */,
+				B5036D6D164F00440060C85A /* threading_semaphore.cpp in Sources */,
+				B5036D6E164F00440060C85A /* threading_sleep.cpp in Sources */,
+				B5036D6F164F00440060C85A /* threading_thread.cpp in Sources */,
+				B5036D70164F00440060C85A /* types_staticstring.cpp in Sources */,
+				B5036D71164F00440060C85A /* types_string.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B5EC3E11164ED1E30053AEF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B5EC3E12164ED1E30053AEF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B5EC3E14164ED1E30053AEF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ../../../src/crapunittests/unittest_precompiled.h;
+				HEADER_SEARCH_PATHS = (
+					../../../lib,
+					../../../lib/unittest,
+					../../../src/crap,
+					../../../src/crapunittests,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/CRAPengine-cjjvuffoxcqvtebzibjrctogwiqe/Build/Products/Debug\"",
+				);
+				OBJROOT = ../../../build/xcode/crapunittests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = ../../../bin/xcode/crapunittests;
+			};
+			name = Debug;
+		};
+		B5EC3E15164ED1E30053AEF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ../../../src/crapunittests/unittest_precompiled.h;
+				HEADER_SEARCH_PATHS = (
+					../../../lib,
+					../../../lib/unittest,
+					../../../src/crap,
+					../../../src/crapunittests,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/CRAPengine-cjjvuffoxcqvtebzibjrctogwiqe/Build/Products/Debug\"",
+				);
+				OBJROOT = ../../../build/xcode/crapunittests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = ../../../bin/xcode/crapunittests;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5EC3E03164ED1E30053AEF0 /* Build configuration list for PBXProject "CRAPunittests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5EC3E11164ED1E30053AEF0 /* Debug */,
+				B5EC3E12164ED1E30053AEF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5EC3E13164ED1E30053AEF0 /* Build configuration list for PBXNativeTarget "CRAPunittests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5EC3E14164ED1E30053AEF0 /* Debug */,
+				B5EC3E15164ED1E30053AEF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5EC3E00164ED1E30053AEF0 /* Project object */;
+}

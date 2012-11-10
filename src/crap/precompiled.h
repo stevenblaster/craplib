@@ -20,12 +20,12 @@
 #define CRAP_PRECOMPILED_H
 
 //cpp includes
-#include <memory>
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
 #include <cmath>
+#include <memory>
 
 ////cpuinfo include on VC or complatible
 //#if (defined(CRAP_COMPILER_VC) || defined(CRAP_COMPILER_INTEL))

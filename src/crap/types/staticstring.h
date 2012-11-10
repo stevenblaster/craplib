@@ -203,8 +203,8 @@ void static_string<S>::concat( const static_string<S>& other )
 template<size_t32 S>
 void static_string<S>::concat( string_t* cstr )
 {
-	size_t32 otherLength = strlen( cstr );
-	size_t32 myLength = strlen( reinterpret_cast<string_t*>(_memory) );
+	size_t32 otherLength = (size_t32) strlen( cstr );
+	size_t32 myLength = (size_t32) strlen( reinterpret_cast<string_t*>(_memory) );
 
 	CRAP_ASSERT_DEBUG(otherLength+myLength < S, "Concating would overflow static_string size");
 
@@ -267,8 +267,8 @@ i32 static_string<S>::search( const static_string<S>& other )
 template<size_t32 S>
 i32 static_string<S>::search( string_t* cstr )
 {
-	size_t32 otherSize = strlen( cstr );
-	size_t32 mySize = strlen( reinterpret_cast<string_t*>(_memory) );
+	size_t32 otherSize = (size_t32) strlen( cstr );
+	size_t32 mySize = (size_t32) strlen( reinterpret_cast<string_t*>(_memory) );
 
 	if( mySize < otherSize )
 		return -1;
