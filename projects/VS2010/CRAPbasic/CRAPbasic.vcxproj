@@ -42,14 +42,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>..\..\..\tmp\vs2010\$(Configuration)</IntDir>
-    <IncludePath>..\..\..\lib\eastl;..\..\..\src\crap;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\lib;..\..\..\src\crap;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>..\..\..\build\vs2010\$(Configuration)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>..\..\..\tmp\vs2010\$(Configuration)</IntDir>
-    <IncludePath>..\..\..\lib\eastl;..\..\..\src\crap;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\lib;..\..\..\src\crap;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -58,7 +58,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>..\..\..\build\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -75,7 +75,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>..\..\..\build\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -143,7 +143,6 @@
     <ClCompile Include="..\..\..\src\crap\control\limits.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\time.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\zero.cpp" />
-    <ClCompile Include="..\..\..\src\crap\memory\memorypool.cpp" />
     <ClCompile Include="..\..\..\src\crap\memory\memorytracker.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp" />

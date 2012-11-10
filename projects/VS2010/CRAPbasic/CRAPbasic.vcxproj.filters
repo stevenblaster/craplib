@@ -184,9 +184,6 @@
     <ClCompile Include="..\..\..\src\crap\memory\memorytracker.cpp">
       <Filter>memory</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\crap\memory\memorypool.cpp">
-      <Filter>memory</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\crap\threading\semaphore.cpp">
       <Filter>threading</Filter>
     </ClCompile>
