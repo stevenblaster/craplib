@@ -163,12 +163,12 @@ std::ostream& operator<<( std::ostream& out, const MemoryTracker& tracker )
 /*
 	Following: operate new/delete - simlpe mallocing
 */
-inline void* MemoryTracker::operator new (std::size_t size) throw (std::bad_alloc)
+inline void* MemoryTracker::operator new (std::size_t size) throw ()
 {
 	return malloc( size );
 }
 
-inline void* MemoryTracker::operator new[] (std::size_t size) throw (std::bad_alloc)
+inline void* MemoryTracker::operator new[] (std::size_t size) throw ()
 {
 	return malloc( size );
 }

@@ -42,6 +42,7 @@
 //platform specific stuff
 #ifdef CRAP_TARGET_WINDOWS
 #include <malloc.h>
+#pragma warning(disable : 4800)
 #endif
 
 

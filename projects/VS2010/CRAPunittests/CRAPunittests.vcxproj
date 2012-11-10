@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B071E8B9-0B6F-4DB8-A6AE-360A8E451783}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CRAPunittests</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\bin\crapunittests\</OutDir>
+    <IntDir>..\..\..\build\vs2010\crapunittests\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\lib\unittest\;..\..\..\src\crapunittests\;..\..\..\lib\;..\..\..\src\crap\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\bin\unittest;..\..\..\bin\crapbase;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\bin\crapunittests\</OutDir>
+    <IntDir>..\..\..\build\vs2010\crapunittests\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\lib\unittest\;..\..\..\src\crapunittests\;..\..\..\lib\;..\..\..\src\crap\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\bin\unittest;..\..\..\bin\crapbase;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>unittest_precompiled.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles>unittest_precompiled.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>CRAPbasic.lib;UnitTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>unittest_precompiled.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles>unittest_precompiled.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>CRAPbasic.lib;UnitTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\crapunittests\config_compilers.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_endianess.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_math.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_memory.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_platforms.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_processors.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_simd.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_threading.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_types.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_binarytree.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_bitmask.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_bitset.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_list.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_map.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_pair.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_queue.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_stack.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_treenode.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_vector.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_asserts.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_breakpoints.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_checkvtable.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_compare.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_converter.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_copyobject.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_cpuinfo.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_endian.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_limits.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_time.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_zero.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\main.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\math_math.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\math_random.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_functorthread.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_mutex.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_runnable.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_scopelock.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_semaphore.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_sleep.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\threading_thread.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\types_staticstring.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\types_string.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\crapunittests\unittest_precompiled.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
