@@ -1,0 +1,473 @@
+\hypertarget{classcrap_1_1binary__tree}{\section{crap\-:\-:binary\-\_\-tree$<$ T, C, A $>$ Class Template Reference}
+\label{classcrap_1_1binary__tree}\index{crap\-::binary\-\_\-tree$<$ T, C, A $>$@{crap\-::binary\-\_\-tree$<$ T, C, A $>$}}
+}
+
+
+{\ttfamily \#include $<$binarytree.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcrap_1_1binary__tree_1_1tree__iterator}{tree\-\_\-iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef T \& \hyperlink{classcrap_1_1binary__tree_ad64c4256e3563cf0f8147ba5927018a1}{reference}
+\item 
+typedef const T \& \hyperlink{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}{const\-\_\-reference}
+\item 
+typedef \hyperlink{types_8h_a38c0a12279ffe0fabec44939e753c914}{size\-\_\-t32} \hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type}
+\item 
+typedef std\-::ptrdiff\-\_\-t \hyperlink{classcrap_1_1binary__tree_a3c4aa7c126382d25766449ad4f9a769a}{difference\-\_\-type}
+\item 
+typedef T \hyperlink{classcrap_1_1binary__tree_a960493f90034de3a093bcbd5213afc7b}{value\-\_\-type}
+\item 
+typedef A \hyperlink{classcrap_1_1binary__tree_a0f57ad15240003da41b5893f4dd16d89}{allocator\-\_\-type}
+\item 
+typedef T $\ast$ \hyperlink{classcrap_1_1binary__tree_a27c6670d79fa1c757ce7c58025e582f8}{pointer}
+\item 
+typedef const T $\ast$ \hyperlink{classcrap_1_1binary__tree_a04d16c3f500fd5357170370c38526c54}{const\-\_\-pointer}
+\item 
+typedef \hyperlink{structcrap_1_1tree__node}{tree\-\_\-node}$<$ T, C $>$ \hyperlink{classcrap_1_1binary__tree_af74d1c1e3ed6600af0dcc454c7d41757}{node\-\_\-type}
+\item 
+typedef \hyperlink{structcrap_1_1tree__node}{tree\-\_\-node}$<$ T, C $>$ $\ast$ \hyperlink{classcrap_1_1binary__tree_a04d7ea4aa1c1cc5bdd06cbdf3d537076}{node\-\_\-pointer}
+\item 
+typedef \hyperlink{structcrap_1_1tree__node}{tree\-\_\-node}$<$ T, C $>$ \& \hyperlink{classcrap_1_1binary__tree_a4ff11fd56b34d6ed682f63e6d3ac66b1}{node\-\_\-reference}
+\item 
+typedef const \hyperlink{structcrap_1_1tree__node}{tree\-\_\-node}$<$ T, C $>$ \& \hyperlink{classcrap_1_1binary__tree_a2a0da5e341fa47ba7c7f47d784a6761b}{const\-\_\-node\-\_\-reference}
+\item 
+typedef \hyperlink{structcrap_1_1binary__tree_1_1tree__iterator}{tree\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator}
+\item 
+typedef const \hyperlink{structcrap_1_1binary__tree_1_1tree__iterator}{tree\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_af1890d7683cf194199091f874489805d}{top} (void)
+\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_a3a10de9d88f7a036e7c235536fc35999}{begin} (void)
+\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end} (void)
+\item 
+\hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_acdc8b8ca248c19336feb927fcdd4d8b3}{top} (void) const 
+\item 
+\hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_a612e86f27a3fbf67dacb741270880c8f}{begin} (void) const 
+\item 
+\hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_a25e67ca97e0f3e281d54ce52dd280783}{end} (void) const 
+\item 
+\hyperlink{classcrap_1_1binary__tree_a5326fed3645520e2573ed3fc1bbcd7c5}{binary\-\_\-tree} (void)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a76f1d93694a57bda23be935f2d17f6ac}{binary\-\_\-tree} (const \hyperlink{classcrap_1_1binary__tree}{binary\-\_\-tree} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_ab30bf57369815810ec7f96bac498e775}{$\sim$binary\-\_\-tree} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_ab761863e9a54a996f8d9be489c6c8108}{find} (\hyperlink{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}{const\-\_\-reference} key)
+\begin{DoxyCompactList}\small\item\em Finds key and returns iterator ( \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end()} if failed ) \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_ab6a8fdfd2596c8fb39c4f8b30f80a1eb}{find} (\hyperlink{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}{const\-\_\-reference} key) const 
+\begin{DoxyCompactList}\small\item\em Finds key and returns constant iterator ( \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end()} if failed ) \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_aa3e861dc915b3275ca8ff4e44706693b}{insert} (\hyperlink{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}{const\-\_\-reference} key)
+\begin{DoxyCompactList}\small\item\em Inserting key if unique and returns iterator ( \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end()} if failed ) \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1binary__tree_a05d61199d32fba780e4f06cbd8d78dc9}{remove} (\hyperlink{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}{const\-\_\-reference} key)
+\begin{DoxyCompactList}\small\item\em Find key and remove element. \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1binary__tree_a89f5b9cef4d0222a08bb8b4af36aacc1}{rotate\-\_\-left} (void)
+\begin{DoxyCompactList}\small\item\em Rotate tree at root to left. \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1binary__tree_a91b08ff047413150fc0fb13a9c994692}{rotate\-\_\-right} (void)
+\begin{DoxyCompactList}\small\item\em Rotate tree at root to right. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_abd56539e49ebf6b5fa346ebe5890187e}{min\-\_\-node} (void)
+\begin{DoxyCompactList}\small\item\em Finds the smalles element and returns iterator. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_afb187572916d545e6342951a2a69ddc2}{min\-\_\-node} (void) const 
+\begin{DoxyCompactList}\small\item\em Finds the smalles element and returns constant iterator. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{iterator} \hyperlink{classcrap_1_1binary__tree_aa635965ff3df0bad41210d1d366c56a1}{max\-\_\-node} (void)
+\begin{DoxyCompactList}\small\item\em Finds the biggest element and returns iterator. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{const\-\_\-iterator} \hyperlink{classcrap_1_1binary__tree_a840dfae55e9a1b61b0c21a4007eaef2b}{max\-\_\-node} (void) const 
+\begin{DoxyCompactList}\small\item\em Finds the biggest element and returns constant iterator. \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1binary__tree_a551ff89f9c1706ece5140b6d97601afb}{clear} (void)
+\begin{DoxyCompactList}\small\item\em Clears tree from root. \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1binary__tree_a5ce3ec6fcc6f10910da04b28e1283d81}{realign} (void)
+\begin{DoxyCompactList}\small\item\em Realigns all element by attemting to balance content. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_a38c23cd3df912134fd66fca2ed3a2785}{depth\-\_\-elements} (int level) const 
+\begin{DoxyCompactList}\small\item\em Gets width of specific height. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_abb92f673da94deb29bdde4f9b1f02fdb}{width} (void) const 
+\begin{DoxyCompactList}\small\item\em Gets maximum width of tree. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_ad9e970fc1c31b4c9bdbc0e6acbf999e6}{depth\-\_\-left} (void) const 
+\begin{DoxyCompactList}\small\item\em Left depth of nodes. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_a0ed9ad0859736021b6b8bf292a124e72}{depth\-\_\-right} (void) const 
+\begin{DoxyCompactList}\small\item\em Right depth of nodes. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_a97aaa62a77623d7bba5e3eed5979dcc5}{depth} (void) const 
+\begin{DoxyCompactList}\small\item\em Tree depth of nodes. \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_aa7f7cbffae21219cfc6ca2f4a0dd9ade}{size} (void) const 
+\begin{DoxyCompactList}\small\item\em Tree number of stored nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcrap_1_1binary__tree_a7d2bf1043055e08d3e4dba56ce7c03ad}{delete\-\_\-recursive} (\hyperlink{classcrap_1_1binary__tree_a04d7ea4aa1c1cc5bdd06cbdf3d537076}{node\-\_\-pointer})
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+A \hyperlink{classcrap_1_1binary__tree_a016966b0182a79e6de3852a3c1eb9b76}{\-\_\-allocator}
+\item 
+\hyperlink{classcrap_1_1binary__tree_a04d7ea4aa1c1cc5bdd06cbdf3d537076}{node\-\_\-pointer} \hyperlink{classcrap_1_1binary__tree_a72a63753bc21bd96aa06897685c8fc1f}{\-\_\-root}
+\item 
+\hyperlink{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{size\-\_\-type} \hyperlink{classcrap_1_1binary__tree_a9a8c2867f018e1b57a173a3c8e411181}{\-\_\-size}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{classcrap_1_1binary__tree_aab327068d678315bfc662fe2fcbb247e}{tree\-\_\-iterator}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classcrap_1_1binary__tree_a0f57ad15240003da41b5893f4dd16d89}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!allocator\-\_\-type@{allocator\-\_\-type}}
+\index{allocator\-\_\-type@{allocator\-\_\-type}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{allocator\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef A {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf allocator\-\_\-type}}}\label{classcrap_1_1binary__tree_a0f57ad15240003da41b5893f4dd16d89}
+\hypertarget{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!const\-\_\-iterator@{const\-\_\-iterator}}
+\index{const\-\_\-iterator@{const\-\_\-iterator}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{const\-\_\-iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef const {\bf tree\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-iterator}}}\label{classcrap_1_1binary__tree_aa9b9a8c0dd4bb6c574ea0526040e7c50}
+\hypertarget{classcrap_1_1binary__tree_a2a0da5e341fa47ba7c7f47d784a6761b}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!const\-\_\-node\-\_\-reference@{const\-\_\-node\-\_\-reference}}
+\index{const\-\_\-node\-\_\-reference@{const\-\_\-node\-\_\-reference}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{const\-\_\-node\-\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef const {\bf tree\-\_\-node}$<$T,C$>$\& {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-node\-\_\-reference}}}\label{classcrap_1_1binary__tree_a2a0da5e341fa47ba7c7f47d784a6761b}
+\hypertarget{classcrap_1_1binary__tree_a04d16c3f500fd5357170370c38526c54}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!const\-\_\-pointer@{const\-\_\-pointer}}
+\index{const\-\_\-pointer@{const\-\_\-pointer}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{const\-\_\-pointer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef const T$\ast$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-pointer}}}\label{classcrap_1_1binary__tree_a04d16c3f500fd5357170370c38526c54}
+\hypertarget{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!const\-\_\-reference@{const\-\_\-reference}}
+\index{const\-\_\-reference@{const\-\_\-reference}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{const\-\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef const T\& {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-reference}}}\label{classcrap_1_1binary__tree_a0fa18b1ab1bd0759b57e95b3804cce9a}
+\hypertarget{classcrap_1_1binary__tree_a3c4aa7c126382d25766449ad4f9a769a}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!difference\-\_\-type@{difference\-\_\-type}}
+\index{difference\-\_\-type@{difference\-\_\-type}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{difference\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef std\-::ptrdiff\-\_\-t {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf difference\-\_\-type}}}\label{classcrap_1_1binary__tree_a3c4aa7c126382d25766449ad4f9a769a}
+\hypertarget{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!iterator@{iterator}}
+\index{iterator@{iterator}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef {\bf tree\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf iterator}}}\label{classcrap_1_1binary__tree_af3313f011a64bb5a945dcd39cc3fc3c3}
+\hypertarget{classcrap_1_1binary__tree_a04d7ea4aa1c1cc5bdd06cbdf3d537076}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!node\-\_\-pointer@{node\-\_\-pointer}}
+\index{node\-\_\-pointer@{node\-\_\-pointer}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{node\-\_\-pointer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef {\bf tree\-\_\-node}$<$T,C$>$$\ast$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf node\-\_\-pointer}}}\label{classcrap_1_1binary__tree_a04d7ea4aa1c1cc5bdd06cbdf3d537076}
+\hypertarget{classcrap_1_1binary__tree_a4ff11fd56b34d6ed682f63e6d3ac66b1}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!node\-\_\-reference@{node\-\_\-reference}}
+\index{node\-\_\-reference@{node\-\_\-reference}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{node\-\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef {\bf tree\-\_\-node}$<$T,C$>$\& {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf node\-\_\-reference}}}\label{classcrap_1_1binary__tree_a4ff11fd56b34d6ed682f63e6d3ac66b1}
+\hypertarget{classcrap_1_1binary__tree_af74d1c1e3ed6600af0dcc454c7d41757}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!node\-\_\-type@{node\-\_\-type}}
+\index{node\-\_\-type@{node\-\_\-type}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{node\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef {\bf tree\-\_\-node}$<$T,C$>$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf node\-\_\-type}}}\label{classcrap_1_1binary__tree_af74d1c1e3ed6600af0dcc454c7d41757}
+\hypertarget{classcrap_1_1binary__tree_a27c6670d79fa1c757ce7c58025e582f8}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!pointer@{pointer}}
+\index{pointer@{pointer}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{pointer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef T$\ast$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf pointer}}}\label{classcrap_1_1binary__tree_a27c6670d79fa1c757ce7c58025e582f8}
+\hypertarget{classcrap_1_1binary__tree_ad64c4256e3563cf0f8147ba5927018a1}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!reference@{reference}}
+\index{reference@{reference}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef T\& {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf reference}}}\label{classcrap_1_1binary__tree_ad64c4256e3563cf0f8147ba5927018a1}
+\hypertarget{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!size\-\_\-type@{size\-\_\-type}}
+\index{size\-\_\-type@{size\-\_\-type}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{size\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf size\-\_\-type}}}\label{classcrap_1_1binary__tree_a7157228ff412e3fcf54a972120b7186a}
+\hypertarget{classcrap_1_1binary__tree_a960493f90034de3a093bcbd5213afc7b}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!value\-\_\-type@{value\-\_\-type}}
+\index{value\-\_\-type@{value\-\_\-type}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{value\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ typedef T {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf value\-\_\-type}}}\label{classcrap_1_1binary__tree_a960493f90034de3a093bcbd5213afc7b}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcrap_1_1binary__tree_a5326fed3645520e2573ed3fc1bbcd7c5}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!binary\-\_\-tree@{binary\-\_\-tree}}
+\index{binary\-\_\-tree@{binary\-\_\-tree}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{binary\-\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf binary\-\_\-tree} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_a5326fed3645520e2573ed3fc1bbcd7c5}
+
+
+Default constructor. 
+
+\hypertarget{classcrap_1_1binary__tree_a76f1d93694a57bda23be935f2d17f6ac}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!binary\-\_\-tree@{binary\-\_\-tree}}
+\index{binary\-\_\-tree@{binary\-\_\-tree}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{binary\-\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf binary\-\_\-tree} (
+\begin{DoxyParamCaption}
+\item[{const {\bf binary\-\_\-tree}$<$ T, C, A $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_a76f1d93694a57bda23be935f2d17f6ac}
+
+
+Copy constructor. 
+
+\hypertarget{classcrap_1_1binary__tree_ab30bf57369815810ec7f96bac498e775}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!$\sim$binary\-\_\-tree@{$\sim$binary\-\_\-tree}}
+\index{$\sim$binary\-\_\-tree@{$\sim$binary\-\_\-tree}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{$\sim$binary\-\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::$\sim${\bf binary\-\_\-tree} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_ab30bf57369815810ec7f96bac498e775}
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1binary__tree_a3a10de9d88f7a036e7c235536fc35999}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!begin@{begin}}
+\index{begin@{begin}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::begin (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_a3a10de9d88f7a036e7c235536fc35999}
+\hypertarget{classcrap_1_1binary__tree_a612e86f27a3fbf67dacb741270880c8f}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!begin@{begin}}
+\index{begin@{begin}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf const\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::begin (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_a612e86f27a3fbf67dacb741270880c8f}
+\hypertarget{classcrap_1_1binary__tree_a551ff89f9c1706ece5140b6d97601afb}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!clear@{clear}}
+\index{clear@{clear}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ void {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::clear (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_a551ff89f9c1706ece5140b6d97601afb}
+
+
+Clears tree from root. 
+
+\hypertarget{classcrap_1_1binary__tree_a7d2bf1043055e08d3e4dba56ce7c03ad}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!delete\-\_\-recursive@{delete\-\_\-recursive}}
+\index{delete\-\_\-recursive@{delete\-\_\-recursive}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{delete\-\_\-recursive}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ void {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::delete\-\_\-recursive (
+\begin{DoxyParamCaption}
+\item[{{\bf node\-\_\-pointer}}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classcrap_1_1binary__tree_a7d2bf1043055e08d3e4dba56ce7c03ad}
+\hypertarget{classcrap_1_1binary__tree_a97aaa62a77623d7bba5e3eed5979dcc5}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!depth@{depth}}
+\index{depth@{depth}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{depth}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::depth (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_a97aaa62a77623d7bba5e3eed5979dcc5}
+
+
+Tree depth of nodes. 
+
+\hypertarget{classcrap_1_1binary__tree_a38c23cd3df912134fd66fca2ed3a2785}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!depth\-\_\-elements@{depth\-\_\-elements}}
+\index{depth\-\_\-elements@{depth\-\_\-elements}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{depth\-\_\-elements}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::depth\-\_\-elements (
+\begin{DoxyParamCaption}
+\item[{int}]{level}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_a38c23cd3df912134fd66fca2ed3a2785}
+
+
+Gets width of specific height. 
+
+\hypertarget{classcrap_1_1binary__tree_ad9e970fc1c31b4c9bdbc0e6acbf999e6}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!depth\-\_\-left@{depth\-\_\-left}}
+\index{depth\-\_\-left@{depth\-\_\-left}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{depth\-\_\-left}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::depth\-\_\-left (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_ad9e970fc1c31b4c9bdbc0e6acbf999e6}
+
+
+Left depth of nodes. 
+
+\hypertarget{classcrap_1_1binary__tree_a0ed9ad0859736021b6b8bf292a124e72}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!depth\-\_\-right@{depth\-\_\-right}}
+\index{depth\-\_\-right@{depth\-\_\-right}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{depth\-\_\-right}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::depth\-\_\-right (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_a0ed9ad0859736021b6b8bf292a124e72}
+
+
+Right depth of nodes. 
+
+\hypertarget{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!end@{end}}
+\index{end@{end}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::end (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}
+\hypertarget{classcrap_1_1binary__tree_a25e67ca97e0f3e281d54ce52dd280783}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!end@{end}}
+\index{end@{end}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf const\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::end (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_a25e67ca97e0f3e281d54ce52dd280783}
+\hypertarget{classcrap_1_1binary__tree_ab761863e9a54a996f8d9be489c6c8108}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!find@{find}}
+\index{find@{find}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::find (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-reference}}]{key}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_ab761863e9a54a996f8d9be489c6c8108}
+
+
+Finds key and returns iterator ( \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end()} if failed ) 
+
+\hypertarget{classcrap_1_1binary__tree_ab6a8fdfd2596c8fb39c4f8b30f80a1eb}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!find@{find}}
+\index{find@{find}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf C\-R\-A\-P\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-C\-O\-N\-S\-T\-\_\-\-F\-I\-X} {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::find (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-reference}}]{key}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_ab6a8fdfd2596c8fb39c4f8b30f80a1eb}
+
+
+Finds key and returns constant iterator ( \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end()} if failed ) 
+
+\hypertarget{classcrap_1_1binary__tree_aa3e861dc915b3275ca8ff4e44706693b}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!insert@{insert}}
+\index{insert@{insert}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::insert (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-reference}}]{key}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_aa3e861dc915b3275ca8ff4e44706693b}
+
+
+Inserting key if unique and returns iterator ( \hyperlink{classcrap_1_1binary__tree_a6772ed25fccbde673feb71cb3212d743}{end()} if failed ) 
+
+\hypertarget{classcrap_1_1binary__tree_aa635965ff3df0bad41210d1d366c56a1}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!max\-\_\-node@{max\-\_\-node}}
+\index{max\-\_\-node@{max\-\_\-node}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{max\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::max\-\_\-node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_aa635965ff3df0bad41210d1d366c56a1}
+
+
+Finds the biggest element and returns iterator. 
+
+\hypertarget{classcrap_1_1binary__tree_a840dfae55e9a1b61b0c21a4007eaef2b}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!max\-\_\-node@{max\-\_\-node}}
+\index{max\-\_\-node@{max\-\_\-node}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{max\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf C\-R\-A\-P\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-C\-O\-N\-S\-T\-\_\-\-F\-I\-X} {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::max\-\_\-node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_a840dfae55e9a1b61b0c21a4007eaef2b}
+
+
+Finds the biggest element and returns constant iterator. 
+
+\hypertarget{classcrap_1_1binary__tree_abd56539e49ebf6b5fa346ebe5890187e}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!min\-\_\-node@{min\-\_\-node}}
+\index{min\-\_\-node@{min\-\_\-node}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{min\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::min\-\_\-node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_abd56539e49ebf6b5fa346ebe5890187e}
+
+
+Finds the smalles element and returns iterator. 
+
+\hypertarget{classcrap_1_1binary__tree_afb187572916d545e6342951a2a69ddc2}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!min\-\_\-node@{min\-\_\-node}}
+\index{min\-\_\-node@{min\-\_\-node}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{min\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf C\-R\-A\-P\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-\_\-\-C\-O\-N\-S\-T\-\_\-\-F\-I\-X} {\bf binary\-\_\-tree}$<$ T, C, A $>$\-::{\bf const\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::min\-\_\-node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_afb187572916d545e6342951a2a69ddc2}
+
+
+Finds the smalles element and returns constant iterator. 
+
+\hypertarget{classcrap_1_1binary__tree_a5ce3ec6fcc6f10910da04b28e1283d81}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!realign@{realign}}
+\index{realign@{realign}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{realign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ void {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::realign (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_a5ce3ec6fcc6f10910da04b28e1283d81}
+
+
+Realigns all element by attemting to balance content. 
+
+\hypertarget{classcrap_1_1binary__tree_a05d61199d32fba780e4f06cbd8d78dc9}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!remove@{remove}}
+\index{remove@{remove}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ bool {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-reference}}]{key}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_a05d61199d32fba780e4f06cbd8d78dc9}
+
+
+Find key and remove element. 
+
+\hypertarget{classcrap_1_1binary__tree_a89f5b9cef4d0222a08bb8b4af36aacc1}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!rotate\-\_\-left@{rotate\-\_\-left}}
+\index{rotate\-\_\-left@{rotate\-\_\-left}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{rotate\-\_\-left}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ bool {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::rotate\-\_\-left (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_a89f5b9cef4d0222a08bb8b4af36aacc1}
+
+
+Rotate tree at root to left. 
+
+\hypertarget{classcrap_1_1binary__tree_a91b08ff047413150fc0fb13a9c994692}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!rotate\-\_\-right@{rotate\-\_\-right}}
+\index{rotate\-\_\-right@{rotate\-\_\-right}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{rotate\-\_\-right}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ bool {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::rotate\-\_\-right (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1binary__tree_a91b08ff047413150fc0fb13a9c994692}
+
+
+Rotate tree at root to right. 
+
+\hypertarget{classcrap_1_1binary__tree_aa7f7cbffae21219cfc6ca2f4a0dd9ade}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!size@{size}}
+\index{size@{size}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_aa7f7cbffae21219cfc6ca2f4a0dd9ade}
+
+
+Tree number of stored nodes. 
+
+\hypertarget{classcrap_1_1binary__tree_af1890d7683cf194199091f874489805d}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!top@{top}}
+\index{top@{top}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::top (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_af1890d7683cf194199091f874489805d}
+\hypertarget{classcrap_1_1binary__tree_acdc8b8ca248c19336feb927fcdd4d8b3}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!top@{top}}
+\index{top@{top}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf const\-\_\-iterator} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::top (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1binary__tree_acdc8b8ca248c19336feb927fcdd4d8b3}
+\hypertarget{classcrap_1_1binary__tree_abb92f673da94deb29bdde4f9b1f02fdb}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!width@{width}}
+\index{width@{width}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class C , class A $>$ {\bf size\-\_\-t32} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::width (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1binary__tree_abb92f673da94deb29bdde4f9b1f02fdb}
+
+
+Gets maximum width of tree. 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classcrap_1_1binary__tree_aab327068d678315bfc662fe2fcbb247e}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!tree\-\_\-iterator@{tree\-\_\-iterator}}
+\index{tree\-\_\-iterator@{tree\-\_\-iterator}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{tree\-\_\-iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ friend struct {\bf tree\-\_\-iterator}\hspace{0.3cm}{\ttfamily [friend]}}}\label{classcrap_1_1binary__tree_aab327068d678315bfc662fe2fcbb247e}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcrap_1_1binary__tree_a016966b0182a79e6de3852a3c1eb9b76}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!\-\_\-allocator@{\-\_\-allocator}}
+\index{\-\_\-allocator@{\-\_\-allocator}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{\-\_\-allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ A {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::\-\_\-allocator\hspace{0.3cm}{\ttfamily [protected]}}}\label{classcrap_1_1binary__tree_a016966b0182a79e6de3852a3c1eb9b76}
+\hypertarget{classcrap_1_1binary__tree_a72a63753bc21bd96aa06897685c8fc1f}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!\-\_\-root@{\-\_\-root}}
+\index{\-\_\-root@{\-\_\-root}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{\-\_\-root}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf node\-\_\-pointer} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::\-\_\-root\hspace{0.3cm}{\ttfamily [protected]}}}\label{classcrap_1_1binary__tree_a72a63753bc21bd96aa06897685c8fc1f}
+\hypertarget{classcrap_1_1binary__tree_a9a8c2867f018e1b57a173a3c8e411181}{\index{crap\-::binary\-\_\-tree@{crap\-::binary\-\_\-tree}!\-\_\-size@{\-\_\-size}}
+\index{\-\_\-size@{\-\_\-size}!crap::binary_tree@{crap\-::binary\-\_\-tree}}
+\subsubsection[{\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class C = crap\-::less$<$\-T$>$, class A = crap\-::allocator\-\_\-default$<$tree\-\_\-node$<$\-T,\-C$>$ $>$$>$ {\bf size\-\_\-type} {\bf crap\-::binary\-\_\-tree}$<$ T, C, A $>$\-::\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{classcrap_1_1binary__tree_a9a8c2867f018e1b57a173a3c8e411181}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/container/\hyperlink{binarytree_8h}{binarytree.\-h}\end{DoxyCompactItemize}

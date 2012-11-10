@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file platforms.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file platforms.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Looking for platform specific macros
+//!		@brief Looking for platform specific macros
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -28,18 +26,18 @@ namespace crap
 {
 
 /*
- * @brief enum representing detected od
+ *! @brief enum representing detected od
  */
 
 enum os
 {
 	platform_windows,
-    platform_macintosh,
-    platform_ios,
-    platform_linux,
-    platform_bsd,
-    platform_unix,
-    platform_unknown
+	platform_macintosh,
+	platform_ios,
+	platform_linux,
+	platform_bsd,
+	platform_unix,
+	platform_unknown
 };
 
 //Windwos
@@ -54,7 +52,7 @@ static const crap::os platform = platform_windows;
 
 	// IOS
 	#include "TargetConditionals.h"
-    #if ( defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) )
+	#if ( defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) )
 
 		#define CRAP_PLATFORM_IOS
 		#define CRAP_PLATFORM_NAME "IOS"

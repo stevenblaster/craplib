@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
-// CRAP Library
-//		@file bitset.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file bitset.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief The container allocates memory
+//!		@brief The container allocates memory
 //		and allows bit manipulation
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -28,9 +26,9 @@
 //lib namespace
 namespace crap
 {
-	
+
 /*
- * @brief Bit manipulating template class
+ *! @brief Bit manipulating template class
  */
 
 template<size_t32 S>
@@ -41,41 +39,41 @@ private:
 	/*
 	 * Class members
 	 */
-	
+
 	u8 _memory[S]; // memory for mask
-	
+
 public:
-	
-	// @brief default constructor
+
+	//! @brief default constructor
 	bit_set(void);
-	
-	// @brief copy constructor
+
+	//! @brief copy constructor
 	bit_set( const bit_set& other );
-	
-	// @brief destructor
+
+	//! @brief destructor
 	~bit_set( void );
-	
-	// @brief assignment operator
+
+	//! @brief assignment operator
 	bit_set& operator=( const bit_set& other );
-	
-	// @brief assignment operator with pointer
+
+	//! @brief assignment operator with pointer
 	bit_set& operator=( void* other );
 
-	// @brief plus-equal operator
+	//! @brief plus-equal operator
 	bit_set& operator+=( const bit_set& other );
-	
-	// @brief plus-equal operator with pointer
+
+	//! @brief plus-equal operator with pointer
 	bit_set& operator+=( void* other );
 
-	// @brief minus-equal operator
-    bit_set& operator-=( const bit_set& other );
-	
-	// @brief minus-equal operator with pointer
-    bit_set& operator-=( void* other );
-	
-	// @brief stream operator
+	//! @brief minus-equal operator
+	bit_set& operator-=( const bit_set& other );
+
+	//! @brief minus-equal operator with pointer
+	bit_set& operator-=( void* other );
+
+	//! @brief stream operator
 	template<size_t32 U>
-    friend std::ostream& operator<<( std::ostream& out, const bit_set<U>& bitmask );
+	friend std::ostream& operator<<( std::ostream& out, const bit_set<U>& bitmask );
 };
 
 /*

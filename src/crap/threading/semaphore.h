@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file semaphore.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file semaphore.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Semaphore class
+//!		@brief Semaphore class
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -45,7 +43,7 @@ public:
 	void operator=( const semaphore& other );
 
 	bool wait( void ) const;
-	// @todo: add timedWait and tryWait, do they exist in Win api?
+	//! @todo: add timedWait and tryWait, do they exist in Win api?
 	bool post( void );
 	void reset( i32 init = 0 );
 

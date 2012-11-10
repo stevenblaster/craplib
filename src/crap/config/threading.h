@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file threading.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file threading.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Uses platform / compiler settings to
+//!		@brief Uses platform / compiler settings to
 //		config threading
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 

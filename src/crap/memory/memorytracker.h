@@ -2,13 +2,11 @@
 // CRAP Library
 //	memorytracker.h
 //
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
-//
 //	Author(s):
-// 	Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
 //		Keeps track of allocations. Offers passivly methods to store
@@ -151,7 +149,7 @@ class MemoryTracker
 	/* operator new/delete
 	 * Description: Default overloading of operator new and
 	 * 	delete using malloc and free to avoid memory-management */
-    void* operator new (std::size_t size) throw (std::bad_alloc);
+	void* operator new (std::size_t size) throw (std::bad_alloc);
 	void* operator new (std::size_t size, const std::nothrow_t& nothrow_constant) throw();
 	void* operator new[] (std::size_t size) throw (std::bad_alloc);
 	void* operator new[] (std::size_t size, const std::nothrow_t& nothrow_constant) throw();

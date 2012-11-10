@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file math.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file math.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Defines for math (constant values)
+//!		@brief Defines for math (constant values)
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 

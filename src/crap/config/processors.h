@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file processors.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file processors.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Looking for processor specific macros
+//!		@brief Looking for processor specific macros
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 

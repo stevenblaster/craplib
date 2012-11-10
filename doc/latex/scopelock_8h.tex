@@ -1,0 +1,54 @@
+\hypertarget{scopelock_8h}{\section{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/threading/scopelock.h File Reference}
+\label{scopelock_8h}\index{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/threading/scopelock.\-h@{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/threading/scopelock.\-h}}
+}
+{\ttfamily \#include \char`\"{}threading/mutex.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}threading/semaphore.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcrap_1_1scope__lock}{crap\-::scope\-\_\-lock}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacecrap}{crap}
+\begin{DoxyCompactList}\small\item\em \begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{scopelock_8h_adeac277671a6836ed824b58f3401453b}{C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H}
+\begin{DoxyCompactList}\small\item\em \begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+\end{DoxyCompactList}\item 
+\#define \hyperlink{scopelock_8h_adf686fa25538c8d1e8abc2f99808a7ac}{S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X}(type)~\hyperlink{classcrap_1_1scope__lock}{crap\-::scope\-\_\-lock} lock\-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-(type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{scopelock_8h_adeac277671a6836ed824b58f3401453b}{\index{scopelock.\-h@{scopelock.\-h}!C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H@{C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H}}
+\index{C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H@{C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H}!scopelock.h@{scopelock.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-S\-C\-O\-P\-E\-L\-O\-C\-K\-\_\-\-H}}\label{scopelock_8h_adeac277671a6836ed824b58f3401453b}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+
+
+\begin{DoxyAuthor}{Author}
+Steffen Kopany \href{mailto:steffen@kopany.at}{\tt steffen@kopany.\-at}Locks a mutex until end of scope 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+scratch 
+\end{DoxyVersion}
+\hypertarget{scopelock_8h_adf686fa25538c8d1e8abc2f99808a7ac}{\index{scopelock.\-h@{scopelock.\-h}!S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X@{S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X}}
+\index{S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X@{S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X}!scopelock.h@{scopelock.\-h}}
+\subsubsection[{S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-C\-O\-P\-E\-\_\-\-M\-U\-T\-E\-X(
+\begin{DoxyParamCaption}
+\item[{}]{type}
+\end{DoxyParamCaption}
+)~{\bf crap\-::scope\-\_\-lock} lock\-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-(type)}}\label{scopelock_8h_adf686fa25538c8d1e8abc2f99808a7ac}

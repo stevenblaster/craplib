@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file math.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file math.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Math functions using approximation and
+//!		@brief Math functions using approximation and
 // 		SSE instructions
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -114,7 +112,7 @@ private:
 	#if defined(CRAP_COMPILER_GCC) // && defined __i386__
 		i32 res;
 		__asm__ __volatile__ (
-		  "fistpl %0 \n\t"
+		  "fistpl %0 @n@t"
 		: "=m" (res) : "t" (x) : "st");
 		return res;
 	#else
@@ -130,9 +128,9 @@ private:
 	#if defined(CRAP_COMPILER_GCC)  && (CRAP_SIMD_VERSION >= CRAP_SIMD_SSE)
 		f32 z;
 		__asm__ __volatile__ (
-		  "movss     %1, %%xmm0 \n\t"
-		  "rcpss %%xmm0, %%xmm0 \n\t"
-		  "movss %%xmm0, %0     \n\t"
+		  "movss     %1, %%xmm0 @n@t"
+		  "rcpss %%xmm0, %%xmm0 @n@t"
+		  "movss %%xmm0, %0     @n@t"
 		: "=m" (z) : "m" (x) : "xmm0", "memory");
 		return z;
 	#else
@@ -150,9 +148,9 @@ private:
 	#if defined(CRAP_COMPILER_GCC)  && (CRAP_SIMD_VERSION >= CRAP_SIMD_SSE)
 		f32 z;
 		__asm__ __volatile__ (
-		  "movss       %1, %%xmm0 \n\t"
-		  "rsqrtss %%xmm0, %%xmm0 \n\t"
-		  "movss   %%xmm0, %0     \n\t"
+		  "movss       %1, %%xmm0 @n@t"
+		  "rsqrtss %%xmm0, %%xmm0 @n@t"
+		  "movss   %%xmm0, %0     @n@t"
 		: "=m" (z) : "m" (x) : "xmm0", "memory");
 	#else
 		f32 z = i32tof32((0xBE6EFCBA - f32toi32(x)) >> 1);

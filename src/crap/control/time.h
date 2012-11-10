@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file time.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file time.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Provides info of time and clock
+//!		@brief Provides info of time and clock
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -24,7 +22,7 @@
 #ifndef CRAP_CONTROL_TIME_H
 #define CRAP_CONTROL_TIME_H
 
-#include "types/staticrap::cstring.h"
+#include "types/staticstring.h"
 
 //lib namespace
 namespace crap

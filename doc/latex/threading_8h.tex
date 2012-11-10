@@ -1,0 +1,122 @@
+\hypertarget{threading_8h}{\section{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/config/threading.h File Reference}
+\label{threading_8h}\index{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/config/threading.\-h@{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/config/threading.\-h}}
+}
+{\ttfamily \#include \char`\"{}config/platforms.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$pthread.\-h$>$}\\*
+{\ttfamily \#include $<$signal.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$semaphore.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{threading_8h_a9950a0e941a9a3c5cdc5194f821bf3c4}{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H}
+\begin{DoxyCompactList}\small\item\em \begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+\end{DoxyCompactList}\item 
+\#define \hyperlink{threading_8h_a776fd33bef04e5b713f44a55660c5e27}{M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E}~pthread\-\_\-mutex\-\_\-t
+\item 
+\#define \hyperlink{threading_8h_a55d51501e66f38627e1f59d44b311880}{C\-O\-N\-D\-I\-T\-I\-O\-N}~pthread\-\_\-cond\-\_\-t
+\item 
+\#define \hyperlink{threading_8h_a64ae6a6df0a53d73afe2931e47eae2fb}{S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C}(millisec)~usleep( millisec $\ast$ 1000 )
+\item 
+\#define \hyperlink{threading_8h_a51bb73248622900a1fef93678bf9a0bb}{S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E}~sem\-\_\-t
+\item 
+\#define \hyperlink{threading_8h_a14c0f3061b88e46a595ca858fed22b03}{T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E}~pthread\-\_\-t
+\item 
+\#define \hyperlink{threading_8h_a551918420acd27a8e8502a861d38e3a6}{T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N}~void$\ast$
+\item 
+\#define \hyperlink{threading_8h_a65690d2a67cdd990efd192faf4a572c7}{T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R}(ptr)~starter(void$\ast$ ptr)
+\item 
+\#define \hyperlink{threading_8h_aa20d12880b87b15945b1c0357d5282ea}{T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E}(handle, run, runnable)~pthread\-\_\-create( \&handle, \hyperlink{types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\-U\-L\-L}, run, static\-\_\-cast$<$ void$\ast$ $>$( runnable ) )
+\item 
+\#define \hyperlink{threading_8h_a6a6d4c37e9c1a541267e020f87005a0a}{T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L}~0
+\item 
+\#define \hyperlink{threading_8h_a6e2cc56482053a9ede8eb5f5aa124b5e}{T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N}(handle)~pthread\-\_\-join( handle, \hyperlink{types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\-U\-L\-L} )
+\item 
+\#define \hyperlink{threading_8h_a974a2c67987ea4a052b575fbef20314d}{T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O}~0
+\item 
+\#define \hyperlink{threading_8h_a96f6433d31319ced6f3bafef3439abd6}{T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L}(handle)~pthread\-\_\-cancel( handle ) == 0
+\item 
+\#define \hyperlink{threading_8h_a365185107ce3c3c5e8232e988682a808}{T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P}~pthread\-\_\-setcanceltype(P\-T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-A\-S\-Y\-N\-C\-H\-R\-O\-N\-O\-U\-S, \hyperlink{types_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\-U\-L\-L})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{threading_8h_a55d51501e66f38627e1f59d44b311880}{\index{threading.\-h@{threading.\-h}!C\-O\-N\-D\-I\-T\-I\-O\-N@{C\-O\-N\-D\-I\-T\-I\-O\-N}}
+\index{C\-O\-N\-D\-I\-T\-I\-O\-N@{C\-O\-N\-D\-I\-T\-I\-O\-N}!threading.h@{threading.\-h}}
+\subsubsection[{C\-O\-N\-D\-I\-T\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-N\-D\-I\-T\-I\-O\-N~pthread\-\_\-cond\-\_\-t}}\label{threading_8h_a55d51501e66f38627e1f59d44b311880}
+\hypertarget{threading_8h_a9950a0e941a9a3c5cdc5194f821bf3c4}{\index{threading.\-h@{threading.\-h}!C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H@{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H}}
+\index{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H@{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H}!threading.h@{threading.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-T\-H\-R\-E\-A\-D\-I\-N\-G\-\_\-\-H}}\label{threading_8h_a9950a0e941a9a3c5cdc5194f821bf3c4}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+
+
+\begin{DoxyAuthor}{Author}
+Steffen Kopany \href{mailto:steffen@kopany.at}{\tt steffen@kopany.\-at}Uses platform / compiler settings to 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+scratch 
+\end{DoxyVersion}
+\hypertarget{threading_8h_a776fd33bef04e5b713f44a55660c5e27}{\index{threading.\-h@{threading.\-h}!M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E@{M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E}}
+\index{M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E@{M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E}!threading.h@{threading.\-h}}
+\subsubsection[{M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-U\-T\-E\-X\-\_\-\-H\-A\-N\-D\-L\-E~pthread\-\_\-mutex\-\_\-t}}\label{threading_8h_a776fd33bef04e5b713f44a55660c5e27}
+\hypertarget{threading_8h_a51bb73248622900a1fef93678bf9a0bb}{\index{threading.\-h@{threading.\-h}!S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E@{S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E}}
+\index{S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E@{S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E}!threading.h@{threading.\-h}}
+\subsubsection[{S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-M\-A\-P\-H\-O\-R\-E\-\_\-\-H\-A\-N\-D\-L\-E~sem\-\_\-t}}\label{threading_8h_a51bb73248622900a1fef93678bf9a0bb}
+\hypertarget{threading_8h_a64ae6a6df0a53d73afe2931e47eae2fb}{\index{threading.\-h@{threading.\-h}!S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C@{S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C}}
+\index{S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C@{S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C}!threading.h@{threading.\-h}}
+\subsubsection[{S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-E\-E\-P\-\_\-\-M\-S\-E\-C(
+\begin{DoxyParamCaption}
+\item[{}]{millisec}
+\end{DoxyParamCaption}
+)~usleep( millisec $\ast$ 1000 )}}\label{threading_8h_a64ae6a6df0a53d73afe2931e47eae2fb}
+\hypertarget{threading_8h_a365185107ce3c3c5e8232e988682a808}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P@{T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P@{T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-S\-E\-T\-U\-P~pthread\-\_\-setcanceltype(P\-T\-H\-R\-E\-A\-D\-\_\-\-C\-A\-N\-C\-E\-L\-\_\-\-A\-S\-Y\-N\-C\-H\-R\-O\-N\-O\-U\-S, {\bf N\-U\-L\-L})}}\label{threading_8h_a365185107ce3c3c5e8232e988682a808}
+\hypertarget{threading_8h_aa20d12880b87b15945b1c0357d5282ea}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E@{T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E@{T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{handle, }
+\item[{}]{run, }
+\item[{}]{runnable}
+\end{DoxyParamCaption}
+)~pthread\-\_\-create( \&handle, {\bf N\-U\-L\-L}, run, static\-\_\-cast$<$ void$\ast$ $>$( runnable ) )}}\label{threading_8h_aa20d12880b87b15945b1c0357d5282ea}
+\hypertarget{threading_8h_a14c0f3061b88e46a595ca858fed22b03}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E@{T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E@{T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-H\-A\-N\-D\-L\-E~pthread\-\_\-t}}\label{threading_8h_a14c0f3061b88e46a595ca858fed22b03}
+\hypertarget{threading_8h_a6e2cc56482053a9ede8eb5f5aa124b5e}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N@{T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N@{T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-J\-O\-I\-N(
+\begin{DoxyParamCaption}
+\item[{}]{handle}
+\end{DoxyParamCaption}
+)~pthread\-\_\-join( handle, {\bf N\-U\-L\-L} )}}\label{threading_8h_a6e2cc56482053a9ede8eb5f5aa124b5e}
+\hypertarget{threading_8h_a96f6433d31319ced6f3bafef3439abd6}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L@{T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L@{T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-K\-I\-L\-L(
+\begin{DoxyParamCaption}
+\item[{}]{handle}
+\end{DoxyParamCaption}
+)~pthread\-\_\-cancel( handle ) == 0}}\label{threading_8h_a96f6433d31319ced6f3bafef3439abd6}
+\hypertarget{threading_8h_a6a6d4c37e9c1a541267e020f87005a0a}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L@{T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L@{T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-N\-U\-L\-L~0}}\label{threading_8h_a6a6d4c37e9c1a541267e020f87005a0a}
+\hypertarget{threading_8h_a551918420acd27a8e8502a861d38e3a6}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N@{T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N@{T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-R\-E\-T\-U\-R\-N~void$\ast$}}\label{threading_8h_a551918420acd27a8e8502a861d38e3a6}
+\hypertarget{threading_8h_a65690d2a67cdd990efd192faf4a572c7}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R@{T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R@{T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-S\-T\-A\-R\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{ptr}
+\end{DoxyParamCaption}
+)~starter(void$\ast$ ptr)}}\label{threading_8h_a65690d2a67cdd990efd192faf4a572c7}
+\hypertarget{threading_8h_a974a2c67987ea4a052b575fbef20314d}{\index{threading.\-h@{threading.\-h}!T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O@{T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O}}
+\index{T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O@{T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O}!threading.h@{threading.\-h}}
+\subsubsection[{T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-A\-D\-\_\-\-Z\-E\-R\-O~0}}\label{threading_8h_a974a2c67987ea4a052b575fbef20314d}

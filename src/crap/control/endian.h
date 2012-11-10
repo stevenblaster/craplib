@@ -1,17 +1,15 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file endian.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file endian.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Contains the Endian class which cares about
+//!		@brief Contains the Endian class which cares about
 //		Ednian checking (in case the Macrocheck in
 //		endianness.h didn't identify the right endian
 //		case), and several methods of byte swapping and
@@ -19,7 +17,7 @@
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 

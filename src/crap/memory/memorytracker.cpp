@@ -2,13 +2,11 @@
 // CRAP Library
 //	memorytracker.cpp
 //
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
-//
 //	Author(s):
-// 	Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
 //		Keeps track of allocations. Offers passivly methods to store
@@ -148,18 +146,18 @@ u64 MemoryTracker::usedMemoryBig( void ) const
 
 std::ostream& operator<<( std::ostream& out, const MemoryTracker& tracker )
 {
-	out << "Current MemoryBlocks: \t\t" << tracker._memoryblocks << std::endl
-		  << "Max. Blocks at same time: \t" << tracker._memoryblocks_max << std::endl
-		  << "Total allocated Memoryblocks:\t" << tracker._memoryblocks_all << std::endl
-		  << "Current allocations: \t\t" << tracker._allocations << std::endl
-		  << "Max. allocations at same time: \t" << tracker._allocations_max << std::endl
-		  << "Total allocations: \t\t" << tracker._allocations_all << std::endl
-		  << "Currently allocated memory:\t" << tracker._allocatedMemory << std::endl
-		  << "Maximum allocated memory: \t" << tracker._allocatedMemory_max << std::endl
-		  << "Currently used Memory: \t\t" << tracker._usedMemory << std::endl
-		  << "Biggest MemoryBlock: \t\t" << tracker._biggestMemoryBlock << std::endl
-		  << "Biggest allocation: \t\t" << tracker._biggestAllocation << std::endl;
-    return out;
+	out << "Current MemoryBlocks: @t@t" << tracker._memoryblocks << std::endl
+		  << "Max. Blocks at same time: @t" << tracker._memoryblocks_max << std::endl
+		  << "Total allocated Memoryblocks:@t" << tracker._memoryblocks_all << std::endl
+		  << "Current allocations: @t@t" << tracker._allocations << std::endl
+		  << "Max. allocations at same time: @t" << tracker._allocations_max << std::endl
+		  << "Total allocations: @t@t" << tracker._allocations_all << std::endl
+		  << "Currently allocated memory:@t" << tracker._allocatedMemory << std::endl
+		  << "Maximum allocated memory: @t" << tracker._allocatedMemory_max << std::endl
+		  << "Currently used Memory: @t@t" << tracker._usedMemory << std::endl
+		  << "Biggest MemoryBlock: @t@t" << tracker._biggestMemoryBlock << std::endl
+		  << "Biggest allocation: @t@t" << tracker._biggestAllocation << std::endl;
+	return out;
 }
 
 /*

@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file time.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file zero.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Provides the right zero value
+//!		@brief Provides the right zero value
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once

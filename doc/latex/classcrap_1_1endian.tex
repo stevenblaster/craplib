@@ -1,0 +1,122 @@
+\hypertarget{classcrap_1_1endian}{\section{crap\-:\-:endian Class Reference}
+\label{classcrap_1_1endian}\index{crap\-::endian@{crap\-::endian}}
+}
+
+
+{\ttfamily \#include $<$endian.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bc}{byte\-\_\-order} \{ \hyperlink{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bcacaaaa395ded2e3f4b04bb7b9ddd1dcda}{little\-\_\-endian} = 0, 
+\hyperlink{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bca50318490da9bb7fe3f2d5a6fab6c594e}{big\-\_\-endian}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bc}{byte\-\_\-order} \hyperlink{classcrap_1_1endian_af4512bbd3646a2adb93f8e347cb91316}{check\-\_\-endian} (void)
+\item 
+static \hyperlink{types_8h_a74eb47b4ab9e428eab7b91b3b877fa6c}{b8} \hyperlink{classcrap_1_1endian_ac3f40e46feb16e0f256e0d575310a304}{is\-\_\-big} (void)
+\item 
+static \hyperlink{types_8h_a74eb47b4ab9e428eab7b91b3b877fa6c}{b8} \hyperlink{classcrap_1_1endian_a1929d0b6d0fedf95e5ba224491fb73fa}{is\-\_\-little} (void)
+\item 
+{\footnotesize template$<$size\-\_\-t32 S$>$ }\\static void $\ast$ \hyperlink{classcrap_1_1endian_abb379815661f1c0bf53ff127a9e46ad2}{swap\-\_\-bytes} (void $\ast$swap\-Me)
+\item 
+{\footnotesize template$<$typename T $>$ }\\static T \& \hyperlink{classcrap_1_1endian_a90a0d30226be6645977d2a92e3e25eb8}{swap} (T \&swap\-Me)
+\item 
+{\footnotesize template$<$typename T $>$ }\\static T \& \hyperlink{classcrap_1_1endian_a27273ac66da4bcb19b9d25487e3339fd}{to\-\_\-big} (T \&swap\-Me)
+\item 
+{\footnotesize template$<$typename T $>$ }\\static T \& \hyperlink{classcrap_1_1endian_a74048f1ce4f5b78d758e9aa5e65e0bda}{to\-\_\-little} (T \&swap\-Me)
+\item 
+{\footnotesize template$<$typename T $>$ }\\static T \& \hyperlink{classcrap_1_1endian_ac455ef06416404e0e602fe5058249a76}{big\-\_\-to\-\_\-local} (T \&swap\-Me)
+\item 
+{\footnotesize template$<$typename T $>$ }\\static T \& \hyperlink{classcrap_1_1endian_a1acfd2485f4d14dce347366aa89732b3}{little\-\_\-to\-\_\-local} (T \&swap\-Me)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bc}{\index{crap\-::endian@{crap\-::endian}!byte\-\_\-order@{byte\-\_\-order}}
+\index{byte\-\_\-order@{byte\-\_\-order}!crap::endian@{crap\-::endian}}
+\subsubsection[{byte\-\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf crap\-::endian\-::byte\-\_\-order}}}\label{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bc}
+\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{little\-\_\-endian@{little\-\_\-endian}!crap\-::endian@{crap\-::endian}}\index{crap\-::endian@{crap\-::endian}!little\-\_\-endian@{little\-\_\-endian}}\item[{\em 
+\hypertarget{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bcacaaaa395ded2e3f4b04bb7b9ddd1dcda}{little\-\_\-endian}\label{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bcacaaaa395ded2e3f4b04bb7b9ddd1dcda}
+}]\index{big\-\_\-endian@{big\-\_\-endian}!crap\-::endian@{crap\-::endian}}\index{crap\-::endian@{crap\-::endian}!big\-\_\-endian@{big\-\_\-endian}}\item[{\em 
+\hypertarget{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bca50318490da9bb7fe3f2d5a6fab6c594e}{big\-\_\-endian}\label{classcrap_1_1endian_acd655732bc1be1cbc7614225510b06bca50318490da9bb7fe3f2d5a6fab6c594e}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1endian_ac455ef06416404e0e602fe5058249a76}{\index{crap\-::endian@{crap\-::endian}!big\-\_\-to\-\_\-local@{big\-\_\-to\-\_\-local}}
+\index{big\-\_\-to\-\_\-local@{big\-\_\-to\-\_\-local}!crap::endian@{crap\-::endian}}
+\subsubsection[{big\-\_\-to\-\_\-local}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T \& crap\-::endian\-::big\-\_\-to\-\_\-local (
+\begin{DoxyParamCaption}
+\item[{T \&}]{swap\-Me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_ac455ef06416404e0e602fe5058249a76}
+\hypertarget{classcrap_1_1endian_af4512bbd3646a2adb93f8e347cb91316}{\index{crap\-::endian@{crap\-::endian}!check\-\_\-endian@{check\-\_\-endian}}
+\index{check\-\_\-endian@{check\-\_\-endian}!crap::endian@{crap\-::endian}}
+\subsubsection[{check\-\_\-endian}]{\setlength{\rightskip}{0pt plus 5cm}{\bf endian\-::byte\-\_\-order} crap\-::endian\-::check\-\_\-endian (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_af4512bbd3646a2adb93f8e347cb91316}
+\hypertarget{classcrap_1_1endian_ac3f40e46feb16e0f256e0d575310a304}{\index{crap\-::endian@{crap\-::endian}!is\-\_\-big@{is\-\_\-big}}
+\index{is\-\_\-big@{is\-\_\-big}!crap::endian@{crap\-::endian}}
+\subsubsection[{is\-\_\-big}]{\setlength{\rightskip}{0pt plus 5cm}bool crap\-::endian\-::is\-\_\-big (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classcrap_1_1endian_ac3f40e46feb16e0f256e0d575310a304}
+\hypertarget{classcrap_1_1endian_a1929d0b6d0fedf95e5ba224491fb73fa}{\index{crap\-::endian@{crap\-::endian}!is\-\_\-little@{is\-\_\-little}}
+\index{is\-\_\-little@{is\-\_\-little}!crap::endian@{crap\-::endian}}
+\subsubsection[{is\-\_\-little}]{\setlength{\rightskip}{0pt plus 5cm}{\bf b8} crap\-::endian\-::is\-\_\-little (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classcrap_1_1endian_a1929d0b6d0fedf95e5ba224491fb73fa}
+\hypertarget{classcrap_1_1endian_a1acfd2485f4d14dce347366aa89732b3}{\index{crap\-::endian@{crap\-::endian}!little\-\_\-to\-\_\-local@{little\-\_\-to\-\_\-local}}
+\index{little\-\_\-to\-\_\-local@{little\-\_\-to\-\_\-local}!crap::endian@{crap\-::endian}}
+\subsubsection[{little\-\_\-to\-\_\-local}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T \& crap\-::endian\-::little\-\_\-to\-\_\-local (
+\begin{DoxyParamCaption}
+\item[{T \&}]{swap\-Me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_a1acfd2485f4d14dce347366aa89732b3}
+\hypertarget{classcrap_1_1endian_a90a0d30226be6645977d2a92e3e25eb8}{\index{crap\-::endian@{crap\-::endian}!swap@{swap}}
+\index{swap@{swap}!crap::endian@{crap\-::endian}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T \& crap\-::endian\-::swap (
+\begin{DoxyParamCaption}
+\item[{T \&}]{swap\-Me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_a90a0d30226be6645977d2a92e3e25eb8}
+\hypertarget{classcrap_1_1endian_abb379815661f1c0bf53ff127a9e46ad2}{\index{crap\-::endian@{crap\-::endian}!swap\-\_\-bytes@{swap\-\_\-bytes}}
+\index{swap\-\_\-bytes@{swap\-\_\-bytes}!crap::endian@{crap\-::endian}}
+\subsubsection[{swap\-\_\-bytes}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ crap\-::endian\-::swap\-\_\-bytes$<$ 8 $>$ (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{swap\-Me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_abb379815661f1c0bf53ff127a9e46ad2}
+\hypertarget{classcrap_1_1endian_a27273ac66da4bcb19b9d25487e3339fd}{\index{crap\-::endian@{crap\-::endian}!to\-\_\-big@{to\-\_\-big}}
+\index{to\-\_\-big@{to\-\_\-big}!crap::endian@{crap\-::endian}}
+\subsubsection[{to\-\_\-big}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T \& crap\-::endian\-::to\-\_\-big (
+\begin{DoxyParamCaption}
+\item[{T \&}]{swap\-Me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_a27273ac66da4bcb19b9d25487e3339fd}
+\hypertarget{classcrap_1_1endian_a74048f1ce4f5b78d758e9aa5e65e0bda}{\index{crap\-::endian@{crap\-::endian}!to\-\_\-little@{to\-\_\-little}}
+\index{to\-\_\-little@{to\-\_\-little}!crap::endian@{crap\-::endian}}
+\subsubsection[{to\-\_\-little}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T \& crap\-::endian\-::to\-\_\-little (
+\begin{DoxyParamCaption}
+\item[{T \&}]{swap\-Me}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classcrap_1_1endian_a74048f1ce4f5b78d758e9aa5e65e0bda}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/control/\hyperlink{endian_8h}{endian.\-h}\end{DoxyCompactItemize}

@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file runnable.cpp
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file runnable.cpp
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Runnable class for inheritance
+//!		@brief Runnable class for inheritance
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -25,7 +23,7 @@
 namespace crap
 {
 
-runnable::runnable( const crap::string64& name, bool delete_on_finish /*= true*/ ) : 
+runnable::runnable( const crap::string64& name, bool delete_on_finish /*= true*/ ) :
 		_is_running(false), _stop_runnable(false), _name(name), _delete_on_finish(delete_on_finish)
 {
 
@@ -46,12 +44,12 @@ void* runnable::start( void )
 
 bool runnable::is_running( void ) const
 {
-    return _is_running;
+	return _is_running;
 }
 
 bool runnable::delete_on_finish( void ) const
 {
-    return _delete_on_finish;
+	return _delete_on_finish;
 }
 
 void runnable::stop_runnable( void )
@@ -61,7 +59,7 @@ void runnable::stop_runnable( void )
 
 const crap::string64& runnable::name( void ) const
 {
-    return _name;
+	return _name;
 }
 
 }	// crap

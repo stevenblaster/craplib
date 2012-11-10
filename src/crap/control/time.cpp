@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file time.cpp
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file time.cpp
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Provides info of time and clock
+//!		@brief Provides info of time and clock
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #include <ctime>
@@ -59,9 +57,9 @@ time::time_info time::current_time( void )
 	struct tm * ti;
 
 	::time ( &rawtime );
-  	ti = localtime ( &rawtime );
+	ti = localtime ( &rawtime );
 
-  	return time_info(ti->tm_sec, ti->tm_min, ti->tm_hour, ti->tm_mday, ti->tm_mon, ti->tm_year, ti->tm_wday, ti->tm_yday);
+	return time_info(ti->tm_sec, ti->tm_min, ti->tm_hour, ti->tm_mday, ti->tm_mon, ti->tm_year, ti->tm_wday, ti->tm_yday);
 }
 
 

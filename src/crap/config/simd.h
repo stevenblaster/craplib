@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file simd.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file simd.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Looking for SIMD macros
+//!		@brief Looking for SIMD macros
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -65,7 +63,7 @@ namespace crap
 #endif
 
 /*
- * @brief CPU id macros
+ *! @brief CPU id macros
  */
 
 #if defined(CRAP_COMPILER_GCC)
@@ -79,23 +77,23 @@ namespace crap
 
 #else
 
-    #define CRAP_CPUID(func, reg)__asm {	\
-		mov eax, func										\
-		xor ecx, ecx											\
-        cpuid;													\
-        mov esi, reg											\
-        mov [esi],    eax									\
-        mov [esi+4],  ebx									\
-        mov [esi+8],  ecx									\
-        mov [esi+12], edx								\
-    }
+	#define CRAP_CPUID(func, reg)__asm {	@
+		mov eax, func										@
+		xor ecx, ecx											@
+		cpuid;													@
+		mov esi, reg											@
+		mov [esi],    eax									@
+		mov [esi+4],  ebx									@
+		mov [esi+8],  ecx									@
+		mov [esi+12], edx								@
+	}
 
 #endif
 
 /*
- * @brief Includes for detected simd
+ *! @brief Includes for detected simd
  */
- 
+
 #if defined(CRAP_COMPILER_GCC) && CRAP_SIMD_VERSION == CRAP_SIMD_AVX2
 	#define CRAP_SIMD_INCLUDE 		<x86intrin.h>
 #elif CRAP_SIMD_VERSION == CRAP_SIMD_AVX2

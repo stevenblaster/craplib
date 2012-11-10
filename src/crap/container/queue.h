@@ -1,23 +1,21 @@
 ////////////////////////////////////////////////////////
-// CRAP Library
-//		@file static_queue.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file queue.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Queue container class, currently contains
-//		stl implementation plus a simple and fast 
+//!		@brief Queue container class, currently contains
+//		stl implementation plus a simple and fast
 //		static queue
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -32,10 +30,10 @@
 //lib namespace
 namespace crap
 {
-	
+
 /*
- * @brief Queue class
- */	
+ *! @brief Queue class
+ */
 
 template<typename T, typename Allocator = crap::allocator_default<T> >
 class queue : public std::queue<T, Allocator>
@@ -44,7 +42,7 @@ class queue : public std::queue<T, Allocator>
 };
 
 /*
- * @brief Static queue class
+ *! @brief Static queue class
  */
 
 template<typename T, size_t32 S>
@@ -55,67 +53,67 @@ private:
 	/*
 	 * Class members
 	 */
-	 
-    T _array[S];
-    size_t32 _size;
-    size_t32 _front;
+
+	T _array[S];
+	size_t32 _size;
+	size_t32 _front;
 
 public:
 
-	// @brief standard constructor
-    static_queue( void );
+	//! @brief standard constructor
+	static_queue( void );
 
-	// @brief copy constructor
-    static_queue( const static_queue& other );
+	//! @brief copy constructor
+	static_queue( const static_queue& other );
 
-	// @brief assignment operator
-    static_queue& operator=( const static_queue& other );
+	//! @brief assignment operator
+	static_queue& operator=( const static_queue& other );
 
-	// @brief returns current size
-    size_t32 size( void ) const;
+	//! @brief returns current size
+	size_t32 size( void ) const;
 
-	// @brief returns total size
-    size_t32 max_size( void ) const;
+	//! @brief returns total size
+	size_t32 max_size( void ) const;
 
-	// @brief returns if queue is empty
-    bool is_empty( void ) const;
+	//! @brief returns if queue is empty
+	bool is_empty( void ) const;
 
-	// @brief returns if queue is full
-    bool is_full( void ) const;
+	//! @brief returns if queue is full
+	bool is_full( void ) const;
 
-	// @brief returns reference to front
-    T& front( void );
-	
-	// @brief returns const reference to front
-    const T& front( void ) const;
+	//! @brief returns reference to front
+	T& front( void );
 
-	// @brief returns reference to back
-    T& back( void );
+	//! @brief returns const reference to front
+	const T& front( void ) const;
 
-	// @brief returns const reference to back
-    const T& back( void ) const;
+	//! @brief returns reference to back
+	T& back( void );
 
-	// @brief pushes element to end of queue
-    void push( const T& object );
+	//! @brief returns const reference to back
+	const T& back( void ) const;
 
-	// @brief pops element at front of queue
-    void pop( void );
+	//! @brief pushes element to end of queue
+	void push( const T& object );
 
-	// @brief clear queue
-    void clear( void );
+	//! @brief pops element at front of queue
+	void pop( void );
 
-	// @brief stream operator
-    template<typename U, u64 V>
+	//! @brief clear queue
+	void clear( void );
+
+	//! @brief stream operator
+	template<typename U, u64 V>
 	friend std::ostream& operator<<( std::ostream& out, const static_queue<U,V>& other );
 };
 
 /*
  * Implementations
  */
- 
+
 //constructor
 template<typename T, size_t32 S>
-static_queue<T,S>::static_queue( void ) : _size(0), _front(0) 
+static_queue<T,S>::static_queue( void ) : _size(0), _front(0)
 {
 }
 
@@ -154,7 +152,7 @@ size_t32 static_queue<T,S>::max_size( void ) const
 template<typename T, size_t32 S>
 bool static_queue<T,S>::is_empty( void ) const
 {
-    return _size == 0;
+	return _size == 0;
 }
 
 //returns if full
@@ -225,11 +223,11 @@ void static_queue<T,S>::clear( void )
 template<typename U, u64 V>
 std::ostream& operator<<( std::ostream& out, const static_queue<U,V>& other )
 {
-    for( u64 i=0; i<other._size; ++i )
-    	out << other._array[ (other._front + i) % V ] << " ";
+	for( u64 i=0; i<other._size; ++i )
+		out << other._array[ (other._front + i) % V ] << " ";
 
 	out << std::endl;
-    return out;
+	return out;
 }
 
 }	// namespace crap

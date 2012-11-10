@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file compare.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file compare.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Clones of STL's less, greater,...
+//!		@brief Clones of STL's less, greater,...
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -29,10 +27,10 @@ namespace crap
 {
 
 /*
- * @brief help structs like STL..
+ *! @brief help structs like STL..
  */
 
-// @brief basic binary template
+//! @brief basic binary template
 template <class Arg1, class Arg2, class Result>
 struct binary_function
 {
@@ -41,7 +39,7 @@ struct binary_function
 	typedef Result 	result_type;
 };
 
-// @brief check if first argument is less then second
+//! @brief check if first argument is less then second
 template <class T>
 struct less : binary_function <T,T,bool>
 {
@@ -51,54 +49,54 @@ struct less : binary_function <T,T,bool>
 	}
 };
 
-// @brief check if first argument is greater then second
+//! @brief check if first argument is greater then second
 template <class T>
 struct greater : binary_function <T,T,bool>
 {
 	bool operator()(const T& x, const T& y) const
-    {
-    	return x>y;
-    }
+	{
+		return x>y;
+	}
 };
 
-// @brief check if first argument is equal to second
+//! @brief check if first argument is equal to second
 template <class T>
 struct equal_to : binary_function <T,T,bool>
 {
 	bool operator() (const T& x, const T& y) const
-    {
-    	return x==y;
-    }
+	{
+		return x==y;
+	}
 };
 
-// @brief check if first argument is not equal to second
+//! @brief check if first argument is not equal to second
 template <class T>
 struct not_equal_to : binary_function <T,T,bool>
 {
 	bool operator() (const T& x, const T& y) const
-    {
-    	return x!=y;
-    }
+	{
+		return x!=y;
+	}
 };
 
-// @brief check if first argument is greater equal then second
+//! @brief check if first argument is greater equal then second
 template <class T>
 struct greater_equal : binary_function <T,T,bool>
 {
 	bool operator() (const T& x, const T& y) const
-    {
-    	return x>=y;
-    }
+	{
+		return x>=y;
+	}
 };
 
-// @brief check if first argument is less equal then second
+//! @brief check if first argument is less equal then second
 template <class T>
 struct less_equal : binary_function <T,T,bool>
 {
 	bool operator() (const T& x, const T& y) const
-    {
-    	return x<=y;
-    }
+	{
+		return x<=y;
+	}
 };
 
 }	// namespace crap

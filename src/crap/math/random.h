@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file random.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file random.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Random functions
+//!		@brief Random functions
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -26,7 +24,7 @@
 //lib namespace
 namespace crap
 {
-	// @todo create me
+	//! @todo create me
 }
 
 #endif //CRAP_MATH_RANDOM_H

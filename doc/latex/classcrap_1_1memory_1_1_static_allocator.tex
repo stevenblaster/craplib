@@ -1,0 +1,221 @@
+\hypertarget{classcrap_1_1memory_1_1_static_allocator}{\section{crap\-:\-:memory\-:\-:Static\-Allocator$<$ T, S $>$ Class Template Reference}
+\label{classcrap_1_1memory_1_1_static_allocator}\index{crap\-::memory\-::\-Static\-Allocator$<$ T, S $>$@{crap\-::memory\-::\-Static\-Allocator$<$ T, S $>$}}
+}
+
+
+{\ttfamily \#include $<$staticallocator.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcrap_1_1memory_1_1_static_allocator_a2ab68a34387f5d9afd3a808351dcac83}{Static\-Allocator} (void)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_static_allocator_af719f2dd154f0bd688bed30ae4c2d364}{$\sim$\-Static\-Allocator} (void)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_static_allocator_a7e7240ec2fdbcfd2f40b3720ec300ccc}{Static\-Allocator} (const \hyperlink{classcrap_1_1memory_1_1_static_allocator}{Static\-Allocator} \&other)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_static_allocator}{Static\-Allocator} \& \hyperlink{classcrap_1_1memory_1_1_static_allocator_a68bfc0ac4e357eb5aea39dd134636b3c}{operator=} (const \hyperlink{classcrap_1_1memory_1_1_static_allocator}{Static\-Allocator} \&other)
+\item 
+T \& \hyperlink{classcrap_1_1memory_1_1_static_allocator_abaecdc0364d8e2a76ded78d1f21b88cc}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index)
+\item 
+const T \& \hyperlink{classcrap_1_1memory_1_1_static_allocator_a4861a8c2657f77da926888e2d11216bd}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index) const 
+\item 
+T $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_adf3ea36bc0d60b60bb050d68ce965e10}{allocate} (void)
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_static_allocator_abdc564f6fb757e6c34c3f8d5db223050}{deallocate} (void $\ast$\hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{pointer})
+\item 
+bool \hyperlink{classcrap_1_1memory_1_1_static_allocator_a298757b73ebf47233da4cccde583aca9}{is\-Used} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index) const 
+\item 
+\hyperlink{classcrap_1_1mutex}{mutex} $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_a59a3d4c22c7dc611e617bc699abcabed}{mutex} (void)
+\item 
+void $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{pointer} (void)
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b62ef850694ed733427cbef43fe9387}{clear} (void)
+\item 
+void $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_a3302e9ea2d3939832393f800adecbc5e}{operator new} (std\-::size\-\_\-t size)  throw (std\-::bad\-\_\-alloc)
+\item 
+void $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_a1381623437a8c04c6f9629814e8a7e95}{operator new} (std\-::size\-\_\-t size, const std\-::nothrow\-\_\-t \&nothrow\-\_\-constant)  throw ()
+\item 
+void $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_a12fdd732f0b275fb6c04dca7dfc9eec5}{operator new\mbox{[}$\,$\mbox{]}} (std\-::size\-\_\-t size)  throw (std\-::bad\-\_\-alloc)
+\item 
+void $\ast$ \hyperlink{classcrap_1_1memory_1_1_static_allocator_ae3c2747f8ea7343fd06ef04edba4588e}{operator new\mbox{[}$\,$\mbox{]}} (std\-::size\-\_\-t size, const std\-::nothrow\-\_\-t \&nothrow\-\_\-constant)  throw ()
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_static_allocator_a8454794ba10b87b130a1c285641a2a6c}{operator delete} (void $\ast$\hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{pointer})  throw ()
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_static_allocator_a70e4a324992431a55fd14dad938b0120}{operator delete} (void $\ast$\hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{pointer}, const std\-::nothrow\-\_\-t \&nothrow\-\_\-constant)  throw ()
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_static_allocator_a9bfdcaf3a07ff290979f20ad5b82c1bc}{operator delete\mbox{[}$\,$\mbox{]}} (void $\ast$\hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{pointer})  throw ()
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_static_allocator_a5e0c0b2d9076a23d7a8166f09052b24a}{operator delete\mbox{[}$\,$\mbox{]}} (void $\ast$\hyperlink{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{pointer}, const std\-::nothrow\-\_\-t \&nothrow\-\_\-constant)  throw ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U , u64 V$>$ }\\std\-::ostream \& \hyperlink{classcrap_1_1memory_1_1_static_allocator_a40b60561c7aff37db52f26742bea3cdb}{operator$<$$<$} (std\-::ostream \&out, const \hyperlink{classcrap_1_1memory_1_1_static_allocator}{Static\-Allocator}$<$ U, V $>$ \&mem\-Block)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a2ab68a34387f5d9afd3a808351dcac83}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!Static\-Allocator@{Static\-Allocator}}
+\index{Static\-Allocator@{Static\-Allocator}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{Static\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::{\bf Static\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_a2ab68a34387f5d9afd3a808351dcac83}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_af719f2dd154f0bd688bed30ae4c2d364}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!$\sim$\-Static\-Allocator@{$\sim$\-Static\-Allocator}}
+\index{$\sim$\-Static\-Allocator@{$\sim$\-Static\-Allocator}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{$\sim$\-Static\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::$\sim${\bf Static\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_af719f2dd154f0bd688bed30ae4c2d364}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a7e7240ec2fdbcfd2f40b3720ec300ccc}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!Static\-Allocator@{Static\-Allocator}}
+\index{Static\-Allocator@{Static\-Allocator}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{Static\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::{\bf Static\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Static\-Allocator}$<$ T, S $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_a7e7240ec2fdbcfd2f40b3720ec300ccc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_adf3ea36bc0d60b60bb050d68ce965e10}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!allocate@{allocate}}
+\index{allocate@{allocate}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{allocate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ T $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::allocate (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_adf3ea36bc0d60b60bb050d68ce965e10}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a7b62ef850694ed733427cbef43fe9387}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!clear@{clear}}
+\index{clear@{clear}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::clear (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_a7b62ef850694ed733427cbef43fe9387}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_abdc564f6fb757e6c34c3f8d5db223050}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{deallocate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::deallocate (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pointer}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_abdc564f6fb757e6c34c3f8d5db223050}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a298757b73ebf47233da4cccde583aca9}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!is\-Used@{is\-Used}}
+\index{is\-Used@{is\-Used}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{is\-Used}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ bool {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::is\-Used (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1memory_1_1_static_allocator_a298757b73ebf47233da4cccde583aca9}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a59a3d4c22c7dc611e617bc699abcabed}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!mutex@{mutex}}
+\index{mutex@{mutex}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{mutex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ {\bf mutex} $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::{\bf mutex} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_a59a3d4c22c7dc611e617bc699abcabed}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a8454794ba10b87b130a1c285641a2a6c}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator delete}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator delete (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pointer}
+\end{DoxyParamCaption}
+)  throw ()\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a8454794ba10b87b130a1c285641a2a6c}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a70e4a324992431a55fd14dad938b0120}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator delete}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator delete (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pointer, }
+\item[{const std\-::nothrow\-\_\-t \&}]{nothrow\-\_\-constant}
+\end{DoxyParamCaption}
+)  throw ()\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a70e4a324992431a55fd14dad938b0120}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a9bfdcaf3a07ff290979f20ad5b82c1bc}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator delete\mbox{[}$\,$\mbox{]}@{operator delete[]}}
+\index{operator delete\mbox{[}$\,$\mbox{]}@{operator delete[]}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator delete[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator delete\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pointer}
+\end{DoxyParamCaption}
+)  throw ()\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a9bfdcaf3a07ff290979f20ad5b82c1bc}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a5e0c0b2d9076a23d7a8166f09052b24a}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator delete\mbox{[}$\,$\mbox{]}@{operator delete[]}}
+\index{operator delete\mbox{[}$\,$\mbox{]}@{operator delete[]}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator delete[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator delete\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pointer, }
+\item[{const std\-::nothrow\-\_\-t \&}]{nothrow\-\_\-constant}
+\end{DoxyParamCaption}
+)  throw ()\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a5e0c0b2d9076a23d7a8166f09052b24a}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a3302e9ea2d3939832393f800adecbc5e}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator new@{operator new}}
+\index{operator new@{operator new}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator new}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator new (
+\begin{DoxyParamCaption}
+\item[{std\-::size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)  throw (std\-::bad\-\_\-alloc)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a3302e9ea2d3939832393f800adecbc5e}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a1381623437a8c04c6f9629814e8a7e95}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator new@{operator new}}
+\index{operator new@{operator new}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator new}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator new (
+\begin{DoxyParamCaption}
+\item[{std\-::size\-\_\-t}]{size, }
+\item[{const std\-::nothrow\-\_\-t \&}]{nothrow\-\_\-constant}
+\end{DoxyParamCaption}
+)  throw ()\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a1381623437a8c04c6f9629814e8a7e95}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a12fdd732f0b275fb6c04dca7dfc9eec5}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator new\mbox{[}$\,$\mbox{]}@{operator new[]}}
+\index{operator new\mbox{[}$\,$\mbox{]}@{operator new[]}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator new[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator new\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{std\-::size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)  throw (std\-::bad\-\_\-alloc)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_a12fdd732f0b275fb6c04dca7dfc9eec5}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_ae3c2747f8ea7343fd06ef04edba4588e}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator new\mbox{[}$\,$\mbox{]}@{operator new[]}}
+\index{operator new\mbox{[}$\,$\mbox{]}@{operator new[]}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator new[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator new\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{std\-::size\-\_\-t}]{size, }
+\item[{const std\-::nothrow\-\_\-t \&}]{nothrow\-\_\-constant}
+\end{DoxyParamCaption}
+)  throw ()\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_static_allocator_ae3c2747f8ea7343fd06ef04edba4588e}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a68bfc0ac4e357eb5aea39dd134636b3c}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator=@{operator=}}
+\index{operator=@{operator=}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ {\bf Static\-Allocator}$<$ T, S $>$ \& {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Static\-Allocator}$<$ T, S $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_a68bfc0ac4e357eb5aea39dd134636b3c}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_abaecdc0364d8e2a76ded78d1f21b88cc}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ T \& {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_abaecdc0364d8e2a76ded78d1f21b88cc}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a4861a8c2657f77da926888e2d11216bd}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ const T \& {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1memory_1_1_static_allocator_a4861a8c2657f77da926888e2d11216bd}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!pointer@{pointer}}
+\index{pointer@{pointer}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{pointer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , u64 S$>$ void $\ast$ {\bf crap\-::memory\-::\-Static\-Allocator}$<$ T, S $>$\-::pointer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1memory_1_1_static_allocator_a7b4661b59cdd3bf399603b23c2c71388}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classcrap_1_1memory_1_1_static_allocator_a40b60561c7aff37db52f26742bea3cdb}{\index{crap\-::memory\-::\-Static\-Allocator@{crap\-::memory\-::\-Static\-Allocator}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!crap::memory::StaticAllocator@{crap\-::memory\-::\-Static\-Allocator}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, u64 S$>$ template$<$typename U , u64 V$>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{out, }
+\item[{const {\bf Static\-Allocator}$<$ U, V $>$ \&}]{mem\-Block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classcrap_1_1memory_1_1_static_allocator_a40b60561c7aff37db52f26742bea3cdb}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/depricated/memory/\hyperlink{staticallocator_8h}{staticallocator.\-h}\end{DoxyCompactItemize}

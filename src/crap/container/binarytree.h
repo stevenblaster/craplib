@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //  CRAP Library
-//		@file binarytree.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file binarytree.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Binary search tree with the possibility
+//!		@brief Binary search tree with the possibility
 //		to realign / balance
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -32,9 +30,9 @@ namespace crap
 {
 
 /*
- * @brief Binary search tree class
+ *! @brief Binary search tree class
  */
- 
+
 template <class T, class C = crap::less<T>, class A = crap::allocator_default<tree_node<T,C> > >
 class binary_tree
 {
@@ -143,67 +141,67 @@ public:
 	 * public members
 	 */
 
-	// @brief Default constructor
+	//! @brief Default constructor
 	inline binary_tree( void );
 
-	// @brief Copy constructor
+	//! @brief Copy constructor
 	inline binary_tree( const binary_tree& other );
 
-	// @brief Destructor
+	//! @brief Destructor
 	inline ~binary_tree( void );
 
-	// @brief Finds key and returns iterator ( end() if failed )
+	//! @brief Finds key and returns iterator ( end() if failed )
 	iterator find(const_reference key);
 
-	// @brief Finds key and returns constant iterator ( end() if failed )
+	//! @brief Finds key and returns constant iterator ( end() if failed )
 	const_iterator find(const_reference key) const;
 
-	// @brief Inserting key if unique and returns iterator ( end() if failed )
+	//! @brief Inserting key if unique and returns iterator ( end() if failed )
 	iterator insert(const_reference key);
 
-	// @brief Find key and remove element
+	//! @brief Find key and remove element
 	bool remove( const_reference key );
 
-	// @brief Rotate tree at root to left
+	//! @brief Rotate tree at root to left
 	bool rotate_left( void );
 
-	// @brief Rotate tree at root to right
+	//! @brief Rotate tree at root to right
 	bool rotate_right( void );
 
-	// @brief Finds the smalles element and returns iterator
+	//! @brief Finds the smalles element and returns iterator
 	iterator min_node( void );
 
-	// @brief Finds the smalles element and returns constant iterator
+	//! @brief Finds the smalles element and returns constant iterator
 	const_iterator min_node( void ) const;
 
-	// @brief Finds the biggest element and returns iterator
+	//! @brief Finds the biggest element and returns iterator
 	iterator max_node( void );
 
-	// @brief Finds the biggest element and returns constant iterator
+	//! @brief Finds the biggest element and returns constant iterator
 	const_iterator max_node( void ) const;
 
-	// @brief Clears tree from root
+	//! @brief Clears tree from root
 	void clear( void );
 
-	// @brief Realigns all element by attemting to balance content
+	//! @brief Realigns all element by attemting to balance content
 	void realign( void );
 
-	// @brief Gets width of specific height
+	//! @brief Gets width of specific height
 	size_type depth_elements(int level) const;
 
-	// @brief Gets maximum width of tree
+	//! @brief Gets maximum width of tree
 	size_type width( void ) const;
 
-	// @brief Left depth of nodes
+	//! @brief Left depth of nodes
 	size_type depth_left(void) const;
 
-	// @brief Right depth of nodes
+	//! @brief Right depth of nodes
 	size_type depth_right(void) const;
 
-	// @brief Tree depth of nodes
+	//! @brief Tree depth of nodes
 	size_type depth(void) const;
 
-	// @brief Tree number of stored nodes
+	//! @brief Tree number of stored nodes
 	size_type size(void) const;
 };
 

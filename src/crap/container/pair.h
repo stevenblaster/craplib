@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
-// CRAP Library
-//		@file pair.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file pair.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Pair container for map
+//!		@brief Pair container for map
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -26,9 +24,9 @@
 //lib namespace
 namespace crap
 {
-	
+
 /*
- * @brief Pair - data holding
+ *! @brief Pair - data holding
  */
 
 template <class T1, class T2>

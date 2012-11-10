@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file runnable.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file runnable.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Runnable class for inheritance
+//!		@brief Runnable class for inheritance
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -27,7 +25,7 @@
 //macro for stopping at checkpoints
 #define CRAP_THREAD_CHECKPOINT() if( _stopRunnable ) return 0x00
 
-#include "types/staticrap::cstring.h"
+#include "types/staticstring.h"
 
 //lib namespace
 namespace crap

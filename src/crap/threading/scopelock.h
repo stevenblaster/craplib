@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file scopelock.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file scopelock.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Locks a mutex until end of scope
+//!		@brief Locks a mutex until end of scope
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -36,13 +34,13 @@ namespace crap
 class scope_lock
 {
 private:
-    mutex* _mutex;
-    semaphore* _semaphore;
+	mutex* _mutex;
+	semaphore* _semaphore;
 
 public:
-    scope_lock( mutex* mutex );
-    scope_lock( semaphore* semaphore );
-    ~scope_lock( void );
+	scope_lock( mutex* mutex );
+	scope_lock( semaphore* semaphore );
+	~scope_lock( void );
 };
 
 }	// namespace crap

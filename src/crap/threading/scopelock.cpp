@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file scopelock.cpp
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file scopelock.cpp
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Locks a mutex until end of scope
+//!		@brief Locks a mutex until end of scope
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -30,27 +28,27 @@ namespace crap
 
 scope_lock::scope_lock( mutex* mutex )
 {
-    _mutex = mutex;
-    _semaphore = 0;
+	_mutex = mutex;
+	_semaphore = 0;
 
-    _mutex->lock();
+	_mutex->lock();
 }
 
 scope_lock::scope_lock( semaphore* semaphore )
 {
-    _mutex = 0;
-    _semaphore = semaphore;
+	_mutex = 0;
+	_semaphore = semaphore;
 
-    _semaphore->wait();
+	_semaphore->wait();
 }
 
 scope_lock::~scope_lock( void )
 {
-    if( _mutex != 0 )
-        _mutex->unlock();
+	if( _mutex != 0 )
+		_mutex->unlock();
 
-    if( _semaphore != 0 )
-        _semaphore->post();
+	if( _semaphore != 0 )
+		_semaphore->post();
 }
 
 }	// namespace crap

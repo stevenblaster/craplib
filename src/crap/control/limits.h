@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file limits.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file limits.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Provides info about Type limits
+//!		@brief Provides info about Type limits
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -144,8 +142,8 @@ template<>
 struct limits<f32>
 {
 public:
-    static const f32 MIN;
-    static const f32 MAX;
+	static const f32 MIN;
+	static const f32 MAX;
 	static const bool  IS_INT = false;
 	static const bool  IS_SIGNED = true;
 };
@@ -157,8 +155,8 @@ template<>
 struct limits<f64>
 {
 public:
-    static const f64 MIN;
-    static const f64 MAX;
+	static const f64 MIN;
+	static const f64 MAX;
 	static const bool  IS_INT = false;
 	static const bool  IS_SIGNED = true;
 };

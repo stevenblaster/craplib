@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file copyobject.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file copyobject.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Help functions for copying data efficiently
+//!		@brief Help functions for copying data efficiently
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -28,9 +26,9 @@
 //lib namespace
 namespace crap
 {
-	
+
 /*
- * @brief copy single obejct
+ *! @brief copy single obejct
  */
 
 template<typename T>
@@ -43,7 +41,7 @@ void copy_object( const T* source, T* destination )
 };
 
 /*
- * @brief copy array
+ *! @brief copy array
  */
 
 template<typename T>

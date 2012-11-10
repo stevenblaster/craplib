@@ -1,0 +1,113 @@
+\hypertarget{simd_8h}{\section{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/config/simd.h File Reference}
+\label{simd_8h}\index{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/config/simd.\-h@{/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/config/simd.\-h}}
+}
+{\ttfamily \#include \char`\"{}config/processors.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}config/compilers.\-h\char`\"{}}\\*
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacecrap}{crap}
+\begin{DoxyCompactList}\small\item\em \begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{simd_8h_aad1aea991392ec09ef54c5202942cbae}{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H}
+\begin{DoxyCompactList}\small\item\em \begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+\end{DoxyCompactList}\item 
+\#define \hyperlink{simd_8h_a602a2a579f28bdf9fc0ee6329a08e9a4}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E}~0
+\item 
+\#define \hyperlink{simd_8h_a42e837036dd466104c235cc0046e94c0}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E}~1
+\item 
+\#define \hyperlink{simd_8h_af15292a2acf2108d8bd1d40f9fb2e3b0}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2}~2
+\item 
+\#define \hyperlink{simd_8h_aa08f61bf79f370719a4f05fd7b457d6c}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3}~3
+\item 
+\#define \hyperlink{simd_8h_a8b15b22008641cf298cb37cf25ed6367}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3}~4
+\item 
+\#define \hyperlink{simd_8h_af7c98bdafbb1331174550b2026edc594}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41}~5
+\item 
+\#define \hyperlink{simd_8h_ab5dda87ec0c50dc0be44dee817321a86}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42}~6
+\item 
+\#define \hyperlink{simd_8h_a84d03ac0fb78e67442f6cc059ca03ec9}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X}~7
+\item 
+\#define \hyperlink{simd_8h_a00b049295b5119cab002cebe37eaae81}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2}~8
+\item 
+\#define \hyperlink{simd_8h_adf313ed4a5f80ef58c3cbc45ab344c07}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\hyperlink{simd_8h_a602a2a579f28bdf9fc0ee6329a08e9a4}{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E}
+\item 
+\#define \hyperlink{simd_8h_a7adf658547d2f56a83be4830ff7a86ca}{C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D}(func, reg)~\-\_\-\-\_\-asm \{	@
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+mov \hyperlink{namespacecrap_aed325f6a8892f32051d8c544ae363a1d}{crap\-::eax}
+\item 
+mov func xor \hyperlink{namespacecrap_afe3d8527ce831ea0b8f9568c5c7deb52}{crap\-::ecx}
+\item 
+mov func xor ecx \hyperlink{namespacecrap_a62bfdd51e772a94b9fe3d67c13f224d0}{crap\-::cpuid}
+\item 
+mov \hyperlink{namespacecrap_a6e5ea7303bfa9d0671c2c69bcfb39331}{crap\-::esi}
+\item 
+mov reg \hyperlink{namespacecrap_a35f9ce3ce7462beeee43dbea46f2b509}{crap\-::mov} \mbox{[}esi\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{simd_8h_aad1aea991392ec09ef54c5202942cbae}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H@{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H}}
+\index{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H@{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-C\-O\-N\-F\-I\-G\-\_\-\-S\-I\-M\-D\-\_\-\-H}}\label{simd_8h_aad1aea991392ec09ef54c5202942cbae}
+
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2012 Steffen Kopany 
+\end{DoxyCopyright}
+
+
+\begin{DoxyAuthor}{Author}
+Steffen Kopany \href{mailto:steffen@kopany.at}{\tt steffen@kopany.\-at}Looking for S\-I\-M\-D macros 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+scratch 
+\end{DoxyVersion}
+\hypertarget{simd_8h_a7adf658547d2f56a83be4830ff7a86ca}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D@{C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D}}
+\index{C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D@{C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-C\-P\-U\-I\-D(
+\begin{DoxyParamCaption}
+\item[{}]{func, }
+\item[{}]{reg}
+\end{DoxyParamCaption}
+)~\-\_\-\-\_\-asm \{	@}}\label{simd_8h_a7adf658547d2f56a83be4830ff7a86ca}
+\hypertarget{simd_8h_a84d03ac0fb78e67442f6cc059ca03ec9}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X~7}}\label{simd_8h_a84d03ac0fb78e67442f6cc059ca03ec9}
+\hypertarget{simd_8h_a00b049295b5119cab002cebe37eaae81}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-A\-V\-X2~8}}\label{simd_8h_a00b049295b5119cab002cebe37eaae81}
+\hypertarget{simd_8h_a602a2a579f28bdf9fc0ee6329a08e9a4}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E~0}}\label{simd_8h_a602a2a579f28bdf9fc0ee6329a08e9a4}
+\hypertarget{simd_8h_a42e837036dd466104c235cc0046e94c0}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E~1}}\label{simd_8h_a42e837036dd466104c235cc0046e94c0}
+\hypertarget{simd_8h_af15292a2acf2108d8bd1d40f9fb2e3b0}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E2~2}}\label{simd_8h_af15292a2acf2108d8bd1d40f9fb2e3b0}
+\hypertarget{simd_8h_aa08f61bf79f370719a4f05fd7b457d6c}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E3~3}}\label{simd_8h_aa08f61bf79f370719a4f05fd7b457d6c}
+\hypertarget{simd_8h_af7c98bdafbb1331174550b2026edc594}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E41~5}}\label{simd_8h_af7c98bdafbb1331174550b2026edc594}
+\hypertarget{simd_8h_ab5dda87ec0c50dc0be44dee817321a86}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-E42~6}}\label{simd_8h_ab5dda87ec0c50dc0be44dee817321a86}
+\hypertarget{simd_8h_a8b15b22008641cf298cb37cf25ed6367}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-S\-S\-S\-E3~4}}\label{simd_8h_a8b15b22008641cf298cb37cf25ed6367}
+\hypertarget{simd_8h_adf313ed4a5f80ef58c3cbc45ab344c07}{\index{simd.\-h@{simd.\-h}!C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N}}
+\index{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N@{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N}!simd.h@{simd.\-h}}
+\subsubsection[{C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-V\-E\-R\-S\-I\-O\-N~{\bf C\-R\-A\-P\-\_\-\-S\-I\-M\-D\-\_\-\-N\-O\-N\-E}}}\label{simd_8h_adf313ed4a5f80ef58c3cbc45ab344c07}

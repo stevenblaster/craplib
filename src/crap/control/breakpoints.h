@@ -1,21 +1,18 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file breakpoints.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file breakpoints.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Compiler/Platform specific breakpoints
-//
+//!		@brief Compiler/Platform specific breakpoints
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 

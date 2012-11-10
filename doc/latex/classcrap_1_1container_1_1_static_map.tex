@@ -1,0 +1,162 @@
+\hypertarget{classcrap_1_1container_1_1_static_map}{\section{crap\-:\-:container\-:\-:Static\-Map$<$ T, U, S $>$ Class Template Reference}
+\label{classcrap_1_1container_1_1_static_map}\index{crap\-::container\-::\-Static\-Map$<$ T, U, S $>$@{crap\-::container\-::\-Static\-Map$<$ T, U, S $>$}}
+}
+
+
+{\ttfamily \#include $<$map.\-h$>$}
+
+Inheritance diagram for crap\-:\-:container\-:\-:Static\-Map$<$ T, U, S $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcrap_1_1container_1_1_static_map}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{structcrap_1_1container_1_1_pair}{Pair}$<$ T, U $>$ \hyperlink{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}{Map\-Element}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}{Map\-Element} \& \hyperlink{classcrap_1_1container_1_1_map_acdc514785ee32d6e0044f16756354a47}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index)
+\item 
+const \hyperlink{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}{Map\-Element} \& \hyperlink{classcrap_1_1container_1_1_map_ac35870054de6a0137728f9012d7c59aa}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index) const
+\item 
+\hyperlink{class_iterator}{Iterator}$<$ \hyperlink{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}{Map\-Element} $>$ \hyperlink{classcrap_1_1container_1_1_map_ae7cc145818348772ff62cc0adae32bb4}{begin} (void)
+\item 
+\hyperlink{class_iterator}{Iterator}$<$ \hyperlink{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}{Map\-Element} $>$ \hyperlink{classcrap_1_1container_1_1_map_a90907bcb7668c9f3f2f6506ade64416c}{end} (void)
+\item 
+bool \hyperlink{classcrap_1_1container_1_1_map_ad1eb2083895604cb51820cad9837b6ee}{contains\-Key} (const T \&findkey)
+\item 
+bool \hyperlink{classcrap_1_1container_1_1_map_a50f1cc76a8f4bb831985a3fcdecb40f1}{contains\-Value} (const U \&findvalue)
+\item 
+U $\ast$ \hyperlink{classcrap_1_1container_1_1_map_af1452bbe558248c670745aaee6bfb4af}{find\-Value} (const T \&findkey)
+\item 
+T $\ast$ \hyperlink{classcrap_1_1container_1_1_map_a01688dc842e02174c2a80cfa771e7fa2}{find\-Key} (const U \&findvalue)
+\item 
+void \hyperlink{classcrap_1_1container_1_1_map_a5d89f55e1783f994d2d4da75f4f49f01}{add} (const T \&thekey, const U \&thevalue)
+\item 
+void \hyperlink{classcrap_1_1container_1_1_map_a89d2a56707c2a9dba368bf78ae8f05e0}{remove} (const T \&deletekey)
+\item 
+void \hyperlink{classcrap_1_1container_1_1_map_aedf1f6e873cfc1d27aab283ba82d6381}{remove} (const U \&deletevalue)
+\item 
+bool \hyperlink{classcrap_1_1container_1_1_map_aa3c393314145f117b7e1896eb2087675}{is\-Full} ()
+\item 
+bool \hyperlink{classcrap_1_1container_1_1_map_adc0c60f190eb25018e145e5f3ae30615}{is\-Empty} ()
+\item 
+\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} \hyperlink{classcrap_1_1container_1_1_map_a6194f89da172bea47b527b7bba99b644}{size} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!Map\-Element@{Map\-Element}}
+\index{Map\-Element@{Map\-Element}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{Map\-Element}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Pair}$<$T, U$>$ {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::{\bf Map\-Element}\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a87121369de54f6650c8a84a0a19fab32}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1container_1_1_map_a5d89f55e1783f994d2d4da75f4f49f01}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!add@{add}}
+\index{add@{add}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{thekey, }
+\item[{const U \&}]{thevalue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a5d89f55e1783f994d2d4da75f4f49f01}
+\hypertarget{classcrap_1_1container_1_1_map_ae7cc145818348772ff62cc0adae32bb4}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!begin@{begin}}
+\index{begin@{begin}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator}$<${\bf Map\-Element}$>$ {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::begin (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_ae7cc145818348772ff62cc0adae32bb4}
+\hypertarget{classcrap_1_1container_1_1_map_ad1eb2083895604cb51820cad9837b6ee}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!contains\-Key@{contains\-Key}}
+\index{contains\-Key@{contains\-Key}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{contains\-Key}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::contains\-Key (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{findkey}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_ad1eb2083895604cb51820cad9837b6ee}
+\hypertarget{classcrap_1_1container_1_1_map_a50f1cc76a8f4bb831985a3fcdecb40f1}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!contains\-Value@{contains\-Value}}
+\index{contains\-Value@{contains\-Value}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{contains\-Value}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::contains\-Value (
+\begin{DoxyParamCaption}
+\item[{const U \&}]{findvalue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a50f1cc76a8f4bb831985a3fcdecb40f1}
+\hypertarget{classcrap_1_1container_1_1_map_a90907bcb7668c9f3f2f6506ade64416c}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!end@{end}}
+\index{end@{end}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator}$<${\bf Map\-Element}$>$ {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::end (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a90907bcb7668c9f3f2f6506ade64416c}
+\hypertarget{classcrap_1_1container_1_1_map_a01688dc842e02174c2a80cfa771e7fa2}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!find\-Key@{find\-Key}}
+\index{find\-Key@{find\-Key}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{find\-Key}]{\setlength{\rightskip}{0pt plus 5cm}T$\ast$ {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::find\-Key (
+\begin{DoxyParamCaption}
+\item[{const U \&}]{findvalue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a01688dc842e02174c2a80cfa771e7fa2}
+\hypertarget{classcrap_1_1container_1_1_map_af1452bbe558248c670745aaee6bfb4af}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!find\-Value@{find\-Value}}
+\index{find\-Value@{find\-Value}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{find\-Value}]{\setlength{\rightskip}{0pt plus 5cm}U$\ast$ {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::find\-Value (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{findkey}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_af1452bbe558248c670745aaee6bfb4af}
+\hypertarget{classcrap_1_1container_1_1_map_adc0c60f190eb25018e145e5f3ae30615}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::is\-Empty (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_adc0c60f190eb25018e145e5f3ae30615}
+\hypertarget{classcrap_1_1container_1_1_map_aa3c393314145f117b7e1896eb2087675}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!is\-Full@{is\-Full}}
+\index{is\-Full@{is\-Full}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{is\-Full}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::is\-Full (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_aa3c393314145f117b7e1896eb2087675}
+\hypertarget{classcrap_1_1container_1_1_map_acdc514785ee32d6e0044f16756354a47}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map\-Element}\& {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_acdc514785ee32d6e0044f16756354a47}
+\hypertarget{classcrap_1_1container_1_1_map_ac35870054de6a0137728f9012d7c59aa}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Map\-Element}\& {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_ac35870054de6a0137728f9012d7c59aa}
+\hypertarget{classcrap_1_1container_1_1_map_a89d2a56707c2a9dba368bf78ae8f05e0}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!remove@{remove}}
+\index{remove@{remove}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{deletekey}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a89d2a56707c2a9dba368bf78ae8f05e0}
+\hypertarget{classcrap_1_1container_1_1_map_aedf1f6e873cfc1d27aab283ba82d6381}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!remove@{remove}}
+\index{remove@{remove}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{const U \&}]{deletevalue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_aedf1f6e873cfc1d27aab283ba82d6381}
+\hypertarget{classcrap_1_1container_1_1_map_a6194f89da172bea47b527b7bba99b644}{\index{crap\-::container\-::\-Static\-Map@{crap\-::container\-::\-Static\-Map}!size@{size}}
+\index{size@{size}!crap::container::StaticMap@{crap\-::container\-::\-Static\-Map}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u64} {\bf crap\-::container\-::\-Map}$<$ T, U, S, {\bf crap\-::container\-::\-Static\-List}$<$ {\bf crap\-::container\-::\-Pair}$<$ T, U $>$, S $>$  $>$\-::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{classcrap_1_1container_1_1_map_a6194f89da172bea47b527b7bba99b644}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/depricated/container/\hyperlink{depricated_2container_2map_8h}{map.\-h}\end{DoxyCompactItemize}

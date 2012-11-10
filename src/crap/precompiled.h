@@ -1,15 +1,20 @@
-// /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+// CRAP Library
+//!		@file config.h
 //
-//  precompiled.h
+//	Author(s):
+//!		@author Steffen Kopany <steffen@kopany.at>
 //
-//  Author:
-//       Steffen Kopany <steffen@kopany.at>
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
-//  Copyright (c) 2012 Steffen Kopany
+//	Description:
+//!		@brief Precompiled header
 //
-// /////////////////////////////////////////////////////
-
-
+//	Status (scratch, developed, final):
+//!		@version scratch
+//
+////////////////////////////////////////////////////////
 
 #ifndef CRAP_PRECOMPILED_H
 #define CRAP_PRECOMPILED_H
@@ -18,7 +23,7 @@
 #include <memory>
 #include <iostream>
 #include <cstdlib>
-#include <crap::cstring>
+#include <cstring>
 #include <cstdio>
 #include <cmath>
 
@@ -40,4 +45,4 @@
 #endif
 
 
-#endif // STMK_PRECOMPILED_H
+#endif // CRAP_PRECOMPILED_H

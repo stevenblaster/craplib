@@ -1,25 +1,23 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file cpuinfo.cpp
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file cpuinfo.cpp
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Help functions for detecting cpu flags
+//!		@brief Help functions for detecting cpu flags
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
-#include "types/staticrap::cstring.h"
+#include "types/staticstring.h"
 #include "control/cpuinfo.h"
 
 namespace crap

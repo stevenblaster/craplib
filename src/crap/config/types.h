@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file types.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file types.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Types predefines
+//!		@brief Types predefines
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -35,7 +33,7 @@
 
 //null pointer
 #if defined(NULL)
-    #undef NULL
+	#undef NULL
 #endif
 #if defined(__cplusplus)
 	#define NULL 0
@@ -93,7 +91,7 @@ typedef uint32_t u32;
 
 typedef intptr_t iptr;
 typedef uintptr_t uptr;
-typedef const char crap::cstring;
+typedef const char string_t;
 
 //windows overrides
 #if !defined(CRAP_PLATFORM_WIN)

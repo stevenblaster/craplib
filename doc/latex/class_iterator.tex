@@ -1,0 +1,129 @@
+\hypertarget{class_iterator}{\section{Iterator$<$ T $>$ Class Template Reference}
+\label{class_iterator}\index{Iterator$<$ T $>$@{Iterator$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$iterator.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_iterator_aa20e8ac4107e8cb5c2a4b3d798e4a67d}{Iterator} (void)
+\item 
+\hyperlink{class_iterator_a3c2f2e3480da7f007ef8f60b242dddd2}{Iterator} (\hyperlink{struct_list_element}{List\-Element}$<$ T $>$ $\ast$element)
+\item 
+\hyperlink{class_iterator_adbb2df52fe3a48f8173a0523796946a7}{Iterator} (const \hyperlink{class_iterator}{Iterator} \&other)
+\item 
+\hyperlink{class_iterator}{Iterator} \& \hyperlink{class_iterator_a309bf836c7c1a766158c91c71039b9ba}{operator=} (const \hyperlink{class_iterator}{Iterator} \&other)
+\item 
+void \hyperlink{class_iterator_ad693c5eb1084d7436bfdbcd8d65970f4}{operator++} (void)
+\item 
+void \hyperlink{class_iterator_ae333b628d5b801bb2d8c9f73bca66540}{operator-\/-\/} (void)
+\item 
+bool \hyperlink{class_iterator_a4d4b7c135f5780c35bc9ed93555fca43}{operator==} (const \hyperlink{class_iterator}{Iterator} \&other) const 
+\item 
+bool \hyperlink{class_iterator_a7843a94235eb651c2a17209d4ec6ee0e}{operator!=} (const \hyperlink{class_iterator}{Iterator} \&other) const 
+\item 
+T $\ast$ \hyperlink{class_iterator_ae457c048dcc3c16f750fc2af840d67c4}{operator-\/$>$} (void)
+\item 
+T \& \hyperlink{class_iterator_acec070b02aca6eda39f0c50e7bb46384}{operator$\ast$} (void)
+\item 
+const T \& \hyperlink{class_iterator_ae726c92d023ab6917407315e79f1adc0}{operator$\ast$} (void) const 
+\item 
+\hyperlink{struct_list_element}{List\-Element}$<$ T $>$ $\ast$ \hyperlink{class_iterator_a7196990c5f8d312318ebd4a906715c18}{ptr} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_iterator_aa20e8ac4107e8cb5c2a4b3d798e4a67d}{\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\subsubsection[{Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Iterator}$<$ T $>$\-::{\bf Iterator} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_aa20e8ac4107e8cb5c2a4b3d798e4a67d}
+\hypertarget{class_iterator_a3c2f2e3480da7f007ef8f60b242dddd2}{\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\subsubsection[{Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Iterator}$<$ T $>$\-::{\bf Iterator} (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-Element}$<$ T $>$ $\ast$}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_a3c2f2e3480da7f007ef8f60b242dddd2}
+\hypertarget{class_iterator_adbb2df52fe3a48f8173a0523796946a7}{\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\subsubsection[{Iterator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Iterator}$<$ T $>$\-::{\bf Iterator} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Iterator}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_adbb2df52fe3a48f8173a0523796946a7}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_iterator_a7843a94235eb651c2a17209d4ec6ee0e}{\index{Iterator@{Iterator}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!Iterator@{Iterator}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Iterator}$<$ T $>$\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Iterator}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_a7843a94235eb651c2a17209d4ec6ee0e}
+\hypertarget{class_iterator_acec070b02aca6eda39f0c50e7bb46384}{\index{Iterator@{Iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Iterator@{Iterator}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T\& {\bf Iterator}$<$ T $>$\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_acec070b02aca6eda39f0c50e7bb46384}
+\hypertarget{class_iterator_ae726c92d023ab6917407315e79f1adc0}{\index{Iterator@{Iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Iterator@{Iterator}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T\& {\bf Iterator}$<$ T $>$\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_ae726c92d023ab6917407315e79f1adc0}
+\hypertarget{class_iterator_ad693c5eb1084d7436bfdbcd8d65970f4}{\index{Iterator@{Iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Iterator@{Iterator}}
+\subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Iterator}$<$ T $>$\-::operator++ (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_ad693c5eb1084d7436bfdbcd8d65970f4}
+\hypertarget{class_iterator_ae333b628d5b801bb2d8c9f73bca66540}{\index{Iterator@{Iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Iterator@{Iterator}}
+\subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Iterator}$<$ T $>$\-::operator-\/-\/ (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_ae333b628d5b801bb2d8c9f73bca66540}
+\hypertarget{class_iterator_ae457c048dcc3c16f750fc2af840d67c4}{\index{Iterator@{Iterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!Iterator@{Iterator}}
+\subsubsection[{operator-\/$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T$\ast$ {\bf Iterator}$<$ T $>$\-::operator-\/$>$ (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_ae457c048dcc3c16f750fc2af840d67c4}
+\hypertarget{class_iterator_a309bf836c7c1a766158c91c71039b9ba}{\index{Iterator@{Iterator}!operator=@{operator=}}
+\index{operator=@{operator=}!Iterator@{Iterator}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Iterator}\& {\bf Iterator}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Iterator}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_a309bf836c7c1a766158c91c71039b9ba}
+\hypertarget{class_iterator_a4d4b7c135f5780c35bc9ed93555fca43}{\index{Iterator@{Iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!Iterator@{Iterator}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Iterator}$<$ T $>$\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Iterator}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_a4d4b7c135f5780c35bc9ed93555fca43}
+\hypertarget{class_iterator_a7196990c5f8d312318ebd4a906715c18}{\index{Iterator@{Iterator}!ptr@{ptr}}
+\index{ptr@{ptr}!Iterator@{Iterator}}
+\subsubsection[{ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf List\-Element}$<$T$>$$\ast$ {\bf Iterator}$<$ T $>$\-::ptr (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_iterator_a7196990c5f8d312318ebd4a906715c18}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/depricated/container/\hyperlink{iterator_8h}{iterator.\-h}\end{DoxyCompactItemize}

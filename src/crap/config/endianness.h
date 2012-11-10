@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file endianess.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file endianess.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Checking / setting macros caring about
+//!		@brief Checking / setting macros caring about
 //		little and big endian.
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -28,7 +26,7 @@
 #include "config/processors.h"
 
 /*
- * @brief detect endian by processor type
+ *! @brief detect endian by processor type
  */
 
 //known litte endian processors

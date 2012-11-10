@@ -1,20 +1,18 @@
 ////////////////////////////////////////////////////////
 //  CRAP Library
-//		@file functorthread.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file functorthread.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Thread template executing functors
+//!		@brief Thread template executing functors
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -31,7 +29,7 @@ namespace crap
 {
 
 /*
- * @brief Template thread class
+ *! @brief Template thread class
  */
 
 template<class T>
@@ -42,18 +40,18 @@ private:
 	THREAD_HANDLE _thread;
 	bool _running;
 
-	// @brief private static thread starter, defined by macros
+	//! @brief private static thread starter, defined by macros
 	static THREAD_RETURN THREAD_STARTER( ptr );
 
 public:
 
-	// @brief default constructor
+	//! @brief default constructor
 	functor_thread(void);
 
-	// @brief destructor
+	//! @brief destructor
 	~functor_thread(void);
 
-	// @brief starting thread, returning handle
+	//! @brief starting thread, returning handle
 	THREAD_HANDLE start(void);
 	bool join(void) const;
 	bool kill(void);

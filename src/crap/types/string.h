@@ -1,26 +1,24 @@
 ////////////////////////////////////////////////////////
 // CRAP Library
-//	string.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file string.h
 //
 //	Author(s):
-// 	Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		The description can take
-//		more then one line
+//!		@brief String placeholder, currently eastl string
 //
 //	Status (scratch, developed, final):
-//		scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
+#pragma once
+
 #ifndef CRAP_TYPES_STRING_H
 #define CRAP_TYPES_STRING_H
-
 
 #include "eastl/string.h"
 

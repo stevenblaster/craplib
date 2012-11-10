@@ -1,22 +1,20 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//		@file converter.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file converter.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Convertig integer/float types without
+//!		@brief Convertig integer/float types without
 //		over- or underflow
 //
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 
@@ -27,7 +25,7 @@
 
 #include "config/types.h"
 #include "control/zero.h"
-#include "types/staticrap::cstring.h"
+#include "types/staticstring.h"
 
 
 //lib namespace

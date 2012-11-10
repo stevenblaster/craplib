@@ -1,0 +1,197 @@
+\hypertarget{classcrap_1_1static__stack}{\section{crap\-:\-:static\-\_\-stack$<$ T, S $>$ Class Template Reference}
+\label{classcrap_1_1static__stack}\index{crap\-::static\-\_\-stack$<$ T, S $>$@{crap\-::static\-\_\-stack$<$ T, S $>$}}
+}
+
+
+{\ttfamily \#include $<$stack.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcrap_1_1static__stack_a8d15d6a53bf2358c2a2ff52e8e8e8a31}{static\-\_\-stack} (void)
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1static__stack_ab037da1dd38ecb31f43e4f865827aa71}{static\-\_\-stack} (const \hyperlink{classcrap_1_1static__stack}{static\-\_\-stack} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1static__stack}{static\-\_\-stack} \& \hyperlink{classcrap_1_1static__stack_a9351919bcadd21872d8ab246ecf42a19}{operator=} (const \hyperlink{classcrap_1_1static__stack}{static\-\_\-stack} \&other)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a38c0a12279ffe0fabec44939e753c914}{size\-\_\-t32} \hyperlink{classcrap_1_1static__stack_a765910dc7827be3a8187ed4c1e9f4262}{size} (void) const 
+\begin{DoxyCompactList}\small\item\em returns current size of stack \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a38c0a12279ffe0fabec44939e753c914}{size\-\_\-t32} \hyperlink{classcrap_1_1static__stack_ac2952d1a201c89a14c23df6f47a51303}{max\-\_\-size} (void) const 
+\begin{DoxyCompactList}\small\item\em returns maximum size of stack \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1static__stack_a50b7dac79d2a44937463cf32bfe3ba24}{is\-\_\-empty} (void) const 
+\begin{DoxyCompactList}\small\item\em returns if stack is empty \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1static__stack_a92b967247a7a5d515d45a130f65b4d06}{is\-\_\-full} (void) const 
+\begin{DoxyCompactList}\small\item\em returns if stack is full \end{DoxyCompactList}\item 
+T \& \hyperlink{classcrap_1_1static__stack_acb5592dd4569da537d9b83e5f01be9a3}{top} (void)
+\begin{DoxyCompactList}\small\item\em returns reference to front object \end{DoxyCompactList}\item 
+const T \& \hyperlink{classcrap_1_1static__stack_a65067039b14027a4f9de84c3777408f1}{top} (void) const 
+\begin{DoxyCompactList}\small\item\em returns const reference to front object \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1static__stack_aad405e79112eda4558f5758da01bb8f3}{push} (const T \&object)
+\begin{DoxyCompactList}\small\item\em push new object to top of stack \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1static__stack_a9d0564eb1707f2e470ba2ee7b3e965ff}{pop} (void)
+\begin{DoxyCompactList}\small\item\em pop top element of stack \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1static__stack_aaa488bb2ed8979506bd4704ec1da8d37}{clear} (void)
+\begin{DoxyCompactList}\small\item\em clear stack \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U , u64 V$>$ }\\std\-::ostream \& \hyperlink{classcrap_1_1static__stack_aa9e09b8cd269462971c695b9b0a6a205}{operator$<$$<$} (std\-::ostream \&out, const \hyperlink{classcrap_1_1static__stack}{static\-\_\-stack}$<$ U, V $>$ \&other)
+\begin{DoxyCompactList}\small\item\em stream operator \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcrap_1_1static__stack_a8d15d6a53bf2358c2a2ff52e8e8e8a31}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!static\-\_\-stack@{static\-\_\-stack}}
+\index{static\-\_\-stack@{static\-\_\-stack}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{static\-\_\-stack}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::{\bf static\-\_\-stack} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_a8d15d6a53bf2358c2a2ff52e8e8e8a31}
+
+
+default constructor 
+
+\hypertarget{classcrap_1_1static__stack_ab037da1dd38ecb31f43e4f865827aa71}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!static\-\_\-stack@{static\-\_\-stack}}
+\index{static\-\_\-stack@{static\-\_\-stack}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{static\-\_\-stack}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::{\bf static\-\_\-stack} (
+\begin{DoxyParamCaption}
+\item[{const {\bf static\-\_\-stack}$<$ T, S $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_ab037da1dd38ecb31f43e4f865827aa71}
+
+
+copy constructor 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1static__stack_aaa488bb2ed8979506bd4704ec1da8d37}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!clear@{clear}}
+\index{clear@{clear}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ void {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::clear (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_aaa488bb2ed8979506bd4704ec1da8d37}
+
+
+clear stack 
+
+\hypertarget{classcrap_1_1static__stack_a50b7dac79d2a44937463cf32bfe3ba24}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!is\-\_\-empty@{is\-\_\-empty}}
+\index{is\-\_\-empty@{is\-\_\-empty}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{is\-\_\-empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ bool {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::is\-\_\-empty (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__stack_a50b7dac79d2a44937463cf32bfe3ba24}
+
+
+returns if stack is empty 
+
+\hypertarget{classcrap_1_1static__stack_a92b967247a7a5d515d45a130f65b4d06}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!is\-\_\-full@{is\-\_\-full}}
+\index{is\-\_\-full@{is\-\_\-full}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{is\-\_\-full}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ bool {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::is\-\_\-full (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__stack_a92b967247a7a5d515d45a130f65b4d06}
+
+
+returns if stack is full 
+
+\hypertarget{classcrap_1_1static__stack_ac2952d1a201c89a14c23df6f47a51303}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!max\-\_\-size@{max\-\_\-size}}
+\index{max\-\_\-size@{max\-\_\-size}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{max\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf size\-\_\-t32} {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::max\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__stack_ac2952d1a201c89a14c23df6f47a51303}
+
+
+returns maximum size of stack 
+
+\hypertarget{classcrap_1_1static__stack_a9351919bcadd21872d8ab246ecf42a19}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!operator=@{operator=}}
+\index{operator=@{operator=}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf static\-\_\-stack}$<$ T, S $>$ \& {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf static\-\_\-stack}$<$ T, S $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_a9351919bcadd21872d8ab246ecf42a19}
+
+
+assignment operator 
+
+\hypertarget{classcrap_1_1static__stack_a9d0564eb1707f2e470ba2ee7b3e965ff}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!pop@{pop}}
+\index{pop@{pop}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ void {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::pop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_a9d0564eb1707f2e470ba2ee7b3e965ff}
+
+
+pop top element of stack 
+
+\hypertarget{classcrap_1_1static__stack_aad405e79112eda4558f5758da01bb8f3}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!push@{push}}
+\index{push@{push}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{push}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ void {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::push (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{object}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_aad405e79112eda4558f5758da01bb8f3}
+
+
+push new object to top of stack 
+
+\hypertarget{classcrap_1_1static__stack_a765910dc7827be3a8187ed4c1e9f4262}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!size@{size}}
+\index{size@{size}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf size\-\_\-t32} {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__stack_a765910dc7827be3a8187ed4c1e9f4262}
+
+
+returns current size of stack 
+
+\hypertarget{classcrap_1_1static__stack_acb5592dd4569da537d9b83e5f01be9a3}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!top@{top}}
+\index{top@{top}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ T \& {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::top (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__stack_acb5592dd4569da537d9b83e5f01be9a3}
+
+
+returns reference to front object 
+
+\hypertarget{classcrap_1_1static__stack_a65067039b14027a4f9de84c3777408f1}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!top@{top}}
+\index{top@{top}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ const T \& {\bf crap\-::static\-\_\-stack}$<$ T, S $>$\-::top (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__stack_a65067039b14027a4f9de84c3777408f1}
+
+
+returns const reference to front object 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classcrap_1_1static__stack_aa9e09b8cd269462971c695b9b0a6a205}{\index{crap\-::static\-\_\-stack@{crap\-::static\-\_\-stack}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!crap::static_stack@{crap\-::static\-\_\-stack}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ template$<$typename U , u64 V$>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{out, }
+\item[{const {\bf static\-\_\-stack}$<$ U, V $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classcrap_1_1static__stack_aa9e09b8cd269462971c695b9b0a6a205}
+
+
+stream operator 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/container/\hyperlink{stack_8h}{stack.\-h}\end{DoxyCompactItemize}

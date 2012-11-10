@@ -1,23 +1,21 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file treenode.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file treenode.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Basic tree node for trees
-//		supports yet some recursive and some iterative 
-//		methods, will not delete or allocate, just link 
+//!		@brief Basic tree node for trees
+//		supports yet some recursive and some iterative
+//		methods, will not delete or allocate, just link
 //		and unlink
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -30,14 +28,14 @@
 //lib namespace
 namespace crap
 {
-	
+
 /*
- * @brief struct holding data for trees
+ *! @brief struct holding data for trees
  */
 template <class T, class C = crap::less<T> >
-struct tree_node 
+struct tree_node
 {
-	
+
 	//typedefs
 	typedef T& 								reference;
 	typedef const T& 						const_reference;
@@ -49,27 +47,27 @@ struct tree_node
 	typedef tree_node<T,C>*					node_pointer;
 	typedef tree_node<T,C>&					node_reference;
 	typedef const tree_node<T,C>& 			const_node_reference;
-	
+
 	enum node_type
 	{
 		parent =0,
 		left,
 		right
 	};
-	
+
 	C is_less;				// compare
 	tree_node* sub_node[3];	// seperated by enum: parent, left, right
 	T data;					// data
 
-	// @brief default constructor - note that as in stl T needs a default constructor too
+	//! @brief default constructor - note that as in stl T needs a default constructor too
 	explicit tree_node(void) : data(T())
 	{
 		sub_node[parent] = 0;
 		sub_node[left] = 0;
 		sub_node[right] = 0;
 	}
-	
-	// @brief copy constructor
+
+	//! @brief copy constructor
 	tree_node(const tree_node& node) : data(node.data)
 	{
 		sub_node[parent] = node.sub_node[parent];
@@ -77,15 +75,15 @@ struct tree_node
 		sub_node[right] = node.sub_node[right];
 	}
 
-	// @brief value constructor
+	//! @brief value constructor
 	tree_node(const T& d) : data(d)
 	{
 		sub_node[parent] = 0;
 		sub_node[left] = 0;
 		sub_node[right] = 0;
 	}
-	
-	// @brief constructor using values
+
+	//! @brief constructor using values
 	tree_node(tree_node* p, const T& d, tree_node* l, tree_node* r) : data(d)
 	{
 		sub_node[parent] = p;
@@ -93,7 +91,7 @@ struct tree_node
 		sub_node[right] = r;
 	}
 
-	// @brief copy constructor - template
+	//! @brief copy constructor - template
 	template <class U, class V> // <U,V>??
 	tree_node (const tree_node& t) : data(t.data)
 	{
@@ -101,12 +99,12 @@ struct tree_node
 		sub_node[left] = t.sub_node[right];
 		sub_node[right] = t.sub_node[right];
 	}
-	
+
 	/*
 	 * Operator overloading
 	 */
-	 
-	// @brief assignment operator
+
+	//! @brief assignment operator
 	tree_node& operator=(const tree_node& other)
 	{
 		sub_node[parent] = other.sub_node[parent];
@@ -115,68 +113,68 @@ struct tree_node
 		data = other.data;
 		return *this;
 	}
-		
+
 	/*
 	 * Member methods - general
 	 */
-	
-	// @brief zeros all pointer of node
+
+	//! @brief zeros all pointer of node
 	inline void zero_node(node_pointer node) const;
 
-	// @brief unlink subtree from tree and return root node
+	//! @brief unlink subtree from tree and return root node
 	inline node_pointer unlink_subtree(node_pointer node);
-	
-	// @brief rotate tree to left, using node as rotation point
+
+	//! @brief rotate tree to left, using node as rotation point
 	inline node_pointer rotate_left(node_pointer node);
 
-	// @brief rotate tree to right, using node as rotation point
+	//! @brief rotate tree to right, using node as rotation point
 	inline node_pointer rotate_right(node_pointer node);
-	
-	// @brief unlink selected node and reconnect tree, returns unlinked node
+
+	//! @brief unlink selected node and reconnect tree, returns unlinked node
 	inline node_pointer unlink(node_pointer delete_node);
-	
+
 	/*
 	 * Member methods - recursive
 	 */
-	
-	// @brief search key starting from node recursively
+
+	//! @brief search key starting from node recursively
 	node_pointer search_recursive(node_pointer node, value_type key) const;
-	
-	// @brief minimal value starting from node recursively
+
+	//! @brief minimal value starting from node recursively
 	node_pointer min_recursive(node_pointer node) const;
-	
-	// @brief maximum value starting from node recursively
+
+	//! @brief maximum value starting from node recursively
 	node_pointer max_recursive(node_pointer node) const;
-	
-	// @brief minimum depht starting from node recusively
+
+	//! @brief minimum depht starting from node recusively
 	size_type min_depth_recursive(node_pointer node) const;
 
-	// @brief maximum depht starting from node recursively
+	//! @brief maximum depht starting from node recursively
 	size_type max_depth_recursive(node_pointer node) const;
-	
-	// @brief adding new node with data starting from node recursively, returns 0 if failed
+
+	//! @brief adding new node with data starting from node recursively, returns 0 if failed
 	node_pointer insert_recursive(node_pointer new_node, node_pointer parse_node);
-	
-	// @brief get number of nodes of specific height vom subnode
+
+	//! @brief get number of nodes of specific height vom subnode
 	size_type depth_elements_recursive(node_pointer node, int depth, int current_depth=0, int element_counter=0);
-	
+
 	/*
 	 * Member methods - iterative
 	 */
-	
-	// @brief minimal value starting from node iterativley
+
+	//! @brief minimal value starting from node iterativley
 	inline node_pointer min_iterative(node_pointer node) const;
-	
-	// @brief maximum value starting from node iterativley
+
+	//! @brief maximum value starting from node iterativley
 	inline node_pointer max_iterative(node_pointer node) const;
-	
-	// @brief next lower value starting from node 
+
+	//! @brief next lower value starting from node
 	inline node_pointer successor_iterative(node_pointer node) const;
 
-	// @brief next higher value starting from node
+	//! @brief next higher value starting from node
 	inline node_pointer predecessor_iterative(node_pointer node) const;
-	
-	// @brief looking for median value and returns pointer
+
+	//! @brief looking for median value and returns pointer
 	inline node_pointer median_iterative(node_pointer low_node, node_pointer high_node) const;
 };
 
@@ -209,7 +207,7 @@ tree_node<T,C>* tree_node<T,C>::unlink_subtree(node_pointer node)
 			else
 				return 0;
 		}
-			
+
 		return node;
 	}
 	return 0;
@@ -222,10 +220,10 @@ tree_node<T,C>* tree_node<T,C>::rotate_left(node_pointer node)
 		return 0;
 
 	node_pointer right_node = node->sub_node[right];
-	
+
 	node->sub_node[right] = right_node->sub_node[left];
 	right_node->sub_node[left] = node;
-	
+
 	right_node->sub_node[parent] = node->sub_node[parent];
 	node->sub_node[parent] = right_node;
 
@@ -242,10 +240,10 @@ tree_node<T,C>* tree_node<T,C>::rotate_right(node_pointer node)
 		return 0;
 
 	node_pointer left_node = node->sub_node[left];
-	
+
 	node->sub_node[left] = left_node->sub_node[right];
 	left_node->sub_node[right] = node;
-	
+
 	left_node->sub_node[parent] = node->sub_node[parent];
 	node->sub_node[parent] = left_node;
 
@@ -260,11 +258,11 @@ tree_node<T,C>* tree_node<T,C>::unlink(node_pointer delete_node)
 {
 	if( delete_node == 0 )
 		return 0;
-	
-	if( delete_node->sub_node[parent] != 0 ) 
+
+	if( delete_node->sub_node[parent] != 0 )
 	{
 		// leaf
-		if( delete_node->sub_node[left] == 0 && delete_node->sub_node[right] == 0 ) 
+		if( delete_node->sub_node[left] == 0 && delete_node->sub_node[right] == 0 )
 		{
 			if( delete_node == delete_node->sub_node[parent]->sub_node[right] )
 				delete_node->sub_node[parent]->sub_node[right] = 0;
@@ -276,7 +274,7 @@ tree_node<T,C>* tree_node<T,C>::unlink(node_pointer delete_node)
 			return delete_node;
 		}
 		// node on the right
-		else if( delete_node->sub_node[left] == 0 && delete_node->sub_node[right] != 0 ) 
+		else if( delete_node->sub_node[left] == 0 && delete_node->sub_node[right] != 0 )
 		{
 			if( delete_node == delete_node->sub_node[parent]->sub_node[right] )
 			{
@@ -294,7 +292,7 @@ tree_node<T,C>* tree_node<T,C>::unlink(node_pointer delete_node)
 			return delete_node;
 		}
 		// node on the left
-		else if( delete_node->sub_node[left] != 0 && delete_node->sub_node[right] == 0 ) 
+		else if( delete_node->sub_node[left] != 0 && delete_node->sub_node[right] == 0 )
 		{
 			if( delete_node == delete_node->sub_node[parent]->sub_node[right] )
 			{
@@ -312,13 +310,13 @@ tree_node<T,C>* tree_node<T,C>::unlink(node_pointer delete_node)
 			return delete_node;
 		}
 	}
-	
+
 	// node on both sides or no parent (must be root then)
 	if( delete_node->sub_node[left] != 0 )
 	{
 		node_pointer previous_node = predecessor_iterative(delete_node);
 
-		if( previous_node->sub_node[parent] != 0 ) 
+		if( previous_node->sub_node[parent] != 0 )
 		{
 			if( previous_node->sub_node[parent]->sub_node[right] == previous_node )
 				previous_node->sub_node[parent]->sub_node[right] = previous_node->sub_node[left];
@@ -337,7 +335,7 @@ tree_node<T,C>* tree_node<T,C>::unlink(node_pointer delete_node)
 	{
 		node_pointer previous_node = successor_iterative(delete_node);
 
-		if( previous_node->sub_node[parent] != 0 ) 
+		if( previous_node->sub_node[parent] != 0 )
 		{
 			if( previous_node->sub_node[parent]->sub_node[right] == previous_node )
 				previous_node->sub_node[parent]->sub_node[right] = previous_node->sub_node[right];
@@ -428,11 +426,11 @@ size_t32 tree_node<T,C>::max_depth_recursive(node_pointer node) const
 template <class T, class C>
 tree_node<T,C>* tree_node<T,C>::insert_recursive(node_pointer new_node, node_pointer parse_node)
 {
-	if( parse_node == 0 ) 
+	if( parse_node == 0 )
 	{
 		return new_node;
 	}
-	else if( is_less(new_node->data, parse_node->data) ) 
+	else if( is_less(new_node->data, parse_node->data) )
 	{
 		if( parse_node->sub_node[left] == 0 )
 		{
@@ -442,8 +440,8 @@ tree_node<T,C>* tree_node<T,C>::insert_recursive(node_pointer new_node, node_poi
 		}
 		else
 			return insert_recursive(new_node, parse_node->sub_node[left]);
-	} 
-	else if( !is_less(new_node->data, parse_node->data) ) 
+	}
+	else if( !is_less(new_node->data, parse_node->data) )
 	{
 		if( parse_node->sub_node[right] == 0 )
 		{
@@ -466,7 +464,7 @@ size_t32 tree_node<T,C>::depth_elements_recursive(node_pointer node, int depth, 
 
 	if( current_depth == depth )
 		++element_counter;
-		
+
 	if( current_depth < depth ) {
 		if(node->sub_node[left] != 0)
 			element_counter = depth_elements_recursive(node->sub_node[left], depth, current_depth+1, element_counter);
@@ -511,7 +509,7 @@ tree_node<T,C>* tree_node<T,C>::successor_iterative(node_pointer node) const
 			return min_iterative(node->sub_node[right]);
 
 		node_pointer node_parent = node->sub_node[parent];
-		while(node_parent != 0 && node == node_parent->sub_node[right]) 
+		while(node_parent != 0 && node == node_parent->sub_node[right])
 		{
 			node = node_parent;
 			node_parent = node_parent->sub_node[parent];
@@ -530,7 +528,7 @@ tree_node<T,C>* tree_node<T,C>::predecessor_iterative(node_pointer node) const
 			return min_iterative(node->sub_node[left]);
 
 		node_pointer node_parent = node->sub_node[parent];
-		while(node_parent != 0 && node == node_parent->sub_node[left]) 
+		while(node_parent != 0 && node == node_parent->sub_node[left])
 		{
 			node = node_parent;
 			node_parent = node_parent->sub_node[parent];
@@ -562,7 +560,7 @@ tree_node<T,C>* tree_node<T,C>::median_iterative(node_pointer low_node, node_poi
 	return low_node;
 }
 
-	
+
 }	// namespace crap
 
 #endif	// CRAP_CONTAINER_TREENODE_H

@@ -1,0 +1,223 @@
+\hypertarget{classcrap_1_1static__queue}{\section{crap\-:\-:static\-\_\-queue$<$ T, S $>$ Class Template Reference}
+\label{classcrap_1_1static__queue}\index{crap\-::static\-\_\-queue$<$ T, S $>$@{crap\-::static\-\_\-queue$<$ T, S $>$}}
+}
+
+
+{\ttfamily \#include $<$queue.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcrap_1_1static__queue_a56899e95cb665eaea2fd4c7406cf31cd}{static\-\_\-queue} (void)
+\begin{DoxyCompactList}\small\item\em standard constructor \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1static__queue_a2b2805029cee873b2469df1a4e99f0e5}{static\-\_\-queue} (const \hyperlink{classcrap_1_1static__queue}{static\-\_\-queue} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\hyperlink{classcrap_1_1static__queue}{static\-\_\-queue} \& \hyperlink{classcrap_1_1static__queue_a9f8cb25f63d307c44bd6feb2b1bf0d07}{operator=} (const \hyperlink{classcrap_1_1static__queue}{static\-\_\-queue} \&other)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a38c0a12279ffe0fabec44939e753c914}{size\-\_\-t32} \hyperlink{classcrap_1_1static__queue_ace84c28c7da616fd026117ecb0f489f1}{size} (void) const 
+\begin{DoxyCompactList}\small\item\em returns current size \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a38c0a12279ffe0fabec44939e753c914}{size\-\_\-t32} \hyperlink{classcrap_1_1static__queue_abf66912fb090ccd0253416b97423bac8}{max\-\_\-size} (void) const 
+\begin{DoxyCompactList}\small\item\em returns total size \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1static__queue_a6c20ede09aa3faca8849e97ec69b72b1}{is\-\_\-empty} (void) const 
+\begin{DoxyCompactList}\small\item\em returns if queue is empty \end{DoxyCompactList}\item 
+bool \hyperlink{classcrap_1_1static__queue_a4b27921670bf0540ab503043294b5c91}{is\-\_\-full} (void) const 
+\begin{DoxyCompactList}\small\item\em returns if queue is full \end{DoxyCompactList}\item 
+T \& \hyperlink{classcrap_1_1static__queue_ad2e008517715ad74b7d32aa3aa56f093}{front} (void)
+\begin{DoxyCompactList}\small\item\em returns reference to front \end{DoxyCompactList}\item 
+const T \& \hyperlink{classcrap_1_1static__queue_a74ad719cbd8afc785965e65a988e3440}{front} (void) const 
+\begin{DoxyCompactList}\small\item\em returns const reference to front \end{DoxyCompactList}\item 
+T \& \hyperlink{classcrap_1_1static__queue_a1ab208ae18b5188c6fe530bec2a39451}{back} (void)
+\begin{DoxyCompactList}\small\item\em returns reference to back \end{DoxyCompactList}\item 
+const T \& \hyperlink{classcrap_1_1static__queue_a153b42e76650c17a27673e5c4596f73b}{back} (void) const 
+\begin{DoxyCompactList}\small\item\em returns const reference to back \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1static__queue_a1a24079d7dcd7e43b45f6375bea1c8a5}{push} (const T \&object)
+\begin{DoxyCompactList}\small\item\em pushes element to end of queue \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1static__queue_aeb8ec0c469bfe24bc9fda1fed64c15cc}{pop} (void)
+\begin{DoxyCompactList}\small\item\em pops element at front of queue \end{DoxyCompactList}\item 
+void \hyperlink{classcrap_1_1static__queue_a5d43375db1498a62bcf08405c60172ba}{clear} (void)
+\begin{DoxyCompactList}\small\item\em clear queue \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U , u64 V$>$ }\\std\-::ostream \& \hyperlink{classcrap_1_1static__queue_a0e3f2e1085a085fd154ff8654f9ba44d}{operator$<$$<$} (std\-::ostream \&out, const \hyperlink{classcrap_1_1static__queue}{static\-\_\-queue}$<$ U, V $>$ \&other)
+\begin{DoxyCompactList}\small\item\em stream operator \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcrap_1_1static__queue_a56899e95cb665eaea2fd4c7406cf31cd}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!static\-\_\-queue@{static\-\_\-queue}}
+\index{static\-\_\-queue@{static\-\_\-queue}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{static\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::{\bf static\-\_\-queue} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_a56899e95cb665eaea2fd4c7406cf31cd}
+
+
+standard constructor 
+
+\hypertarget{classcrap_1_1static__queue_a2b2805029cee873b2469df1a4e99f0e5}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!static\-\_\-queue@{static\-\_\-queue}}
+\index{static\-\_\-queue@{static\-\_\-queue}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{static\-\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::{\bf static\-\_\-queue} (
+\begin{DoxyParamCaption}
+\item[{const {\bf static\-\_\-queue}$<$ T, S $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_a2b2805029cee873b2469df1a4e99f0e5}
+
+
+copy constructor 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1static__queue_a1ab208ae18b5188c6fe530bec2a39451}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!back@{back}}
+\index{back@{back}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ T \& {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::back (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_a1ab208ae18b5188c6fe530bec2a39451}
+
+
+returns reference to back 
+
+\hypertarget{classcrap_1_1static__queue_a153b42e76650c17a27673e5c4596f73b}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!back@{back}}
+\index{back@{back}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ const T \& {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::back (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__queue_a153b42e76650c17a27673e5c4596f73b}
+
+
+returns const reference to back 
+
+\hypertarget{classcrap_1_1static__queue_a5d43375db1498a62bcf08405c60172ba}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!clear@{clear}}
+\index{clear@{clear}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ void {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::clear (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_a5d43375db1498a62bcf08405c60172ba}
+
+
+clear queue 
+
+\hypertarget{classcrap_1_1static__queue_ad2e008517715ad74b7d32aa3aa56f093}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!front@{front}}
+\index{front@{front}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{front}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ T \& {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::front (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_ad2e008517715ad74b7d32aa3aa56f093}
+
+
+returns reference to front 
+
+\hypertarget{classcrap_1_1static__queue_a74ad719cbd8afc785965e65a988e3440}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!front@{front}}
+\index{front@{front}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{front}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ const T \& {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::front (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__queue_a74ad719cbd8afc785965e65a988e3440}
+
+
+returns const reference to front 
+
+\hypertarget{classcrap_1_1static__queue_a6c20ede09aa3faca8849e97ec69b72b1}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!is\-\_\-empty@{is\-\_\-empty}}
+\index{is\-\_\-empty@{is\-\_\-empty}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{is\-\_\-empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ bool {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::is\-\_\-empty (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__queue_a6c20ede09aa3faca8849e97ec69b72b1}
+
+
+returns if queue is empty 
+
+\hypertarget{classcrap_1_1static__queue_a4b27921670bf0540ab503043294b5c91}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!is\-\_\-full@{is\-\_\-full}}
+\index{is\-\_\-full@{is\-\_\-full}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{is\-\_\-full}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ bool {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::is\-\_\-full (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__queue_a4b27921670bf0540ab503043294b5c91}
+
+
+returns if queue is full 
+
+\hypertarget{classcrap_1_1static__queue_abf66912fb090ccd0253416b97423bac8}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!max\-\_\-size@{max\-\_\-size}}
+\index{max\-\_\-size@{max\-\_\-size}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{max\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf size\-\_\-t32} {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::max\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__queue_abf66912fb090ccd0253416b97423bac8}
+
+
+returns total size 
+
+\hypertarget{classcrap_1_1static__queue_a9f8cb25f63d307c44bd6feb2b1bf0d07}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!operator=@{operator=}}
+\index{operator=@{operator=}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf static\-\_\-queue}$<$ T, S $>$ \& {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf static\-\_\-queue}$<$ T, S $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_a9f8cb25f63d307c44bd6feb2b1bf0d07}
+
+
+assignment operator 
+
+\hypertarget{classcrap_1_1static__queue_aeb8ec0c469bfe24bc9fda1fed64c15cc}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!pop@{pop}}
+\index{pop@{pop}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ void {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::pop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_aeb8ec0c469bfe24bc9fda1fed64c15cc}
+
+
+pops element at front of queue 
+
+\hypertarget{classcrap_1_1static__queue_a1a24079d7dcd7e43b45f6375bea1c8a5}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!push@{push}}
+\index{push@{push}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{push}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ void {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::push (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{object}
+\end{DoxyParamCaption}
+)}}\label{classcrap_1_1static__queue_a1a24079d7dcd7e43b45f6375bea1c8a5}
+
+
+pushes element to end of queue 
+
+\hypertarget{classcrap_1_1static__queue_ace84c28c7da616fd026117ecb0f489f1}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!size@{size}}
+\index{size@{size}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ {\bf size\-\_\-t32} {\bf crap\-::static\-\_\-queue}$<$ T, S $>$\-::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classcrap_1_1static__queue_ace84c28c7da616fd026117ecb0f489f1}
+
+
+returns current size 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classcrap_1_1static__queue_a0e3f2e1085a085fd154ff8654f9ba44d}{\index{crap\-::static\-\_\-queue@{crap\-::static\-\_\-queue}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!crap::static_queue@{crap\-::static\-\_\-queue}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , size\-\_\-t32 S$>$ template$<$typename U , u64 V$>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{out, }
+\item[{const {\bf static\-\_\-queue}$<$ U, V $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classcrap_1_1static__queue_a0e3f2e1085a085fd154ff8654f9ba44d}
+
+
+stream operator 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/container/\hyperlink{queue_8h}{queue.\-h}\end{DoxyCompactItemize}

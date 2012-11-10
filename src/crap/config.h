@@ -1,22 +1,18 @@
 ////////////////////////////////////////////////////////
 // CRAP Library
-//	config.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//!		@file config.h
 //
 //	Author(s):
-// 	Steffen Kopany <steffen@kopany.at>
+//!		@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		Collecting all config/*.h files
-// 	Setting up configuration such as
-//		breakpoints
+//!		@brief Collecting all config/*.h files
 //
 //	Status (scratch, developed, final):
-//		scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 

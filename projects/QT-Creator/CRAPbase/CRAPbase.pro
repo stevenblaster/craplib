@@ -63,7 +63,6 @@ SOURCES += \
     ../../../src/crap/control/time.cpp \
     ../../../src/crap/control/cpuinfo.cpp \
     ../../../src/crap/memory/memorytracker.cpp \
-    ../../../src/crap/memory/memorypool.cpp \
     ../../../src/crap/threading/thread.cpp \
     ../../../src/crap/threading/sleep.cpp \
     ../../../src/crap/threading/semaphore.cpp \

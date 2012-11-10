@@ -1,0 +1,248 @@
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator}{\section{crap\-:\-:memory\-:\-:Dynamic\-Allocator$<$ T $>$ Class Template Reference}
+\label{classcrap_1_1memory_1_1_dynamic_allocator}\index{crap\-::memory\-::\-Dynamic\-Allocator$<$ T $>$@{crap\-::memory\-::\-Dynamic\-Allocator$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$dynamicallocator.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcrap_1_1memory_1_1_dynamic_allocator_1_1rebind}{rebind}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef T \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}{value\-\_\-type}
+\item 
+typedef \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}{value\-\_\-type} $\ast$ \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{pointer}
+\item 
+typedef const \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}{value\-\_\-type} $\ast$ \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a31367ceafaf5d2a05c3a04e975e53775}{const\-\_\-pointer}
+\item 
+typedef \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}{value\-\_\-type} \& \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_ad17b30d2ee05bca34e1a3ea8d212db16}{reference}
+\item 
+typedef const \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}{value\-\_\-type} \& \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_aa4033bbb72cceae0d908aec9a9539f81}{const\-\_\-reference}
+\item 
+typedef \hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a48b438ee17d8e7a384bde751f72ef17b}{size\-\_\-type}
+\item 
+typedef std\-::ptrdiff\-\_\-t \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a0cc60d8108a3a59ecef542f79f5ca53a}{difference\-\_\-type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a3012f54f984532b6e2d1029f9c142770}{Dynamic\-Allocator} (void)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_adf77eab3410a26a5b40e6708c3fae59f}{$\sim$\-Dynamic\-Allocator} (void)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a5f56cec0c5b215bc26601d6a49a697f9}{Dynamic\-Allocator} (const \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator} \&other)
+\item 
+{\footnotesize template$<$typename U $>$ }\\\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a1b5d4af84e9832ac31718cda27f469c6}{Dynamic\-Allocator} (const \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator}$<$ U $>$ \&)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator} \& \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a15165a431d05919333b48a46529e321d}{operator=} (const \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator} \&other)
+\item 
+T \& \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_aeb38d63da16a7c69ce8714d127d3a9fa}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index)
+\item 
+const T \& \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_ab7488a1c8177ec2c5c0af8e65df04c64}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} index) const 
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{pointer} \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a4f03d89bcf2b7728237564b79c7ea516}{address} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_ad17b30d2ee05bca34e1a3ea8d212db16}{reference} r)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a31367ceafaf5d2a05c3a04e975e53775}{const\-\_\-pointer} \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a98c5265ecbed3f9a745e00637a6f123c}{address} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_aa4033bbb72cceae0d908aec9a9539f81}{const\-\_\-reference} r)
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{pointer} \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a1cf11dd8fbd8194f982dabbae68be68b}{allocate} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a48b438ee17d8e7a384bde751f72ef17b}{size\-\_\-type} count=1, typename \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator}$<$ T $>$\-::\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a31367ceafaf5d2a05c3a04e975e53775}{const\-\_\-pointer}=0)
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a5cb10c0a9e3c23f66ee56cd012d852c2}{deallocate} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{pointer} ptr, \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a48b438ee17d8e7a384bde751f72ef17b}{size\-\_\-type} count=1)
+\item 
+\hyperlink{types_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64} \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_ac5b63c7fc39aca96441922f44f53e922}{size} (void) const 
+\item 
+\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a48b438ee17d8e7a384bde751f72ef17b}{size\-\_\-type} \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a6a9ef62e15aa9e3cfae93570e3bab145}{max\-\_\-size} () const 
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a998be07e957bdd0b7ac34de181ae50f7}{construct} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{pointer} p, const T \&t)
+\item 
+void \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a1734a7398ced6882115743f938be9a77}{destroy} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{pointer} p)
+\item 
+crap\-::threading\-::\-Mutex $\ast$ \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a822eab56a3d8eaf52592da6a29018a41}{mutex} (void)
+\item 
+bool \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a74d7390d46f343bc4d1dc35569caf9fa}{operator==} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator} const \&)
+\item 
+bool \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a3db59cc87b49f4ebd3d5b87233b12990}{operator!=} (\hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator} const \&a)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U $>$ }\\std\-::ostream \& \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator_a765efe37ddf5e7be9f9c60062e75cfd7}{operator$<$$<$} (std\-::ostream \&out, const \hyperlink{classcrap_1_1memory_1_1_dynamic_allocator}{Dynamic\-Allocator}$<$ U $>$ \&mem\-Block)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a31367ceafaf5d2a05c3a04e975e53775}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!const\-\_\-pointer@{const\-\_\-pointer}}
+\index{const\-\_\-pointer@{const\-\_\-pointer}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{const\-\_\-pointer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef const {\bf value\-\_\-type}$\ast$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf const\-\_\-pointer}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a31367ceafaf5d2a05c3a04e975e53775}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_aa4033bbb72cceae0d908aec9a9539f81}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!const\-\_\-reference@{const\-\_\-reference}}
+\index{const\-\_\-reference@{const\-\_\-reference}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{const\-\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef const {\bf value\-\_\-type}\& {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf const\-\_\-reference}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_aa4033bbb72cceae0d908aec9a9539f81}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a0cc60d8108a3a59ecef542f79f5ca53a}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!difference\-\_\-type@{difference\-\_\-type}}
+\index{difference\-\_\-type@{difference\-\_\-type}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{difference\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef std\-::ptrdiff\-\_\-t {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf difference\-\_\-type}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a0cc60d8108a3a59ecef542f79f5ca53a}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!pointer@{pointer}}
+\index{pointer@{pointer}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{pointer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef {\bf value\-\_\-type}$\ast$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf pointer}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a281b8cb1ad7cd494edf5f6b67daea60a}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_ad17b30d2ee05bca34e1a3ea8d212db16}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!reference@{reference}}
+\index{reference@{reference}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{reference}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef {\bf value\-\_\-type}\& {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf reference}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_ad17b30d2ee05bca34e1a3ea8d212db16}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a48b438ee17d8e7a384bde751f72ef17b}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!size\-\_\-type@{size\-\_\-type}}
+\index{size\-\_\-type@{size\-\_\-type}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{size\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef {\bf u64} {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf size\-\_\-type}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a48b438ee17d8e7a384bde751f72ef17b}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!value\-\_\-type@{value\-\_\-type}}
+\index{value\-\_\-type@{value\-\_\-type}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{value\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ typedef T {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf value\-\_\-type}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a6a2ec3aa4d76e563cad6948ce2b563d3}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a3012f54f984532b6e2d1029f9c142770}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!Dynamic\-Allocator@{Dynamic\-Allocator}}
+\index{Dynamic\-Allocator@{Dynamic\-Allocator}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{Dynamic\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf Dynamic\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a3012f54f984532b6e2d1029f9c142770}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_adf77eab3410a26a5b40e6708c3fae59f}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!$\sim$\-Dynamic\-Allocator@{$\sim$\-Dynamic\-Allocator}}
+\index{$\sim$\-Dynamic\-Allocator@{$\sim$\-Dynamic\-Allocator}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{$\sim$\-Dynamic\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::$\sim${\bf Dynamic\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_adf77eab3410a26a5b40e6708c3fae59f}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a5f56cec0c5b215bc26601d6a49a697f9}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!Dynamic\-Allocator@{Dynamic\-Allocator}}
+\index{Dynamic\-Allocator@{Dynamic\-Allocator}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{Dynamic\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf Dynamic\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dynamic\-Allocator}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a5f56cec0c5b215bc26601d6a49a697f9}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a1b5d4af84e9832ac31718cda27f469c6}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!Dynamic\-Allocator@{Dynamic\-Allocator}}
+\index{Dynamic\-Allocator@{Dynamic\-Allocator}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{Dynamic\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ template$<$typename U $>$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf Dynamic\-Allocator} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dynamic\-Allocator}$<$ U $>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a1b5d4af84e9832ac31718cda27f469c6}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a4f03d89bcf2b7728237564b79c7ea516}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!address@{address}}
+\index{address@{address}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{address}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf pointer} {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::address (
+\begin{DoxyParamCaption}
+\item[{{\bf reference}}]{r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a4f03d89bcf2b7728237564b79c7ea516}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a98c5265ecbed3f9a745e00637a6f123c}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!address@{address}}
+\index{address@{address}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{address}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf const\-\_\-pointer} {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::address (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-reference}}]{r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a98c5265ecbed3f9a745e00637a6f123c}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a1cf11dd8fbd8194f982dabbae68be68b}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!allocate@{allocate}}
+\index{allocate@{allocate}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{allocate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf pointer} {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::allocate (
+\begin{DoxyParamCaption}
+\item[{{\bf size\-\_\-type}}]{count = {\ttfamily 1}, }
+\item[{typename {\bf Dynamic\-Allocator}$<$ T $>$\-::{\bf const\-\_\-pointer}}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a1cf11dd8fbd8194f982dabbae68be68b}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a998be07e957bdd0b7ac34de181ae50f7}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!construct@{construct}}
+\index{construct@{construct}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{construct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::construct (
+\begin{DoxyParamCaption}
+\item[{{\bf pointer}}]{p, }
+\item[{const T \&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a998be07e957bdd0b7ac34de181ae50f7}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a5cb10c0a9e3c23f66ee56cd012d852c2}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{deallocate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::deallocate (
+\begin{DoxyParamCaption}
+\item[{{\bf pointer}}]{ptr, }
+\item[{{\bf size\-\_\-type}}]{count = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a5cb10c0a9e3c23f66ee56cd012d852c2}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a1734a7398ced6882115743f938be9a77}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!destroy@{destroy}}
+\index{destroy@{destroy}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{destroy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf pointer}}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a1734a7398ced6882115743f938be9a77}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a6a9ef62e15aa9e3cfae93570e3bab145}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!max\-\_\-size@{max\-\_\-size}}
+\index{max\-\_\-size@{max\-\_\-size}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{max\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf size\-\_\-type} {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::max\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a6a9ef62e15aa9e3cfae93570e3bab145}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a822eab56a3d8eaf52592da6a29018a41}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!mutex@{mutex}}
+\index{mutex@{mutex}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{mutex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ crap\-::threading\-::\-Mutex$\ast$ {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::{\bf mutex} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a822eab56a3d8eaf52592da6a29018a41}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a3db59cc87b49f4ebd3d5b87233b12990}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{{\bf Dynamic\-Allocator}$<$ T $>$ const \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a3db59cc87b49f4ebd3d5b87233b12990}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a15165a431d05919333b48a46529e321d}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!operator=@{operator=}}
+\index{operator=@{operator=}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Dynamic\-Allocator}\& {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dynamic\-Allocator}$<$ T $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a15165a431d05919333b48a46529e321d}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a74d7390d46f343bc4d1dc35569caf9fa}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!operator==@{operator==}}
+\index{operator==@{operator==}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf Dynamic\-Allocator}$<$ T $>$ const \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a74d7390d46f343bc4d1dc35569caf9fa}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_aeb38d63da16a7c69ce8714d127d3a9fa}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T\& {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_aeb38d63da16a7c69ce8714d127d3a9fa}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_ab7488a1c8177ec2c5c0af8e65df04c64}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T\& {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{{\bf u64}}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_ab7488a1c8177ec2c5c0af8e65df04c64}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_ac5b63c7fc39aca96441922f44f53e922}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!size@{size}}
+\index{size@{size}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf u64} {\bf crap\-::memory\-::\-Dynamic\-Allocator}$<$ T $>$\-::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_ac5b63c7fc39aca96441922f44f53e922}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classcrap_1_1memory_1_1_dynamic_allocator_a765efe37ddf5e7be9f9c60062e75cfd7}{\index{crap\-::memory\-::\-Dynamic\-Allocator@{crap\-::memory\-::\-Dynamic\-Allocator}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!crap::memory::DynamicAllocator@{crap\-::memory\-::\-Dynamic\-Allocator}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ template$<$typename U $>$ std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{out, }
+\item[{const {\bf Dynamic\-Allocator}$<$ U $>$ \&}]{mem\-Block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classcrap_1_1memory_1_1_dynamic_allocator_a765efe37ddf5e7be9f9c60062e75cfd7}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/mnt/windows/data/\-Programmierung/\-C\-R\-A\-P/src/crap/depricated/memory/\hyperlink{dynamicallocator_8h}{dynamicallocator.\-h}\end{DoxyCompactItemize}

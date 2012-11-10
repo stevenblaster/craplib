@@ -1,21 +1,19 @@
 ////////////////////////////////////////////////////////
-//  CRAP Library
-//		@file vector.h
-//
-//	Creator:
-//		Steffen Kopany <steffen@kopany.at>
+//	CRAP Library
+//!		@file vector.h
 //
 //	Author(s):
-// 		@author Steffen Kopany <steffen@kopany.at>
+//! 	@author Steffen Kopany <steffen@kopany.at>
 //
-//	Copyright (c) 2012 Steffen Kopany
+//	Copyright:
+//!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//		@brief Placeholder for own implementation
+//!		@brief Placeholder for own implementation
 //		currently using EASTL
 //
 //	Status (scratch, developed, final):
-//		@status scratch
+//!		@version scratch
 //
 ////////////////////////////////////////////////////////
 #pragma once
@@ -35,6 +33,6 @@ namespace crap
 	};
 }
 
-// @todo static vector
+//! @todo static vector
 
 #endif	// CRAP_CONTAINER_VECTOR_H

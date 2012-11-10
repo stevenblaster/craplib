@@ -1,0 +1,28 @@
+var classcrap_1_1math =
+[
+    [ "acos", "classcrap_1_1math.html#a4badbf89510cb9ad5b8ce93268bbfc9f", null ],
+    [ "acosh", "classcrap_1_1math.html#a08789ae66bd2c2c1c89ee699b94084f7", null ],
+    [ "asin", "classcrap_1_1math.html#a9b6dd7222bafbd9e50146890f18fc1d4", null ],
+    [ "asinh", "classcrap_1_1math.html#a2f6427fa1838db06950127760fdef1e0", null ],
+    [ "atan", "classcrap_1_1math.html#af8bdf37dc911e4a8c5c0ab9308bc3c7c", null ],
+    [ "atan2", "classcrap_1_1math.html#a0e1f655ac16d51675531c0a9529cc641", null ],
+    [ "atanh", "classcrap_1_1math.html#ac90c2fe359767a341f8beca6d232df78", null ],
+    [ "cos", "classcrap_1_1math.html#a387a10534e5206369e1fae55023eb533", null ],
+    [ "cosh", "classcrap_1_1math.html#a02c923feb57285321866d6886f509c25", null ],
+    [ "drem", "classcrap_1_1math.html#a78557527417d59dd3be3c27bb9cc041d", null ],
+    [ "exp", "classcrap_1_1math.html#adefd5c2329265c8c41c2d698f5be3321", null ],
+    [ "exp2", "classcrap_1_1math.html#a2971428e918a5a5515eacce5f36748a9", null ],
+    [ "fmod", "classcrap_1_1math.html#abd7ed0b391a065946d304acfbff17b3c", null ],
+    [ "frac", "classcrap_1_1math.html#a5df2cde4c714d82fd372a083f36c7324", null ],
+    [ "log", "classcrap_1_1math.html#a064d14a37a3e764e5c3b427d47a8e725", null ],
+    [ "log2", "classcrap_1_1math.html#ad39054c4d325896b0037d51f40dcb3e3", null ],
+    [ "modf", "classcrap_1_1math.html#a5055faf0d13c15d1eefaaa25a71ec783", null ],
+    [ "pow", "classcrap_1_1math.html#af052f0b864810d1dbf16eb30e94f0d43", null ],
+    [ "sin", "classcrap_1_1math.html#a8f0157711f1b633873795da39bb79af1", null ],
+    [ "sincos", "classcrap_1_1math.html#adf742e2d86fb807a6a96da3223eb003e", null ],
+    [ "sinh", "classcrap_1_1math.html#acc79f62c7f592e3cd7af41bdba51dbca", null ],
+    [ "tan", "classcrap_1_1math.html#ae17c7f66d0fda534d03ab430518e4492", null ],
+    [ "tanh", "classcrap_1_1math.html#a4b929f1c2b7d09a1ff8e7e8026c18b7a", null ],
+    [ "trunc", "classcrap_1_1math.html#addea05390af4414d2b0eca120004b92d", null ],
+    [ "wrap", "classcrap_1_1math.html#a5b7b183b035126370b273097c3203f98", null ]
+];
