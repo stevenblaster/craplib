@@ -54,7 +54,10 @@ SOURCES += \
     ../../../src/crapunittests/container_list.cpp \
     ../../../src/crapunittests/container_bitset.cpp \
     ../../../src/crapunittests/container_bitmask.cpp \
-    ../../../src/crapunittests/threading_functorthread.cpp
+    ../../../src/crapunittests/threading_functorthread.cpp \
+    ../../../src/crapunittests/types_vector2.cpp \
+    ../../../src/crapunittests/types_vector3.cpp \
+    ../../../src/crapunittests/types_vector4.cpp
 
 
 unix|win32: LIBS += -L$$PWD/../../../bin/crapbase -lCRAPbase
