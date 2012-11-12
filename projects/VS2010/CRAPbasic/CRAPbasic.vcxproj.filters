@@ -173,6 +173,9 @@
     <ClInclude Include="..\..\..\src\crap\types\vector2.h">
       <Filter>types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\matrix3.h">
+      <Filter>types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp">
