@@ -73,6 +73,9 @@ struct vector4
 	//! @brief plus-assign operator
 	vector4& operator+=( const vector4& other );
 
+	//! @brief plus-assign operator using T
+	vector4& operator+=( const T& other );
+
 	//! @brief plus operator
 	vector4 operator+(const vector4& right) const;
 
@@ -81,6 +84,9 @@ struct vector4
 
 	//! @brief minus-assign operator
 	vector4& operator-=( const vector4& other );
+
+	//! @brief minus-assign operator using T
+	vector4& operator-=( const T& other );
 
 	//! @brief minus operator
 	vector4 operator-( const vector4& right ) const;
@@ -91,6 +97,9 @@ struct vector4
 	//! @brief multiply-assign operator
 	vector4& operator*=( const vector4& other );
 
+	//! @brief multiply-assign operator using T
+	vector4& operator*=( const T& other );
+
 	//! @brief multiply operator
 	vector4 operator*( const vector4& right ) const;
 
@@ -99,6 +108,9 @@ struct vector4
 
 	//! @brief divisor-assign operator
 	vector4& operator/=( const vector4& other );
+
+	//! @brief divisor-assign operator using T
+	vector4& operator/=( const T& other );
 
 	//! @brief divisor operator
 	vector4 operator/( const vector4& right) const;
@@ -153,6 +165,16 @@ vector4<T>& vector4<T>::operator+=( const vector4& other )
 }
 
 template<typename T>
+vector4<T>& vector4<T>::operator+=( const T& value )
+{
+	x += value;
+	y += value;
+	z += value;
+	w += value;
+	return *this;
+}
+
+template<typename T>
 vector4<T> vector4<T>::operator+( const vector4& right ) const
 {
 	vector4 left(*this);
@@ -182,6 +204,17 @@ vector4<T>& vector4<T>::operator-=( const vector4& other )
 }
 
 template<typename T>
+vector4<T>& vector4<T>::operator-=( const T& value )
+{
+	x -= value;
+	y -= value;
+	z -= value;
+	w -= value;
+	return *this;
+}
+
+
+template<typename T>
 vector4<T> vector4<T>::operator-( const vector4& right ) const
 {
 	vector4 left(*this);
@@ -207,6 +240,16 @@ vector4<T>& vector4<T>::operator*=( const vector4& other )
 	y *= other.y;
 	z *= other.z;
 	w *= other.x;
+	return *this;
+}
+
+template<typename T>
+vector4<T>& vector4<T>::operator*=( const T& value )
+{
+	x *= value;
+	y *= value;
+	z *= value;
+	w *= value;
 	return *this;
 }
 
@@ -240,6 +283,16 @@ vector4<T>& vector4<T>::operator/=( const vector4& other )
 }
 
 template<typename T>
+vector4<T>& vector4<T>::operator/=( const T& value )
+{
+	x /= value;
+	y /= value;
+	z /= value;
+	w /= value;
+	return *this;
+}
+
+template<typename T>
 vector4<T> vector4<T>::operator/( const vector4& right ) const
 {
 	vector4 left(*this);
@@ -261,6 +314,7 @@ vector4<T> vector4<T>::operator/( const T& right ) const
 //typedefs
 typedef vector4<i16> vec4s;
 typedef vector4<i32> vec4i;
+typedef vector4<i64> vec4l;
 typedef vector4<f32> vec4f;
 typedef vector4<f64> vec4d;
 

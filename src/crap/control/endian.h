@@ -137,7 +137,7 @@ void* endian::swap_bytes( void* swapMe )
 template<typename T>
 T& endian::swap( T& swapMe )
 {
-	return *((T*)swap_bytes<sizeof(swapMe)>(&swapMe));
+	return *((T*)swap_bytes<sizeof(swapMe)>((void*)&swapMe));
 }
 
 template<>

@@ -60,7 +60,12 @@ HEADERS += \
     ../../../src/crap/threading/functorthread.h \
     ../../../src/crap/types/vector2.h \
     ../../../src/crap/types/vector3.h \
-    ../../../src/crap/types/vector4.h
+    ../../../src/crap/types/vector4.h \
+    ../../../src/crap/types/matrix3.h \
+    ../../../src/crap/types/matrix2.h \
+    ../../../src/crap/types/matrix4.h \
+    ../../../src/crap/network/addressip4.h \
+    ../../../src/crap/network/addressip6.h
 
 SOURCES += \
     ../../../src/crap/control/time.cpp \
@@ -74,4 +79,6 @@ SOURCES += \
     ../../../src/crap/threading/mutex.cpp \
     ../../../src/crap/control/limits.cpp \
     ../../../src/crap/control/zero.cpp \
-    ../../../src/crap/container/bitmask.cpp
+    ../../../src/crap/container/bitmask.cpp \
+    ../../../src/crap/network/addressip4.cpp \
+    ../../../src/crap/network/addressip6.cpp

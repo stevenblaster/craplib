@@ -57,7 +57,11 @@ SOURCES += \
     ../../../src/crapunittests/threading_functorthread.cpp \
     ../../../src/crapunittests/types_vector2.cpp \
     ../../../src/crapunittests/types_vector3.cpp \
-    ../../../src/crapunittests/types_vector4.cpp
+    ../../../src/crapunittests/types_vector4.cpp \
+    ../../../src/crapunittests/types_matrix3.cpp \
+    ../../../src/crapunittests/types_matrix2.cpp \
+    ../../../src/crapunittests/types_matrix4.cpp \
+    ../../../src/crapunittests/network_addressip4.cpp
 
 
 unix|win32: LIBS += -L$$PWD/../../../bin/crapbase -lCRAPbase
