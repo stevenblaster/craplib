@@ -133,6 +133,9 @@
     <ClCompile Include="..\..\..\src\crapunittests\threading_thread.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\types_staticstring.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\types_string.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\types_vector2.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\types_vector3.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\types_vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\crapunittests\unittest_precompiled.h" />

@@ -136,6 +136,9 @@
     <ClInclude Include="..\..\..\src\crap\threading\thread.h" />
     <ClInclude Include="..\..\..\src\crap\types\staticstring.h" />
     <ClInclude Include="..\..\..\src\crap\types\string.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector2.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector3.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp" />
