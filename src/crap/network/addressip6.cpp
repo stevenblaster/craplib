@@ -69,7 +69,7 @@ address_ip6& address_ip6::operator=( const address_ip6& other )
 	return *this;
 }
 
-ip_v6 address_ip6::ip_to_network( void ) const
+address_ip6::ip_v6 address_ip6::ip_to_network( void ) const
 {
 	return endian::to_big(address);
 }

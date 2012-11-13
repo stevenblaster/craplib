@@ -31,6 +31,7 @@
 #include "config/memory.h"
 #include "config/simd.h"
 #include "config/math.h"
+#include "config/network.h"
 
 
 
