@@ -36,8 +36,8 @@ address_ip6::address_ip6( const address_ip6& other )
 
 address_ip6::address_ip6( const u64& addr, const u64& ifc, const u16& prt )
 {
-	address.ip = addr;
-	address.interface = ifc;
+	address.front_part = addr;
+	address.back_part = ifc;
 	port = prt;
 }
 

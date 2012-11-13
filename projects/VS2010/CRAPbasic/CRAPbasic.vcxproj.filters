@@ -22,6 +22,9 @@
     <Filter Include="types">
       <UniqueIdentifier>{e8127efb-d067-4e21-a3b6-e2b786b62e3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{763c2e1d-e04d-4712-8c2b-eb1c23c53307}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -176,6 +179,24 @@
     <ClInclude Include="..\..\..\src\crap\types\matrix3.h">
       <Filter>types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\network\headers.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\network\addressip4.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\network\addressip6.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\matrix2.h">
+      <Filter>types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\matrix4.h">
+      <Filter>types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\network.h">
+      <Filter>config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp">
@@ -213,6 +234,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp">
       <Filter>threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\network\headers.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp">
+      <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

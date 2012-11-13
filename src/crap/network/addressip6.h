@@ -31,8 +31,8 @@ struct address_ip6
 	//! @brief data structure
 	struct ip_v6
 	{
-		u64 ip;
-		u64 interface;
+		u64 front_part;
+		u64 back_part;
 	};
 
 	union

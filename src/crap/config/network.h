@@ -25,8 +25,9 @@
 
 #if defined(CRAP_PLATFORM_WIN)
 
-#include <winsock2.h>
-#pragma comment(lib, "wsock32.lib")
+//! @brief looks like windows.h contains that already somehwhere
+//#include <winsock2.h>
+//#pragma comment(lib, "wsock32.lib")
 
 #else
 
