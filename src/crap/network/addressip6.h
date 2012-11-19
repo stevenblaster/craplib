@@ -29,19 +29,7 @@ namespace crap
 struct address_ip6
 {
 	//! @brief data structure
-	struct ip_v6
-	{
-		u64 ip;
-		u64 interface;
-	};
-
-	union
-	{
-		u16 a,b,c,d,e,f,g,h;
-		ip_v6 address;
-	};
-
-	u16 port;
+	sockaddr_in6 socket_address;
 
 	//! @brief default constructor
 	address_ip6(void);
@@ -50,23 +38,26 @@ struct address_ip6
 	address_ip6( const address_ip6& other );
 
 	//! @brief values constructor
-	address_ip6( const ip_v6& addr, const u16& prt );
+	address_ip6( const u128& addr, const u16& prt );
 
 	//! @brief values constructor
-	address_ip6( const u64& addr, const u64& ifc, const u16& prt );
-
-	//! @brief values constructor
-	address_ip6( const u8& aa, const u8& bb, const u8& cc, const u8& dd,
-				 const u8& ee, const u8& ff, const u8& gg, const u8& hh, const u16& prt );
+	address_ip6( const u16& aa, const u16& bb, const u16& cc, const u16& dd,
+				 const u16& ee, const u16& ff, const u16& gg, const u16& hh, const u16& prt );
 
 	//! @brief assignment operator
 	address_ip6& operator=( const address_ip6& other );
 
+	//! @convert ip to local endian
+	u128 get_ip( void ) const;
+
 	//! @convert ip to network endian
-	ip_v6 ip_to_network( void ) const;
+	void set_ip( const u128& ip );
+
+	//! @convert port to local endian
+	u16 get_port( void ) const;
 
 	//! @convert port to network endian
-	u16 port_to_network( void ) const;
+	void set_port( const u16& port );
 };
 
 }	//namespace crap

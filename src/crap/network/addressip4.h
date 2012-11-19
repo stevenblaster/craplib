@@ -20,6 +20,7 @@
 #ifndef CRAP_ADDRESSIP4_H
 #define CRAP_ADDRESSIP4_H
 
+#include "config/network.h"
 #include "control/asserts.h"
 
 //lib namespace
@@ -29,13 +30,7 @@ namespace crap
 struct address_ip4
 {
 	//! @brief data structure
-	union
-	{
-		u8 a,b,c,d;
-		u32 ip;
-	};
-
-	u16 port;
+	sockaddr_in socket_address;
 
 	//! @brief default constructor
 	address_ip4(void);
@@ -52,11 +47,17 @@ struct address_ip4
 	//! @brief assignment operator
 	address_ip4& operator=( const address_ip4& other );
 
-	//! @convert ip to network endian
-	u32 ip_to_network( void ) const;
+	//! @brief convert ip to local endian
+	u32 get_ip( void ) const;
 
-	//! @convert port to network endian
-	u16 port_to_network( void ) const;
+	//! @brief convert ip to network endian
+	void set_ip( const u32& ip );
+
+	//! @brief convert port to local endian
+	u16 get_port( void ) const;
+
+	//! @brief convert port to network endian
+	void set_port( const u16& port );
 };
 
 }	//namespace crap

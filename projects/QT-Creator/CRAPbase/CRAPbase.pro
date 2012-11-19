@@ -67,7 +67,9 @@ HEADERS += \
     ../../../src/crap/network/addressip4.h \
     ../../../src/crap/network/addressip6.h \
     ../../../src/crap/config/network.h \
-    ../../../src/crap/network/headers.h
+    ../../../src/crap/network/headers.h \
+    ../../../src/crap/network/sockets.h \
+    ../../../src/crap/network/packet.h
 
 SOURCES += \
     ../../../src/crap/control/time.cpp \
@@ -84,4 +86,5 @@ SOURCES += \
     ../../../src/crap/container/bitmask.cpp \
     ../../../src/crap/network/addressip4.cpp \
     ../../../src/crap/network/addressip6.cpp \
-    ../../../src/crap/network/headers.cpp
+    ../../../src/crap/network/headers.cpp \
+    ../../../src/crap/network/sockets.cpp

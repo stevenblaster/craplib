@@ -38,5 +38,4 @@
 
 #endif
 
-
 #endif // CRAP_CONFIG_NETWORK_H

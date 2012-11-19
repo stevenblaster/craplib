@@ -17,6 +17,7 @@
 ////////////////////////////////////////////////////////
 
 #include "control/endian.h"
+#include "network/sockets.h"
 #include "network/addressip4.h"
 
 //lib namespace
@@ -25,46 +26,55 @@ namespace crap
 
 address_ip4::address_ip4( void )
 {
-
+	socket_address.sin_family = ip_v4;
 }
 
 address_ip4::address_ip4( const address_ip4& other )
 {
-	ip = other.ip;
-	port = other.port;
+	socket_address.sin_addr = other.socket_address.sin_addr;
+	socket_address.sin_port = other.socket_address.sin_port;
 }
 
 address_ip4::address_ip4( const u8& aa, const u8& bb, const u8& cc, const u8& dd, const u16& prt )
 {
-	a = aa;
-	b = bb;
-	c = cc;
-	d = dd;
-	port = prt;
+	u32 addr = ( aa << 24 ) | ( bb << 16 ) | ( cc << 8 ) | dd;
+	socket_address.sin_addr.s_addr = htonl(addr);
+	socket_address.sin_port = htons(prt);
 }
 
 address_ip4::address_ip4( const u32& addr, const u16& prt )
 {
-	ip = addr;
-	port = prt;
+	socket_address.sin_addr.s_addr = htonl(addr);
+	socket_address.sin_port = htons(prt);
 }
 
 address_ip4& address_ip4::operator=( const address_ip4& other )
 {
 	CRAP_ASSERT_DEBUG(this != &other, "Assignment operator on same object");
-	ip = other.ip;
-	port = other.port;
+	socket_address.sin_addr = other.socket_address.sin_addr;
+	socket_address.sin_port = other.socket_address.sin_port;
 	return *this;
 }
 
-u32 address_ip4::ip_to_network( void ) const
+u32 address_ip4::get_ip( void ) const
 {
-	return endian::to_big(ip);
+	return ntohl(socket_address.sin_addr.s_addr);
 }
 
-u16 address_ip4::port_to_network( void ) const
+void address_ip4::set_ip( const u32& ip )
 {
-	return endian::to_big(port);
+	socket_address.sin_addr.s_addr = htonl(ip);
 }
+
+u16 address_ip4::get_port( void ) const
+{
+	return ntohl(socket_address.sin_port);
+}
+
+void address_ip4::set_port( const u16& port )
+{
+	socket_address.sin_port = htonl(port);
+}
+
 
 }	//namespace crap

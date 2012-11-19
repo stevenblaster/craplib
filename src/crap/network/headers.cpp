@@ -147,13 +147,13 @@ void ip_header_v4::create_checksum( void )
 //! @brief set source address
 void ip_header_v4::set_source_address( address_ip4 src_address )
 {
-	source_address = src_address.ip_to_network();
+	source_address = src_address.socket_address.sin_addr.s_addr;
 }
 
 //! @brief set destination address
 void ip_header_v4::set_destination_address( address_ip4 dst_address )
 {
-	destination_address = dst_address.ip_to_network();
+	destination_address = dst_address.socket_address.sin_addr.s_addr;
 }
 
-}
+}	//namespace crap
