@@ -94,6 +94,7 @@
     <ClInclude Include="..\..\..\src\crap\config\endianness.h" />
     <ClInclude Include="..\..\..\src\crap\config\math.h" />
     <ClInclude Include="..\..\..\src\crap\config\memory.h" />
+    <ClInclude Include="..\..\..\src\crap\config\network.h" />
     <ClInclude Include="..\..\..\src\crap\config\platforms.h" />
     <ClInclude Include="..\..\..\src\crap\config\processors.h" />
     <ClInclude Include="..\..\..\src\crap\config\simd.h" />
@@ -126,6 +127,9 @@
     <ClInclude Include="..\..\..\src\crap\memory\allocatormalloc.h" />
     <ClInclude Include="..\..\..\src\crap\memory\memorypool.h" />
     <ClInclude Include="..\..\..\src\crap\memory\memorytracker.h" />
+    <ClInclude Include="..\..\..\src\crap\network\addressip4.h" />
+    <ClInclude Include="..\..\..\src\crap\network\addressip6.h" />
+    <ClInclude Include="..\..\..\src\crap\network\headers.h" />
     <ClInclude Include="..\..\..\src\crap\precompiled.h" />
     <ClInclude Include="..\..\..\src\crap\threading\functorthread.h" />
     <ClInclude Include="..\..\..\src\crap\threading\mutex.h" />
@@ -134,7 +138,9 @@
     <ClInclude Include="..\..\..\src\crap\threading\semaphore.h" />
     <ClInclude Include="..\..\..\src\crap\threading\sleep.h" />
     <ClInclude Include="..\..\..\src\crap\threading\thread.h" />
+    <ClInclude Include="..\..\..\src\crap\types\matrix2.h" />
     <ClInclude Include="..\..\..\src\crap\types\matrix3.h" />
+    <ClInclude Include="..\..\..\src\crap\types\matrix4.h" />
     <ClInclude Include="..\..\..\src\crap\types\staticstring.h" />
     <ClInclude Include="..\..\..\src\crap\types\string.h" />
     <ClInclude Include="..\..\..\src\crap\types\vector2.h" />
@@ -148,6 +154,9 @@
     <ClCompile Include="..\..\..\src\crap\control\time.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\zero.cpp" />
     <ClCompile Include="..\..\..\src\crap\memory\memorytracker.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\headers.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp" />
