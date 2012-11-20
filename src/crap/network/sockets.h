@@ -163,6 +163,13 @@ i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::init( u16 port )
 	}
 
 	CRAP_ASSERT_DEBUG(result != -1, "Couldn't bind socket to port");
+
+#if defined(CRAP_PLATFORM_WINDOWS)
+	WSADATA wsaData;
+	WSAStartup( MAKEWORD(2,2), &wsaData );
+	CRAP_ASSERT_DEBUG(wsaData == NO_ERROR, "Couldn't setup Windows socket (wsaData)");
+#endif
+
 	return result;
 }
 
@@ -170,6 +177,7 @@ template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYP
 void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::deinit( void )
 {
 #if defined(CRAP_PLATFORM_WIN)
+	WSACleanup();
 	closesocket( _socket );
 #else
 	close( _socket );

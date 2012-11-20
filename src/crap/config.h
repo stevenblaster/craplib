@@ -29,6 +29,7 @@
 #include "config/endianness.h"
 #include "config/threading.h"
 #include "config/memory.h"
+#include "config/network.h"
 #include "config/simd.h"
 #include "config/math.h"
 #include "config/network.h"

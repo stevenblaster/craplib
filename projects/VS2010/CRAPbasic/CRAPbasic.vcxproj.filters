@@ -197,6 +197,12 @@
     <ClInclude Include="..\..\..\src\crap\config\network.h">
       <Filter>config</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\network\sockets.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\network\packet.h">
+      <Filter>network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp">
@@ -242,6 +248,9 @@
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\network\sockets.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>

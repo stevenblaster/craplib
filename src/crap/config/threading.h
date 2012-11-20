@@ -29,7 +29,7 @@
 
 //mean and lean
 #define WIN32_MEAN_AND_LEAN
-#include <windows.h>
+///#include <windows.h> is in winsock32.h // network settings
 
 //mutex
 #define MUTEX_HANDLE CRITICAL_SECTION

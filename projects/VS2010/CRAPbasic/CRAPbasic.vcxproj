@@ -130,6 +130,8 @@
     <ClInclude Include="..\..\..\src\crap\network\addressip4.h" />
     <ClInclude Include="..\..\..\src\crap\network\addressip6.h" />
     <ClInclude Include="..\..\..\src\crap\network\headers.h" />
+    <ClInclude Include="..\..\..\src\crap\network\packet.h" />
+    <ClInclude Include="..\..\..\src\crap\network\sockets.h" />
     <ClInclude Include="..\..\..\src\crap\precompiled.h" />
     <ClInclude Include="..\..\..\src\crap\threading\functorthread.h" />
     <ClInclude Include="..\..\..\src\crap\threading\mutex.h" />
@@ -157,6 +159,7 @@
     <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\headers.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\sockets.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp" />

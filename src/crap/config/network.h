@@ -25,7 +25,8 @@
 
 #if defined(CRAP_PLATFORM_WIN)
 
-#include <winsock2.h>
+//#include <winsock2.h> /* already in windows.h */
+#include <ws2tcpip.h>
 #pragma comment(lib, "wsock32.lib")
 
 #else

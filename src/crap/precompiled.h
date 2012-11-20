@@ -40,7 +40,7 @@
 #include "control/asserts.h"
 
 //platform specific stuff
-#ifdef CRAP_TARGET_WINDOWS
+#ifdef CRAP_PLATFORM_WIN
 #include <malloc.h>
 #pragma warning(disable : 4800)
 #endif
