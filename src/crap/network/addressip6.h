@@ -47,17 +47,20 @@ struct address_ip6
 	//! @brief assignment operator
 	address_ip6& operator=( const address_ip6& other );
 
-	//! @convert ip to local endian
+	//! @brief convert ip to local endian
 	u128 get_ip( void ) const;
 
-	//! @convert ip to network endian
+	//! @brief convert ip to network endian
 	void set_ip( const u128& ip );
 
-	//! @convert port to local endian
+	//! @brief convert port to local endian
 	u16 get_port( void ) const;
 
-	//! @convert port to network endian
+	//! @brief convert port to network endian
 	void set_port( const u16& port );
+
+	//! @brief special ip address
+	static address_ip6 any;
 };
 
 }	//namespace crap

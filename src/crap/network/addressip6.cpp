@@ -108,5 +108,7 @@ void address_ip6::set_port( const u16& port )
 	socket_address.sin6_port = htons(port);
 }
 
+address_ip6 address_ip6::any = address_ip6(0,0,0,0,0,0,0,0,0);
+
 }	//namespace crap
 

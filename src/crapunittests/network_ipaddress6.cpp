@@ -8,7 +8,7 @@ namespace
 
 TEST(NetworkAddressIP6Title)
 {
-    std::cout << "Testing \"types/addressip6.h\"" << std::endl;
+    std::cout << "Testing \"network/addressip6.h\"" << std::endl;
 }
 
 }   // namespace

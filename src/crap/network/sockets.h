@@ -21,6 +21,11 @@
 #ifndef CRAP_NETWORK_SOCKETS_H
 #define CRAP_NETWORK_SOCKETS_H
 
+//includes
+#include "network/addressip4.h"
+#include "network/addressip6.h"
+#include "network/packet.h"
+
 //lib namespace
 namespace crap
 {
@@ -54,11 +59,6 @@ enum socket_type
 
 typedef i32 socket_t;
 
-//predefines
-struct address_ip4;
-struct address_ip6;
-template<typename ADDRESS_T, size_t32 S> struct packet;
-
 /*
  *! @brief socket class...
  */
@@ -80,20 +80,137 @@ public:
 	//! @brief destructor
 	~socket( void );
 
-	//! @brief init socket
-	u32 init( void );
+	//! @brief setup blocking mode
+	void set_blocking(bool block);
 
 	//! @brief init socket
-	u32 deinit( void );
+	i32 init( u16 port );
+
+	//! @brief deinit socket
+	void deinit( void );
 
 	//! @brief send data
 	template<typename ADDRESS_T, size_t32 S>
-	u32 send( const packet<ADDRESS_T,S>& pack );
+	i32 send( const packet<ADDRESS_T,S>& pack );
 
 	//! @brief receive data
 	template<typename ADDRESS_T, size_t32 S>
-	u32 receive( packet<ADDRESS_T,S>& pack );
+	i32 receive( packet<ADDRESS_T,S>& pack );
 };
+
+/*
+ *! @brief definition
+ */
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::socket( void )
+{
+	_socket = ::socket( FAMILY_T, DATATYPE_T, SOCKTYPE_T );
+	CRAP_ASSERT_DEBUG( _socket >= 0, "Socket cound't be created" );
+}
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::socket(  const socket& other  )
+{
+	_socket = other._socket;
+}
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::~socket( void )
+{
+	deinit();
+}
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::set_blocking(bool block)
+{
+#if defined(CRAP_PLATFORM_WIN)
+
+	DWORD nonBlocking = 1;
+	int result = ioctlsocket( _socket, FIONBIO, &nonBlocking );
+	CRAP_ASSERT_DEBUG(result == 0, "Couldn't set socket non-blocking");
+
+#else
+
+	int result = fcntl( _socket, F_SETFL, O_NONBLOCK, 1 );
+	CRAP_ASSERT_DEBUG(result != -1, "Couldn't set socket non-blocking");
+
+#endif
+}
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::init( u16 port )
+{
+	i32 result = -1;
+
+	if( FAMILY_T == ip_v4 )
+	{
+		address_ip4 address = address_ip4::any;
+		address.set_port(port);
+
+		result = bind( _socket, (const sockaddr*) &address.socket_address, sizeof(sockaddr_in) );
+	}
+	else if( FAMILY_T == ip_v6 )
+	{
+		address_ip6 address = address_ip6::any;
+		address.set_port(port);
+
+		result = bind( _socket, (const sockaddr*) &address.socket_address, sizeof(sockaddr_in6) );
+	}
+	else
+	{
+		CRAP_ASSERT_ERROR("socket family not implemented yet");
+	}
+
+	CRAP_ASSERT_DEBUG(result != -1, "Couldn't bind socket to port");
+	return result;
+}
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::deinit( void )
+{
+#if defined(CRAP_PLATFORM_WIN)
+	closesocket( _socket );
+#else
+	close( _socket );
+#endif
+}
+
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+template<typename ADDRESS_T, size_t32 S>
+i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::send( const packet<ADDRESS_T,S>& pack )
+{
+	i32 result = sendto( _socket, (const char*)pack.data, S, 0,
+						 (sockaddr*)&pack.address.socket_address, sizeof(pack.address.socket_address) );
+
+	CRAP_ASSERT_DEBUG(result == S, "Couldn't send packet");
+	return result;
+}
+
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+template<typename ADDRESS_T, size_t32 S>
+i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::receive( packet<ADDRESS_T,S>& pack )
+{
+	//typedef int socklen_t;
+	i32 addr_lenght = sizeof(pack.address.socket_address);
+	i32 result = recvfrom( _socket, (char*)pack.data, S,
+									   0, (sockaddr*)&pack.address.socket_address, &addr_lenght );
+
+	return result; // in case of non blocking we can receive nothing...
+}
+
+//typedefs
+typedef socket<ip_v4, stream, tcp> socket_tcp_ip4;
+typedef socket<ip_v6, stream, tcp> socket_tcp_ip6;
+typedef socket<ip_v4, datagram, udp> socket_udp_ip4;
+typedef socket<ip_v6, datagram, udp> socket_udp_ip6;
+typedef socket<ip_v4, datagram, udp_lite> socket_udplite_ip4;
+typedef socket<ip_v6, datagram, udp_lite> socket_udplite_ip6;
+typedef socket<ip_v4, stream, sctp> socket_sctp_ip4;
+typedef socket<ip_v6, stream, sctp> socket_sctp_ip6;
+typedef socket<ip_v4, raw, raw_data> socket_raw_ip4;
+typedef socket<ip_v6, raw, raw_data> socket_raw_ip6;
 
 }
 

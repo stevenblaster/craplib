@@ -130,12 +130,11 @@ void ip_header_v4::set_protocol( ip_protocol prtcl )
 }
 
 //! @brief create checksum
-void ip_header_v4::create_checksum( void )
+void ip_header_v4::create_checksum( u32 data_size )
 {
 	u32 sum;
-	u32 nwords;
 	u16* buf = (u16*) this;
-	for (sum = 0; nwords > 0; nwords--)
+	for (sum = 0; data_size > 0; --data_size)
 	{
 		sum += *buf++;
 	}

@@ -58,6 +58,9 @@ struct address_ip4
 
 	//! @brief convert port to network endian
 	void set_port( const u16& port );
+
+	//! @brief special address
+	static address_ip4 any;
 };
 
 }	//namespace crap

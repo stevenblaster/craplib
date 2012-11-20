@@ -113,7 +113,7 @@ namespace crap
 		void set_protocol( ip_protocol prtcl );
 
 		//! @brief create checksum
-		void create_checksum( void );
+		void create_checksum( u32 data_size );
 
 		//! @brief set source address
 		void set_source_address( address_ip4 src_address );
@@ -223,7 +223,7 @@ namespace crap
 		void set_lenght( u16 lenght );
 
 		//! @brief creating checksum
-		void create_checksum( void );
+		void create_checksum( u32 data_size );
 	};
 
 	/*
@@ -253,7 +253,7 @@ namespace crap
 		void set_destination_port( u16 prt );
 
 		//! @brief creating checksum
-		void create_checksum( void );
+		void create_checksum( u32 data_size );
 	};
 
 	/*

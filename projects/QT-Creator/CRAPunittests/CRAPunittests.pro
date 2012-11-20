@@ -63,7 +63,9 @@ SOURCES += \
     ../../../src/crapunittests/types_matrix4.cpp \
     ../../../src/crapunittests/network_addressip4.cpp \
     ../../../src/crapunittests/network_ipaddress6.cpp \
-    ../../../src/crapunittests/network_headers.cpp
+    ../../../src/crapunittests/network_headers.cpp \
+    ../../../src/crapunittests/network_packet.cpp \
+    ../../../src/crapunittests/network_sockets.cpp
 
 
 unix|win32: LIBS += -L$$PWD/../../../bin/crapbase -lCRAPbase

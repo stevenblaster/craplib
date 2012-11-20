@@ -76,5 +76,6 @@ void address_ip4::set_port( const u16& port )
 	socket_address.sin_port = htonl(port);
 }
 
+address_ip4 address_ip4::any = address_ip4(0x00000000,0);
 
 }	//namespace crap
