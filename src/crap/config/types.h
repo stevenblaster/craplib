@@ -25,7 +25,6 @@
 #include "config/processors.h"
 #include "config/compilers.h"
 
-
 //standard defs if available
 #if ( defined(CRAP_COMPILER_GCC) || defined(CRAP_COMPILER_VC) )
 	#include <stddef.h>
@@ -119,17 +118,27 @@ typedef double f64;
 typedef u32 size_t32;
 typedef u64 size_t64;
 
+#if defined(CRAP_COMPILER_GCC)
+
+typedef __int128_t i128;
+typedef __uint128_t u128;
+
+#else
+
 typedef
 struct
 {
-	u8  part_8[16];
-	u16 part_16[8];
-	u32 part_32[4];
-	u64 part_64[2];
+	union
+	{
+		u8  part_8[16];
+		u16 part_16[8];
+		u32 part_32[4];
+		u64 part_64[2];
+	};
 }
 u128;
 
-
+#endif
 
 
 //min and max values

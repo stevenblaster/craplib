@@ -23,6 +23,9 @@
 
 #include "config/platforms.h"
 
+//defines
+#define CRAP_MAX_BACKLOG 10
+
 #if defined(CRAP_PLATFORM_WIN)
 
 //#include <winsock2.h> /* already in windows.h */

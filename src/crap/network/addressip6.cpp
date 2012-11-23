@@ -37,32 +37,22 @@ address_ip6::address_ip6( const address_ip6& other )
 
 address_ip6::address_ip6( const u128& ip, const u16& prt )
 {
-	in6_addr swapme;
-	memcpy(&swapme, &ip, 16);
-
-#if defined CRAP_ENDIAN_LITTLE
-	swapme = endian::swap<in6_addr>(swapme);
-#endif
-
-	socket_address.sin6_addr = swapme;
+	u128 tmp = endian::to_big(ip);
+	memcpy(&socket_address.sin6_addr, &tmp, 16);
 	socket_address.sin6_port = htons(prt);
 }
 
 address_ip6::address_ip6( const u16& aa, const u16& bb, const u16& cc, const u16& dd,
 						  const u16& ee, const u16& ff, const u16& gg, const u16& hh, const u16& prt )
 {
-	in6_addr swapme;
 	u128 ip;
 
-	ip.part_64[0] = ( (u64)aa << 48 ) | ( (u64)bb << 32 ) | ( (u64)cc << 16 ) | dd;
-	ip.part_64[1] = ( (u64)ee << 48 ) | ( (u64)ff << 32 ) | ( (u64)gg << 16 ) | hh;
-	memcpy(&swapme, &ip, 16);
+	ip = ( (u128)aa << 112 ) | ( (u128)bb << 96 ) | ( (u128)cc << 80 ) | ( (u128)dd << 64 ) |
+		( (u128)ee << 48 ) | ( (u128)ff << 32 ) | ( (u128)gg << 16 ) | hh;
 
-#if defined CRAP_ENDIAN_LITTLE
-	swapme = endian::swap<in6_addr>(swapme);
-#endif
+	ip = endian::to_big(ip);
 
-	socket_address.sin6_addr = swapme;
+	memcpy(&socket_address.sin6_addr, &ip, 16);
 	socket_address.sin6_port = htons(prt);
 }
 
@@ -76,26 +66,13 @@ address_ip6& address_ip6::operator=( const address_ip6& other )
 
 u128 address_ip6::get_ip( void ) const
 {
-	u128 swapme;
-	memcpy(&swapme, &socket_address.sin6_addr, 16);
-
-#if defined CRAP_ENDIAN_LITTLE
-	swapme = endian::swap<u128>(swapme);
-#endif
-
-	return swapme;
+	return endian::big_to_local( *((u128*)&socket_address.sin6_addr) );
 }
 
 void address_ip6::set_ip( const u128& ip )
 {
-	in6_addr swapme;
-	memcpy(&swapme, &ip, 16);
-
-#if defined CRAP_ENDIAN_LITTLE
-	swapme = endian::swap<in6_addr>(swapme);
-#endif
-
-	socket_address.sin6_addr = swapme;
+	u128 tmp = endian::to_big(ip);
+	memcpy(&socket_address.sin6_addr, &tmp, 16);
 }
 
 u16 address_ip6::get_port( void ) const

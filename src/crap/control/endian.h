@@ -53,30 +53,29 @@ class endian
 		inline static b8 is_little( void );
 
 		//swaps any size of bytes
-		//TODO: is a template necessary?
 		template<size_t32 S>
 		static void* swap_bytes( void* swapMe );
 
 		//uses compiler implemented swaps or the swapBytes() method
 		//see spezialization a few lines below
 		template<typename T>
-		static T& swap( T& swapMe );
+		static T swap( const T& swapMe );
 
 		//swaps bytes is system is little endian or simply returns value
 		template<typename T>
-		static T& to_big( T& swapMe );
+		static T to_big( const T& swapMe );
 
 		//swaps bytes is system is big endian or simply returns value
 		template<typename T>
-		static T& to_little( T& swapMe );
+		static T to_little( const T& swapMe );
 
 		//swaps bytes is system is little endian or simply returns value
 		template<typename T>
-		static T& big_to_local( T& swapMe );
+		static T big_to_local( const T& swapMe );
 
 		//swaps bytes is system is big endian or simply returns value
 		template<typename T>
-		static T& little_to_local( T& swapMe );
+		static T little_to_local( const T& swapMe );
 };
 
 //common method of checking byte order
@@ -135,9 +134,10 @@ void* endian::swap_bytes( void* swapMe )
 }
 
 template<typename T>
-T& endian::swap( T& swapMe )
+T endian::swap( const T& swapMe )
 {
-	return *((T*)swap_bytes<sizeof(swapMe)>((void*)&swapMe));
+	T other = swapMe;
+	return *((T*)swap_bytes<sizeof(T)>((void*)&other));
 }
 
 template<>
@@ -165,33 +165,62 @@ void* endian::swap_bytes<2>( void* swapMe )
 template<>
 void* endian::swap_bytes<4>( void* swapMe )
 {
-	u32& ref = *( ( u32* )swapMe );
 #if defined(CRAP_COMPILER_VC)
+	u32& ref = *( ( u32* )swapMe );
 	ref = _byteswap_ulong( ref );
-#elif defined(CRAP_COMPILER_GCC)
-	ref =  __builtin_bswap32( ref );
-#else
-	ref = swap<4>( ref );
-#endif
 	return &ref;
+#elif defined(CRAP_COMPILER_GCC)
+	u32& ref = *( ( u32* )swapMe );
+	ref =  __builtin_bswap32( ref );
+	return &ref;
+#else
+	u64 indexLow = 0;
+	u64 indexHigh = S-1;
+	u8* bytes = static_cast<u8*>( swapMe );
+
+	while( indexLow < indexHigh )
+	{
+		u8 tmp = bytes[indexLow];
+		bytes[indexLow] = bytes[indexHigh];
+		bytes[indexHigh] = tmp;
+		++indexLow;
+		--indexHigh;
+	}
+	return swapMe;
+#endif
+
 }
 
 template<>
 void* endian::swap_bytes<8>( void* swapMe )
 {
-	u64& ref = *( ( u64* )swapMe );
 #if defined(CRAP_COMPILER_VC)
+	u64& ref = *( ( u64* )swapMe );
 	ref = _byteswap_uint64( ref );
-#elif defined(CRAP_COMPILER_GCC)
-	ref = __builtin_bswap64 ( ref );
-#else
-	ref = swap<8>( ref );
-#endif
 	return &ref;
+#elif defined(CRAP_COMPILER_GCC)
+	u64& ref = *( ( u64* )swapMe );
+	ref = __builtin_bswap64 ( ref );
+	return &ref;
+#else
+	u64 indexLow = 0;
+	u64 indexHigh = S-1;
+	u8* bytes = static_cast<u8*>( swapMe );
+
+	while( indexLow < indexHigh )
+	{
+		u8 tmp = bytes[indexLow];
+		bytes[indexLow] = bytes[indexHigh];
+		bytes[indexHigh] = tmp;
+		++indexLow;
+		--indexHigh;
+	}
+	return swapMe;
+#endif
 }
 
 template<typename T>
-T& endian::to_big( T& swapMe )
+T endian::to_big( const T& swapMe )
 {
 	if( endian::is_little() )
 		return swap<T>( swapMe );
@@ -200,7 +229,7 @@ T& endian::to_big( T& swapMe )
 }
 
 template<typename T>
-T& endian::to_little( T& swapMe )
+T endian::to_little( const T& swapMe )
 {
 	if( endian::is_big() )
 		return swap<T>( swapMe );
@@ -209,7 +238,7 @@ T& endian::to_little( T& swapMe )
 }
 
 template<typename T>
-T& endian::big_to_local( T& swapMe )
+T endian::big_to_local( const T& swapMe )
 {
 	if( endian::is_little() )
 		return swap<T>( swapMe );
@@ -218,7 +247,7 @@ T& endian::big_to_local( T& swapMe )
 }
 
 template<typename T>
-T& endian::little_to_local( T& swapMe )
+T endian::little_to_local( const T& swapMe )
 {
 	if( endian::is_big() )
 		return swap<T>( swapMe );

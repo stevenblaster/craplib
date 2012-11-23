@@ -96,12 +96,24 @@ public:
 	//! @brief receive data
 	template<typename ADDRESS_T, size_t32 S>
 	i32 receive( packet<ADDRESS_T,S>& pack );
+
+	//! @brief set socket listening (tcp/sctp only)
+	i32 listen( void );
+
+	//! @brief connect to address (tcp / sctp only )
+	template<typename ADDRESS_T>
+	i32 connect( const ADDRESS_T& address );
+
+	//! @brief accept incoming connection (tcp / sctp only )
+	template<typename ADDRESS_T>
+	i32 accept( ADDRESS_T& address );
 };
 
 /*
  *! @brief definition
  */
 
+//constructor
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::socket( void )
 {
@@ -109,18 +121,21 @@ socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::socket( void )
 	CRAP_ASSERT_DEBUG( _socket >= 0, "Socket cound't be created" );
 }
 
+// copy constructor
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::socket(  const socket& other  )
 {
 	_socket = other._socket;
 }
 
+//destructor
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::~socket( void )
 {
 	deinit();
 }
 
+//set/unset blocking
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::set_blocking(bool block)
 {
@@ -138,6 +153,7 @@ void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::set_blocking(bool block)
 #endif
 }
 
+//init (bind) socket
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::init( u16 port )
 {
@@ -148,14 +164,14 @@ i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::init( u16 port )
 		address_ip4 address = address_ip4::any;
 		address.set_port(port);
 
-		result = bind( _socket, (const sockaddr*) &address.socket_address, sizeof(sockaddr_in) );
+		result = ::bind( _socket, (const sockaddr*) &address.socket_address, sizeof(sockaddr_in) );
 	}
 	else if( FAMILY_T == ip_v6 )
 	{
 		address_ip6 address = address_ip6::any;
 		address.set_port(port);
 
-		result = bind( _socket, (const sockaddr*) &address.socket_address, sizeof(sockaddr_in6) );
+		result = ::bind( _socket, (const sockaddr*) &address.socket_address, sizeof(sockaddr_in6) );
 	}
 	else
 	{
@@ -173,6 +189,7 @@ i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::init( u16 port )
 	return result;
 }
 
+//deinit (unbind, destroy socket)
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::deinit( void )
 {
@@ -184,28 +201,70 @@ void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::deinit( void )
 #endif
 }
 
-
+//send packet
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 template<typename ADDRESS_T, size_t32 S>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::send( const packet<ADDRESS_T,S>& pack )
 {
-	i32 result = sendto( _socket, (const char*)pack.data, S, 0,
+	i32 result;
+	if(SOCKTYPE_T == udp || SOCKTYPE_T == udp_lite)
+	{
+		result = ::sendto( _socket, (const c8*)pack.data, S, 0,
 						 (sockaddr*)&pack.address.socket_address, sizeof(pack.address.socket_address) );
-
+	}
+	else
+	{
+		result = ::send(_socket, (const c8*)pack.data, S, 0);
+	}
 	CRAP_ASSERT_DEBUG(result == S, "Couldn't send packet");
 	return result;
 }
 
+//receive packet
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 template<typename ADDRESS_T, size_t32 S>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::receive( packet<ADDRESS_T,S>& pack )
 {
-	//typedef int socklen_t;
-	i32 addr_lenght = sizeof(pack.address.socket_address);
-	i32 result = recvfrom( _socket, (char*)pack.data, S,
-									   0, (sockaddr*)&pack.address.socket_address, &addr_lenght );
-
+	i32 result;
+	if(SOCKTYPE_T == udp || SOCKTYPE_T == udp_lite)
+	{
+		i32 addr_lenght = sizeof(pack.address.socket_address);
+		result = ::recvfrom( _socket, (c8*)pack.data, S,
+										   0, (sockaddr*)&pack.address.socket_address, &addr_lenght );
+	}
+	else
+	{
+		result = ::recv(_socket,(c8*)pack.data, S, 0);
+	}
 	return result; // in case of non blocking we can receive nothing...
+}
+
+//listen socket
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::listen( void )
+{
+	CRAP_ASSERT_DEBUG(SOCKTYPE_T != tcp && SOCKTYPE_T != sctp, "Only tcp/sctp sockets can listen");
+	return ::listen(_socket, CRAP_MAX_BACKLOG);
+}
+
+//connect socket
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+template<typename ADDRESS_T>
+i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::connect( const ADDRESS_T& address )
+{
+	CRAP_ASSERT_DEBUG(SOCKTYPE_T != tcp && SOCKTYPE_T != sctp, "Only tcp/sctp sockets can connect");
+	i32 addr_lenght = sizeof(address.socket_address);
+	return ::connect(_socket, (const sockaddr*)&address.socket_address, &addr_lenght);
+}
+
+//accept connection
+template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
+template<typename ADDRESS_T>
+i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::accept( ADDRESS_T& address )
+{
+	CRAP_ASSERT_DEBUG(SOCKTYPE_T != tcp && SOCKTYPE_T != sctp, "Only tcp/sctp sockets can connect");
+	i32 addr_lenght = sizeof(address.socket_address);
+	return ::accept(_socket, (sockaddr*)&address.socket_address, &addr_lenght);
 }
 
 //typedefs
