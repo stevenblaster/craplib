@@ -47,9 +47,14 @@ address_ip6::address_ip6( const u16& aa, const u16& bb, const u16& cc, const u16
 {
 	u128 ip;
 
+//workaround
+#if defined(CRAP_COMPILER_VC)
+	ip.part_64[0] = ( aa << 48 ) | ( bb << 32 ) | ( cc << 16 ) | dd;
+	ip.part_64[1] = ( ee << 48 ) | ( ff << 32 ) | ( gg << 16 ) | hh;
+#else
 	ip = ( (u128)aa << 112 ) | ( (u128)bb << 96 ) | ( (u128)cc << 80 ) | ( (u128)dd << 64 ) |
 		( (u128)ee << 48 ) | ( (u128)ff << 32 ) | ( (u128)gg << 16 ) | hh;
-
+#endif
 	ip = endian::to_big(ip);
 
 	memcpy(&socket_address.sin6_addr, &ip, 16);
