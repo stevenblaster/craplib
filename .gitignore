@@ -6,3 +6,4 @@ build/*
 *.osdf
 *.opensdf
 ipch/
+lib/openal/build/*
