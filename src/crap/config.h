@@ -33,7 +33,8 @@
 #include "config/simd.h"
 #include "config/math.h"
 #include "config/network.h"
-
+#include "config/files.h"
+#include "config/sound.h"
 
 
 #endif // CRAP_CONFIG_H

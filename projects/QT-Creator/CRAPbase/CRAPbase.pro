@@ -4,7 +4,10 @@ CONFIG -= qt
 
 INCLUDEPATH += ../../../src/crap/
 INCLUDEPATH += ../../../lib/
+INCLUDEPATH += ../../../lib/openal/include/
+INCLUDEPATH += ../../../lib/openal/OpenAL32/Include/
 LIBS += -lpthread
+LIBS += -lopenal
 
 QMAKE_CXXFLAGS += -include "precompiled.h"
 
@@ -69,7 +72,12 @@ HEADERS += \
     ../../../src/crap/config/network.h \
     ../../../src/crap/network/headers.h \
     ../../../src/crap/network/sockets.h \
-    ../../../src/crap/network/packet.h
+    ../../../src/crap/network/packet.h \
+    ../../../src/crap/config/sound.h \
+    ../../../src/crap/sound/audio.h \
+    ../../../src/crap/config/files.h \
+    ../../../src/crap/files/file.h \
+    ../../../src/crap/files/headers.h
 
 SOURCES += \
     ../../../src/crap/control/time.cpp \
@@ -87,4 +95,7 @@ SOURCES += \
     ../../../src/crap/network/addressip4.cpp \
     ../../../src/crap/network/addressip6.cpp \
     ../../../src/crap/network/headers.cpp \
-    ../../../src/crap/network/sockets.cpp
+    ../../../src/crap/network/sockets.cpp \
+    ../../../src/crap/sound/audio.cpp \
+    ../../../src/crap/files/file.cpp
+
