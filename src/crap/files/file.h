@@ -88,6 +88,8 @@ public:
 
 	template<size_t32 S>
 	void append_text( const static_string<S>& str );
+
+	size_t64 size( void );
 };
 
 }

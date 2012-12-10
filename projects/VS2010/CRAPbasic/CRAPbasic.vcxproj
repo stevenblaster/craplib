@@ -92,12 +92,14 @@
     <ClInclude Include="..\..\..\src\crap\config.h" />
     <ClInclude Include="..\..\..\src\crap\config\compilers.h" />
     <ClInclude Include="..\..\..\src\crap\config\endianness.h" />
+    <ClInclude Include="..\..\..\src\crap\config\files.h" />
     <ClInclude Include="..\..\..\src\crap\config\math.h" />
     <ClInclude Include="..\..\..\src\crap\config\memory.h" />
     <ClInclude Include="..\..\..\src\crap\config\network.h" />
     <ClInclude Include="..\..\..\src\crap\config\platforms.h" />
     <ClInclude Include="..\..\..\src\crap\config\processors.h" />
     <ClInclude Include="..\..\..\src\crap\config\simd.h" />
+    <ClInclude Include="..\..\..\src\crap\config\sound.h" />
     <ClInclude Include="..\..\..\src\crap\config\threading.h" />
     <ClInclude Include="..\..\..\src\crap\config\types.h" />
     <ClInclude Include="..\..\..\src\crap\container\binarytree.h" />
@@ -121,6 +123,8 @@
     <ClInclude Include="..\..\..\src\crap\control\limits.h" />
     <ClInclude Include="..\..\..\src\crap\control\time.h" />
     <ClInclude Include="..\..\..\src\crap\control\zero.h" />
+    <ClInclude Include="..\..\..\src\crap\files\file.h" />
+    <ClInclude Include="..\..\..\src\crap\files\headers.h" />
     <ClInclude Include="..\..\..\src\crap\math\math.h" />
     <ClInclude Include="..\..\..\src\crap\math\random.h" />
     <ClInclude Include="..\..\..\src\crap\memory\allocatordefault.h" />
@@ -133,6 +137,7 @@
     <ClInclude Include="..\..\..\src\crap\network\packet.h" />
     <ClInclude Include="..\..\..\src\crap\network\sockets.h" />
     <ClInclude Include="..\..\..\src\crap\precompiled.h" />
+    <ClInclude Include="..\..\..\src\crap\sound\audio.h" />
     <ClInclude Include="..\..\..\src\crap\threading\functorthread.h" />
     <ClInclude Include="..\..\..\src\crap\threading\mutex.h" />
     <ClInclude Include="..\..\..\src\crap\threading\runnable.h" />
@@ -155,11 +160,13 @@
     <ClCompile Include="..\..\..\src\crap\control\limits.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\time.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\zero.cpp" />
+    <ClCompile Include="..\..\..\src\crap\files\file.cpp" />
     <ClCompile Include="..\..\..\src\crap\memory\memorytracker.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\headers.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\sockets.cpp" />
+    <ClCompile Include="..\..\..\src\crap\sound\audio.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp" />

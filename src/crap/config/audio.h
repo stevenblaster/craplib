@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//!		@file sound.h
+//!		@file audio.h
 //
 //	Author(s):
 //! 	@author Steffen Kopany <steffen@kopany.at>
@@ -21,8 +21,8 @@
 #ifndef CRAP_CONFIG_SOUND_H
 #define CRAP_CONFIG_SOUND_H
 
-#include <AL/al.h>
-#include <AL/alc.h>
+#include "AL/al.h"
+#include "AL/alc.h"
 
 #define CRAP_SOUND_RATE 44100
 #define CRAP_SOUND_SIZE 1024;

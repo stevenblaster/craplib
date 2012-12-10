@@ -25,6 +25,12 @@
     <Filter Include="network">
       <UniqueIdentifier>{763c2e1d-e04d-4712-8c2b-eb1c23c53307}</UniqueIdentifier>
     </Filter>
+    <Filter Include="files">
+      <UniqueIdentifier>{17b87e93-3e95-4d2d-8cdd-c42772e25995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sound">
+      <UniqueIdentifier>{6e102632-fe21-46e4-bee3-07f0d67f71b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -203,6 +209,21 @@
     <ClInclude Include="..\..\..\src\crap\network\packet.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\files\file.h">
+      <Filter>files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\files\headers.h">
+      <Filter>files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\sound\audio.h">
+      <Filter>sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\files.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\sound.h">
+      <Filter>config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp">
@@ -252,6 +273,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\crap\network\sockets.cpp">
       <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\files\file.cpp">
+      <Filter>files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\sound\audio.cpp">
+      <Filter>sound</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

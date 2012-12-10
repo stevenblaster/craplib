@@ -16,6 +16,10 @@
 //
 ////////////////////////////////////////////////////////
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fstream>
+
 #include "files/file.h"
 
 //lib namespace
@@ -325,4 +329,41 @@ void file::append_text( const static_string<S>& str )
 		fflush(_handle);
 }
 
+
+#if defined(CRAP_PLATFORM_WIN)
+
+size_t64 file::size( void )
+{
+  struct __stat64 fileStat;
+  int err = _stat64( _filename.get_cstring(), &fileStat );
+  if (0 != err) return 0;
+  return (size_t64) fileStat.st_size;
 }
+
+#elif defined(CRAP_COMPILER_GCC)
+
+size_t64 file::size( void )
+{
+	struct stat fileStat;
+	int err = stat(  _filename.get_cstring(), &fileStat );
+	if (0 != err) return 0;
+	return (size_t64) fileStat.st_size;
+}
+
+#else
+
+size_t64 file::size( void )
+{
+	std::ifstream f;
+	f.open(sFileName, std::ios_base::binary | std::ios_base::in);
+	if (!f.good() || f.eof() || !f.is_open()) { return 0; }
+	f.seekg(0, std::ios_base::beg);
+	std::ifstream::pos_type begin_pos = f.tellg();
+	f.seekg(0, std::ios_base::end);
+	return static_cast<size_t64>(f.tellg() - begin_pos);
+}
+
+
+#endif
+
+}	// namespace crap
