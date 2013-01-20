@@ -1,0 +1,107 @@
+Determining if the function _controlfp exists failed with the following output:
+Change Dir: /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3462867761/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3462867761.dir/build.make CMakeFiles/cmTryCompileExec3462867761.dir/build
+make[1]: Entering directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3462867761.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=_controlfp   -o CMakeFiles/cmTryCompileExec3462867761.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-2.8/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3462867761
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3462867761.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=_controlfp    CMakeFiles/cmTryCompileExec3462867761.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3462867761 -rdynamic 
+CMakeFiles/cmTryCompileExec3462867761.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `_controlfp'
+collect2: error: ld returned 1 exit status
+make[1]: *** [cmTryCompileExec3462867761] Error 1
+make[1]: Leaving directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec3462867761/fast] Error 2
+
+
+Determining if the include file windows.h exists failed with the following output:
+Change Dir: /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2218649141/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2218649141.dir/build.make CMakeFiles/cmTryCompileExec2218649141.dir/build
+make[1]: Entering directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2218649141.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -D_WIN32_WINNT=0x0500     -o CMakeFiles/cmTryCompileExec2218649141.dir/CheckIncludeFile.c.o   -c /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:21: fatal error: windows.h: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec2218649141.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec2218649141/fast] Error 2
+
+
+Determining if files pthread.h;pthread_np.h exist failed with the following output:
+Change Dir: /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec4264803464/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec4264803464.dir/build.make CMakeFiles/cmTryCompileExec4264803464.dir/build
+make[1]: Entering directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4264803464.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4264803464.dir/CheckIncludeFiles.c.o   -c /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c:3:24: fatal error: pthread_np.h: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec4264803464.dir/CheckIncludeFiles.c.o] Error 1
+make[1]: Leaving directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec4264803464/fast] Error 2
+
+Source:
+/* */
+#include <pthread.h>
+#include <pthread_np.h>
+
+
+int main(){return 0;}
+
+Determining if the include file sys/audioio.h exists failed with the following output:
+Change Dir: /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec199169442/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec199169442.dir/build.make CMakeFiles/cmTryCompileExec199169442.dir/build
+make[1]: Entering directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec199169442.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec199169442.dir/CheckIncludeFile.c.o   -c /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:25: fatal error: sys/audioio.h: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec199169442.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec199169442/fast] Error 2
+
+
+Determining if the include file dsound.h exists failed with the following output:
+Change Dir: /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2909688290/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2909688290.dir/build.make CMakeFiles/cmTryCompileExec2909688290.dir/build
+make[1]: Entering directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2909688290.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2909688290.dir/CheckIncludeFile.c.o   -c /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:20: fatal error: dsound.h: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec2909688290.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec2909688290/fast] Error 2
+
+
+Determining if the include file portaudio.h exists failed with the following output:
+Change Dir: /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1551405420/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1551405420.dir/build.make CMakeFiles/cmTryCompileExec1551405420.dir/build
+make[1]: Entering directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1551405420.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1551405420.dir/CheckIncludeFile.c.o   -c /mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:23: fatal error: portaudio.h: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec1551405420.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory `/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec1551405420/fast] Error 2
+
+

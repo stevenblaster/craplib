@@ -126,7 +126,7 @@ typedef __uint128_t u128;
 #else
 
 typedef
-struct
+struct type_128_bit
 {
 	union
 	{
@@ -135,6 +135,12 @@ struct
 		u32 part_32[4];
 		u64 part_64[2];
 	};
+
+	type_128_bit( void ) { memset(part_8, 0, 128); }
+	type_128_bit( const u8& num ) { part_8[0] = num; }
+	type_128_bit( const u16& num ) { part_16[0] = num; }
+	type_128_bit( const u32& num ) { part_32[0] = num; }
+	type_128_bit( const u64& num ) { part_64[0] = num; }
 }
 u128;
 

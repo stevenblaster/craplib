@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="OpenAL" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\cmake\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install">
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 install" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/local">
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 install/local" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/strip">
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 install/strip" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="list_install_components">
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 list_install_components" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="openal">
+         <Option output="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/libopenal.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DHAVE_GCC_VISIBILITY" />
+            <Add option="-D_GNU_SOURCE=1" />
+            <Add option="-DAL_LIBTYPE_STATIC" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/Include" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 openal" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="openal/fast">
+         <Option output="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/libopenal.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DHAVE_GCC_VISIBILITY" />
+            <Add option="-D_GNU_SOURCE=1" />
+            <Add option="-DAL_LIBTYPE_STATIC" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/Include" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 openal/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="openal-info">
+         <Option output="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/openal-info" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DHAVE_GCC_VISIBILITY" />
+            <Add option="-D_GNU_SOURCE=1" />
+            <Add option="-DAL_LIBTYPE_STATIC" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/Include" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 openal-info" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="openal-info/fast">
+         <Option output="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/openal-info" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DHAVE_GCC_VISIBILITY" />
+            <Add option="-D_GNU_SOURCE=1" />
+            <Add option="-DAL_LIBTYPE_STATIC" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/Include" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+            <Add directory="/mnt/windows/data/programming/CRAP/lib/openal/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include" />
+            <Add directory="/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 openal-info/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/mnt/windows/data/programming/CRAP/lib/openal/cmake-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/ALc.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/ALu.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alcConfig.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alcEcho.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alcModulator.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alcReverb.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alcRing.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alcThread.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/alsa.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/bs2b.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/mixer.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/null.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/oss.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/panning.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/pulseaudio.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/Alc/wave.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alAuxEffectSlot.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alBuffer.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alDatabuffer.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alEffect.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alError.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alExtension.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alFilter.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alListener.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alSource.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alState.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/OpenAL32/alThunk.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/utils/openal-info.c">
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/config.h.in">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/openal.pc.in">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/cmake/CheckSharedLibraryExists.cmake">
+          <Option virtualFolder="CMake Files\cmake\" />
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/cmake/CheckCCompilerFlag.cmake">
+          <Option virtualFolder="CMake Files\cmake\" />
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/cmake/CheckSharedFunctionExists.c">
+          <Option virtualFolder="CMake Files\cmake\" />
+      </Unit>
+      <Unit filename="/mnt/windows/data/programming/CRAP/lib/openal/cmake/CheckSharedFunctionExists.c">
+          <Option virtualFolder="CMake Files\cmake\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

@@ -20,7 +20,6 @@
 #ifndef CRAP_SOUND_AUDIO_H
 #define CRAP_SOUND_AUDIO_H
 
-#include "config/sound.h"
 
 //lib namespace
 namespace crap

@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4D727CF6-DE5D-44EA-9E17-2C1F038094F8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CRAPbasic</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\bin\crapbase\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>..\..\..\build\vs2010\crapbase\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\lib\openal\include;..\..\..\lib;..\..\..\src\crap;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\bin\crapbase\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>..\..\..\build\vs2010\crapbase\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\lib\openal\include;..\..\..\lib;..\..\..\src\crap;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\crap\config.h" />
+    <ClInclude Include="..\..\..\src\crap\config\compilers.h" />
+    <ClInclude Include="..\..\..\src\crap\config\endianness.h" />
+    <ClInclude Include="..\..\..\src\crap\config\files.h" />
+    <ClInclude Include="..\..\..\src\crap\config\math.h" />
+    <ClInclude Include="..\..\..\src\crap\config\memory.h" />
+    <ClInclude Include="..\..\..\src\crap\config\network.h" />
+    <ClInclude Include="..\..\..\src\crap\config\platforms.h" />
+    <ClInclude Include="..\..\..\src\crap\config\processors.h" />
+    <ClInclude Include="..\..\..\src\crap\config\simd.h" />
+    <ClInclude Include="..\..\..\src\crap\config\threading.h" />
+    <ClInclude Include="..\..\..\src\crap\config\types.h" />
+    <ClInclude Include="..\..\..\src\crap\container\binarytree.h" />
+    <ClInclude Include="..\..\..\src\crap\container\bitmask.h" />
+    <ClInclude Include="..\..\..\src\crap\container\bitset.h" />
+    <ClInclude Include="..\..\..\src\crap\container\list.h" />
+    <ClInclude Include="..\..\..\src\crap\container\map.h" />
+    <ClInclude Include="..\..\..\src\crap\container\pair.h" />
+    <ClInclude Include="..\..\..\src\crap\container\queue.h" />
+    <ClInclude Include="..\..\..\src\crap\container\stack.h" />
+    <ClInclude Include="..\..\..\src\crap\container\treenode.h" />
+    <ClInclude Include="..\..\..\src\crap\container\vector.h" />
+    <ClInclude Include="..\..\..\src\crap\control\asserts.h" />
+    <ClInclude Include="..\..\..\src\crap\control\breakpoints.h" />
+    <ClInclude Include="..\..\..\src\crap\control\checkvtable.h" />
+    <ClInclude Include="..\..\..\src\crap\control\compare.h" />
+    <ClInclude Include="..\..\..\src\crap\control\converter.h" />
+    <ClInclude Include="..\..\..\src\crap\control\copyobject.h" />
+    <ClInclude Include="..\..\..\src\crap\control\cpuinfo.h" />
+    <ClInclude Include="..\..\..\src\crap\control\endian.h" />
+    <ClInclude Include="..\..\..\src\crap\control\limits.h" />
+    <ClInclude Include="..\..\..\src\crap\control\time.h" />
+    <ClInclude Include="..\..\..\src\crap\control\zero.h" />
+    <ClInclude Include="..\..\..\src\crap\files\file.h" />
+    <ClInclude Include="..\..\..\src\crap\files\headers.h" />
+    <ClInclude Include="..\..\..\src\crap\math\math.h" />
+    <ClInclude Include="..\..\..\src\crap\math\random.h" />
+    <ClInclude Include="..\..\..\src\crap\memory\allocatordefault.h" />
+    <ClInclude Include="..\..\..\src\crap\memory\allocatormalloc.h" />
+    <ClInclude Include="..\..\..\src\crap\memory\memorypool.h" />
+    <ClInclude Include="..\..\..\src\crap\network\addressip4.h" />
+    <ClInclude Include="..\..\..\src\crap\network\addressip6.h" />
+    <ClInclude Include="..\..\..\src\crap\network\headers.h" />
+    <ClInclude Include="..\..\..\src\crap\network\packet.h" />
+    <ClInclude Include="..\..\..\src\crap\network\sockets.h" />
+    <ClInclude Include="..\..\..\src\crap\precompiled.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\functorthread.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\mutex.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\runnable.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\scopelock.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\semaphore.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\sleep.h" />
+    <ClInclude Include="..\..\..\src\crap\threading\thread.h" />
+    <ClInclude Include="..\..\..\src\crap\types\matrix2.h" />
+    <ClInclude Include="..\..\..\src\crap\types\matrix3.h" />
+    <ClInclude Include="..\..\..\src\crap\types\matrix4.h" />
+    <ClInclude Include="..\..\..\src\crap\types\staticstring.h" />
+    <ClInclude Include="..\..\..\src\crap\types\string.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector2.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector3.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector4.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp" />
+    <ClCompile Include="..\..\..\src\crap\control\cpuinfo.cpp" />
+    <ClCompile Include="..\..\..\src\crap\control\limits.cpp" />
+    <ClCompile Include="..\..\..\src\crap\control\time.cpp" />
+    <ClCompile Include="..\..\..\src\crap\control\zero.cpp" />
+    <ClCompile Include="..\..\..\src\crap\files\file.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\headers.cpp" />
+    <ClCompile Include="..\..\..\src\crap\network\sockets.cpp" />
+    <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp" />
+    <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp" />
+    <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp" />
+    <ClCompile Include="..\..\..\src\crap\threading\semaphore.cpp" />
+    <ClCompile Include="..\..\..\src\crap\threading\sleep.cpp" />
+    <ClCompile Include="..\..\..\src\crap\threading\thread.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

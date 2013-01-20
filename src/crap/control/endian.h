@@ -44,7 +44,7 @@ class endian
 		};
 
 		//checking byte order, ignores macro settings
-		static byte_order check_endian( void );
+		inline static byte_order check_endian( void );
 
 		//returns either macro settings or, if unknown runs checByteOrder()
 		inline static b8 is_big( void );
@@ -54,28 +54,28 @@ class endian
 
 		//swaps any size of bytes
 		template<size_t32 S>
-		static void* swap_bytes( void* swapMe );
+		inline static void* swap_bytes( void* swapMe );
 
 		//uses compiler implemented swaps or the swapBytes() method
 		//see spezialization a few lines below
 		template<typename T>
-		static T swap( const T& swapMe );
+		inline static T swap( const T& swapMe );
 
 		//swaps bytes is system is little endian or simply returns value
 		template<typename T>
-		static T to_big( const T& swapMe );
+		inline static T to_big( const T& swapMe );
 
 		//swaps bytes is system is big endian or simply returns value
 		template<typename T>
-		static T to_little( const T& swapMe );
+		inline static T to_little( const T& swapMe );
 
 		//swaps bytes is system is little endian or simply returns value
 		template<typename T>
-		static T big_to_local( const T& swapMe );
+		inline static T big_to_local( const T& swapMe );
 
 		//swaps bytes is system is big endian or simply returns value
 		template<typename T>
-		static T little_to_local( const T& swapMe );
+		inline static T little_to_local( const T& swapMe );
 };
 
 //common method of checking byte order
@@ -141,13 +141,13 @@ T endian::swap( const T& swapMe )
 }
 
 template<>
-void* endian::swap_bytes<1>( void* swapMe )
+inline void* endian::swap_bytes<1>( void* swapMe )
 {
 	return swapMe;
 }
 
 template<>
-void* endian::swap_bytes<2>( void* swapMe )
+inline void* endian::swap_bytes<2>( void* swapMe )
 {
 #if defined(CRAP_COMPILER_VC)
 	u16& ref = *( ( u16* )swapMe );
@@ -163,7 +163,7 @@ void* endian::swap_bytes<2>( void* swapMe )
 }
 
 template<>
-void* endian::swap_bytes<4>( void* swapMe )
+inline void* endian::swap_bytes<4>( void* swapMe )
 {
 #if defined(CRAP_COMPILER_VC)
 	u32& ref = *( ( u32* )swapMe );
@@ -192,7 +192,7 @@ void* endian::swap_bytes<4>( void* swapMe )
 }
 
 template<>
-void* endian::swap_bytes<8>( void* swapMe )
+inline void* endian::swap_bytes<8>( void* swapMe )
 {
 #if defined(CRAP_COMPILER_VC)
 	u64& ref = *( ( u64* )swapMe );

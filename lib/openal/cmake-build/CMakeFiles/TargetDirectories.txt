@@ -1,0 +1,2 @@
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/openal.dir
+/mnt/windows/data/programming/CRAP/lib/openal/cmake-build/CMakeFiles/openal-info.dir

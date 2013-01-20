@@ -68,12 +68,12 @@ void address_ip4::set_ip( const u32& ip )
 
 u16 address_ip4::get_port( void ) const
 {
-	return ntohl(socket_address.sin_port);
+	return (u16) ntohl(socket_address.sin_port);
 }
 
 void address_ip4::set_port( const u16& port )
 {
-	socket_address.sin_port = htonl(port);
+	socket_address.sin_port = (u16) htonl(port);
 }
 
 address_ip4 address_ip4::any = address_ip4(0x00000000,0);
