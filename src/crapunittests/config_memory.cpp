@@ -11,5 +11,10 @@ TEST(ConfigMemoryTitle)
     std::cout << "Testing \"config/memory.h\"" << std::endl;
 }
 
+TEST(ConfigMemoryInfo)
+{
+	std::cout << "\tNothing to show" << std::endl;
+}
+
 }   // namespace
 

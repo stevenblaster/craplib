@@ -40,7 +40,7 @@ private:
 	 * Class members
 	 */
 
-	u8 _memory[S]; // memory for mask
+	u8 _memory[S/8+1]; // memory for mask
 
 public:
 
@@ -91,7 +91,7 @@ bit_set<S>::bit_set( void ) : bit_mask( _memory, S )
 template<size_t32 S>
 bit_set<S>::bit_set( const bit_set& other ) : bit_mask( _memory, S)
 {
-	memcpy( _memory, other._memory, S );
+	memcpy( _memory, other._memory, S/8+1 );
 }
 
 //destructor
@@ -106,7 +106,7 @@ template<size_t32 S>
 bit_set<S>& bit_set<S>::operator=( const bit_set& other )
 {
 	CRAP_ASSERT_DEBUG(this != &other, "Assignment operator on same object");
-	memcpy( _memory, other._memory, S );
+	memcpy( _memory, other._memory, S/8+1 );
 	return *this;
 }
 
@@ -115,7 +115,7 @@ template<size_t32 S>
 bit_set<S>& bit_set<S>::operator=( void* other )
 {
 	CRAP_ASSERT_DEBUG(_memory != other, "Assignment operator on same pointer");
-	memcpy( _memory, other, S );
+	memcpy( _memory, other, S/8+1 );
 	return *this;
 }
 

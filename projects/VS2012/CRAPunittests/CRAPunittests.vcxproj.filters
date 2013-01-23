@@ -168,6 +168,9 @@
     <ClCompile Include="..\..\..\src\crapunittests\network_ipaddress6.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\config_files.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\crapunittests\unittest_precompiled.h">

@@ -42,22 +42,31 @@ namespace crap
 //parsing compiler macros or using forced set
 #if defined ( __AVX2__ )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_AVX2
+	#define CRAP_SIMD_NAME		"AVX2"
 #elif defined ( __AVX__ )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_AVX
+	#define CRAP_SIMD_NAME		"AVX"
 #elif defined ( __SSE4_2__ )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_SSE42
+	#define CRAP_SIMD_NAME		"SSE42"
 #elif defined ( __SSE4_1__ )
 	#define CRAP_SIMD_VERSION	CRAP_SIMD_SSE41
+	#define CRAP_SIMD_NAME		"SSE41"
 #elif defined ( __SSSE3__ )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_SSSE3
+	#define CRAP_SIMD_NAME		"SSSE3"
 #elif defined ( __SSE3__ )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_SSE3
+	#define CRAP_SIMD_NAME		"SSE3"
 #elif defined ( __SSE2__ ) || defined ( CRAP_PROCESSOR_X86_64 )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_SSE2
+	#define CRAP_SIMD_NAME		"SSE2"
 #elif defined ( __SSE__ )
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_SSE
+	#define CRAP_SIMD_NAME		"SSE"
 #elif defined ( _M_IX86_FP )	//VC compiler
 	#define CRAP_SIMD_VERSION 	_M_IX86_FP
+	#define CRAP_SIMD_NAME		"VC++ MACRO"
 #else
 	#define CRAP_SIMD_VERSION 	CRAP_SIMD_NONE
 #endif

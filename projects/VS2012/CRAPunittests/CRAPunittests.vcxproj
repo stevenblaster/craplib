@@ -95,6 +95,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crapunittests\config_compilers.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\config_endianess.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\config_files.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\config_math.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\config_memory.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\config_platforms.cpp" />

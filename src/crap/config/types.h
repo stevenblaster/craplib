@@ -24,10 +24,16 @@
 #include "config/platforms.h"
 #include "config/processors.h"
 #include "config/compilers.h"
+#include "config/simd.h"
 
 //standard defs if available
 #if ( defined(CRAP_COMPILER_GCC) || defined(CRAP_COMPILER_VC) )
 	#include <stddef.h>
+#endif
+
+//load simd include for 128bit type
+#if CRAP_SIMD_VERSION != CRAP_SIMD_NONE
+	#include CRAP_SIMD_INCLUDE
 #endif
 
 //null pointer
@@ -142,7 +148,9 @@ struct type_128_bit
 	type_128_bit( const u32& num ) { part_32[0] = num; }
 	type_128_bit( const u64& num ) { part_64[0] = num; }
 }
-u128;
+i128;
+
+typedef i128 u128;
 
 #endif
 
