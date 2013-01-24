@@ -21,7 +21,7 @@
 #define CRAP_FILES_FILE_H
 
 #include <cstdio>
-#include "types/staticstring.h"
+#include "container/staticstring.h"
 
 //lib namespace
 namespace crap

@@ -91,8 +91,11 @@ private:
 	{
 		CRAP_ASSERT_DEBUG ( -4194304.0F <= x && x <= 4194303.0F , "intFloor limits overflow");
 
-		i32 a = f32toi32( (3 << 22) + 0.5 + (f64) x );
-		i32 b = f32toi32( (3 << 22) + 0.5 - (f64) x );
+		/*i32 a = f32toi32( (3 << 22) + 0.5 + (f64) x );
+		i32 b = f32toi32( (3 << 22) + 0.5 - (f64) x );*/
+
+		i32 a = f32toi32( (3 << 22) + 0.5f + x );
+		i32 b = f32toi32( (3 << 22) + 0.5f - x );
 		return (a - b) >> 1;
 	}
 
@@ -101,8 +104,11 @@ private:
 	{
 		CRAP_ASSERT_DEBUG ( -4194304.0F <= x && x <= 4194303.0F , "intFloor limits overflow");
 
-		i32 a = f32toi32((3 << 22) + 0.5 + (f64) x);
-		i32 b = f32toi32((3 << 22) + 0.5 - (f64) x);
+		/*i32 a = f32toi32((3 << 22) + 0.5 + (f64) x);
+		i32 b = f32toi32((3 << 22) + 0.5 - (f64) x);*/
+
+		i32 a = f32toi32((3 << 22) + 0.5f + x);
+		i32 b = f32toi32((3 << 22) + 0.5f - x);
 		return (a - b + 1) >> 1;
 	}
 

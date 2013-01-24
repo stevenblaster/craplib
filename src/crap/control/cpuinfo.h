@@ -25,7 +25,7 @@
 #include <intrin.h>
 #endif
 
-#include "types/staticstring.h"
+#include "container/staticstring.h"
 
 //MACROS!!!
 

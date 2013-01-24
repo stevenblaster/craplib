@@ -25,7 +25,7 @@
 
 #include "config/types.h"
 #include "control/zero.h"
-#include "types/staticstring.h"
+#include "container/staticstring.h"
 
 
 //lib namespace

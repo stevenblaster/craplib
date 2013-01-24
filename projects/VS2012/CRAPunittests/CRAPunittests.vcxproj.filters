@@ -78,12 +78,6 @@
     <ClCompile Include="..\..\..\src\crapunittests\threading_thread.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\crapunittests\types_staticstring.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\crapunittests\types_string.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\crapunittests\config_compilers.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -144,15 +138,6 @@
     <ClCompile Include="..\..\..\src\crapunittests\control_asserts.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\crapunittests\types_vector3.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\crapunittests\types_vector4.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\crapunittests\types_vector2.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\crapunittests\network_packet.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -169,6 +154,33 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\crapunittests\config_files.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_vector2.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_vector3.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_vector4.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\container_staticstring.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\container_string.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix2.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix3.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix4.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_geometry.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

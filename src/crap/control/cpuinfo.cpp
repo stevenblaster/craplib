@@ -17,7 +17,7 @@
 //
 ////////////////////////////////////////////////////////
 
-#include "types/staticstring.h"
+#include "container/staticstring.h"
 #include "control/cpuinfo.h"
 
 namespace crap

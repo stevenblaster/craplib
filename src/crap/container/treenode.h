@@ -91,6 +91,7 @@ struct tree_node
 		sub_node[right] = r;
 	}
 
+	/** @todo reved due to linking errors
 	//! @brief copy constructor - template
 	template <class U, class V> // <U,V>??
 	tree_node (const tree_node& t) : data(t.data)
@@ -99,6 +100,7 @@ struct tree_node
 		sub_node[left] = t.sub_node[right];
 		sub_node[right] = t.sub_node[right];
 	}
+	*/
 
 	/*
 	 * Operator overloading

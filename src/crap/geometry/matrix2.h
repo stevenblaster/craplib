@@ -17,8 +17,8 @@
 ////////////////////////////////////////////////////////
 #pragma once
 
-#ifndef CRAP_MATRIX2_H
-#define CRAP_MATRIX2_H
+#ifndef CRAP_GEOMETRY_MATRIX2_H
+#define CRAP_GEOMETRY_MATRIX2_H
 
 #include "control/asserts.h"
 
@@ -269,12 +269,12 @@ matrix2<T> matrix2<T>::operator/( const T& value ) const
 }
 
 //typedefs
-typedef matrix2<i16> mat2s;
-typedef matrix2<i32> mat2i;
-typedef matrix2<i64> mat2l;
-typedef matrix2<f32> mat2f;
-typedef matrix2<f64> mat2d;
+typedef matrix2<i16> matrix2s;
+typedef matrix2<i32> matrix2i;
+typedef matrix2<i64> matrix2l;
+typedef matrix2<f32> matrix2f;
+typedef matrix2<f64> matrix2d;
 
 }	//namespace crap
 
-#endif // CRAP_MATRIX2_H
+#endif // CRAP_GEOMETRY_MATRIX2_H

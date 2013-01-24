@@ -19,14 +19,14 @@
     <Filter Include="threading">
       <UniqueIdentifier>{d085a631-aa0c-4c5e-9eef-520377cf7a18}</UniqueIdentifier>
     </Filter>
-    <Filter Include="types">
-      <UniqueIdentifier>{e8127efb-d067-4e21-a3b6-e2b786b62e3d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="network">
       <UniqueIdentifier>{763c2e1d-e04d-4712-8c2b-eb1c23c53307}</UniqueIdentifier>
     </Filter>
     <Filter Include="files">
       <UniqueIdentifier>{17b87e93-3e95-4d2d-8cdd-c42772e25995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geometry">
+      <UniqueIdentifier>{e8127efb-d067-4e21-a3b6-e2b786b62e3d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,26 +159,8 @@
     <ClInclude Include="..\..\..\src\crap\threading\scopelock.h">
       <Filter>threading</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\string.h">
-      <Filter>types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\staticstring.h">
-      <Filter>types</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\crap\precompiled.h" />
     <ClInclude Include="..\..\..\src\crap\config.h" />
-    <ClInclude Include="..\..\..\src\crap\types\vector3.h">
-      <Filter>types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\vector4.h">
-      <Filter>types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\vector2.h">
-      <Filter>types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\matrix3.h">
-      <Filter>types</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\crap\network\headers.h">
       <Filter>network</Filter>
     </ClInclude>
@@ -187,12 +169,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\crap\network\addressip6.h">
       <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\matrix2.h">
-      <Filter>types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\crap\types\matrix4.h">
-      <Filter>types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\crap\config\network.h">
       <Filter>config</Filter>
@@ -211,6 +187,33 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\crap\config\files.h">
       <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\staticstring.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\string.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\matrix4.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\matrix2.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\matrix3.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\vector2.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\vector4.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\vector3.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\geometry\geometry.h">
+      <Filter>geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +257,6 @@
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\crap\network\sockets.cpp">
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\crap\files\file.cpp">

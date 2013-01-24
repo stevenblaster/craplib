@@ -14,6 +14,7 @@
     <ProjectGuid>{4D727CF6-DE5D-44EA-9E17-2C1F038094F8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CRAPbasic</RootNamespace>
+    <ProjectName>CRAPcore</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -58,7 +59,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB</PreprocessorDefinitions>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
@@ -75,7 +76,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_LIB;</PreprocessorDefinitions>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>..\..\..\build\vs2010\$(Configuration)\$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
@@ -111,6 +112,8 @@
     <ClInclude Include="..\..\..\src\crap\container\pair.h" />
     <ClInclude Include="..\..\..\src\crap\container\queue.h" />
     <ClInclude Include="..\..\..\src\crap\container\stack.h" />
+    <ClInclude Include="..\..\..\src\crap\container\staticstring.h" />
+    <ClInclude Include="..\..\..\src\crap\container\string.h" />
     <ClInclude Include="..\..\..\src\crap\container\treenode.h" />
     <ClInclude Include="..\..\..\src\crap\container\vector.h" />
     <ClInclude Include="..\..\..\src\crap\control\asserts.h" />
@@ -126,6 +129,13 @@
     <ClInclude Include="..\..\..\src\crap\control\zero.h" />
     <ClInclude Include="..\..\..\src\crap\files\file.h" />
     <ClInclude Include="..\..\..\src\crap\files\headers.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\geometry.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\matrix2.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\matrix3.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\matrix4.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\vector2.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\vector3.h" />
+    <ClInclude Include="..\..\..\src\crap\geometry\vector4.h" />
     <ClInclude Include="..\..\..\src\crap\math\math.h" />
     <ClInclude Include="..\..\..\src\crap\math\random.h" />
     <ClInclude Include="..\..\..\src\crap\memory\allocatordefault.h" />
@@ -144,14 +154,6 @@
     <ClInclude Include="..\..\..\src\crap\threading\semaphore.h" />
     <ClInclude Include="..\..\..\src\crap\threading\sleep.h" />
     <ClInclude Include="..\..\..\src\crap\threading\thread.h" />
-    <ClInclude Include="..\..\..\src\crap\types\matrix2.h" />
-    <ClInclude Include="..\..\..\src\crap\types\matrix3.h" />
-    <ClInclude Include="..\..\..\src\crap\types\matrix4.h" />
-    <ClInclude Include="..\..\..\src\crap\types\staticstring.h" />
-    <ClInclude Include="..\..\..\src\crap\types\string.h" />
-    <ClInclude Include="..\..\..\src\crap\types\vector2.h" />
-    <ClInclude Include="..\..\..\src\crap\types\vector3.h" />
-    <ClInclude Include="..\..\..\src\crap\types\vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp" />
@@ -163,7 +165,6 @@
     <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\headers.cpp" />
-    <ClCompile Include="..\..\..\src\crap\network\sockets.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp" />
     <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp" />

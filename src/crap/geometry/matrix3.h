@@ -17,8 +17,8 @@
 ////////////////////////////////////////////////////////
 #pragma once
 
-#ifndef CRAP_MATRIX3_H
-#define CRAP_MATRIX3_H
+#ifndef CRAP_GEOMETRY_MATRIX3_H
+#define CRAP_GEOMETRY_MATRIX3_H
 
 #include "control/asserts.h"
 
@@ -307,12 +307,12 @@ matrix3<T> matrix3<T>::operator/( const T& value ) const
 }
 
 //typedefs
-typedef matrix3<i16> mat3s;
-typedef matrix3<i32> mat3i;
-typedef matrix3<i64> mat3l;
-typedef matrix3<f32> mat3f;
-typedef matrix3<f64> mat3d;
+typedef matrix3<i16> matrix3s;
+typedef matrix3<i32> matrix3i;
+typedef matrix3<i64> matrix3l;
+typedef matrix3<f32> matrix3f;
+typedef matrix3<f64> matrix3d;
 
 }	// namespace crap
 
-#endif // CRAP_MATRIX3_H
+#endif // CRAP_GEOMETRY_MATRIX3_H

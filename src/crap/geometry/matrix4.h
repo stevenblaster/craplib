@@ -17,10 +17,11 @@
 ////////////////////////////////////////////////////////
 #pragma once
 
-#ifndef CRAP_MATRIX4_H
-#define CRAP_MATRIX4_H
+#ifndef CRAP_GEOMETRY_MATRIX4_H
+#define CRAP_GEOMETRY_MATRIX4_H
 
 #include "control/asserts.h"
+#include "geometry/vector3.h"
 
 //lib namespace
 namespace crap
@@ -359,13 +360,14 @@ matrix4<T> matrix4<T>::operator/( const T& value ) const
 	return rtn;
 }
 
+
 //typedefs
-typedef matrix4<i16> mat4s;
-typedef matrix4<i32> mat4i;
-typedef matrix4<i64> mat4l;
-typedef matrix4<f32> mat4f;
-typedef matrix4<f64> mat4d;
+typedef matrix4<i16> matrix4s;
+typedef matrix4<i32> matrix4i;
+typedef matrix4<i64> matrix4l;
+typedef matrix4<f32> matrix4f;
+typedef matrix4<f64> matrix4d;
 
 }	// namespace crap
 
-#endif // CRAP_MATRIX4_H
+#endif // CRAP_GEOMETRY_MATRIX4_H

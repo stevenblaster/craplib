@@ -17,8 +17,8 @@
 ////////////////////////////////////////////////////////
 #pragma once
 
-#ifndef CRAP_TYPES_STRING_H
-#define CRAP_TYPES_STRING_H
+#ifndef CRAP_CONTAINER_STRING_H
+#define CRAP_CONTAINER_STRING_H
 
 #include "eastl/string.h"
 
@@ -27,4 +27,4 @@ namespace crap
 	typedef eastl::string string;
 }
 
-#endif // CRAP_TYPES_STRING_H
+#endif // CRAP_CONTAINER_STRING_H

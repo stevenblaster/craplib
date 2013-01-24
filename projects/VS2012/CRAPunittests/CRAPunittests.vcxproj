@@ -124,6 +124,10 @@
     <ClCompile Include="..\..\..\src\crapunittests\control_limits.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_time.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_zero.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_geometry.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix2.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix3.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix4.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\main.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\math_math.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\math_random.cpp" />
@@ -139,11 +143,11 @@
     <ClCompile Include="..\..\..\src\crapunittests\threading_semaphore.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\threading_sleep.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\threading_thread.cpp" />
-    <ClCompile Include="..\..\..\src\crapunittests\types_staticstring.cpp" />
-    <ClCompile Include="..\..\..\src\crapunittests\types_string.cpp" />
-    <ClCompile Include="..\..\..\src\crapunittests\types_vector2.cpp" />
-    <ClCompile Include="..\..\..\src\crapunittests\types_vector3.cpp" />
-    <ClCompile Include="..\..\..\src\crapunittests\types_vector4.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_staticstring.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_string.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_vector2.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_vector3.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\geometry_vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\crapunittests\unittest_precompiled.h" />

@@ -19,8 +19,8 @@
 
 #pragma once
 
-#ifndef CRAP_TYPES_STATICSTRING_H
-#define CRAP_TYPES_STATICSTRING_H
+#ifndef CRAP_CONTAINER_STATICSTRING_H
+#define CRAP_CONTAINER_STATICSTRING_H
 
 #include <cstdarg>
 
@@ -414,4 +414,4 @@ typedef static_string<1024> string1024;
 
 }	// namespace crap
 
-#endif // CRAP_TYPES_STATICSTRING_H
+#endif // CRAP_CONTAINER_STATICSTRING_H
