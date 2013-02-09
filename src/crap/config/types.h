@@ -29,6 +29,7 @@
 //standard defs if available
 #if ( defined(CRAP_COMPILER_GCC) || defined(CRAP_COMPILER_VC) )
 	#include <stddef.h>
+	#include <cstring> //for memset (vs12 complains)
 #endif
 
 //load simd include for 128bit type

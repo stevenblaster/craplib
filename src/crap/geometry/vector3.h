@@ -293,11 +293,11 @@ vector3<T> vector3<T>::operator/( const T& right ) const
 }
 
 //typedefs
-typedef vector3<i16> vec3s;
-typedef vector3<i32> vec3i;
-typedef vector3<i64> vec3l;
-typedef vector3<f32> vec3f;
-typedef vector3<f64> vec3d;
+typedef vector3<i16> vector3s;
+typedef vector3<i32> vector3i;
+typedef vector3<i64> vector3l;
+typedef vector3<f32> vector3f;
+typedef vector3<f64> vector3d;
 
 }	// namespace crap
 

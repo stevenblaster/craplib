@@ -264,11 +264,11 @@ vector2<T> vector2<T>::operator/( const T& right ) const
 }
 
 //typedefs
-typedef vector2<i16> vec2s;
-typedef vector2<i32> vec2i;
-typedef vector2<i64> vec2l;
-typedef vector2<f32> vec2f;
-typedef vector2<f64> vec2d;
+typedef vector2<i16> vector2s;
+typedef vector2<i32> vector2i;
+typedef vector2<i64> vector2l;
+typedef vector2<f32> vector2f;
+typedef vector2<f64> vector2d;
 
 }	// namespace crap
 

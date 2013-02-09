@@ -4,8 +4,6 @@ CONFIG -= qt
 
 INCLUDEPATH += ../../../src/crap/
 INCLUDEPATH += ../../../lib/
-INCLUDEPATH += ../../../lib/openal/include/
-INCLUDEPATH += ../../../lib/openal/OpenAL32/Include/
 LIBS += -lpthread
 
 QMAKE_CXXFLAGS += -include "precompiled.h"
@@ -47,7 +45,6 @@ HEADERS += \
     ../../../src/crap/control/asserts.h \
     ../../../src/crap/math/random.h \
     ../../../src/crap/math/math.h \
-    ../../../src/crap/memory/memorytracker.h \
     ../../../src/crap/memory/memorypool.h \
     ../../../src/crap/memory/allocatormalloc.h \
     ../../../src/crap/memory/allocatordefault.h \
@@ -57,8 +54,6 @@ HEADERS += \
     ../../../src/crap/threading/scopelock.h \
     ../../../src/crap/threading/runnable.h \
     ../../../src/crap/threading/mutex.h \
-    ../../../src/crap/types/string.h \
-    ../../../src/crap/types/staticstring.h \
     ../../../src/crap/threading/functorthread.h \
     ../../../src/crap/types/vector2.h \
     ../../../src/crap/types/vector3.h \
@@ -76,12 +71,20 @@ HEADERS += \
     ../../../src/crap/config/files.h \
     ../../../src/crap/files/file.h \
     ../../../src/crap/files/headers.h \
-    ../../../src/crap/config/audio.h
+    ../../../src/crap/config/audio.h \
+    ../../../src/crap/container/string.h \
+    ../../../src/crap/container/staticstring.h \
+    ../../../src/crap/geometry/vector3.h \
+    ../../../src/crap/geometry/vector4.h \
+    ../../../src/crap/geometry/vector2.h \
+    ../../../src/crap/geometry/matrix2.h \
+    ../../../src/crap/geometry/matrix3.h \
+    ../../../src/crap/geometry/matrix4.h \
+    ../../../src/crap/geometry/geometry.h
 
 SOURCES += \
     ../../../src/crap/control/time.cpp \
     ../../../src/crap/control/cpuinfo.cpp \
-    ../../../src/crap/memory/memorytracker.cpp \
     ../../../src/crap/threading/thread.cpp \
     ../../../src/crap/threading/sleep.cpp \
     ../../../src/crap/threading/semaphore.cpp \
@@ -94,14 +97,5 @@ SOURCES += \
     ../../../src/crap/network/addressip4.cpp \
     ../../../src/crap/network/addressip6.cpp \
     ../../../src/crap/network/headers.cpp \
-    ../../../src/crap/network/sockets.cpp \
-    ../../../src/crap/sound/audio.cpp \
     ../../../src/crap/files/file.cpp
 
-
-unix:!macx: LIBS += -L$$PWD/../../../bin/openal/ -lopenal
-
-INCLUDEPATH += $$PWD/../../../bin/openal
-DEPENDPATH += $$PWD/../../../bin/openal
-
-unix:!macx: PRE_TARGETDEPS += $$PWD/../../../bin/openal/libopenal.a

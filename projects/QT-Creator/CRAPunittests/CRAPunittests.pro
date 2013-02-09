@@ -2,11 +2,16 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
+CONFIG += opengl
+CONFIG += x11
 
 INCLUDEPATH += ../../../src/crap/
 INCLUDEPATH += ../../../lib/unittest/
 INCLUDEPATH += ../../../lib/
 INCLUDEPATH += ../../../src/crapunittests/
+INCLUDEPATH += ../../../src/crapdisplay/
+
+LIBS += -lpthread -lGL -lX11
 
 QMAKE_CXXFLAGS += -include "unittest_precompiled.h"
 
@@ -24,8 +29,6 @@ SOURCES += \
     ../../../src/crapunittests/config_threading.cpp \
     ../../../src/crapunittests/config_types.cpp \
     ../../../src/crapunittests/container_binarytree.cpp \
-    ../../../src/crapunittests/types_string.cpp \
-    ../../../src/crapunittests/types_staticstring.cpp \
     ../../../src/crapunittests/threading_thread.cpp \
     ../../../src/crapunittests/threading_sleep.cpp \
     ../../../src/crapunittests/threading_semaphore.cpp \
@@ -55,18 +58,21 @@ SOURCES += \
     ../../../src/crapunittests/container_bitset.cpp \
     ../../../src/crapunittests/container_bitmask.cpp \
     ../../../src/crapunittests/threading_functorthread.cpp \
-    ../../../src/crapunittests/types_vector2.cpp \
-    ../../../src/crapunittests/types_vector3.cpp \
-    ../../../src/crapunittests/types_vector4.cpp \
-    ../../../src/crapunittests/types_matrix3.cpp \
-    ../../../src/crapunittests/types_matrix2.cpp \
-    ../../../src/crapunittests/types_matrix4.cpp \
     ../../../src/crapunittests/network_addressip4.cpp \
     ../../../src/crapunittests/network_ipaddress6.cpp \
     ../../../src/crapunittests/network_headers.cpp \
     ../../../src/crapunittests/network_packet.cpp \
     ../../../src/crapunittests/network_sockets.cpp \
-    ../../../src/crapunittests/files_file.cpp
+    ../../../src/crapunittests/files_file.cpp \
+    ../../../src/crapunittests/container_string.cpp \
+    ../../../src/crapunittests/container_staticstring.cpp \
+    ../../../src/crapunittests/geometry_matrix2.cpp \
+    ../../../src/crapunittests/geometry_matrix3.cpp \
+    ../../../src/crapunittests/geometry_matrix4.cpp \
+    ../../../src/crapunittests/geometry_vector3.cpp \
+    ../../../src/crapunittests/geometry_vector4.cpp \
+    ../../../src/crapunittests/geometry_vector2.cpp \
+    ../../../src/crapunittests/geometry_geometry.cpp
 
 
 unix|win32: LIBS += -L$$PWD/../../../bin/crapbase -lCRAPbase
@@ -76,6 +82,14 @@ DEPENDPATH += $$PWD/../../../bin/crapbase
 
 win32: PRE_TARGETDEPS += $$PWD/../../../bin/crapbase/CRAPbase.lib
 else:unix: PRE_TARGETDEPS += $$PWD/../../../bin/crapbase/libCRAPbase.a
+
+unix|win32: LIBS += -L$$PWD/../../../bin/crapdisplay -lCRAPdisplay
+
+INCLUDEPATH += $$PWD/../../../bin/crapdisplay
+DEPENDPATH += $$PWD/../../../bin/crapdisplay
+
+win32: PRE_TARGETDEPS += $$PWD/../../../bin/crapdisplay/CRAPdisplay.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../../bin/crapdisplay/libCRAPdisplay.a
 
 unix|win32: LIBS += -L$$PWD/../../../bin/unittest -lUnitTest
 

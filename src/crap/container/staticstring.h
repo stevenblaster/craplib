@@ -84,7 +84,7 @@ public:
 	void cut( size_t32 length );
 	void trim( void );
 
-	string_t* get_cstring( void ) const;
+	string_t* cstring( void ) const;
 	size_t32 size( void ) const;
 };
 
@@ -391,7 +391,7 @@ void static_string<S>::trim()
 }
 
 template<size_t32 S>
-string_t* static_string<S>::get_cstring( void ) const
+string_t* static_string<S>::cstring( void ) const
 {
 	return reinterpret_cast<string_t*>(&_memory[0]);
 }

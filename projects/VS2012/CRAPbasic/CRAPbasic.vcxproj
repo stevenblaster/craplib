@@ -161,7 +161,6 @@
     <ClCompile Include="..\..\..\src\crap\control\limits.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\time.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\zero.cpp" />
-    <ClCompile Include="..\..\..\src\crap\files\file.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\src\crap\network\headers.cpp" />

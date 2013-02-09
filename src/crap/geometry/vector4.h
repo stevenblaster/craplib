@@ -312,11 +312,11 @@ vector4<T> vector4<T>::operator/( const T& right ) const
 }
 
 //typedefs
-typedef vector4<i16> vec4s;
-typedef vector4<i32> vec4i;
-typedef vector4<i64> vec4l;
-typedef vector4<f32> vec4f;
-typedef vector4<f64> vec4d;
+typedef vector4<i16> vector4s;
+typedef vector4<i32> vector4i;
+typedef vector4<i64> vector4l;
+typedef vector4<f32> vector4f;
+typedef vector4<f64> vector4d;
 
 }	// namespace crap
 
