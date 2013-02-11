@@ -1,4 +1,4 @@
-#include "crapwindow.h"
+#include "renderwindow.h"
 #include "threading/sleep.h"
 
 #include "UnitTest++.h"
@@ -11,14 +11,18 @@ int main ()
 	std::cout << std::endl;
 	std::cout << "Starting Window tests:" << std::endl << "=====================" << std::endl;
 	crap::window_setup setup;
-    crap::crapwindow test_win( setup );
+    crap::renderwindow test_win( setup );
+
+	std::cout << "Default settings" << std::endl;
 	test_win.open();
 
+	std::cout << "800x600 windowed" << std::endl;
 	setup.width = 800;
 	setup.height = 600;
 	test_win.update_settings( setup );
 	test_win.reset_window();
 
+	std::cout << "1024x768 fullscreen" << std::endl;
 	setup.width = 1024;
 	setup.height = 768;
 	setup.fullscreen = true;
@@ -27,6 +31,7 @@ int main ()
 
     crap::sleep_sec(1);
 
+	std::cout << "320x240 windowed" << std::endl;
 	setup.width = 320;
 	setup.height = 240;
 	setup.fullscreen = false;

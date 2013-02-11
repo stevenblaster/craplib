@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 // CRAP Library
-//!		@file crapwindow.h
+//!		@file renderwindow.h
 //
 //	Author(s):
 //!		@author Steffen Kopany <steffen@kopany.at>
@@ -18,16 +18,18 @@
 
 #pragma once
 
-#ifndef CRAP_CRAPWINDOW_H
-#define CRAP_CRAPWINDOW_H
+#ifndef CRAP_RENDERWINDOW_H
+#define CRAP_RENDERWINDOW_H
 
 #include "precompiled.h"
 #include "container/staticstring.h"
 #include "geometry/vector2.h"
 #include "geometry/vector4.h"
 
+#if defined(CRAP_PLATFORM_WIN)
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glu32.lib")
+#endif
 
 //lib namespace
 namespace crap
@@ -75,11 +77,11 @@ struct window_setup
 }
 window_setup;
 
-class crapwindow
+class renderwindow
 {
 public:
-    crapwindow( const window_setup& setup );
-    ~crapwindow( void );
+    renderwindow( const window_setup& setup );
+    ~renderwindow( void );
 
 	void update_settings( const window_setup& setup );
 	void reset_window( void );
@@ -90,9 +92,17 @@ public:
 	void set_position( const vector2i& pos );
 	void set_size( int width, int height );
 	void set_title( const string64& name );
+	void set_fullscreen( bool value );
 
+	void swap( void );
+	/*
+	void set_window_close_function( GLFWwindowclosefun function );
+	void set_window_size_function( GLFWwindowsizefun function );
+	void set_window_refresh_function( GLFWwindowrefreshfun function );
+	*/
 private:
 	window_setup _window_setup;
+
 };
 
 }

@@ -30,7 +30,7 @@
     <ClInclude Include="..\..\..\lib\glfw\lib\win32\platform.h">
       <Filter>lib\glfw\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\crapdisplay\crapwindow.h">
+    <ClInclude Include="..\..\..\src\crapdisplay\renderwindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -98,7 +98,7 @@
     <ClCompile Include="..\..\..\lib\glfw\lib\win32\win32_glext.c">
       <Filter>lib\glfw\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\crapdisplay\crapwindow.cpp">
+    <ClCompile Include="..\..\..\src\crapdisplay\renderwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

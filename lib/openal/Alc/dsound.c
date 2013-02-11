@@ -18,7 +18,27 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "config.h"
+#include "precompiled.h"
+
+#if defined(CRAP_PLATFORM_WIN)
+#if defined(CRAP_PROCESSOR_X86_64) || defined(CRAP_PROCESSOR_IA64)
+#include "config_win64.h"
+#else
+#include "config_win32.h"
+#endif
+#elif defined(CRAP_PLATFORM_WIN)
+#if defined(CRAP_PROCESSOR_X86_64) || defined(CRAP_PROCESSOR_IA64)
+#include "config_osx64.h"
+#else
+#include "config_osx32.h"
+#endif
+#else
+#if defined(CRAP_PROCESSOR_X86_64) || defined(CRAP_PROCESSOR_IA64)
+#include "config_linux64.h"
+#else
+#include "config_linux32.h"
+#endif
+#endif
 
 #define _WIN32_WINNT 0x0500
 #define INITGUID

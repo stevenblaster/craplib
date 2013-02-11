@@ -20,13 +20,13 @@
 #include <GL/glfw.h>
 
 #include "container/staticstring.h"
-#include "crapwindow.h"
+#include "renderwindow.h"
 
 //lib namespace
 namespace crap
 {
 
-crapwindow::crapwindow( const window_setup& setup ) : _window_setup( setup )
+renderwindow::renderwindow( const window_setup& setup ) : _window_setup( setup )
 {
 #ifndef CRAP_GLFW_INIT
 #define CRAP_GLFW_INIT
@@ -36,17 +36,17 @@ crapwindow::crapwindow( const window_setup& setup ) : _window_setup( setup )
 #endif
 }
 
-crapwindow::~crapwindow( void )
+renderwindow::~renderwindow( void )
 {
     close();
 }
 
-void crapwindow::update_settings( const window_setup& setup )
+void renderwindow::update_settings( const window_setup& setup )
 {
 	_window_setup = setup;
 }
 
-void crapwindow::open( void )
+void renderwindow::open( void )
 {
 	glfwOpenWindowHint( GLFW_REFRESH_RATE, _window_setup.refresh_rate );
 	glfwOpenWindowHint( GLFW_ACCUM_RED_BITS, _window_setup.accumulation_color_bits.r );
@@ -76,41 +76,79 @@ void crapwindow::open( void )
 		_window_setup.stencil_bits,
 		fullscreen );
 
-    std::cerr << "Result is " << result << std::endl;
     CRAP_ASSERT_DEBUG( result == GL_TRUE, "Failed to create a GLFW Window");
 
 	glfwSetWindowTitle( _window_setup.title.cstring() );
 	glfwSetWindowPos( _window_setup.position.x, _window_setup.position.y );
 }
 
-void crapwindow::close( void )
+void renderwindow::close( void )
 {
 	glfwCloseWindow();
 }
 
-void crapwindow::reset_window( void )
+void renderwindow::reset_window( void )
 {
 	close();
 	open();
 }
 
-void crapwindow::set_position( const vector2i& pos )
+void renderwindow::set_position( const vector2i& pos )
 {
 	_window_setup.position = pos;
 	glfwSetWindowPos( pos.x, pos.y );
 }
 
-void crapwindow::set_size( int width, int height )
+void renderwindow::set_size( int width, int height )
 {
 	_window_setup.width = width;
 	_window_setup.height = height;
 	glfwSetWindowSize( width, height );
 }
 
-void crapwindow::set_title( const string64& name )
+void renderwindow::set_title( const string64& name )
 {
 	_window_setup.title = name;
 	glfwSetWindowTitle( name.cstring() );
 }
+
+void renderwindow::set_fullscreen( bool value )
+{
+	if( value && _window_setup.fullscreen )
+	{
+		glfwRestoreWindow();
+	}
+	else if( value )
+	{
+		_window_setup.fullscreen = true;
+		reset_window();
+	}
+	else if( !value && _window_setup.fullscreen )
+	{
+		glfwIconifyWindow();
+	}
+}
+
+void renderwindow::swap( void )
+{
+	glfwSwapBuffers();
+}
+
+/*
+volatile void set_window_close_function( GLFWwindowclosefun function )
+{
+	glfwSetWindowCloseCallback( function );
+}
+
+volatile void set_window_size_function( GLFWwindowsizefun function )
+{
+	glfwSetWindowSizeCallback( function );
+}
+
+volatile void set_window_refresh_function( GLFWwindowrefreshfun function )
+{
+	glfwSetWindowRefreshCallback( function );
+}
+*/
 
 } //namespace crap

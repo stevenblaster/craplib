@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CRAPunittests", "CRAPunitte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CRAPdisplay", "CRAPdisplay\CRAPdisplay.vcxproj", "{1C9F5ACC-3037-403D-992C-B4053887D039}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CRAPaudio", "CRAPaudio\CRAPaudio.vcxproj", "{BC87FF32-C76D-4C07-94D6-8C47D5479BB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{1C9F5ACC-3037-403D-992C-B4053887D039}.Debug|Win32.Build.0 = Debug|Win32
 		{1C9F5ACC-3037-403D-992C-B4053887D039}.Release|Win32.ActiveCfg = Release|Win32
 		{1C9F5ACC-3037-403D-992C-B4053887D039}.Release|Win32.Build.0 = Release|Win32
+		{BC87FF32-C76D-4C07-94D6-8C47D5479BB0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC87FF32-C76D-4C07-94D6-8C47D5479BB0}.Debug|Win32.Build.0 = Debug|Win32
+		{BC87FF32-C76D-4C07-94D6-8C47D5479BB0}.Release|Win32.ActiveCfg = Release|Win32
+		{BC87FF32-C76D-4C07-94D6-8C47D5479BB0}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

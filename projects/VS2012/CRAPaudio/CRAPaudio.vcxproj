@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BC87FF32-C76D-4C07-94D6-8C47D5479BB0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CRAPaudio</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\bin\crapaudio</OutDir>
+    <IntDir>..\..\..\build\vs2010\crapbase\$(Configuration)\</IntDir>
+    <IncludePath>E:\programming\CRAP\lib\openal\Alc;E:\programming\CRAP\lib\openal\build;E:\programming\CRAP\lib\openal\OpenAL32\Include;E:\programming\CRAP\lib\openal\OpenAL32;E:\programming\CRAP\lib\openal\include;E:\programming\CRAP\src\crap;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\bin\crapaudio</OutDir>
+    <IntDir>..\..\..\build\vs2010\crapbase\$(Configuration)\</IntDir>
+    <IncludePath>E:\programming\CRAP\lib\openal\Alc;E:\programming\CRAP\lib\openal\build;E:\programming\CRAP\lib\openal\OpenAL32\Include;E:\programming\CRAP\lib\openal\OpenAL32;E:\programming\CRAP\lib\openal\include;E:\programming\CRAP\src\crap;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedUsingFiles>precompiled.h</ForcedUsingFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedUsingFiles>precompiled.h</ForcedUsingFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alAuxEffectSlot.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alBuffer.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alDatabuffer.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alEffect.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alError.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alFilter.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alListener.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alMain.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alSource.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alState.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alThunk.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alu.h" />
+    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\bs2b.h" />
+    <ClInclude Include="..\..\..\src\crapaudio\audio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\lib\openal\Alc\ALc.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alcConfig.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alcEcho.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alcModulator.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alcReverb.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alcRing.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alcThread.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\alsa.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\ALu.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\bs2b.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\dsound.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\mixer.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\null.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\oss.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\panning.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\portaudio.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\pulseaudio.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\solaris.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\wave.c" />
+    <ClCompile Include="..\..\..\lib\openal\Alc\winmm.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alAuxEffectSlot.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alBuffer.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alDatabuffer.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alEffect.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alError.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alExtension.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alFilter.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alListener.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alSource.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alState.c" />
+    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alThunk.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -85,7 +85,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\lib\glfw\lib\internal.h" />
     <ClInclude Include="..\..\..\lib\glfw\lib\win32\platform.h" />
-    <ClInclude Include="..\..\..\src\crapdisplay\crapwindow.h" />
+    <ClInclude Include="..\..\..\src\crapdisplay\renderwindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib\glfw\lib\enable.c" />
@@ -109,7 +109,7 @@
     <ClCompile Include="..\..\..\lib\glfw\lib\win32\win32_time.c" />
     <ClCompile Include="..\..\..\lib\glfw\lib\win32\win32_window.c" />
     <ClCompile Include="..\..\..\lib\glfw\lib\window.c" />
-    <ClCompile Include="..\..\..\src\crapdisplay\crapwindow.cpp" />
+    <ClCompile Include="..\..\..\src\crapdisplay\renderwindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
