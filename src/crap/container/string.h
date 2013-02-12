@@ -21,10 +21,11 @@
 #define CRAP_CONTAINER_STRING_H
 
 #include "eastl/string.h"
+#include <string>
 
 namespace crap
 {
-	typedef eastl::string string;
+	typedef std::string string;
 }
 
 #endif // CRAP_CONTAINER_STRING_H

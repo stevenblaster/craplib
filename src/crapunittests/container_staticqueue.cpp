@@ -6,23 +6,23 @@
 namespace
 {
 
-crap::queue<int>* _queue;
+crap::static_queue<int, 20>* _staticqueue;
 
 TEST(ContainerQueueTitle)
 {
-    std::cout << "Testing \"container/queue.h\" (queue)" << std::endl;
+    std::cout << "Testing \"container/queue.h\" (static_queue)" << std::endl;
 }
 
 TEST(ContainerQueueConstruction)
 {
 	std::cout << "\tConstruction" << std::endl;
-	_queue = new crap::queue<int>;
+	_staticqueue = new crap::static_queue<int, 20>;
 }
 
 TEST(ContainerQueueDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;
-	delete _queue;
+	delete _staticqueue;
 }
 
 }   // namespace

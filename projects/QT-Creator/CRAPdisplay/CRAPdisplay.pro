@@ -35,13 +35,14 @@ SOURCES += \
     ../../../lib/glfw/lib/x11/x11_init.c \
     ../../../lib/glfw/lib/x11/x11_time.c \
     ../../../lib/glfw/lib/x11/x11_window.c \
-    ../../../src/crapdisplay/crapwindow.cpp
+    ../../../src/crapdisplay/renderwindow.cpp
 
 HEADERS += \
     ../../../lib/glfw/lib/internal.h \
     ../../../lib/glfw/lib/x11/platform.h \
-    ../../../src/crapdisplay/crapwindow.h
+    ../../../src/crapdisplay/renderwindow.h
 
 OTHER_FILES += \
-    ../../../lib/glfw/lib/x11/Makefile.x11.in
+    ../../../lib/glfw/lib/x11/Makefile.x11.in \
+    CRAPdisplay.pro.user
 

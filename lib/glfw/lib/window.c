@@ -587,8 +587,8 @@ GLFWAPI int GLFWAPIENTRY glfwOpenWindow( int width, int height,
             // See readme.html section 2.2 for details
 
             //CRAP TODO: comment these if necessary
-            glfwCloseWindow();
-            return GL_FALSE;
+            //glfwCloseWindow();
+            //return GL_FALSE;
         }
     }
 

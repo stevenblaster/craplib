@@ -114,9 +114,6 @@
     <ClCompile Include="..\..\..\src\crapunittests\container_list.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\crapunittests\container_map.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\crapunittests\container_pair.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -181,6 +178,18 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\crapunittests\main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\container_treemap.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\container_map.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\container_staticqueue.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crapunittests\container_staticstack.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

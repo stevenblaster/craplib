@@ -24,7 +24,7 @@
 #include "precompiled.h"
 
 #if defined(CRAP_PLATFORM_WIN)
-#include "win32/config.h"
+#include "config_win32.h"
 #elif defined(CRAP_PLATFORM_WIN)
 #include "osx/config.h"
 #else

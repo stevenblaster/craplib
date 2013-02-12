@@ -108,6 +108,9 @@
     <ClCompile Include="..\..\..\src\crapunittests\container_bitset.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\container_list.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\container_map.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_staticqueue.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_staticstack.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\container_treemap.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\container_pair.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\container_queue.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\container_stack.cpp" />

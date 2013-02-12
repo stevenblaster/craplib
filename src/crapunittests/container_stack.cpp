@@ -6,9 +6,23 @@
 namespace
 {
 
-TEST(ConfigStackTitle)
+crap::stack<int>* _stack;
+
+TEST(ContainerStackTitle)
 {
-    std::cout << "Testing \"container/stack.h\"" << std::endl;
+    std::cout << "Testing \"container/stack.h\" (stack)" << std::endl;
+}
+
+TEST(ContainerStackConstruction)
+{
+	std::cout << "\tConstruction" << std::endl;
+	_stack = new crap::stack<int>;
+}
+
+TEST(ContainerStackDestruction)
+{
+	std::cout << "\tDestruction" << std::endl;
+	delete _stack;
 }
 
 }   // namespace

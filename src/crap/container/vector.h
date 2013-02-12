@@ -23,12 +23,13 @@
 
 #include "memory/allocatordefault.h"
 #include "eastl/vector.h"
+#include <vector>
 
 //lib namespace
 namespace crap
 {
 	template<typename T, typename Allocator = crap::allocator_default<T> >
-	class vector : public eastl::vector<T, Allocator>
+	class vector : public std::vector<T, Allocator>
 	{
 	};
 }

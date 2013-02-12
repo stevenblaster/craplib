@@ -18,7 +18,7 @@
  * Or go to http://www.gnu.org/copyleft/lgpl.html
  */
 
-#include "precompiled.h"
+#include "config.h"
 
 #if defined(CRAP_PLATFORM_WIN)
 #if defined(CRAP_PROCESSOR_X86_64) || defined(CRAP_PROCESSOR_IA64)
