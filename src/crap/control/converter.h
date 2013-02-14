@@ -23,6 +23,8 @@
 #ifndef CRAP_CONTROL_CONVERTER_H
 #define CRAP_CONTROL_CONVERTER_H
 
+#include <limits>
+
 #include "config/types.h"
 #include "control/zero.h"
 #include "container/staticstring.h"
@@ -1064,7 +1066,7 @@ inline f32 convert<u64, f32>( const u64& variable )
 template<>
 inline f32 convert<f64, f32>( const f64& variable )
 {
-	if( variable < 0.0 && variable < F32_MIN * 1.0 )
+	if( variable < 0.0 && variable < F32_MIN )
 		return F32_MIN;
 	else if( variable > 0.0 && variable > F32_MAX * 1.0 )
 		return F32_MAX;

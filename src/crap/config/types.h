@@ -225,10 +225,10 @@ typedef i128 u128;
 	#define U64_MIN		0
 #endif
 #ifndef F32_MIN
-	#define F32_MIN	FLT_MIN
+	#define F32_MIN		( -F32_MAX -1 )
 #endif
 #ifndef F64_MIN
-	#define F64_MIN	DBL_MIN
+	#define F64_MIN		( -F64_MAX -1 )
 #endif
 
 

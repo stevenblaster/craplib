@@ -9,6 +9,7 @@ namespace
 TEST(ConfigBreakpointsTitle)
 {
     std::cout << "Testing \"control/breakpoints.h\"" << std::endl;
+	std::cout << "\tNothing to show." << std::endl;
 }
 
 }   // namespace
