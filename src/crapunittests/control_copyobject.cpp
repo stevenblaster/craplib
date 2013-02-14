@@ -6,9 +6,46 @@
 namespace
 {
 
-TEST(ConfigCopyobjectTitle)
+TEST(ControlCopyobjectTitle)
 {
-    std::cout << "Testing \"control/copyobject.h\"" << std::endl;
+    std::cout << "Testing \"control/copyobject.h\" (copy_object)" << std::endl;
+	std::cout << "\tTesting copy_object" << std::endl;
+}
+
+TEST(ControlCopyobjectVT)
+{
+	class hasvt
+	{
+	public:	
+		int somedata;
+		hasvt(int fun) : somedata(fun) {}
+		virtual ~hasvt(){}
+	};
+
+	hasvt tmp(4);
+	hasvt tmp2(0);
+
+	crap::copy_object<hasvt>(&tmp, &tmp2);
+
+	CHECK_EQUAL(4, tmp2.somedata );
+}
+
+TEST(ControlCopyobjectNVT)
+{
+	class hasnvt
+	{
+	public:	
+		int somedata;
+		hasnvt(int fun) : somedata(fun) {}
+		~hasnvt(){}
+	};
+
+	hasnvt tmp(4);
+	hasnvt tmp2(0);
+
+	crap::copy_object<hasnvt>(&tmp, &tmp2);
+
+	CHECK_EQUAL(4, tmp2.somedata );
 }
 
 }   // namespace

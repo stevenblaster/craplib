@@ -28,12 +28,6 @@
     <Filter Include="geometry">
       <UniqueIdentifier>{e8127efb-d067-4e21-a3b6-e2b786b62e3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="lib">
-      <UniqueIdentifier>{a2edfe2f-c1aa-47ae-b9d9-6e3b85fa4908}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\eastl">
-      <UniqueIdentifier>{655eb5d4-97ee-44af-ae0b-e6a7be6b6f2c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -267,24 +261,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp">
       <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\eastl\allocator.cpp">
-      <Filter>lib\eastl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\eastl\assert.cpp">
-      <Filter>lib\eastl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\eastl\fixed_pool.cpp">
-      <Filter>lib\eastl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\eastl\hashtable.cpp">
-      <Filter>lib\eastl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\eastl\red_black_tree.cpp">
-      <Filter>lib\eastl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\eastl\string.cpp">
-      <Filter>lib\eastl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

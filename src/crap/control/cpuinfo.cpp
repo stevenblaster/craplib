@@ -60,6 +60,31 @@ cpu_info::vendor()
 	return tmp;
 }
 
+crap::string16 cpu_info::simd_string()
+{
+	switch( _detected )
+	{
+	case None:
+		return "None";
+	case SSE:
+		return "SSE";
+	case SSE2:
+		return "SSE2";
+	case SSE3:
+		return "SSE3";
+	case SSE41:
+		return "SSE4.1";
+	case SSE42:
+		return "SSE4.2";
+	case AVX:
+		return "AVX";
+	case AVX2:
+		return "AVX2";
+	default:
+		return "Failure";
+	};
+}
+
 crap::string16
 cpu_info::type_string()
 {

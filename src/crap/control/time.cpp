@@ -63,13 +63,13 @@ time::time_info time::current_time( void )
 }
 
 
-string64 time::week_day_name( u8 id )
+string64 time::week_day_name( u16 id )
 {
 	string64 wdaysLong[] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 	return wdaysLong[id];
 }
 
-string64 time::month_name( u8 id )
+string64 time::month_name( u16 id )
 {
 	string64 monthNames[] = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	return monthNames[id];

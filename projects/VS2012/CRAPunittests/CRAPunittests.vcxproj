@@ -44,14 +44,14 @@
     <OutDir>..\..\..\bin\crapunittests\</OutDir>
     <IntDir>..\..\..\build\vs2010\crapunittests\$(Configuration)\</IntDir>
     <IncludePath>..\..\..\src\crapdisplay\;..\..\..\lib\freeglut\include;..\..\..\lib\unittest\;..\..\..\src\crapunittests\;..\..\..\lib\;..\..\..\src\crap\;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\..\lib\freeglut\lib\x86\Debug;..\..\..\bin\crapdisplay;..\..\..\bin\unittest;..\..\..\bin\crapbase;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\..\..\bin\crapdisplay;..\..\..\bin\unittest;..\..\..\bin\crapbase;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\crapunittests\</OutDir>
     <IntDir>..\..\..\build\vs2010\crapunittests\$(Configuration)\</IntDir>
     <IncludePath>..\..\..\src\crapdisplay\;..\..\..\lib\freeglut\include;..\..\..\lib\unittest\;..\..\..\src\crapunittests\;..\..\..\lib\;..\..\..\src\crap\;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\..\lib\freeglut\lib\x86;..\..\..\bin\crapdisplay;..\..\..\bin\unittest;..\..\..\bin\crapbase;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\..\..\bin\crapdisplay;..\..\..\bin\unittest;..\..\..\bin\crapbase;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -66,7 +66,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>CRAPbasic.lib;CRAPdisplay.lib;UnitTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CRAPcore.lib;CRAPdisplay.lib;UnitTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,7 +86,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>CRAPbasic.lib;CRAPdisplay.lib;UnitTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CRAPcore.lib;CRAPdisplay.lib;UnitTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\..\src\crapunittests\control_checkvtable.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_compare.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_converter.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\control_copyarray.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_copyobject.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_cpuinfo.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_endian.cpp" />

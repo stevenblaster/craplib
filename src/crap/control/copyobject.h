@@ -45,10 +45,10 @@ void copy_object( const T* source, T* destination )
  */
 
 template<typename T>
-void copy_array( const T* source, T* destination, u64 arraysize )
+void copy_array( const T* source, T* destination, size_t32 arraysize )
 {
 	if( crap::has_vtable<T>::RESULT )
-	for( u64 i=0; i< arraysize; ++i)
+	for( size_t32 i=0; i< arraysize; ++i)
 		destination[i] = source[i];
 	else
 		memcpy( destination, source, sizeof(T) * arraysize );

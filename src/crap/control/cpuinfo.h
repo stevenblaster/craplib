@@ -209,8 +209,10 @@ class cpu_info
 		inline u32 clf() { return (_info1[1] >> 8) & 0xff; }
 		inline u32 apicID() { return (_info1[1] >> 24) & 0xff; }
 		inline u32 silbings() { return (_info1[1] >> 16) & 0xff; }
+
 		crap::string16 type_string();
 		crap::string64 family_string();
+		crap::string16 simd_string();
 
 		inline b8 has_feature( u32 id ) const { return (_info1[3] & (1<<id)); }
 		inline b8 has_feature_2( u32 id ) const { return (_info1[2] & (1<<id)); }

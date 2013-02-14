@@ -157,12 +157,6 @@
     <ClInclude Include="..\..\..\src\crap\threading\thread.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\lib\eastl\allocator.cpp" />
-    <ClCompile Include="..\..\..\lib\eastl\assert.cpp" />
-    <ClCompile Include="..\..\..\lib\eastl\fixed_pool.cpp" />
-    <ClCompile Include="..\..\..\lib\eastl\hashtable.cpp" />
-    <ClCompile Include="..\..\..\lib\eastl\red_black_tree.cpp" />
-    <ClCompile Include="..\..\..\lib\eastl\string.cpp" />
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\cpuinfo.cpp" />
     <ClCompile Include="..\..\..\src\crap\control\limits.cpp" />
