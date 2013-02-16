@@ -44,16 +44,16 @@ TEST(ControlCheckingByteSwap)
 
 TEST(ControlCheckingSwap2)
 {
-	struct test_struct
+    typedef struct test_struct
 	{
 		c8 bytes[2];
-	};
+    }test_struct;
 
 	test_struct tb;
 	tb.bytes[0] = 1;
 	tb.bytes[1] = 0;
 
-	tb = crap::endian::swap<test_struct>( tb );
+    tb = crap::endian::swap<test_struct>( tb );
 
 	CHECK_EQUAL( 0, tb.bytes[0] );
 	CHECK_EQUAL( 1, tb.bytes[1] );

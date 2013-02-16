@@ -262,5 +262,8 @@
     <ClCompile Include="..\..\..\src\crap\network\addressip6.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\files\file.cpp">
+      <Filter>files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

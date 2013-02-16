@@ -72,7 +72,12 @@ SOURCES += \
     ../../../src/crapunittests/geometry_vector3.cpp \
     ../../../src/crapunittests/geometry_vector4.cpp \
     ../../../src/crapunittests/geometry_vector2.cpp \
-    ../../../src/crapunittests/geometry_geometry.cpp
+    ../../../src/crapunittests/geometry_geometry.cpp \
+    ../../../src/crapunittests/config_files.cpp \
+    ../../../src/crapunittests/container_staticstack.cpp \
+    ../../../src/crapunittests/container_staticqueue.cpp \
+    ../../../src/crapunittests/container_treemap.cpp \
+    ../../../src/crapunittests/control_copyarray.cpp
 
 
 unix|win32: LIBS += -L$$PWD/../../../bin/crapbase -lCRAPbase

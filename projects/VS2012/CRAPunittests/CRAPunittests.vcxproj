@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\..\src\crapunittests\control_limits.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_time.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\control_zero.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\files_file.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\geometry_geometry.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix2.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\geometry_matrix3.cpp" />
