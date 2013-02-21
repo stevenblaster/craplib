@@ -53,6 +53,7 @@ struct vector4
 	{
 		T w;
 		T a;
+		T i; //for quaternion - the imaginary number
 	};
 
 	//! @brief standard constructor
@@ -239,7 +240,7 @@ vector4<T>& vector4<T>::operator*=( const vector4& other )
 	x *= other.x;
 	y *= other.y;
 	z *= other.z;
-	w *= other.x;
+	w *= other.w;
 	return *this;
 }
 
@@ -317,6 +318,10 @@ typedef vector4<i32> vector4i;
 typedef vector4<i64> vector4l;
 typedef vector4<f32> vector4f;
 typedef vector4<f64> vector4d;
+
+//quaternion
+template<typename T>
+struct quaternion : public vector4<T> {};
 
 }	// namespace crap
 

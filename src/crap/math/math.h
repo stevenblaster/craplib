@@ -27,7 +27,196 @@
 namespace crap
 {
 
+template<typename T>
 class math
+{
+public:
+	static CRAP_INLINE T
+	modf( const T& x, T* p )
+	{
+		return ::modf(x, p);
+	}
+
+	static CRAP_INLINE T
+	trunc( const T& x )
+	{
+		T res;
+		return ::modf( x, &res );
+	}
+
+	static CRAP_INLINE T
+	frac( const T& x)
+	{
+		T nil;
+		return crap::math<f32>::modf(x, &nil);
+	}
+
+	static CRAP_INLINE T
+	fmod( const T& x, const T& y )
+	{
+		CRAP_ASSERT_DEBUG( y != 0, "Y is zero" );
+		return ::fmod(x,y);
+	}
+
+	static CRAP_INLINE T
+	drem( const T& x, const T& y )
+	{
+		CRAP_ASSERT_DEBUG( y != 0, "Y is zero" );
+		return x - y * (i32) ( x/y + 0.5 );
+	}
+
+	static CRAP_INLINE T
+	wrap( const T& x, const T& y )
+	{
+		CRAP_ASSERT_DEBUG( y != 0, "Y is zero" );
+		return x - y * (i32) (x/y);
+	}
+
+	static CRAP_INLINE T
+	log2( const T& x )
+	{
+		CRAP_ASSERT_DEBUG( x >= 0, "X higher/euqal zero" );
+		return ::log(d) / ::log(2);
+	}
+
+	static CRAP_INLINE T
+	log( const T& x )
+	{
+		CRAP_ASSERT_DEBUG( x >= 0, "X higher/euqal zero" );
+		return ::log(x);
+	}
+
+	static CRAP_INLINE T
+	exp2( const T& x )
+	{
+		return ::exp(x * ::log(2));
+	}
+
+	static CRAP_INLINE T
+	exp( const T& x )
+	{
+		return ::exp(x);
+	}
+
+	static CRAP_INLINE T
+	pow( const T& x, const T& y )
+	{
+		CRAP_ASSERT_DEBUG (x >= 0.0F || y == crap::math<f32>::trunc(y), "X lower then zero or y != trunc(y)");
+		return ::pow( x,y );
+	}
+
+	static CRAP_INLINE T
+	cos( const T& x )
+	{
+		return ::cos( x );
+	}
+
+	static CRAP_INLINE T
+	sin( const T& x )
+	{
+		return ::sin( x );
+	}
+	
+	static CRAP_INLINE void
+	sincos( const T& x, T* s, T* c )
+	{
+		T sres, cres;
+		i32 quad = 0;
+		T y = wrap( x, CRAP_PI * 2 );
+
+		if ( y > CRAP_PI )
+		{
+			y = CRAP_PI * 2 - y;
+			quad |= 2;
+		 }
+
+		if ( y > CRAP_PI_HALF )
+		{
+			y = CRAP_PI - y;
+			quad |= 1;
+		}
+
+		sres = ::cos( CRAP_PI_HALF - y );
+		cres = ::cos(x);
+
+		s[0] = (quad & 2) ? -sres : sres;
+		c[0] = (quad & 1) ? -cres : cres;
+	}
+
+	static CRAP_INLINE T
+	tan( const T& x )
+	{
+		return ::tan(x);
+	}
+
+	static CRAP_INLINE T
+	cosh( const T& x )
+	{
+		return 0.5 * ( ::exp(x) + ::exp(-x) );
+	}
+
+	static CRAP_INLINE T
+	sinh( const T& x )
+	{
+		return 0.5f * ( ::exp(x) - ::exp(-x) );
+	}
+
+	static CRAP_INLINE T
+	tanh( const T& x )
+	{
+		T t = ::exp( 2.0f * x );
+		return ( t - 1.0f ) / ( t + 1.0f );
+	}
+
+	static CRAP_INLINE T
+	acos( const T& x )
+	{
+		CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
+		return ::acos( x );
+	}
+
+	static CRAP_INLINE T
+	asin( const T& x )
+	{
+		CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
+		return ::asin( x );
+	}
+
+	static CRAP_INLINE T
+	atan2( const T& y, const T& x )
+	{
+		return ::atan2( y,x );
+	}
+
+	static CRAP_INLINE T
+	atan( const T& x )
+	{
+		return ::atan( x );
+	}
+
+	static CRAP_INLINE T
+	acosh( const T& x )
+	{
+		CRAP_ASSERT_DEBUG ( x > 1.0, "X not bigger then 1" );
+		return ::log(x + ::sqrt( x * x - 1.0 ));
+	}
+
+	static CRAP_INLINE T
+	asinh( const T& x )
+	{
+		return ::log(x + ::sqrt( x * x + 1.0 ));
+	}
+
+	static CRAP_INLINE T
+	atanh( const T& x )
+	{
+		CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
+		return 0.5f * (::log(1.0f + x) - ::log(1.0f - x));
+	}
+};
+
+template<>
+class math<f32>
 {
 private:
 
@@ -122,7 +311,7 @@ private:
 		: "=m" (res) : "t" (x) : "st");
 		return res;
 	#else
-		return crap::math::intFloor(x + 0.5F);
+		return crap::math<f32>::intFloor(x + 0.5F);
 	#endif
 	}
 
@@ -170,61 +359,61 @@ private:
 	sqrt(const f32& x)
 	{
 		CRAP_ASSERT_DEBUG (x >= 0.0F, "Squareroot from zero or less");
-		return x * crap::math::rsqrt(x);
+		return x * crap::math<f32>::rsqrt(x);
 	}
 
 	static CRAP_INLINE f32
 	eps( const f32& x )
 	{
-		return ( crap::math::fabs(x) + 1.0F ) * CRAP_EPSILON;
+		return ( crap::math<f32>::fabs(x) + 1.0F ) * CRAP_EPSILON;
 	}
 
 	static CRAP_INLINE i32
 	eqz( const f32& x )
 	{
-		return crap::math::fabs(x) <= CRAP_EPSILON;
+		return crap::math<f32>::fabs(x) <= CRAP_EPSILON;
 	}
 
 	static CRAP_INLINE i32
 	neqz( const f32& x )
 	{
-		return ! crap::math::eqz(x);
+		return ! crap::math<f32>::eqz(x);
 	}
 
 	static CRAP_INLINE i32
 	eq( const f32& x, const f32& y )
 	{
-		return crap::math::fabs(x - y) <= crap::math::eps(x);
+		return crap::math<f32>::fabs(x - y) <= crap::math<f32>::eps(x);
 	}
 
 	static CRAP_INLINE i32
 	neq( const f32& x, const f32& y )
 	{
-		return ! crap::math::eq(x, y);
+		return ! crap::math<f32>::eq(x, y);
 	}
 
 	static CRAP_INLINE i32
 	lt( const f32& x, const f32& y )
 	{
-		return x < y - crap::math::eps(x);
+		return x < y - crap::math<f32>::eps(x);
 	}
 
 	static CRAP_INLINE i32
 	gt( const f32& x, const f32& y )
 	{
-		return crap::math::lt(y, x);
+		return crap::math<f32>::lt(y, x);
 	}
 
 	static CRAP_INLINE i32
 	leq( const f32& x, const f32& y )
 	{
-		return ! crap::math::gt(x, y);
+		return ! crap::math<f32>::gt(x, y);
 	}
 
 	static CRAP_INLINE i32
 	geq( const f32& x, const f32& y )
 	{
-		return ! crap::math::lt(x, y);
+		return ! crap::math<f32>::lt(x, y);
 	}
 
 	static CRAP_INLINE f32
@@ -242,13 +431,13 @@ private:
 	static CRAP_INLINE f32
 	clamp( const f32& x, const f32& a, const f32& b )
 	{
-		return crap::math::fmax( a, crap::math::fmin(b, x) );
+		return crap::math<f32>::fmax( a, crap::math<f32>::fmin(b, x) );
 	}
 
 	static CRAP_INLINE f32
 	sat( const f32& x )
 	{
-		return crap::math::clamp( x, 0.0F, 1.0F );
+		return crap::math<f32>::clamp( x, 0.0F, 1.0F );
 	}
 
 	static CRAP_INLINE f32
@@ -373,7 +562,7 @@ public:
 	trunc( const f32& x )
 	{
 		f32 res;
-		crap::math::modf( x, &res );
+		crap::math<f32>::modf( x, &res );
 		return res;
 	}
 
@@ -381,32 +570,32 @@ public:
 	frac( const f32& x)
 	{
 		f32 nil;
-		return crap::math::modf(x, &nil);
+		return crap::math<f32>::modf(x, &nil);
 	}
 
 	static CRAP_INLINE f32
 	fmod( const f32& x, const f32& y )
 	{
 		CRAP_ASSERT_DEBUG( y != 0.0F, "Y is zero" );
-		return y * crap::math::frac( x / y );
+		return y * crap::math<f32>::frac( x / y );
 	}
 
 	static CRAP_INLINE f32
 	drem( const f32& x, const f32& y )
 	{
 		CRAP_ASSERT_DEBUG( y != 0.0F, "Y is zero" );
-		return x - y * crap::math::intRound( x / y );
+		return x - y * crap::math<f32>::intRound( x / y );
 	}
 
 	static CRAP_INLINE f32
 	wrap( const f32& x, const f32& y )
 	{
 		CRAP_ASSERT_DEBUG( y != 0.0F, "Y is zero" );
-		return x - y * crap::math::intFloor(x / y);
+		return x - y * crap::math<f32>::intFloor(x / y);
 	}
 
 	//static CRAP_INLINE f32
-	//crap::math::wrap2(f32, f32 min, f32 max);
+	//crap::math<f32>::wrap2(f32, f32 min, f32 max);
 
 	static CRAP_INLINE f32
 	log2( const f32& x )
@@ -417,14 +606,14 @@ public:
 		u.f = x;
 		lg2 = (u.i >> 23) - 127;
 		u.i = (u.i & ~0x7F800000) | 0x3F800000;
-		return crap::math::log2approx(u.f) + lg2;
+		return crap::math<f32>::log2approx(u.f) + lg2;
 	}
 
 	static CRAP_INLINE f32
 	log( const f32& x )
 	{
 		CRAP_ASSERT_DEBUG( x >= 0.0F, "X higher/euqal zero" );
-		return crap::math::log2(x) * CRAP_LN_2;
+		return crap::math<f32>::log2(x) * CRAP_LN_2;
 	}
 
 	static CRAP_INLINE f32
@@ -449,7 +638,7 @@ public:
 			ux.f = ux.f - 1.0F;
 		}
 
-		ur.f = ur.f * crap::math::exp2approx(ux.f);
+		ur.f = ur.f * crap::math<f32>::exp2approx(ux.f);
 
 		if (xneg == 0)
 			return ur.f;
@@ -460,18 +649,18 @@ public:
 	static CRAP_INLINE f32
 	exp( const f32& x )
 	{
-		return crap::math::exp2( x * CRAP_LOG2E );
+		return crap::math<f32>::exp2( x * CRAP_LOG2E );
 	}
 
 	static CRAP_INLINE f32
 	pow( const f32& x, const f32& y )
 	{
-		CRAP_ASSERT_DEBUG (x >= 0.0F || y == crap::math::trunc(y), "X lower then zero or y != trunc(y)");
+		CRAP_ASSERT_DEBUG (x >= 0.0F || y == crap::math<f32>::trunc(y), "X lower then zero or y != trunc(y)");
 
-		if ( f32toi32(crap::math::fabs(x)) != 0)
+		if ( f32toi32(crap::math<f32>::fabs(x)) != 0)
 		{
-			if ( f32toi32(crap::math::fabs(y)) != 0x3F800000 )
-				return crap::math::exp2(y * crap::math::log2(crap::math::fabs(x)));
+			if ( f32toi32(crap::math<f32>::fabs(y)) != 0x3F800000 )
+				return crap::math<f32>::exp2(y * crap::math<f32>::log2(crap::math<f32>::fabs(x)));
 
 			if ( f32toi32(y) & 0x80000000 )
 				return 1.0F / x;
@@ -486,7 +675,7 @@ public:
 	{
 		f32 cres;
 		i32 quad = 0;
-		f32 y = crap::math::wrap( x, CRAP_PI * 2 );
+		f32 y = crap::math<f32>::wrap( x, CRAP_PI * 2 );
 
 		if ( y > CRAP_PI )
 		{
@@ -499,14 +688,14 @@ public:
 			quad |= 1;
 		}
 
-		cres = crap::math::cosapprox(y);
+		cres = crap::math<f32>::cosapprox(y);
 		return (quad & 1) ? -cres : cres;
 	}
 
 	static CRAP_INLINE f32
 	sin( const f32& x )
 	{
-		return crap::math::cos( CRAP_PI_HALF - x );
+		return crap::math<f32>::cos( CRAP_PI_HALF - x );
 	}
 
 	static CRAP_INLINE void
@@ -514,7 +703,7 @@ public:
 	{
 		f32 sres, cres;
 		i32 quad = 0;
-		f32 y = crap::math::wrap( x, CRAP_PI * 2 );
+		f32 y = crap::math<f32>::wrap( x, CRAP_PI * 2 );
 
 		if ( y > CRAP_PI )
 		{
@@ -528,8 +717,8 @@ public:
 			quad |= 1;
 		}
 
-		sres = crap::math::cosapprox( CRAP_PI_HALF - y );
-		cres = crap::math::cosapprox(x);
+		sres = crap::math<f32>::cosapprox( CRAP_PI_HALF - y );
+		cres = crap::math<f32>::cosapprox(x);
 
 		s[0] = (quad & 2) ? -sres : sres;
 		c[0] = (quad & 1) ? -cres : cres;
@@ -539,26 +728,26 @@ public:
 	tan( const f32& x )
 	{
 		f32 s, c;
-		crap::math::sincos(x, &s, &c);
+		crap::math<f32>::sincos(x, &s, &c);
 		return s / c;
 	}
 
 	static CRAP_INLINE f32
 	cosh( const f32& x )
 	{
-		return 0.5F * ( crap::math::exp(x) + crap::math::exp(-x) );
+		return 0.5F * ( crap::math<f32>::exp(x) + crap::math<f32>::exp(-x) );
 	}
 
 	static CRAP_INLINE f32
 	sinh( const f32& x )
 	{
-		return 0.5F * ( crap::math::exp(x) - crap::math::exp(-x) );
+		return 0.5F * ( crap::math<f32>::exp(x) - crap::math<f32>::exp(-x) );
 	}
 
 	static CRAP_INLINE f32
 	tanh( const f32& x )
 	{
-		f32 t = crap::math::exp( 2.0F * x );
+		f32 t = crap::math<f32>::exp( 2.0F * x );
 		return ( t - 1.0F ) / ( t + 1.0F );
 	}
 
@@ -569,10 +758,10 @@ public:
 
 		f32 neg, t;
 		neg = (f32) ( x < 0.0F );
-		f32 y = crap::math::fabs(x);
+		f32 y = crap::math<f32>::fabs(x);
 
-		t = crap::math::arccosapprox(y);
-		t = t * crap::math::sqrt(1.0F - y);
+		t = crap::math<f32>::arccosapprox(y);
+		t = t * crap::math<f32>::sqrt(1.0F - y);
 		t = t - 2.0F * neg * t;
 		return neg * CRAP_PI + t;
 	}
@@ -584,10 +773,10 @@ public:
 
 		f32 neg, t;
 		neg = (f32) ( x < 0.0F );
-		f32 y = crap::math::fabs(x);
+		f32 y = crap::math<f32>::fabs(x);
 
-		t = crap::math::arccosapprox(y);
-		t = CRAP_PI_HALF - t * crap::math::sqrt( 1.0F - y );
+		t = crap::math<f32>::arccosapprox(y);
+		t = CRAP_PI_HALF - t * crap::math<f32>::sqrt( 1.0F - y );
 		return t - 2.0F * neg * t;
 	}
 
@@ -596,13 +785,13 @@ public:
 	{
 		f32 ax, ay;
 		f32 t0, t1;
-		ax = crap::math::fabs(x);
-		ay = crap::math::fabs(y);
-		t0 = crap::math::fmax(ax, ay);
-		t1 = crap::math::fmin(ax, ay);
+		ax = crap::math<f32>::fabs(x);
+		ay = crap::math<f32>::fabs(y);
+		t0 = crap::math<f32>::fmax(ax, ay);
+		t1 = crap::math<f32>::fmin(ax, ay);
 
 		t0 = 1.0F / t0;
-		t0 = crap::math::arctanapprox(t0 * t1);
+		t0 = crap::math<f32>::arctanapprox(t0 * t1);
 
 		t0 = (ax < ay)  ? CRAP_PI_HALF - t0 : t0;
 		t0 = (x < 0.0F) ? CRAP_PI - t0 : t0;
@@ -613,30 +802,36 @@ public:
 	static CRAP_INLINE f32
 	atan( const f32& x )
 	{
-		return crap::math::atan2( x, 1.0F );
+		return crap::math<f32>::atan2( x, 1.0F );
 	}
 
 	static CRAP_INLINE f32
 	acosh( const f32& x )
 	{
 		CRAP_ASSERT_DEBUG ( x > 1.0F, "X not bigger then 1" );
-		return crap::math::log(x + crap::math::sqrt( x * x - 1.0F ));
+		return crap::math<f32>::log(x + crap::math<f32>::sqrt( x * x - 1.0F ));
 	}
 
 	static CRAP_INLINE f32
 	asinh( const f32& x )
 	{
-		return crap::math::log(x + crap::math::sqrt( x * x + 1.0F ));
+		return crap::math<f32>::log(x + crap::math<f32>::sqrt( x * x + 1.0F ));
 	}
 
 	static CRAP_INLINE f32
 	atanh( const f32& x )
 	{
 		CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
-		return 0.5F * (crap::math::log(1.0F + x) - crap::math::log(1.0F - x));
+		return 0.5F * (crap::math<f32>::log(1.0F + x) - crap::math<f32>::log(1.0F - x));
 	}
 
 };
+
+//typedefs
+typedef math<i32> mathi;
+typedef math<i64> mathl;
+typedef math<f32> mathf;
+typedef math<f64> mathd;
 
 }	// namespace crap
 
