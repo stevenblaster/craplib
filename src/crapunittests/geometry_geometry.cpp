@@ -237,4 +237,114 @@ TEST(GeometryGeometryCrossVector3)
 	CHECK_EQUAL( -3, result.z);
 }
 
+TEST(GeometryGeometryLenghtVector2)
+{
+
+	std::cout << "\tTesting vector lenght" << std::endl;
+	crap::vector2f l;
+
+	l.x = 2;
+	l.y = 3;
+
+	CHECK_EQUAL( crap::mathf::sqrt(13), crap::geometryf::lenght(l));
+}
+
+TEST(GeometryGeometryLenghtVector3)
+{
+	crap::vector3f l;
+
+	l.x = 2;
+	l.y = 3;
+	l.z = 4;
+
+	CHECK_EQUAL( crap::mathf::sqrt(29), crap::geometryf::lenght(l));
+}
+
+TEST(GeometryGeometryLenghtVector4)
+{
+	crap::vector4f l;
+
+	l.x = 2;
+	l.y = 3;
+	l.z = 4;
+	l.w = 5;
+
+	CHECK_EQUAL( crap::mathf::sqrt(54), crap::geometryf::lenght(l));
+}
+
+TEST(GeometryGeometryNormalizeVector2)
+{
+
+	std::cout << "\tTesting normalizing vectors" << std::endl;
+	crap::vector2f l;
+
+	l.x = 2;
+	l.y = 3;
+
+	crap::geometryf::normalize( &l );
+
+	CHECK_EQUAL( 1, crap::mathf::int_round( crap::geometryf::lenght(l) ) );
+}
+
+TEST(GeometryGeometryNormalizeVector3)
+{
+	crap::vector3f l;
+
+	l.x = 2;
+	l.y = 3;
+	l.z = 4;
+
+	crap::geometryf::normalize( &l );
+
+	CHECK_EQUAL( 1, crap::mathf::int_round( crap::geometryf::lenght(l) ) );
+}
+
+TEST(GeometryGeometryNormalizeVector4)
+{
+	crap::vector4f l;
+
+	l.x = 2;
+	l.y = 3;
+	l.z = 4;
+	l.w = 5;
+
+	crap::geometryf::normalize( &l );
+
+	CHECK_EQUAL( 1, crap::mathf::int_round( crap::geometryf::lenght(l) ) );
+}
+
+TEST(GeometryGeometryEulerToQuaternion)
+{
+	std::cout << "\tTesting quaternion" << std::endl;
+	std::cout << "\t\tOnly Euler from/to conversion tested" << std::endl;
+
+	crap::vector3f euler;
+	euler.x = 1.5f;
+	euler.y = 1.3f;
+	euler.z = 1.7f;
+
+	crap::quaternion<f32> quat = crap::geometryf::euler_to_quaternion( euler );
+	crap::vector3f euler2 = crap::geometryf::quaternion_to_euler( quat, false );
+
+	CHECK_EQUAL( crap::mathf::int_round(euler.x), crap::mathf::int_round(euler2.x) );
+	CHECK_EQUAL( crap::mathf::int_round(euler.y), crap::mathf::int_round(euler2.y) );
+	CHECK_EQUAL( crap::mathf::int_round(euler.z), crap::mathf::int_round(euler2.z) );
+}
+
+TEST(GeometryGeometryQuaternionToEuler)
+{
+	crap::quaternion<f32> quat;
+	quat.x = 0.5f;
+	quat.y = 0.3f;
+	quat.z = 0.7f;
+	quat.w = 0.1f;
+
+	crap::vector3f euler = crap::geometryf::quaternion_to_euler( quat, false );
+	crap::quaternion<f32> quat2 = crap::geometryf::euler_to_quaternion( euler );
+
+	CHECK_EQUAL( crap::mathf::int_round(quat.x), crap::mathf::int_round(quat2.x) );
+	CHECK_EQUAL( crap::mathf::int_round(quat.y), crap::mathf::int_round(quat2.y) );
+	CHECK_EQUAL( crap::mathf::int_round(quat.z), crap::mathf::int_round(quat2.z) );
+}
+
 }   // namespace

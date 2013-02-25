@@ -363,21 +363,21 @@ const vector4<T>& geometry<T>::normalize( vector4<T>* vec4 )
 
 //! lenght vector2
 template<typename T>
-const T lenght( const vector2<T>& vec2 )
+const T geometry<T>::lenght( const vector2<T>& vec2 )
 {
 	return crap::math<T>::sqrt( vec2.x*vec2.x + vec2.y*vec2.y );
 }
 
 //! lenght vector3
 template<typename T>
-const T lenght( const vector3<T>& vec3 )
+const T geometry<T>::lenght( const vector3<T>& vec3 )
 {
 	return crap::math<T>::sqrt( vec3.x*vec3.x + vec3.y*vec3.y + vec3.z*vec3.z );
 }
 
 //! lenght vector4
 template<typename T>
-const T lenght( const vector4<T>& vec4 )
+const T geometry<T>::lenght( const vector4<T>& vec4 )
 {
 	return crap::math<T>::sqrt( vec4.x*vec4.x + vec4.y*vec4.y + vec4.z*vec4.z + vec4.w*vec4.w );
 }
@@ -447,7 +447,7 @@ const quaternion<T> geometry<T>::quaternion_slerp_no_invert( const quaternion<T>
 	quaternion<T> result;
 	float dot_quat = dot(q1, q2);
 
-	if (dot > (T) -0.95f && dot < (T) 0.95f)
+	if (dot_quat > (T) -0.95f && dot_quat < (T) 0.95f)
 	{
 		f32 angle = crap::math<T>::acos(dot);	
 		result = quat1 * crap::math<T>::sin( angle * (1-t) ) + quat2 * crap::math<T>::sin( angle * t );
@@ -506,7 +506,7 @@ const vector3<T> geometry<T>::quaternion_to_euler( const quaternion<T>& quat, b8
 	{
 		result.x = crap::math<T>::atan2( 2.f * ( quat.z * quat.y + quat.x * quat.w ), 1 - 2*(square_x + square_y) );
 		result.y = crap::math<T>::asin( -2.f * ( quat.x * quat.z - quat.y * quat.w ));
-		result.z = crap::math<T>::atan2( 2.f * ( quat.x * quat.z + quat.x * quat.w ), 1 - 2*(square_y + square_z) );
+		result.z = crap::math<T>::atan2( 2.f * ( quat.x * quat.y + quat.z * quat.w ), 1 - 2*(square_y + square_z) );
 	}
 	return result;
 }

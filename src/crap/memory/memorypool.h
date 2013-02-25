@@ -105,7 +105,7 @@ public:
 };
 
 /*
- * definitiona
+ * definitions
  */
 
 // constructor

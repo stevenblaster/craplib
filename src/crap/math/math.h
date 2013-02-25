@@ -275,10 +275,11 @@ private:
 		return i32tof32( f32toi32(x) & ~0x80000000 );
 	}
 
+public:
 	static CRAP_INLINE i32
-	intFloor(const f32& x)
+	int_floor(const f32& x)
 	{
-		CRAP_ASSERT_DEBUG ( -4194304.0F <= x && x <= 4194303.0F , "intFloor limits overflow");
+		CRAP_ASSERT_DEBUG ( -4194304.0F <= x && x <= 4194303.0F , "int_floor limits overflow");
 
 		/*i32 a = f32toi32( (3 << 22) + 0.5 + (f64) x );
 		i32 b = f32toi32( (3 << 22) + 0.5 - (f64) x );*/
@@ -289,9 +290,9 @@ private:
 	}
 
 	static CRAP_INLINE i32
-	intCeil( const f32& x )
+	int_ceil( const f32& x )
 	{
-		CRAP_ASSERT_DEBUG ( -4194304.0F <= x && x <= 4194303.0F , "intFloor limits overflow");
+		CRAP_ASSERT_DEBUG ( -4194304.0F <= x && x <= 4194303.0F , "int_floor limits overflow");
 
 		/*i32 a = f32toi32((3 << 22) + 0.5 + (f64) x);
 		i32 b = f32toi32((3 << 22) + 0.5 - (f64) x);*/
@@ -302,7 +303,7 @@ private:
 	}
 
 	static CRAP_INLINE i32
-	intRound( const f32& x )
+	int_round( const f32& x )
 	{
 	#if defined(CRAP_COMPILER_GCC) // && defined __i386__
 		i32 res;
@@ -311,10 +312,11 @@ private:
 		: "=m" (res) : "t" (x) : "st");
 		return res;
 	#else
-		return crap::math<f32>::intFloor(x + 0.5F);
+		return crap::math<f32>::int_floor(x + 0.5F);
 	#endif
 	}
 
+private:
 	static CRAP_INLINE f32
 	reCip( const f32& x )
 	{
@@ -334,7 +336,7 @@ private:
 		return z;
 	#endif
 	}
-
+public:
 	static CRAP_INLINE f32
 	rsqrt( const f32& x )
 	{
@@ -361,7 +363,7 @@ private:
 		CRAP_ASSERT_DEBUG (x >= 0.0F, "Squareroot from zero or less");
 		return x * crap::math<f32>::rsqrt(x);
 	}
-
+private:
 	static CRAP_INLINE f32
 	eps( const f32& x )
 	{
@@ -584,14 +586,14 @@ public:
 	drem( const f32& x, const f32& y )
 	{
 		CRAP_ASSERT_DEBUG( y != 0.0F, "Y is zero" );
-		return x - y * crap::math<f32>::intRound( x / y );
+		return x - y * crap::math<f32>::int_round( x / y );
 	}
 
 	static CRAP_INLINE f32
 	wrap( const f32& x, const f32& y )
 	{
 		CRAP_ASSERT_DEBUG( y != 0.0F, "Y is zero" );
-		return x - y * crap::math<f32>::intFloor(x / y);
+		return x - y * crap::math<f32>::int_floor(x / y);
 	}
 
 	//static CRAP_INLINE f32
