@@ -44,14 +44,14 @@ public:
 	typedef const value_type* 	const_pointer;
 	typedef value_type& 		reference;
 	typedef const value_type& 	const_reference;
-	typedef std::size_t 		size_type;			//TODO
+	typedef size_t32	 		size_type;			//TODO
 	typedef	std::ptrdiff_t		difference_type;	//TODO
 
 	//! @brief rebind struct
-	template<typename U>
+	template<typename U, size_t32 V>
 	struct rebind
 	{
-		typedef allocator_static<U> other;
+		typedef allocator_static<U,V> other;
 	};
 
 	//! @brief constructor
@@ -67,9 +67,9 @@ public:
 	allocator_static( const allocator_static& other );
 
 	//! @brief template copy constructor
-	template<typename U>
+	template<typename U, size_t32 V>
 	CRAP_INLINE explicit
-	allocator_static( const allocator_static<U>& other );
+	allocator_static( const allocator_static<U,V>& other );
 
 	//! @brief return address of reference
 	CRAP_INLINE 
@@ -81,7 +81,7 @@ public:
 
 	//! @brief allocate amount of elements
 	CRAP_INLINE
-	pointer allocate(size_type cnt = 1, typename allocator_static<T>::const_pointer = 0);
+	pointer allocate(size_type cnt = 1, typename allocator_static<T,S>::const_pointer = 0);
 
 	//! @brief deallocate amount of elements
 	CRAP_INLINE
@@ -112,7 +112,7 @@ public:
 
 //cosntructor
 template<typename T, size_t32 S>
-explicit allocator_static<T,S>::allocator_static()
+allocator_static<T,S>::allocator_static()
 {
 	_index.reset();
 }
@@ -134,43 +134,43 @@ allocator_static<T,S>::allocator_static( const allocator_static& other )
 
 //template copy constructor
 template<typename T, size_t32 S>
-template<typename U>
-allocator_static<T,S>::allocator_static( const allocator_static<U,S>& other )
+template<typename U, size_t32 V>
+allocator_static<T,S>::allocator_static( const allocator_static<U,V>& other )
 {
 	_index.reset();
 }
 
 // return address of reference
 template<typename T, size_t32 S>
-allocator_static<T,S>::pointer allocator_static<T,S>::address(reference r)
+T* allocator_static<T,S>::address(reference r)
 {
 	return &r;
 }
 
 // return const address of const reference
 template<typename T, size_t32 S>
-allocator_static<T,S>::const_pointer allocator_static<T,S>::address(const_reference r)
+const T* allocator_static<T,S>::address(const_reference r)
 {
 	return &r;
 }
 
 //allocate amount of elements
 template<typename T, size_t32 S>
-allocator_static<T,S>::pointer allocator_static<T,S>::allocate(size_type cnt = 1, typename allocator_static<T>::const_pointer = 0)
+T* allocator_static<T,S>::allocate(size_type cnt /* = 1 */, typename allocator_static<T,S>::const_pointer ptr /*= 0*/)
 {
 	size_t32 position = _index.find_unset();
 
 	while( position != -1 )
 	{
-		if( _index.find_set( position, count ) != -1 )
-			position = _index.find_unset( position + _index.find_set( position, count ) );
+		if( _index.find_set( position, cnt ) != -1 )
+			position = _index.find_unset( position + _index.find_set( position, cnt ) );
 		else
 			break;
 	}
 
-	ASSERT_DEBUG( position != -1, "Could not allocate sufficiant block" );
-	_index.set( position, count );
-	return static_cast<T*>( &_memory[position * sizeof(T)] )
+	CRAP_ASSERT_DEBUG( position != -1, "Could not allocate sufficiant block" );
+	_index.set( position, cnt );
+	return static_cast<T*>( (void*)&_memory[position * sizeof(T)] );
 }
 
 //deallocate amount of elements
@@ -179,18 +179,18 @@ void allocator_static<T,S>::deallocate(pointer p, size_type s=1)
 {
 	for( size_t32 i=0; i<S; ++i )
 	{
-		if( static_cast<T*>( _memory[i*sizeof(T)] ) == ptr )
+		if( static_cast<T*>( (void*)&_memory[i*sizeof(T)] ) == p )
 		{
-			_index.reset( i, count );
+			_index.reset( i, s );
 			return;
 		}
 	}
-	ASSERT_ERROR( "Pointer not found in MemoryArray" );
+	CRAP_ASSERT_ERROR( "Pointer not found in MemoryArray" );
 }
 
 // return maximum allocations
 template<typename T, size_t32 S>
-allocator_static<T,S>::size_type allocator_static<T,S>::max_size( void ) const
+size_t32 allocator_static<T,S>::max_size( void ) const
 {
 	return S;
 }

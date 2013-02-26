@@ -136,6 +136,10 @@
     <ClCompile Include="..\..\..\src\crapunittests\main.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\math_math.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\math_random.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\memory_allocatordefault.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\memory_allocatormalloc.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\memory_allocatorstatic.cpp" />
+    <ClCompile Include="..\..\..\src\crapunittests\memory_memorypool.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\network_addressip4.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\network_headers.cpp" />
     <ClCompile Include="..\..\..\src\crapunittests\network_ipaddress6.cpp" />

@@ -141,6 +141,7 @@
     <ClInclude Include="..\..\..\src\crap\math\random.h" />
     <ClInclude Include="..\..\..\src\crap\memory\allocatordefault.h" />
     <ClInclude Include="..\..\..\src\crap\memory\allocatormalloc.h" />
+    <ClInclude Include="..\..\..\src\crap\memory\allocatorstatic.h" />
     <ClInclude Include="..\..\..\src\crap\memory\memorypool.h" />
     <ClInclude Include="..\..\..\src\crap\network\addressip4.h" />
     <ClInclude Include="..\..\..\src\crap\network\addressip6.h" />

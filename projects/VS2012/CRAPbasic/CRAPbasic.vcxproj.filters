@@ -218,6 +218,9 @@
     <ClInclude Include="..\..\..\src\crap\container\map.h">
       <Filter>container</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\memory\allocatorstatic.h">
+      <Filter>memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp">

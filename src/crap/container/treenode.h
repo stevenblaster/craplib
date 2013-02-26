@@ -527,7 +527,7 @@ tree_node<T,C>* tree_node<T,C>::predecessor_iterative(node_pointer node) const
 	if(node != 0)
 	{
 		if(node->sub_node[left] != 0)
-			return min_iterative(node->sub_node[left]);
+			return max_iterative(node->sub_node[left]);
 
 		node_pointer node_parent = node->sub_node[parent];
 		while(node_parent != 0 && node == node_parent->sub_node[left])

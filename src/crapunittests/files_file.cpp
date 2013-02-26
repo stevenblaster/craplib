@@ -146,7 +146,7 @@ TEST(FilesFileAppendBinary)
 	tmp2.flt = 0.f;
 	tmp2.integer = 0;
 	tmp2.flt2 = 0.f;
-	tmp2.integer2 = 0.f;
+	tmp2.integer2 = 0;
 
 	_testfile->read_bytes( tmp2 );
 

@@ -21,8 +21,6 @@
 #ifndef CRAP_MEMORYPOOL_H
 #define CRAP_MEMORYPOOL_H
 
-#include "memory/allocatormalloc.h"
-
 // lib namespace
 namespace crap
 {
@@ -109,7 +107,7 @@ public:
  */
 
 // constructor
-memory_pool::memory_pool(void) : _block_start(0), _biggest_block(0), _size(0)
+memory_pool::memory_pool(void) : _block_start(0), _biggest_block(0), _size(0), _current_size(0)
 {
 
 }
@@ -143,7 +141,10 @@ void memory_pool::init(size_t32 size)
 // destructor
 memory_pool::~memory_pool(void)
 {
-	CRAP_ASSERT_DEBUG( _size == _current_size + sizeof(memory_block), "Still allocations in memory pool" );
+	if( _size != 0 )
+	{
+		CRAP_ASSERT_DEBUG( _size == _current_size + sizeof(memory_block), "Still allocations in memory pool" );
+	}
 
 	delete (u8*)_block_start;
 }
