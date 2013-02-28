@@ -19,6 +19,11 @@ TEST(ContainerPairConstruction)
 	_pair = new crap::pair<int, float>;
 }
 
+TEST(ContainerPairSTLInfo)
+{
+	std::cout << "\tPlain copy from STL" << std::endl;
+}
+
 TEST(ContainerPairDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;

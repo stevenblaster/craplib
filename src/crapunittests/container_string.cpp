@@ -19,6 +19,11 @@ TEST(ContainerStringConstruction)
 	_string = new crap::string;
 }
 
+TEST(ContainerStrinSTLInfo)
+{
+	std::cout << "\tInherited from STL - guess its tested" << std::endl;
+}
+
 TEST(ContainerStringDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;

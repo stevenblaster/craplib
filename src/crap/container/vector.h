@@ -22,7 +22,7 @@
 #define CRAP_CONTAINER_VECTOR_H
 
 #include "memory/allocatordefault.h"
-#include "eastl/vector.h"
+//#include "eastl/vector.h"
 #include <vector>
 
 //lib namespace

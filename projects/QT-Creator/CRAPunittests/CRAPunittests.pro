@@ -77,7 +77,11 @@ SOURCES += \
     ../../../src/crapunittests/container_staticstack.cpp \
     ../../../src/crapunittests/container_staticqueue.cpp \
     ../../../src/crapunittests/container_treemap.cpp \
-    ../../../src/crapunittests/control_copyarray.cpp
+    ../../../src/crapunittests/control_copyarray.cpp \
+    ../../../src/crapunittests/memory_memorypool.cpp \
+    ../../../src/crapunittests/memory_allocatorstatic.cpp \
+    ../../../src/crapunittests/memory_allocatormalloc.cpp \
+    ../../../src/crapunittests/memory_allocatordefault.cpp
 
 
 unix|win32: LIBS += -L$$PWD/../../../bin/crapbase -lCRAPbase

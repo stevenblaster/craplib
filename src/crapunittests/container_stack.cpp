@@ -19,6 +19,11 @@ TEST(ContainerStackConstruction)
 	_stack = new crap::stack<int>;
 }
 
+TEST(ContainerMapSTLinfo)
+{
+	std::cout << "\tInherited from STL - guess its tested" << std::endl;
+}
+
 TEST(ContainerStackDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;

@@ -19,6 +19,11 @@ TEST(ContainerQueueConstruction)
 	_queue = new crap::queue<int>;
 }
 
+TEST(ContainerQueueSTLinfo)
+{
+	std::cout << "\tInherited from STL - guess its tested" << std::endl;
+}
+
 TEST(ContainerQueueDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;

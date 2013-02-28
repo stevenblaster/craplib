@@ -6,7 +6,7 @@
 namespace
 {
 
-crap::map<int, float>* _map;
+crap::map<i32, f32>* _map;
 
 TEST(ContainerMapTitle)
 {
@@ -17,6 +17,11 @@ TEST(ContainerMapConstruction)
 {
 	std::cout << "\tConstruction" << std::endl;
 	_map = new crap::map<int, float>;
+}
+
+TEST(ContainerMapSTLinfo)
+{
+	std::cout << "\tInherited from STL - guess its tested" << std::endl;
 }
 
 TEST(ContainerMapDestruction)

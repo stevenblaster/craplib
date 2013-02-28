@@ -80,7 +80,8 @@ HEADERS += \
     ../../../src/crap/geometry/matrix2.h \
     ../../../src/crap/geometry/matrix3.h \
     ../../../src/crap/geometry/matrix4.h \
-    ../../../src/crap/geometry/geometry.h
+    ../../../src/crap/geometry/geometry.h \
+    ../../../src/crap/memory/allocatorstatic.h
 
 SOURCES += \
     ../../../src/crap/control/time.cpp \
@@ -97,5 +98,6 @@ SOURCES += \
     ../../../src/crap/network/addressip4.cpp \
     ../../../src/crap/network/addressip6.cpp \
     ../../../src/crap/network/headers.cpp \
-    ../../../src/crap/files/file.cpp
+    ../../../src/crap/files/file.cpp \
+    ../../../src/crap/math/math.cpp
 

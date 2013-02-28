@@ -1,219 +1,27 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//!		@file math.h
+//!		@file math.cpp
 //
 //	Author(s):
 //! 	@author Steffen Kopany <steffen@kopany.at>
 //
 //	Copyright:
-//!		@copyright Copyright (c) 2012 Steffen Kopany
+//!		@copyright Copyright (c) 2013 Steffen Kopany
 //
 //	Description:
-//!		@brief Math functions using approximation and
-// 		SSE instructions
+//!		@brief Math specialization
+//
 //
 //	Status (scratch, developed, final):
 //!		@version scratch
 //
 ////////////////////////////////////////////////////////
-#pragma once
 
-#ifndef CRAP_MATH_MATH_H
-#define CRAP_MATH_MATH_H
-
-#include "config/math.h"
+#include "math/math.h"
 
 //lib namespace
 namespace crap
 {
-
-template<typename T>
-class math
-{
-public:
-    static CRAP_INLINE T
-    modf( const T& x, T* p )
-    {
-        return ::modf(x, p);
-    }
-
-    static CRAP_INLINE T
-    trunc( const T& x )
-    {
-        T res;
-        return ::modf( x, &res );
-    }
-
-    static CRAP_INLINE T
-    frac( const T& x)
-    {
-        T nil;
-        return crap::math<f32>::modf(x, &nil);
-    }
-
-    static CRAP_INLINE T
-    fmod( const T& x, const T& y )
-    {
-        CRAP_ASSERT_DEBUG( y != 0, "Y is zero" );
-        return ::fmod(x,y);
-    }
-
-    static CRAP_INLINE T
-    drem( const T& x, const T& y )
-    {
-        CRAP_ASSERT_DEBUG( y != 0, "Y is zero" );
-        return x - y * (i32) ( x/y + 0.5 );
-    }
-
-    static CRAP_INLINE T
-    wrap( const T& x, const T& y )
-    {
-        CRAP_ASSERT_DEBUG( y != 0, "Y is zero" );
-        return x - y * (i32) (x/y);
-    }
-
-    static CRAP_INLINE T
-    log2( const T& x )
-    {
-        CRAP_ASSERT_DEBUG( x >= 0, "X higher/euqal zero" );
-        return ::log(x) / ::log(2);
-    }
-
-    static CRAP_INLINE T
-    log( const T& x )
-    {
-        CRAP_ASSERT_DEBUG( x >= 0, "X higher/euqal zero" );
-        return ::log(x);
-    }
-
-    static CRAP_INLINE T
-    exp2( const T& x )
-    {
-        return ::exp(x * ::log(2));
-    }
-
-    static CRAP_INLINE T
-    exp( const T& x )
-    {
-        return ::exp(x);
-    }
-
-    static CRAP_INLINE T
-    pow( const T& x, const T& y )
-    {
-        CRAP_ASSERT_DEBUG (x >= 0.0F || y == crap::math<f32>::trunc(y), "X lower then zero or y != trunc(y)");
-        return ::pow( x,y );
-    }
-
-    static CRAP_INLINE T
-    cos( const T& x )
-    {
-        return ::cos( x );
-    }
-
-    static CRAP_INLINE T
-    sin( const T& x )
-    {
-        return ::sin( x );
-    }
-
-    static CRAP_INLINE void
-    sincos( const T& x, T* s, T* c )
-    {
-        T sres, cres;
-        i32 quad = 0;
-        T y = wrap( x, CRAP_PI * 2 );
-
-        if ( y > CRAP_PI )
-        {
-            y = CRAP_PI * 2 - y;
-            quad |= 2;
-         }
-
-        if ( y > CRAP_PI_HALF )
-        {
-            y = CRAP_PI - y;
-            quad |= 1;
-        }
-
-        sres = ::cos( CRAP_PI_HALF - y );
-        cres = ::cos(x);
-
-        s[0] = (quad & 2) ? -sres : sres;
-        c[0] = (quad & 1) ? -cres : cres;
-    }
-
-    static CRAP_INLINE T
-    tan( const T& x )
-    {
-        return ::tan(x);
-    }
-
-    static CRAP_INLINE T
-    cosh( const T& x )
-    {
-        return 0.5 * ( ::exp(x) + ::exp(-x) );
-    }
-
-    static CRAP_INLINE T
-    sinh( const T& x )
-    {
-        return 0.5f * ( ::exp(x) - ::exp(-x) );
-    }
-
-    static CRAP_INLINE T
-    tanh( const T& x )
-    {
-        T t = ::exp( 2.0f * x );
-        return ( t - 1.0f ) / ( t + 1.0f );
-    }
-
-    static CRAP_INLINE T
-    acos( const T& x )
-    {
-        CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
-        return ::acos( x );
-    }
-
-    static CRAP_INLINE T
-    asin( const T& x )
-    {
-        CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
-        return ::asin( x );
-    }
-
-    static CRAP_INLINE T
-    atan2( const T& y, const T& x )
-    {
-        return ::atan2( y,x );
-    }
-
-    static CRAP_INLINE T
-    atan( const T& x )
-    {
-        return ::atan( x );
-    }
-
-    static CRAP_INLINE T
-    acosh( const T& x )
-    {
-        CRAP_ASSERT_DEBUG ( x > 1.0, "X not bigger then 1" );
-        return ::log(x + ::sqrt( x * x - 1.0 ));
-    }
-
-    static CRAP_INLINE T
-    asinh( const T& x )
-    {
-        return ::log(x + ::sqrt( x * x + 1.0 ));
-    }
-
-    static CRAP_INLINE T
-    atanh( const T& x )
-    {
-        CRAP_ASSERT_DEBUG( -1.0F <= x && x <= 1.0F, "X not between -1 and 1" );
-        return 0.5f * (::log(1.0f + x) - ::log(1.0f - x));
-    }
-};
 
 template<>
 class math<f32>
@@ -829,13 +637,4 @@ public:
 
 };
 
-//typedefs
-typedef math<i32> mathi;
-typedef math<i64> mathl;
-typedef math<f32> mathf;
-typedef math<f64> mathd;
-
-}	// namespace crap
-
-
-#endif // CRAP_MATH_MATH_H
+}

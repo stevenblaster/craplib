@@ -25,7 +25,7 @@
 #include <cstdarg>
 
 #include "control/asserts.h"
-#include "container/list.h"
+#include "container/vector.h"
 
 //lib namespace
 namespace crap
@@ -77,9 +77,9 @@ public:
 
 	static_string substr( size_t32 start, size_t32 length );
 
-	crap::list<static_string<S> > split( c8 seperator ) const;
+	crap::vector<static_string<S> > split( c8 seperator ) const;
 
-	void merge( const crap::list<static_string<S> >&, c8 glue );
+	void merge( const crap::vector<static_string<S> >&, c8 glue );
 
 	void cut( size_t32 length );
 	void trim( void );
@@ -110,7 +110,6 @@ static_string<S>::static_string( string_t* format, ... )
 	va_list args;
 	va_start( args, format );
 	vsprintf( _memory, format, args );
-//	perror( _memory );
 	va_end( args );
 }
 
@@ -304,9 +303,9 @@ static_string<S> static_string<S>::substr( size_t32 start, size_t32 length )
 }
 
 template<size_t32 S>
-crap::list<static_string<S> > static_string<S>::split( c8 seperator ) const
+crap::vector<static_string<S> > static_string<S>::split( c8 seperator ) const
 {
-	crap::list<static_string<S> > tmp_list;
+	crap::vector<static_string<S> > tmp_list;
 	static_string<S> buffer;
 	size_t32 buffer_size = 0;
 
@@ -315,7 +314,7 @@ crap::list<static_string<S> > static_string<S>::split( c8 seperator ) const
 		if( _memory[i] == seperator && buffer_size != 0)
 		{
 //        	std::cout << buffer << std::endl;
-			tmp_list.insert( buffer );
+			tmp_list.push_back( buffer );
 			memset( buffer._memory, 0, S);
 			buffer_size = 0;
 		}
@@ -326,13 +325,13 @@ crap::list<static_string<S> > static_string<S>::split( c8 seperator ) const
 	}
 
 	if( buffer_size != 0 )
-		tmp_list.insert(buffer);
+		tmp_list.push_back(buffer);
 
 	return tmp_list;
 }
 
 template<size_t32 S>
-void static_string<S>::merge( const crap::list<static_string>& list, c8 glue )
+void static_string<S>::merge( const crap::vector<static_string>& list, c8 glue )
 {
 	size_t32 current_pos = 0;
 

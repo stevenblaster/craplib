@@ -19,6 +19,11 @@ TEST(ContainerListConstruction)
 	_list = new crap::list<int>;
 }
 
+TEST(ContainerListSTLInfo)
+{
+	std::cout << "\tInherited from STL - guess its tested" << std::endl;
+}
+
 TEST(ContainerListDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;

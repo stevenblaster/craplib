@@ -22,6 +22,8 @@ TEST(ContainerBinaryTreeConstruct)
 
 TEST(ContainerBinaryTreeInsert)
 {
+	std::cout << "\tdoing tests..." << std::endl;
+
         for(i32 i=10; i>0; --i)
                 if(i%2 == 1)
                         _bintree->insert(i);

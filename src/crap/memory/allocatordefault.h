@@ -50,7 +50,7 @@ public:
 	inline explicit allocator_default(allocator_default const&) {}
 
 	template<typename U>
-	inline explicit allocator_default(allocator_default<U> const&) {}
+	inline allocator_default(allocator_default<U> const&) {}
 
 	inline pointer address(reference r)
 	{

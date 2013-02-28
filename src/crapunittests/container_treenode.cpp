@@ -19,6 +19,11 @@ TEST(ContainerTreenodeConstruction)
 	_treenode = new crap::tree_node<int>;
 }
 
+TEST(ContainerTreenodeInfo)
+{
+	std::cout << "\ttested with binary tree" << std::endl;
+}
+
 TEST(ContainerTreenodeDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;

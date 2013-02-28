@@ -89,7 +89,7 @@ bit_set<S>::bit_set( void ) : bit_mask( _memory, S )
 
 //copy constructor
 template<size_t32 S>
-bit_set<S>::bit_set( const bit_set& other ) : bit_mask( _memory, S)
+bit_set<S>::bit_set( const bit_set& other ) : bit_mask( _memory, S )
 {
 	memcpy( _memory, other._memory, S/8+1 );
 }
