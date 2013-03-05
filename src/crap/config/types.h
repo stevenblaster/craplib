@@ -148,6 +148,10 @@ struct type_128_bit
 	type_128_bit( const u16& num ) { part_16[0] = num; }
 	type_128_bit( const u32& num ) { part_32[0] = num; }
 	type_128_bit( const u64& num ) { part_64[0] = num; }
+	b8 operator==( const type_128_bit& other ) const 
+	{ 
+		return part_64[0] == other.part_64[0] && part_64[1] == other.part_64[1];
+	}
 }
 i128;
 

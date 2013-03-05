@@ -31,12 +31,14 @@ address_ip4::address_ip4( void )
 
 address_ip4::address_ip4( const address_ip4& other )
 {
+	socket_address.sin_family = ip_v4;
 	socket_address.sin_addr = other.socket_address.sin_addr;
 	socket_address.sin_port = other.socket_address.sin_port;
 }
 
 address_ip4::address_ip4( const u8& aa, const u8& bb, const u8& cc, const u8& dd, const u16& prt )
 {
+	socket_address.sin_family = ip_v4;
 	u32 addr = ( aa << 24 ) | ( bb << 16 ) | ( cc << 8 ) | dd;
 	socket_address.sin_addr.s_addr = htonl(addr);
 	socket_address.sin_port = htons(prt);
@@ -44,6 +46,7 @@ address_ip4::address_ip4( const u8& aa, const u8& bb, const u8& cc, const u8& dd
 
 address_ip4::address_ip4( const u32& addr, const u16& prt )
 {
+	socket_address.sin_family = ip_v4;
 	socket_address.sin_addr.s_addr = htonl(addr);
 	socket_address.sin_port = htons(prt);
 }
@@ -68,12 +71,12 @@ void address_ip4::set_ip( const u32& ip )
 
 u16 address_ip4::get_port( void ) const
 {
-	return (u16) ntohl(socket_address.sin_port);
+	return (u16) ntohs(socket_address.sin_port);
 }
 
 void address_ip4::set_port( const u16& port )
 {
-	socket_address.sin_port = (u16) htonl(port);
+	socket_address.sin_port = (u16) htons(port);
 }
 
 address_ip4 address_ip4::any = address_ip4(0x00000000,0);

@@ -2,6 +2,7 @@
 
 //lib includes
 #include "network/addressip4.h"
+#include "control/endian.h"
 
 namespace
 {
@@ -21,6 +22,7 @@ TEST(NetworkAddressIP4Constructor)
 
 TEST(NetworkAddressIP4CopyConstructor)
 {
+	std::cout << "\tdoing tests..." << std::endl;
 	crap::address_ip4 addr( *_ip4 );
 	CHECK_EQUAL( _ip4->get_ip(), addr.get_ip() );
 	CHECK_EQUAL( _ip4->get_port(), addr.get_port() );
@@ -33,6 +35,29 @@ TEST(NetworkAddressIP4Assignment)
 
 	CHECK_EQUAL( _ip4->get_ip(), addr.get_ip() );
 	CHECK_EQUAL( _ip4->get_port(), addr.get_port() );
+}
+
+TEST(NetworkAddressIP4AdressPortConstructor)
+{
+	i32 add = 123456;
+	i16 prt = 1024;
+	crap::address_ip4 addr( add, prt );
+	CHECK_EQUAL( htonl( add ), addr.socket_address.sin_addr.S_un.S_addr );
+	CHECK_EQUAL( add, addr.get_ip() );
+	CHECK_EQUAL( htons( prt ), addr.socket_address.sin_port );
+	CHECK_EQUAL( prt, addr.get_port() );
+}
+
+TEST(NetworkAddressIP4AdressDetailPortConstructor)
+{
+	u8 parts[4] = { 127,0,0,1 };
+	u32 add = ( parts[0] << 24 ) | ( parts[1] << 16 ) | ( parts[2] << 8 ) | parts[3];
+	i16 prt = 1024;
+	crap::address_ip4 addr( parts[0], parts[1], parts[2], parts[3], prt );
+	CHECK_EQUAL( htonl( add ), addr.socket_address.sin_addr.S_un.S_addr );
+	CHECK_EQUAL( add, addr.get_ip() );
+	CHECK_EQUAL( htons( prt ), addr.socket_address.sin_port );
+	CHECK_EQUAL( prt, addr.get_port() );
 }
 
 TEST(NetworkAddressIP4Destructor)

@@ -117,7 +117,13 @@ public:
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::socket( void )
 {
+#if defined(CRAP_PLATFORM_WIN)
+	WSADATA wsaData;
+	int result = WSAStartup( MAKEWORD(2,2), &wsaData );
+	CRAP_ASSERT_DEBUG(result == NO_ERROR, "Couldn't setup Windows socket (wsaData)");
+#endif
 	_socket = ::socket( FAMILY_T, DATATYPE_T, SOCKTYPE_T );
+
 	CRAP_ASSERT_DEBUG( _socket >= 0, "Socket cound't be created" );
 }
 
@@ -141,13 +147,14 @@ void socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::set_blocking(bool block)
 {
 #if defined(CRAP_PLATFORM_WIN)
 
-	DWORD nonBlocking = 1;
+	DWORD nonBlocking = (block) ? 0 : 1;
 	int result = ioctlsocket( _socket, FIONBIO, &nonBlocking );
 	CRAP_ASSERT_DEBUG(result == 0, "Couldn't set socket non-blocking");
 
 #else
 
-	int result = fcntl( _socket, F_SETFL, O_NONBLOCK, 1 );
+	int nonBlocking = (block) ? 0 : 1;
+	int result = fcntl( _socket, F_SETFL, O_NONBLOCK, nonBlocking ); // was 1);
 	CRAP_ASSERT_DEBUG(result != -1, "Couldn't set socket non-blocking");
 
 #endif
@@ -180,11 +187,11 @@ i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::init( u16 port )
 
 	CRAP_ASSERT_DEBUG(result != -1, "Couldn't bind socket to port");
 
-#if defined(CRAP_PLATFORM_WINDOWS)
-	WSADATA wsaData;
-	WSAStartup( MAKEWORD(2,2), &wsaData );
-	CRAP_ASSERT_DEBUG(wsaData == NO_ERROR, "Couldn't setup Windows socket (wsaData)");
-#endif
+//#if defined(CRAP_PLATFORM_WIN)
+//	WSADATA wsaData;
+//	WSAStartup( MAKEWORD(2,2), &wsaData );
+//	CRAP_ASSERT_DEBUG(wsaData == NO_ERROR, "Couldn't setup Windows socket (wsaData)");
+//#endif
 
 	return result;
 }
@@ -243,7 +250,7 @@ i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::receive( packet<ADDRESS_T,S>& pack
 template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYPE_T>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::listen( void )
 {
-	CRAP_ASSERT_DEBUG(SOCKTYPE_T != tcp && SOCKTYPE_T != sctp, "Only tcp/sctp sockets can listen");
+	CRAP_ASSERT_DEBUG(SOCKTYPE_T == tcp || SOCKTYPE_T == sctp, "Only tcp/sctp sockets can listen");
 	return ::listen(_socket, CRAP_MAX_BACKLOG);
 }
 
@@ -252,9 +259,9 @@ template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYP
 template<typename ADDRESS_T>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::connect( const ADDRESS_T& address )
 {
-	CRAP_ASSERT_DEBUG(SOCKTYPE_T != tcp && SOCKTYPE_T != sctp, "Only tcp/sctp sockets can connect");
+	CRAP_ASSERT_DEBUG(SOCKTYPE_T == tcp || SOCKTYPE_T == sctp, "Only tcp/sctp sockets can connect");
 	i32 addr_lenght = sizeof(address.socket_address);
-	return ::connect(_socket, (const sockaddr*)&address.socket_address, &addr_lenght);
+	return ::connect(_socket, (const sockaddr*)&address.socket_address, addr_lenght);
 }
 
 //accept connection
@@ -262,7 +269,7 @@ template<socket_family FAMILY_T, socket_datatype DATATYPE_T, socket_type SOCKTYP
 template<typename ADDRESS_T>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::accept( ADDRESS_T& address )
 {
-	CRAP_ASSERT_DEBUG(SOCKTYPE_T != tcp && SOCKTYPE_T != sctp, "Only tcp/sctp sockets can connect");
+	CRAP_ASSERT_DEBUG(SOCKTYPE_T == tcp || SOCKTYPE_T == sctp, "Only tcp/sctp sockets can connect");
 	i32 addr_lenght = sizeof(address.socket_address);
 	return ::accept(_socket, (sockaddr*)&address.socket_address, &addr_lenght);
 }
