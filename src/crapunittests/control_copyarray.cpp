@@ -3,6 +3,22 @@
 //lib includes
 #include "control/copyobject.h"
 
+class hasvt
+{
+public:
+    int somedata;
+    hasvt(int fun) : somedata(fun) {}
+    virtual ~hasvt(){}
+};
+
+
+class hasnvt
+{
+public:
+    int somedata;
+    hasnvt(int fun) : somedata(fun) {}
+    ~hasnvt(){}
+};
 namespace
 {
 
@@ -14,13 +30,7 @@ TEST(ControlCopyobjectTitle)
 
 TEST(ControlCopyobjectVT)
 {
-	class hasvt
-	{
-	public:	
-		int somedata;
-		hasvt(int fun) : somedata(fun) {}
-		virtual ~hasvt(){}
-	};
+
 
 	hasvt* tmp = (hasvt*) malloc( sizeof(hasvt)*3);
 	tmp[0].somedata = 1;
@@ -39,13 +49,7 @@ TEST(ControlCopyobjectVT)
 
 TEST(ControlCopyobjectNVT)
 {
-	class hasnvt
-	{
-	public:	
-		int somedata;
-		hasnvt(int fun) : somedata(fun) {}
-		~hasnvt(){}
-	};
+
 
 	hasnvt* tmp = (hasnvt*) malloc( sizeof(hasnvt)*3);
 	tmp[0].somedata = 1;

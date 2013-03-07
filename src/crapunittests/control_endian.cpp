@@ -44,16 +44,16 @@ TEST(ControlCheckingByteSwap)
 
 TEST(ControlCheckingSwap2)
 {
-    typedef struct test_struct
-	{
-		c8 bytes[2];
-    }test_struct;
+    union
+    {
+        i16 value;
+        c8 bytes[2];
+    } tb;
 
-	test_struct tb;
 	tb.bytes[0] = 1;
 	tb.bytes[1] = 0;
 
-    tb = crap::endian::swap<test_struct>( tb );
+    tb.value = crap::endian::swap<i16>( tb.value );
 
 	CHECK_EQUAL( 0, tb.bytes[0] );
 	CHECK_EQUAL( 1, tb.bytes[1] );
@@ -61,17 +61,17 @@ TEST(ControlCheckingSwap2)
 
 TEST(ControlCheckingSwap3)
 {
-	struct test_struct
-	{
-		c8 bytes[3];
-	};
+    union
+    {
+        i32 value;
+        c8 bytes[3];
+    } tb;
 
-	test_struct tb;
-	tb.bytes[0] = 1;
-	tb.bytes[1] = 0;
+    tb.bytes[0] = 0;
+    tb.bytes[1] = 1;
 	tb.bytes[2] = 0;
 
-	tb = crap::endian::swap<test_struct>( tb );
+    tb.value = crap::endian::swap<i32>( tb.value );
 
 	CHECK_EQUAL( 0, tb.bytes[0] );
 	CHECK_EQUAL( 0, tb.bytes[1] );
@@ -80,20 +80,20 @@ TEST(ControlCheckingSwap3)
 
 TEST(ControlCheckingSwap4)
 {
-	struct test_struct
-	{
-		c8 bytes[4];
-	};
+    union
+    {
+        i32 value;
+        c8 bytes[4];
+    } tb;
 
-	test_struct tb;
 	tb.bytes[0] = 0;
 	tb.bytes[1] = 1;
 	tb.bytes[2] = 0;
-	tb.bytes[3] = 0;
+    tb.bytes[3] = 1;
 
-	tb = crap::endian::swap<test_struct>( tb );
+    tb.value = crap::endian::swap<i32>( tb.value );
 
-	CHECK_EQUAL( 0, tb.bytes[0] );
+    CHECK_EQUAL( 1, tb.bytes[0] );
 	CHECK_EQUAL( 0, tb.bytes[1] );
 	CHECK_EQUAL( 1, tb.bytes[2] );
 	CHECK_EQUAL( 0, tb.bytes[3] );
@@ -101,12 +101,13 @@ TEST(ControlCheckingSwap4)
 
 TEST(ControlCheckingSwap8)
 {
-	struct test_struct
+    union
 	{
+        i64 value;
 		c8 bytes[8];
-	};
+    } tb;
 
-	test_struct tb;
+
 	tb.bytes[0] = 0;
 	tb.bytes[1] = 1;
 	tb.bytes[2] = 0;
@@ -116,7 +117,7 @@ TEST(ControlCheckingSwap8)
 	tb.bytes[6] = 0;
 	tb.bytes[7] = 1;
 
-	tb = crap::endian::swap<test_struct>( tb );
+    tb.value = crap::endian::swap<i64>( tb.value );
 
 	CHECK_EQUAL( 1, tb.bytes[0] );
 	CHECK_EQUAL( 0, tb.bytes[1] );
@@ -130,70 +131,90 @@ TEST(ControlCheckingSwap8)
 
 TEST(ControlCheckingToBig)
 {
-	struct test_struct
-	{
-		c8 bytes[2];
-	};
+    union
+    {
+        i16 value;
+        c8 bytes[2];
+    } tb;
 
-	test_struct tb;
 	tb.bytes[0] = 1;
 	tb.bytes[1] = 0;
 
-	tb = crap::endian::to_big( tb );
+    tb.value = crap::endian::to_big( tb.value );
 
+#if defined( CRAP_ENDIAN_LITTLE )
 	CHECK_EQUAL( 0, tb.bytes[0] );
 	CHECK_EQUAL( 1, tb.bytes[1] );
+#else
+    CHECK_EQUAL( 1, tb.bytes[0] );
+    CHECK_EQUAL( 0, tb.bytes[1] );
+#endif
 }
 
 TEST(ControlCheckingToLittle)
 {
-	struct test_struct
-	{
-		c8 bytes[2];
-	};
+    union
+    {
+        i16 value;
+        c8 bytes[2];
+    } tb;
 
-	test_struct tb;
 	tb.bytes[0] = 1;
 	tb.bytes[1] = 0;
 
-	tb = crap::endian::to_little( tb );
+    tb.value = crap::endian::to_little( tb.value );
 
-	CHECK_EQUAL( 1, tb.bytes[0] );
-	CHECK_EQUAL( 0, tb.bytes[1] );
+#if defined( CRAP_ENDIAN_LITTLE )
+    CHECK_EQUAL( 1, tb.bytes[0] );
+    CHECK_EQUAL( 0, tb.bytes[1] );
+#else
+    CHECK_EQUAL( 0, tb.bytes[0] );
+    CHECK_EQUAL( 1, tb.bytes[1] );
+#endif
 }
 
 TEST(ControlCheckingBigToLocal)
 {
-	struct test_struct
-	{
-		c8 bytes[2];
-	};
+    union
+    {
+        i16 value;
+        c8 bytes[2];
+    } tb;
 
-	test_struct tb;
 	tb.bytes[0] = 1;
 	tb.bytes[1] = 0;
 
-	tb = crap::endian::big_to_local( tb );
+    tb.value = crap::endian::big_to_local( tb.value );
 
-	CHECK_EQUAL( 0, tb.bytes[0] );
-	CHECK_EQUAL( 1, tb.bytes[1] );
+#if defined( CRAP_ENDIAN_LITTLE )
+    CHECK_EQUAL( 0, tb.bytes[0] );
+    CHECK_EQUAL( 1, tb.bytes[1] );
+#else
+    CHECK_EQUAL( 1, tb.bytes[0] );
+    CHECK_EQUAL( 0, tb.bytes[1] );
+#endif
 }
 
 TEST(ControlCheckingLittleToLocal)
 {
-	struct test_struct
-	{
-		c8 bytes[2];
-	};
+    union
+    {
+        i16 value;
+        c8 bytes[2];
+    } tb;
 
-	test_struct tb;
 	tb.bytes[0] = 1;
 	tb.bytes[1] = 0;
 
-	tb = crap::endian::little_to_local( tb );
+    tb.value = crap::endian::little_to_local( tb.value );
 
-	CHECK_EQUAL( 1, tb.bytes[0] );
-	CHECK_EQUAL( 0, tb.bytes[1] );
+#if defined( CRAP_ENDIAN_LITTLE )
+    CHECK_EQUAL( 1, tb.bytes[0] );
+    CHECK_EQUAL( 0, tb.bytes[1] );
+#else
+    CHECK_EQUAL( 0, tb.bytes[0] );
+    CHECK_EQUAL( 1, tb.bytes[1] );
+#endif
 }
 
 }   // namespace

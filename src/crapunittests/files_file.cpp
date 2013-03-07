@@ -3,6 +3,20 @@
 //lib includes
 #include "files/file.h"
 
+class test_class
+{
+public:
+    int integer;
+    float flt;
+};
+
+class other_test_class : public test_class
+{
+public:
+    int integer2;
+    float flt2;
+};
+
 namespace
 {
 
@@ -79,12 +93,7 @@ TEST(FilesFileWriteBinary)
 	_testfile->set_filename( "binaryfile.bin" );
 	_testfile->open( crap::file::write_binary );
 
-	class test_class
-	{
-	public:
-		int integer;
-		float flt;
-	};
+
 
 	test_class tmp;
 	tmp.flt = 0.1234f;
@@ -98,12 +107,7 @@ TEST(FilesFileReadBinary)
 	std::cout << "\tRead binary" << std::endl;
 	_testfile->open( crap::file::read_binary );
 
-	class test_class
-	{
-	public:
-		int integer;
-		float flt;
-	};
+
 
 	test_class tmp;
 	tmp.flt = 0.f;
@@ -120,12 +124,6 @@ TEST(FilesFileAppendBinary)
 	std::cout << "\tAppend binary" << std::endl;
 	_testfile->open( crap::file::append_binary );
 
-	class test_class
-	{
-	public:
-		int integer;
-		float flt;
-	};
 
 	test_class tmp;
 	tmp.flt = 5.345f;
@@ -135,12 +133,7 @@ TEST(FilesFileAppendBinary)
 
 	_testfile->open( crap::file::read_binary );
 
-	class other_test_class : public test_class
-	{
-	public:
-		int integer2;
-		float flt2;
-	};
+
 
 	other_test_class tmp2;
 	tmp2.flt = 0.f;

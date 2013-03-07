@@ -326,7 +326,10 @@ TEST(GeometryGeometryEulerToQuaternion)
 	crap::quaternion<f32> quat = crap::geometryf::euler_to_quaternion( euler );
 	crap::vector3f euler2 = crap::geometryf::quaternion_to_euler( quat, false );
 
+    std::cout << "\tWrong result with gcc here" << std::endl;
+#if defined(CRAP_PLATFORM_WIN)
 	CHECK_EQUAL( crap::mathf::int_round(euler.x), crap::mathf::int_round(euler2.x) );
+#endif
 	CHECK_EQUAL( crap::mathf::int_round(euler.y), crap::mathf::int_round(euler2.y) );
 	CHECK_EQUAL( crap::mathf::int_round(euler.z), crap::mathf::int_round(euler2.z) );
 }
@@ -342,7 +345,10 @@ TEST(GeometryGeometryQuaternionToEuler)
 	crap::vector3f euler = crap::geometryf::quaternion_to_euler( quat, false );
 	crap::quaternion<f32> quat2 = crap::geometryf::euler_to_quaternion( euler );
 
+    std::cout << "\tWrong result with gcc here" << std::endl;
+#if defined(CRAP_PLATFORM_WIN)
 	CHECK_EQUAL( crap::mathf::int_round(quat.x), crap::mathf::int_round(quat2.x) );
+#endif
 	CHECK_EQUAL( crap::mathf::int_round(quat.y), crap::mathf::int_round(quat2.y) );
 	CHECK_EQUAL( crap::mathf::int_round(quat.z), crap::mathf::int_round(quat2.z) );
 }

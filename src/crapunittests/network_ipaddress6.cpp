@@ -39,12 +39,12 @@ TEST(NetworkAddressIP6Assignment)
 TEST(NetworkAddressIP6AdressPortConstructor)
 {
 #if defined( CRAP_COMPILER_GCC )
-	u128 add = 123456;
+//	u128 add = 123456;
 #else
 	//u128 add;
 	//add.part_64[1] = 123456;
 #endif
-	i16 prt = 1024;
+//	i16 prt = 1024;
 	//crap::address_ip6 addr( add, prt );
 	//CHECK( add == addr.get_ip() );
 	//CHECK_EQUAL( prt, addr.get_port() );

@@ -8,7 +8,7 @@ int main ()
     std::cout << "Starting Unittests:" << std::endl << "=====================" << std::endl;
     int rtn =  UnitTest::RunAllTests();
 
-	/*
+    /*
 	std::cout << std::endl;
 	std::cout << "Starting Window tests:" << std::endl << "=====================" << std::endl;
 	crap::window_setup setup;
@@ -42,7 +42,7 @@ int main ()
 	crap::sleep_sec(1);
 
 	test_win.close();
-	*/
+    */
 
 #ifdef CRAP_COMPILER_VC
     std::cout << "Press a button" << std::endl;
