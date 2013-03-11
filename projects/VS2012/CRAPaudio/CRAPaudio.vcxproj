@@ -40,14 +40,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\bin\crapaudio</OutDir>
+    <OutDir>..\..\..\bin\crapaudio\</OutDir>
     <IntDir>..\..\..\build\vs2010\crapbase\$(Configuration)\</IntDir>
-    <IncludePath>E:\programming\CRAP\lib\openal\Alc;E:\programming\CRAP\lib\openal\build;E:\programming\CRAP\lib\openal\OpenAL32\Include;E:\programming\CRAP\lib\openal\OpenAL32;E:\programming\CRAP\lib\openal\include;E:\programming\CRAP\src\crap;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\src\crapaudio;..\..\..\lib\openal\include;..\..\..\src\crap;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\bin\openal\VS2012\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\..\bin\crapaudio</OutDir>
+    <OutDir>..\..\..\bin\crapaudio\</OutDir>
     <IntDir>..\..\..\build\vs2010\crapbase\$(Configuration)\</IntDir>
-    <IncludePath>E:\programming\CRAP\lib\openal\Alc;E:\programming\CRAP\lib\openal\build;E:\programming\CRAP\lib\openal\OpenAL32\Include;E:\programming\CRAP\lib\openal\OpenAL32;E:\programming\CRAP\lib\openal\include;E:\programming\CRAP\src\crap;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\src\crapaudio;..\..\..\lib\openal\include;..\..\..\src\crap;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\bin\openal\VS2012\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -85,53 +87,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alAuxEffectSlot.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alBuffer.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alDatabuffer.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alEffect.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alError.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alFilter.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alListener.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alMain.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alSource.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alState.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alThunk.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alu.h" />
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\bs2b.h" />
     <ClInclude Include="..\..\..\src\crapaudio\audio.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\lib\openal\Alc\ALc.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcConfig.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcEcho.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcModulator.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcReverb.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcRing.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcThread.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\alsa.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\ALu.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\bs2b.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\dsound.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\mixer.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\null.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\oss.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\panning.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\portaudio.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\pulseaudio.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\solaris.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\wave.c" />
-    <ClCompile Include="..\..\..\lib\openal\Alc\winmm.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alAuxEffectSlot.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alBuffer.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alDatabuffer.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alEffect.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alError.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alExtension.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alFilter.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alListener.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alSource.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alState.c" />
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alThunk.c" />
+    <ClCompile Include="audio.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

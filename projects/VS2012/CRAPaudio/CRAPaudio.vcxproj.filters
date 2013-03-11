@@ -13,15 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="lib">
-      <UniqueIdentifier>{cc1f6e3d-8668-4ee0-bfbe-a9466d00f5be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\openal32">
-      <UniqueIdentifier>{d06454e0-a3e3-4580-8679-00c29da7c1d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="lib\alc">
-      <UniqueIdentifier>{72f1b244-e3d0-4a08-8beb-7613bb818eae}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -30,139 +21,10 @@
     <ClInclude Include="..\..\..\src\crapaudio\audio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alAuxEffectSlot.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alBuffer.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alDatabuffer.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alEffect.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alError.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alFilter.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alListener.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alMain.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alSource.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alState.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alThunk.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\alu.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\lib\openal\OpenAL32\Include\bs2b.h">
-      <Filter>lib\openal32</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alSource.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alDatabuffer.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alAuxEffectSlot.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alEffect.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alFilter.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alExtension.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alState.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alListener.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alError.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alThunk.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\OpenAL32\alBuffer.c">
-      <Filter>lib\openal32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alsa.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\ALc.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\winmm.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcReverb.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\pulseaudio.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\dsound.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\mixer.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\panning.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\solaris.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\oss.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\ALu.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\wave.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\portaudio.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\null.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcEcho.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcModulator.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcRing.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcConfig.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\bs2b.c">
-      <Filter>lib\alc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\openal\Alc\alcThread.c">
-      <Filter>lib\alc</Filter>
+    <ClCompile Include="audio.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

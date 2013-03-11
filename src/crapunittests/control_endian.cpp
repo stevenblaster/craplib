@@ -67,13 +67,14 @@ TEST(ControlCheckingSwap3)
         c8 bytes[3];
     } tb;
 
+	tb.value = 0;
     tb.bytes[0] = 0;
     tb.bytes[1] = 1;
 	tb.bytes[2] = 0;
 
     tb.value = crap::endian::swap<i32>( tb.value );
 
-	CHECK_EQUAL( 0, tb.bytes[0] );
+	CHECK_EQUAL( 0, (int)tb.bytes[0] );
 	CHECK_EQUAL( 0, tb.bytes[1] );
 	CHECK_EQUAL( 1, tb.bytes[2] );
 }

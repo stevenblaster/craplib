@@ -235,7 +235,11 @@ i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::receive( packet<ADDRESS_T,S>& pack
     i32 result;
     if(SOCKTYPE_T == udp || SOCKTYPE_T == udp_lite)
     {
-        u32 addr_lenght = sizeof(pack.address.socket_address);
+#if defined( CRAP_PLATFORM_WIN )
+        i32 addr_lenght = sizeof(pack.address.socket_address);
+#else
+		u32 addr_lenght = sizeof(pack.address.socket_address);
+#endif
         result = ::recvfrom( _socket, (c8*)pack.data, S,
                                            0, (sockaddr*)&pack.address.socket_address, &addr_lenght );
     }
@@ -270,7 +274,11 @@ template<typename ADDRESS_T>
 i32 socket<FAMILY_T, DATATYPE_T, SOCKTYPE_T>::accept( ADDRESS_T& address )
 {
     CRAP_ASSERT_DEBUG(SOCKTYPE_T == tcp || SOCKTYPE_T == sctp, "Only tcp/sctp sockets can connect");
+#if defined( CRAP_PLATFORM_WIN )
+	i32 addr_lenght = sizeof(address.socket_address);
+#else
     u32 addr_lenght = sizeof(address.socket_address);
+#endif
     return ::accept(_socket, (sockaddr*)&address.socket_address, &addr_lenght);
 }
 

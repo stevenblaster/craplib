@@ -21,15 +21,13 @@
 #ifndef CRAP_AUDIO_H
 #define CRAP_AUDIO_H
 
-#include "precompiled.h"
+#include "AL/al.h"
 
-#if defined(CRAP_PLATFORM_WIN)
-#include "config_win32.h"
-#elif defined(CRAP_PLATFORM_WIN)
-#include "osx/config.h"
-#else
-#include "linux/config.h"
-#endif
+//lib namespace
+namespace crap
+{
+
+} //lib namespace
 
 
 #endif //CARP_AUDIO_H
