@@ -1,0 +1,75 @@
+////////////////////////////////////////////////////////
+//  CRAP Library
+//!		@file wavefile.h
+//
+//	Author(s):
+//! 	@author Steffen Kopany <steffen@kopany.at>
+//
+//	Copyright:
+//!		@copyright Copyright (c) 2013 Steffen Kopany
+//
+//	Description:
+//!		@brief Handling WAVE files
+//
+//	Status (scratch, developed, final):
+//!		@version scratch
+//
+////////////////////////////////////////////////////////
+
+#pragma once
+
+#ifndef CRAP_WAVEFILE_H
+#define CRAP_WAVEFILE_H
+
+#include "files/file.h"
+#include "files/fileheaders.h"
+
+//lib namespace
+namespace crap
+{
+
+class wave_file
+{
+public:
+	struct wav_header
+	{
+		char	riff[4];			// "RIFF"
+		i32		filesize;			// filesize minus 8
+		char	wavefmt[8];			// "WAVEfmt "
+		i32		headerlength;		// 16
+		i16		version;			// 1
+		i16		channels;			// 1:mono, 2:stereo
+		i32		frequency;			// in Hz
+		i32		bytes_per_sec;		// bytes per second
+		i16		bytes_per_sample;	// eg 2 for 16 bits
+		i16		bits_per_sample;	// bits per sample
+		char	data[4];			// "data"
+		i32		data_length;		// following data length
+
+		bool validate( void ) const
+		{
+			return riff[0] == 'R' && riff[1] == 'I' && riff[2] == 'F' && riff[3] == 'F' &&
+				wavefmt[0] == 'W' && wavefmt[1] == 'A' && wavefmt[2] == 'V' && wavefmt[3] == 'E' &&
+				wavefmt[4] == 'f' && wavefmt[5] == 'm' && wavefmt[6] == 't' && wavefmt[7] == ' ' &&
+				data[0] == 'd' && data[1] == 'a' && data[2] == 't' && data[3] == 'a';
+		}
+	};
+
+private:
+	crap::file _file;
+	wav_header _header;
+	u8* _data;
+
+public:
+	wave_file( const crap::string256& filename );
+	~wave_file( void );
+
+	wav_header& info( void );
+	const wav_header& info( void ) const;
+
+	u8* data( void );
+};
+
+}
+
+#endif //CRAP_WAVEFILE_H
