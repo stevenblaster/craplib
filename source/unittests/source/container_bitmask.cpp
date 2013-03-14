@@ -303,7 +303,7 @@ TEST(ContainerBitmaskDestruct)
 {
 	std::cout << "\tDestruction" << std::endl;
     delete _bitmask;
-	delete _bitmask_memory;
+    delete[] _bitmask_memory;
 }
 
 }   // namespace

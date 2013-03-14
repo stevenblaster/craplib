@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 // CRAP Library
-//!		@file audio.h
+//!		@file audiodevice.h
 //
 //	Author(s):
 //!		@author Steffen Kopany <steffen@kopany.at>
@@ -9,24 +9,33 @@
 //!		@copyright Copyright (c) 2013 Steffen Kopany
 //
 //	Description:
-//!		@brief Wrapper for openal
+//!		@brief Wrapper for opanAL device
 //
 //	Status (scratch, developed, final):
 //!		@version scratch
 //
 ////////////////////////////////////////////////////////
-
 #pragma once
 
-#ifndef CRAP_AUDIO_H
-#define CRAP_AUDIO_H
-
+#ifndef CRAP_AUDIODEVICE_H
+#define CRAP_AUDIODEVICE_H
 
 //lib namespace
 namespace crap
 {
 
+class audiodevice
+{
+private:
+	void* _device; //ALCdevice                                                     
+    void* _context; //ALCcontext
+
+public:
+	audiodevice( void );
+	~audiodevice( void );
+};
+
 } //lib namespace
 
 
-#endif //CARP_AUDIO_H
+#endif //CRAP_AUDIODEVICE_H

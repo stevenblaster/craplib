@@ -93,7 +93,7 @@
     <ClInclude Include="..\..\..\libraries\openal\include\AL\alext.h" />
     <ClInclude Include="..\..\..\libraries\openal\include\AL\efx-creative.h" />
     <ClInclude Include="..\..\..\libraries\openal\include\AL\efx.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\audio\audio.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\audio\audiodevice.h" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\wavefile.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_compilers.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_endianness.h" />
@@ -151,6 +151,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\network\networkheaders.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\packet.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\sockets.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglkeyboard.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglwindow.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\functorthread.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\mutex.h" />
@@ -182,7 +183,7 @@
     <ClCompile Include="..\..\..\libraries\glfw\lib\win32\win32_time.c" />
     <ClCompile Include="..\..\..\libraries\glfw\lib\win32\win32_window.c" />
     <ClCompile Include="..\..\..\libraries\glfw\lib\window.c" />
-    <ClCompile Include="..\..\..\source\craplib\source\audio\audio.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\audio\audiodevice.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\wavefile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\container\bitmask.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\control\cpuinfo.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\networkheaders.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\openglkeyboard.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglwindow.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\runnable.cpp" />

@@ -88,17 +88,19 @@ public:
 	void open( void );
 	void close( void );
 
+	vector2i size( void ) const;
+
 	void set_position( const vector2i& pos );
 	void set_size( int width, int height );
 	void set_title( const string64& name );
 	void set_fullscreen( bool value );
 
 	void swap( void );
-	/*
-	void set_window_close_function( GLFWwindowclosefun function );
-	void set_window_size_function( GLFWwindowsizefun function );
-	void set_window_refresh_function( GLFWwindowrefreshfun function );
-	*/
+	
+    void set_window_close_function( void* ptr );
+    void set_window_size_function( void* ptr );
+    void set_window_refresh_function( void* ptr );
+	
 private:
 	window_setup _window_setup;
 

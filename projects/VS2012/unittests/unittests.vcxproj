@@ -43,14 +43,14 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\unittests\$(Configuration)\</OutDir>
     <IntDir>..\..\..\build\vs2012\unittests\$(Configuration)\</IntDir>
-    <IncludePath>..\..\..\libraries\unittest\Win32;..\..\..\libraries\unittest;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\libraries\glfw\include;..\..\..\libraries\unittest\Win32;..\..\..\libraries\unittest;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\bin\craplibrary\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\unittests\$(Configuration)\</OutDir>
     <IntDir>..\..\..\build\vs2012\unittests\$(Configuration)\</IntDir>
-    <IncludePath>..\..\..\libraries\unittest\Win32;..\..\..\libraries\unittest;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\libraries\glfw\include;..\..\..\libraries\unittest\Win32;..\..\..\libraries\unittest;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\bin\craplibrary\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

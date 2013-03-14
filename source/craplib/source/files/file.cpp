@@ -176,7 +176,7 @@ void file::read_bytes( void* buffer, size_t32 amount, i32 byte_position /* = -1 
 
     size_t32 result = 0;
 
-	result = (size_t32) fread( buffer, sizeof(buffer), 1, _handle );
+    result = (size_t32) fread( buffer, amount, 1, _handle );
     CRAP_ASSERT_DEBUG(result == 1, "Reading bytes was not successful");
 
 	if(previous_state != read_binary )
