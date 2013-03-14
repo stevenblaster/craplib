@@ -204,3 +204,7 @@ lib/openal/build/*
 /projects/VS2012/CRAPunittests/freeglut.dll
 /projects/VS2012/Debug/CRAPdisplay.lib
 /projects/VS2012/Debug/CRAPdisplay.pdb
+
+/libraries/glfw/examples
+
+/libraries/glfw/support
