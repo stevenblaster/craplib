@@ -3,6 +3,8 @@
 #include "opengl/openglkeyboard.h"
 #include "threading/sleep.h"
 #include "audio/audiodevice.h"
+#include "files/file.h"
+#include "geometry/vector3.h"
 #include "audio/wavefile.h"
 #include "AL/al.h"
 
@@ -57,6 +59,12 @@ int main ()
 
 	crap::openglkeyboard keyboard;
 	keyboard.set_on_pressed_function( &test );
+
+	crap::audiodevice audio_device;
+	crap::wave_file wav( "audiofile.wav" );
+	wav.play( &audio_device, crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), 
+		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
+
 	
 	while( !keyboard.is_pressed( crap::openglkeyboard::key_escape ) )
 	{
@@ -66,9 +74,7 @@ int main ()
     //crap::sleep_sec(5);
 	test_win.close();
     
-    crap::audiodevice audio_device;
-
-	crap::wave_file wav( "audiofile.wav" );
+    
 
 //#ifdef CRAP_COMPILER_VC
 //    std::cout << "Press a button" << std::endl;

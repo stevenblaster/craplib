@@ -21,12 +21,12 @@
 #ifndef CRAP_WAVEFILE_H
 #define CRAP_WAVEFILE_H
 
-#include "files/file.h"
-#include "files/fileheaders.h"
-
 //lib namespace
 namespace crap
 {
+
+class file;
+class audiodevice;
 
 class wave_file
 {
@@ -56,12 +56,17 @@ public:
 	};
 
 private:
-	crap::file _file;
+	file _file;
 	wav_header _header;
 	u8* _data;
 	u32 _al_source;
     u32 _al_buffer;
     i32 _al_format;
+
+	//setup
+	f32 _pitch;
+	f32 _gain;
+	i32 _loop;
 
 public:
 	wave_file( const crap::string256& filename );
@@ -69,6 +74,18 @@ public:
 
 	wav_header& info( void );
 	const wav_header& info( void ) const;
+
+	f32 pitch( void ) const;
+	void set_pitch( f32 p );
+
+	f32 gain( void ) const;
+	void set_gain( f32 g );
+
+	b8 loop( void ) const;
+	void set_loop( b8 val );
+
+	void play( audiodevice* device, crap::vector3f source_pos, crap::vector3f source_vel, crap::vector3f listener_pos, 
+		crap::vector3f listener_vel, crap::vector3f listener_dir, crap::vector3f listener_up );
 
 	u8* data( void );
 };
