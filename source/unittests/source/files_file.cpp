@@ -100,7 +100,7 @@ TEST(FilesFileWriteBinary)
 	tmp.flt = 0.1234f;
 	tmp.integer = -234;
 
-	_testfile->write_bytes( tmp );
+	_testfile->write_bytes( &tmp, sizeof(tmp) );
 }
 
 TEST(FilesFileReadBinary)
@@ -114,7 +114,7 @@ TEST(FilesFileReadBinary)
 	tmp.flt = 0.f;
 	tmp.integer = 0;
 
-	_testfile->read_bytes( tmp );
+	_testfile->read_bytes( &tmp, sizeof(tmp) );
 
 	CHECK_EQUAL( 0.1234f, tmp.flt );
 	CHECK_EQUAL( -234, tmp.integer );
@@ -130,7 +130,7 @@ TEST(FilesFileAppendBinary)
 	tmp.flt = 5.345f;
 	tmp.integer = 96;
 
-	_testfile->append_bytes( tmp );
+	_testfile->append_bytes( &tmp, sizeof(tmp) );
 
 	_testfile->open( crap::file::read_binary );
 
@@ -142,7 +142,7 @@ TEST(FilesFileAppendBinary)
 	tmp2.flt2 = 0.f;
 	tmp2.integer2 = 0;
 
-	_testfile->read_bytes( tmp2 );
+	_testfile->read_bytes( &tmp2, sizeof(tmp2) );
 
 	CHECK_EQUAL( 0.1234f, tmp2.flt );
 	CHECK_EQUAL( -234, tmp2.integer );

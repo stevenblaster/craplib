@@ -40,13 +40,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\..\libraries\openal\precompiled\VS2012;..\..\..\libraries\openal\OpenAL32\Include;..\..\..\libraries\glfw\lib;..\..\..\libraries\glfw\lib\win32;..\..\..\libraries\openal\include;..\..\..\libraries\glfw\include;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\libraries\openal\build\Win32;..\..\..\libraries\openal\OpenAL32\Include;..\..\..\libraries\glfw\lib;..\..\..\libraries\glfw\lib\win32;..\..\..\libraries\openal\include;..\..\..\libraries\glfw\include;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
     <OutDir>..\..\..\bin\craplibrary\$(Configuration)\</OutDir>
     <IntDir>..\..\..\build\library\$(Configuration)\</IntDir>
     <LibraryPath>..\..\..\libraries\openal\precompiled\VS2012\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\..\libraries\openal\precompiled\VS2012;..\..\..\libraries\openal\OpenAL32\Include;..\..\..\libraries\glfw\lib;..\..\..\libraries\glfw\lib\win32;..\..\..\libraries\openal\include;..\..\..\libraries\glfw\include;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\libraries\openal\build\Win32;..\..\..\libraries\openal\OpenAL32\Include;..\..\..\libraries\glfw\lib;..\..\..\libraries\glfw\lib\win32;..\..\..\libraries\openal\include;..\..\..\libraries\glfw\include;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
     <OutDir>..\..\..\bin\craplibrary\$(Configuration)\</OutDir>
     <IntDir>..\..\..\build\library\$(Configuration)\</IntDir>
     <LibraryPath>..\..\..\libraries\openal\precompiled\VS2012\$(Configuration);$(LibraryPath)</LibraryPath>
@@ -57,7 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>AL_LIBTYPE_STATIC;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>AL_ALEXT_PROTOTYPES;AL_LIBTYPE_STATIC;strcasecmp=_stricmp;strncasecmp=_strnicmp;snprintf=_snprintf;isfinite=_finite;isnan=_isnan;_WIN32_WINNT=0x0501;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -72,7 +72,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>AL_LIBTYPE_STATIC;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>AL_ALEXT_PROTOTYPES;AL_LIBTYPE_STATIC;strcasecmp=_stricmp;strncasecmp=_strnicmp;snprintf=_snprintf;isfinite=_finite;isnan=_isnan;_WIN32_WINNT=0x0501;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,11 +88,6 @@
     <ClInclude Include="..\..\..\libraries\glfw\include\GL\glfw.h" />
     <ClInclude Include="..\..\..\libraries\glfw\lib\internal.h" />
     <ClInclude Include="..\..\..\libraries\glfw\lib\win32\platform.h" />
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\al.h" />
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\alc.h" />
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\alext.h" />
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\efx-creative.h" />
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\efx.h" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\audiodevice.h" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\wavefile.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_compilers.h" />
@@ -152,6 +147,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\network\packet.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\sockets.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglkeyboard.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglmouse.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglwindow.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\functorthread.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\mutex.h" />
@@ -183,6 +179,40 @@
     <ClCompile Include="..\..\..\libraries\glfw\lib\win32\win32_time.c" />
     <ClCompile Include="..\..\..\libraries\glfw\lib\win32\win32_window.c" />
     <ClCompile Include="..\..\..\libraries\glfw\lib\window.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\ALc.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcChorus.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcConfig.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcDedicated.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcEcho.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcFlanger.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcModulator.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcReverb.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcRing.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcThread.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\ALu.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\dsound.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\loopback.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\mmdevapi.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\null.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\wave.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\winmm.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\bs2b.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\helpers.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\hrtf.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\mixer.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\mixer_c.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\mixer_sse.c" />
+    <ClCompile Include="..\..\..\libraries\openal\Alc\panning.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alAuxEffectSlot.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alBuffer.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alEffect.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alError.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alExtension.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alFilter.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alListener.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alSource.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alState.c" />
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alThunk.c" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\audiodevice.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\wavefile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\container\bitmask.cpp" />

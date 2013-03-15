@@ -59,6 +59,9 @@ private:
 	crap::file _file;
 	wav_header _header;
 	u8* _data;
+	u32 _al_source;
+    u32 _al_buffer;
+    i32 _al_format;
 
 public:
 	wave_file( const crap::string256& filename );

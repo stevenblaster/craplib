@@ -72,15 +72,13 @@ public:
 	void set_byte_position( i32 byte_position = -1 );
 
 	template<typename T>
-	void read_bytes( T& buffer, bool byte_wise = false, i32 byte_position = -1 );
-
-	void read_bytes( void* buffer, size_t32 amount, i32 byte_position = -1 );
+	void read_bytes( T* buffer, size_t32 bytes, bool byte_wise = false, i32 byte_position = -1 );
 
 	template<typename T>
-	void write_bytes( const T& buffer, bool byte_wise = false, i32 byte_position = -1 );
+	void write_bytes( const T* buffer, size_t32 bytes, bool byte_wise = false, i32 byte_position = -1 );
 
 	template<typename T>
-	void append_bytes( const T& buffer, bool byte_wise = false);
+	void append_bytes( const T* buffer, size_t32 bytes, bool byte_wise = false);
 
 	template<size_t32 S>
 	void read_text( static_string<S>& str, size_t32 size, i32 char_position = -1 );
@@ -95,7 +93,7 @@ public:
 };
 
 template<typename T>
-void file::read_bytes( T& buffer, bool byte_wise /* = false */, i32 byte_position /* = -1 */ )
+void file::read_bytes( T* buffer, size_t32 bytes, bool byte_wise /* = false */, i32 byte_position /* = -1 */ )
 {
     mode previous_state = _state;
     if(_state != read_binary )
@@ -106,17 +104,17 @@ void file::read_bytes( T& buffer, bool byte_wise /* = false */, i32 byte_positio
 
     set_byte_position(byte_position);
 
-    void* ptr = (void*) &buffer;
+    void* ptr = (void*) buffer;
     size_t32 result = 0;
 
     if( byte_wise )
     {
-        result = (size_t32) fread( ptr, 1, sizeof(buffer), _handle );
+        result = (size_t32) fread( ptr, 1, bytes, _handle );
         CRAP_ASSERT_DEBUG(result == sizeof(buffer), "Reading bytes was not successful (bytewise)");
     }
     else
     {
-        result = (size_t32) fread( ptr, sizeof(buffer), 1, _handle );
+        result = (size_t32) fread( ptr, bytes, 1, _handle );
         CRAP_ASSERT_DEBUG(result == 1, "Reading bytes was not successful (not bytewise)");
     }
 
@@ -128,7 +126,7 @@ void file::read_bytes( T& buffer, bool byte_wise /* = false */, i32 byte_positio
 }
 
 template<typename T>
-void file::write_bytes( const T& buffer, bool byte_wise /* = false */, i32 byte_position /* = -1 */ )
+void file::write_bytes( const T* buffer, size_t32 bytes, bool byte_wise /* = false */, i32 byte_position /* = -1 */ )
 {
     mode previous_state = _state;
     if(_state != write_binary )
@@ -144,12 +142,12 @@ void file::write_bytes( const T& buffer, bool byte_wise /* = false */, i32 byte_
 
     if( byte_wise )
     {
-        result = (size_t32) fwrite( ptr, 1, sizeof(buffer), _handle );
-        CRAP_ASSERT_DEBUG(result == sizeof(buffer), "Reading bytes was not successful (bytewise)");
+        result = (size_t32) fwrite( ptr, 1, bytes, _handle );
+        CRAP_ASSERT_DEBUG(result == bytes, "Reading bytes was not successful (bytewise)");
     }
     else
     {
-        result = (size_t32) fwrite( ptr, sizeof(buffer), 1, _handle );
+        result = (size_t32) fwrite( ptr, bytes, 1, _handle );
         CRAP_ASSERT_DEBUG(result == 1, "Reading bytes was not successful (not bytewise)");
     }
 
@@ -163,7 +161,7 @@ void file::write_bytes( const T& buffer, bool byte_wise /* = false */, i32 byte_
 }
 
 template<typename T>
-void file::append_bytes( const T& buffer, bool byte_wise /* = false */ )
+void file::append_bytes( const T* buffer, size_t32 bytes, bool byte_wise /* = false */ )
 {
     mode previous_state = _state;
     if(_state != append_binary )
@@ -177,12 +175,12 @@ void file::append_bytes( const T& buffer, bool byte_wise /* = false */ )
 
     if( byte_wise )
     {
-        result = (size_t32) fwrite( ptr, 1, sizeof(buffer), _handle );
+        result = (size_t32) fwrite( ptr, 1, bytes, _handle );
         CRAP_ASSERT_DEBUG(result == sizeof(buffer), "Reading bytes was not successful (bytewise)");
     }
     else
     {
-        result = (size_t32) fwrite( ptr, sizeof(buffer), 1, _handle );
+        result = (size_t32) fwrite( ptr, bytes, 1, _handle );
         CRAP_ASSERT_DEBUG(result == 1, "Reading bytes was not successful (not bytewise)");
     }
 

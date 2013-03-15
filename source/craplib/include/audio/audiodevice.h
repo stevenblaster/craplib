@@ -27,8 +27,8 @@ namespace crap
 class audiodevice
 {
 private:
-	void* _device; //ALCdevice                                                     
-    void* _context; //ALCcontext
+    void* _device;
+    void* _context;
 
 public:
 	audiodevice( void );

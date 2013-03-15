@@ -163,30 +163,6 @@ void file::set_byte_position( i32 byte_position /* = 0 */ )
     }
 }
 
-void file::read_bytes( void* buffer, size_t32 amount, i32 byte_position /* = -1 */ )
-{
-	mode previous_state = _state;
-    if(_state != read_binary )
-    {
-        close();
-        open(read_binary);
-    }
-
-    set_byte_position(byte_position);
-
-    size_t32 result = 0;
-
-    result = (size_t32) fread( buffer, amount, 1, _handle );
-    CRAP_ASSERT_DEBUG(result == 1, "Reading bytes was not successful");
-
-	if(previous_state != read_binary )
-    {
-        close();
-        open(previous_state);
-    }
-}
-
-
 
 #if defined(CRAP_PLATFORM_WIN)
 

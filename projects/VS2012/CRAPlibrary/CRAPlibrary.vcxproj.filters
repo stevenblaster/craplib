@@ -261,21 +261,6 @@
     <ClInclude Include="..\..\..\libraries\glfw\lib\win32\platform.h">
       <Filter>libraries\glfw\include\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\al.h">
-      <Filter>libraries\openAL\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\alc.h">
-      <Filter>libraries\openAL\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\alext.h">
-      <Filter>libraries\openAL\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\efx-creative.h">
-      <Filter>libraries\openAL\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\libraries\openal\include\AL\efx.h">
-      <Filter>libraries\openAL\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\libraries\glfw\lib\internal.h">
       <Filter>libraries\glfw\include</Filter>
     </ClInclude>
@@ -326,6 +311,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\audio\audiodevice.h">
       <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglmouse.h">
+      <Filter>Header Files\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +436,108 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\audio\audiodevice.cpp">
       <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alAuxEffectSlot.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alBuffer.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alEffect.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alError.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alExtension.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alFilter.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alListener.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alSource.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alState.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alThunk.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcFlanger.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcModulator.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcReverb.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcRing.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcThread.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\ALu.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\bs2b.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\helpers.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\hrtf.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\mixer.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\mixer_c.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\mixer_sse.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\panning.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\ALc.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcChorus.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcConfig.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcDedicated.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\alcEcho.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\dsound.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\loopback.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\mmdevapi.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\null.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\wave.c">
+      <Filter>libraries\openAL\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\openal\Alc\backends\winmm.c">
+      <Filter>libraries\openAL\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

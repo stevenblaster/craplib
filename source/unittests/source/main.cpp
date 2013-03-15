@@ -4,10 +4,12 @@
 #include "threading/sleep.h"
 #include "audio/audiodevice.h"
 #include "audio/wavefile.h"
+#include "AL/al.h"
 
 #include "GL/glfw.h"
 
 #include "UnitTest++.h"
+
 
 void test( int a  )
 {
@@ -64,13 +66,13 @@ int main ()
     //crap::sleep_sec(5);
 	test_win.close();
     
-	crap::audiodevice;
+    crap::audiodevice audio_device;
 
-	crap::wave_file wav( "audiofile.h" );
+	crap::wave_file wav( "audiofile.wav" );
 
-#ifdef CRAP_COMPILER_VC
-    std::cout << "Press a button" << std::endl;
-	getchar();
-#endif
+//#ifdef CRAP_COMPILER_VC
+//    std::cout << "Press a button" << std::endl;
+//	getchar();
+//#endif
     return rtn;
 }

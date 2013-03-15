@@ -15,7 +15,6 @@ PRECOMPILED_HEADER += ../../../../CRAP/source/craplib/include//crap.h
 
 SOURCES += \
     ../../../source/craplib/source/audio/wavefile.cpp \
-    ../../../source/craplib/source/audio/audio.cpp \
     ../../../source/craplib/source/container/bitmask.cpp \
     ../../../source/craplib/source/control/zero.cpp \
     ../../../source/craplib/source/control/limits.cpp \
@@ -53,11 +52,11 @@ SOURCES += \
     ../../../libraries/glfw/lib/x11/x11_init.c \
     ../../../libraries/glfw/lib/x11/x11_glext.c \
     ../../../libraries/glfw/lib/x11/x11_fullscreen.c \
-    ../../../libraries/glfw/lib/x11/x11_enable.c
+    ../../../libraries/glfw/lib/x11/x11_enable.c \
+    ../../../source/craplib/source/audio/audiodevice.cpp
 
 HEADERS += \
     ../../../source/craplib/include/audio/wavefile.h \
-    ../../../source/craplib/include/audio/audio.h \
     ../../../source/craplib/include/config/config_types.h \
     ../../../source/craplib/include/config/config_threading.h \
     ../../../source/craplib/include/config/config_simd.h \
@@ -123,7 +122,9 @@ HEADERS += \
     ../../../source/craplib/include/threading/mutex.h \
     ../../../source/craplib/include/threading/functorthread.h \
     ../../../source/craplib/include/crap.h \
-    ../../../libraries/glfw/lib/internal.h
+    ../../../libraries/glfw/lib/internal.h \
+    ../../../source/craplib/include/audio/audiodevice.h \
+    ../../../source/craplib/include/opengl/openglmouse.h
 
 
 unix:!macx: LIBS += -L$$PWD/../../../../CRAP/libraries/openal/precompiled/Linux/64/ -lopenal
