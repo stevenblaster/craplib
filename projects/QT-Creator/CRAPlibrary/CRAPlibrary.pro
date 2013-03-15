@@ -9,9 +9,19 @@ INCLUDEPATH += ../../../../CRAP/source/craplib/include/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/include/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/lib/x11/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/lib/
+INCLUDEPATH += ../../../../CRAP/libraries/openal/build/Linux/
+INCLUDEPATH += ../../../../CRAP/libraries/openal/include/
+INCLUDEPATH += ../../../../CRAP/libraries/openal/OpenAL32/Include/
+INCLUDEPATH += ../../../../CRAP/libraries/openal/Alc/
 LIBS += -lpthread
 
-PRECOMPILED_HEADER += ../../../../CRAP/source/craplib/include//crap.h
+DEFINES += AL_ALEXT_PROTOTYPES
+DEFINES += _GNU_SOURCE=1
+DEFINES += AL_LIBTYPE_STATIC
+DEFINES += _CRT_SECURE_NO_WARNINGS
+DEFINES += _CRT_NONSTDC_NO_DEPRECATE
+
+PRECOMPILED_HEADER += ../../../../CRAP/source/craplib/include/crap.h
 
 SOURCES += \
     ../../../source/craplib/source/audio/wavefile.cpp \
@@ -53,7 +63,41 @@ SOURCES += \
     ../../../libraries/glfw/lib/x11/x11_glext.c \
     ../../../libraries/glfw/lib/x11/x11_fullscreen.c \
     ../../../libraries/glfw/lib/x11/x11_enable.c \
-    ../../../source/craplib/source/audio/audiodevice.cpp
+    ../../../source/craplib/source/audio/audiodevice.cpp \
+    ../../../libraries/openal/OpenAL32/alThunk.c \
+    ../../../libraries/openal/OpenAL32/alState.c \
+    ../../../libraries/openal/OpenAL32/alSource.c \
+    ../../../libraries/openal/OpenAL32/alListener.c \
+    ../../../libraries/openal/OpenAL32/alFilter.c \
+    ../../../libraries/openal/OpenAL32/alExtension.c \
+    ../../../libraries/openal/OpenAL32/alError.c \
+    ../../../libraries/openal/OpenAL32/alEffect.c \
+    ../../../libraries/openal/OpenAL32/alBuffer.c \
+    ../../../libraries/openal/OpenAL32/alAuxEffectSlot.c \
+    ../../../libraries/openal/Alc/panning.c \
+    ../../../libraries/openal/Alc/mixer_sse.c \
+    ../../../libraries/openal/Alc/mixer_c.c \
+    ../../../libraries/openal/Alc/mixer.c \
+    ../../../libraries/openal/Alc/hrtf.c \
+    ../../../libraries/openal/Alc/helpers.c \
+    ../../../libraries/openal/Alc/bs2b.c \
+    ../../../libraries/openal/Alc/ALu.c \
+    ../../../libraries/openal/Alc/alcThread.c \
+    ../../../libraries/openal/Alc/alcRing.c \
+    ../../../libraries/openal/Alc/alcReverb.c \
+    ../../../libraries/openal/Alc/alcModulator.c \
+    ../../../libraries/openal/Alc/alcFlanger.c \
+    ../../../libraries/openal/Alc/alcEcho.c \
+    ../../../libraries/openal/Alc/alcDedicated.c \
+    ../../../libraries/openal/Alc/alcConfig.c \
+    ../../../libraries/openal/Alc/alcChorus.c \
+    ../../../libraries/openal/Alc/ALc.c \
+    ../../../libraries/openal/Alc/backends/wave.c \
+    ../../../libraries/openal/Alc/backends/oss.c \
+    ../../../libraries/openal/Alc/backends/null.c \
+    ../../../libraries/openal/Alc/backends/alsa.c \
+    ../../../libraries/openal/Alc/backends/pulseaudio.c \
+    ../../../libraries/openal/Alc/backends/loopback.c
 
 HEADERS += \
     ../../../source/craplib/include/audio/wavefile.h \
@@ -124,12 +168,8 @@ HEADERS += \
     ../../../source/craplib/include/crap.h \
     ../../../libraries/glfw/lib/internal.h \
     ../../../source/craplib/include/audio/audiodevice.h \
-    ../../../source/craplib/include/opengl/openglmouse.h
+    ../../../source/craplib/include/opengl/openglmouse.h \
+    ../../../libraries/openal/Alc/mixer_defs.h
 
-
-unix:!macx: LIBS += -L$$PWD/../../../../CRAP/libraries/openal/precompiled/Linux/64/ -lopenal
-
-INCLUDEPATH += $$PWD/../../../../CRAP/libraries/openal/include
-DEPENDPATH += $$PWD/../../../../CRAP/libraries/openal/include
-
-unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../CRAP/libraries/openal/precompiled/Linux/64/libopenal.a
+OTHER_FILES += \
+    ../../../libraries/openal/Alc/hrtf_tables.inc

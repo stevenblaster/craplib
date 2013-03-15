@@ -6,8 +6,6 @@
 #include "files/file.h"
 #include "geometry/vector3.h"
 #include "audio/wavefile.h"
-#include "AL/al.h"
-
 #include "GL/glfw.h"
 
 #include "UnitTest++.h"
@@ -15,7 +13,8 @@
 
 void test( int a  )
 {
-	int fun=0;
+    int fun=a;
+    fun++;
 }
 
 int main ()
@@ -62,7 +61,7 @@ int main ()
 
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
-	wav.play( &audio_device, crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), 
+    wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
 
 	

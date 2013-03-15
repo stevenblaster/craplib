@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 CONFIG += opengl
 CONFIG += x11
+CONFIG += dl
 
 INCLUDEPATH += ../../../../CRAP/source/craplib/include/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/include/
@@ -11,6 +12,8 @@ INCLUDEPATH += .../../../../CRAP/libraries/glfw/lib/x11/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/lib/
 INCLUDEPATH += ../../../../CRAP/libraries/unittest/
 LIBS += -lpthread
+LIBS += -lGL
+
 
 SOURCES += \
     ../../../../CRAP/source/unittests/source/threading_thread.cpp \

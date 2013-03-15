@@ -104,7 +104,7 @@ void wave_file::set_loop( b8 val )
 	_loop = ( val ) ? 1 : 0;
 }
 
-void wave_file::play( audiodevice* device, vector3f source_pos, vector3f source_vel, vector3f listener_pos, 
+void wave_file::play( vector3f source_pos, vector3f source_vel, vector3f listener_pos,
 		vector3f listener_vel, vector3f listener_dir, vector3f listener_up )
 {
 	struct orientation

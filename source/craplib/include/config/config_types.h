@@ -125,7 +125,7 @@ typedef double f64;
 typedef u32 size_t32;
 typedef u64 size_t64;
 
-#if defined(CRAP_COMPILER_GCC)
+#if defined(CRAP_COMPILER_GCC) && defined(CRAP_PROCESSOR_X86_64)
 
 typedef __int128_t i128;
 typedef __uint128_t u128;

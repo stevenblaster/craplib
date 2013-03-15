@@ -84,7 +84,7 @@ public:
 	b8 loop( void ) const;
 	void set_loop( b8 val );
 
-	void play( audiodevice* device, crap::vector3f source_pos, crap::vector3f source_vel, crap::vector3f listener_pos, 
+    void play( crap::vector3f source_pos, crap::vector3f source_vel, crap::vector3f listener_pos,
 		crap::vector3f listener_vel, crap::vector3f listener_dir, crap::vector3f listener_up );
 
 	u8* data( void );
