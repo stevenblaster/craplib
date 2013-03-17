@@ -19,9 +19,6 @@ DEFINES += AL_ALEXT_PROTOTYPES
 DEFINES += _GNU_SOURCE=1
 DEFINES += AL_LIBTYPE_STATIC
 DEFINES += _CRT_SECURE_NO_WARNINGS
-DEFINES += _CRT_NONSTDC_NO_DEPRECATE
-
-PRECOMPILED_HEADER += ../../../../CRAP/source/craplib/include/crap.h
 
 SOURCES += \
     ../../../source/craplib/source/audio/wavefile.cpp \

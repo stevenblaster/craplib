@@ -5,6 +5,7 @@ CONFIG -= qt
 CONFIG += opengl
 CONFIG += x11
 CONFIG += dl
+CONFIG += glu
 
 INCLUDEPATH += ../../../../CRAP/source/craplib/include/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/include/
@@ -12,8 +13,7 @@ INCLUDEPATH += .../../../../CRAP/libraries/glfw/lib/x11/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/lib/
 INCLUDEPATH += ../../../../CRAP/libraries/unittest/
 LIBS += -lpthread
-LIBS += -lGL
-
+LIBS += -ldl
 
 SOURCES += \
     ../../../../CRAP/source/unittests/source/threading_thread.cpp \
@@ -107,3 +107,5 @@ INCLUDEPATH += $$PWD/../../../../CRAP/binary
 DEPENDPATH += $$PWD/../../../../CRAP/binary
 
 unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../CRAP/binary/libCRAPlibrary.a
+
+unix:!macx: LIBS += -ldl
