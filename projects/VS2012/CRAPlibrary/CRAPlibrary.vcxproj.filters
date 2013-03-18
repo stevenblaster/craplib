@@ -539,5 +539,8 @@
     <ClCompile Include="..\..\..\libraries\openal\Alc\backends\winmm.c">
       <Filter>libraries\openAL\source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\openglmouse.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

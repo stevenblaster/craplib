@@ -225,6 +225,7 @@
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\networkheaders.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglkeyboard.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\openglmouse.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglwindow.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\runnable.cpp" />

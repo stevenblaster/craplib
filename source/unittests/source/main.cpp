@@ -1,6 +1,7 @@
 #include "crap.h"
 #include "opengl/openglwindow.h"
 #include "opengl/openglkeyboard.h"
+#include "opengl/openglmouse.h"
 #include "threading/sleep.h"
 #include "audio/audiodevice.h"
 #include "files/file.h"
@@ -13,8 +14,30 @@
 
 void test( int a  )
 {
-    int fun=a;
-    fun++;
+    std::cout << "Key pressed:" << (char)a << std::endl;
+}
+
+void click_left( i32 button )
+{
+	if( (crap::openglmouse::button) button == crap::openglmouse::button_left )
+		std::cout << "left button clicked" << std::endl;
+	else if( (crap::openglmouse::button) button == crap::openglmouse::button_right )
+		std::cout << "right button clicked" << std::endl;
+	else if( (crap::openglmouse::button) button == crap::openglmouse::button_middle )
+		std::cout << "middle button clicked" << std::endl;
+	else
+		std::cout << "button number " << button << " clicked" << std::endl;
+}
+
+void move_mouse( i32 x, i32 y )
+{
+	std::cout << "Mouse pos:" << crap::openglmouse::position().x << ", " << crap::openglmouse::position().y 
+		<< " - movement:" << crap::openglmouse::movement().x << ", " << crap::openglmouse::movement().y << std::endl;
+}
+
+void wheel_move( i32 var )
+{
+	std::cout << "Wheel pos:" << crap::openglmouse::wheel() << ", Wheel movement:" << crap::openglmouse::wheel_movement() << std::endl;
 }
 
 int main ()
@@ -58,6 +81,11 @@ int main ()
 
 	crap::openglkeyboard keyboard;
 	keyboard.set_on_pressed_function( &test );
+
+	crap::openglmouse mouse;
+	mouse.set_on_pressed_function( &click_left );
+	mouse.set_on_move_function( &move_mouse );
+	mouse.set_on_wheel_function( &wheel_move );
 
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
