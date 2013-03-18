@@ -21,7 +21,7 @@
 #define CRAP_OPENGLMOUSE_H
 
 #include "container/bitset.h"
-#include "geometry/vector2.h"
+#include "math/vector2.h"
 
 //lib namespace
 namespace crap

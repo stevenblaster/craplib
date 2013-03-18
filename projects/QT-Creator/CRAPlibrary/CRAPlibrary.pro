@@ -94,7 +94,8 @@ SOURCES += \
     ../../../libraries/openal/Alc/backends/null.c \
     ../../../libraries/openal/Alc/backends/alsa.c \
     ../../../libraries/openal/Alc/backends/pulseaudio.c \
-    ../../../libraries/openal/Alc/backends/loopback.c
+    ../../../libraries/openal/Alc/backends/loopback.c \
+    ../../../source/craplib/source/opengl/openglmouse.cpp
 
 HEADERS += \
     ../../../source/craplib/include/audio/wavefile.h \
@@ -135,13 +136,13 @@ HEADERS += \
     ../../../source/craplib/include/control/asserts.h \
     ../../../source/craplib/include/files/fileheaders.h \
     ../../../source/craplib/include/files/file.h \
-    ../../../source/craplib/include/geometry/vector4.h \
-    ../../../source/craplib/include/geometry/vector3.h \
-    ../../../source/craplib/include/geometry/vector2.h \
-    ../../../source/craplib/include/geometry/matrix4.h \
-    ../../../source/craplib/include/geometry/matrix3.h \
-    ../../../source/craplib/include/geometry/matrix2.h \
-    ../../../source/craplib/include/geometry/geometry.h \
+    ../../../source/craplib/include/math/vector4.h \
+    ../../../source/craplib/include/math/vector3.h \
+    ../../../source/craplib/include/math/vector2.h \
+    ../../../source/craplib/include/math/matrix4.h \
+    ../../../source/craplib/include/math/matrix3.h \
+    ../../../source/craplib/include/math/matrix2.h \
+    ../../../source/craplib/include/math/geometry.h \
     ../../../source/craplib/include/math/random.h \
     ../../../source/craplib/include/math/basemath.h \
     ../../../source/craplib/include/memory/memorypool.h \

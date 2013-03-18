@@ -159,9 +159,6 @@
     <ClInclude Include="..\..\..\source\craplib\include\threading\functorthread.h">
       <Filter>Header Files\threading</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\geometry.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\files\fileheaders.h">
       <Filter>Header Files\files</Filter>
     </ClInclude>
@@ -176,15 +173,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\container\list.h">
       <Filter>Header Files\container</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\matrix2.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\matrix3.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\matrix4.h">
-      <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\memory\memorypool.h">
       <Filter>Header Files\memory</Filter>
@@ -233,18 +221,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\container\treenode.h">
       <Filter>Header Files\container</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\container\vector.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\vector2.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\vector3.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\geometry\vector4.h">
-      <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\audio\wavefile.h">
       <Filter>Header Files\audio</Filter>
@@ -314,6 +290,27 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglmouse.h">
       <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\matrix3.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\matrix4.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\vector2.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\vector3.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\vector4.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\geometry.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\math\matrix2.h">
+      <Filter>Header Files\math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

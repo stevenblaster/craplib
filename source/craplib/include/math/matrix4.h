@@ -21,7 +21,7 @@
 #define CRAP_GEOMETRY_MATRIX4_H
 
 #include "control/asserts.h"
-#include "geometry/vector3.h"
+#include "math/vector3.h"
 
 //lib namespace
 namespace crap

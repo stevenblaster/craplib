@@ -2,7 +2,7 @@
 #include "crap.h"
 
 //lib includes
-#include "geometry/vector2.h"
+#include "math/vector2.h"
 
 namespace
 {

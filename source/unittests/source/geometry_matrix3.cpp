@@ -2,7 +2,7 @@
 #include "crap.h"
 
 //lib includes
-#include "geometry/matrix3.h"
+#include "math/matrix3.h"
 
 namespace
 {

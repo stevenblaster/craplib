@@ -21,13 +21,13 @@
 #ifndef CRAP_GEOMETRY_GEOMETRY_H
 #define CRAP_GEOMETRY_GEOMETRY_H
 
-#include "geometry/matrix2.h"
-#include "geometry/matrix3.h"
-#include "geometry/matrix4.h"
+#include "math/matrix2.h"
+#include "math/matrix3.h"
+#include "math/matrix4.h"
 
-#include "geometry/vector2.h"
-#include "geometry/vector3.h"
-#include "geometry/vector4.h"
+#include "math/vector2.h"
+#include "math/vector3.h"
+#include "math/vector4.h"
 
 #include "control/zero.h"
 #include "math/basemath.h"

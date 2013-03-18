@@ -19,7 +19,7 @@
 #include "AL/al.h"
 #include "files/file.h"
 #include "files/fileheaders.h"
-#include "geometry/vector3.h"
+#include "math/vector3.h"
 #include "audio/wavefile.h"
 
 //lib namespace

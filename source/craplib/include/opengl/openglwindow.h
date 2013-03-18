@@ -22,8 +22,8 @@
 #define CRAP_OPENGLWINDOW_H
 
 #include "container/staticstring.h"
-#include "geometry/vector2.h"
-#include "geometry/vector4.h"
+#include "math/vector2.h"
+#include "math/vector4.h"
 
 #if defined(CRAP_PLATFORM_WIN)
 #pragma comment(lib, "opengl32.lib")

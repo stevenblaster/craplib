@@ -5,7 +5,7 @@
 #include "threading/sleep.h"
 #include "audio/audiodevice.h"
 #include "files/file.h"
-#include "geometry/vector3.h"
+#include "math/vector3.h"
 #include "audio/wavefile.h"
 #include "GL/glfw.h"
 
