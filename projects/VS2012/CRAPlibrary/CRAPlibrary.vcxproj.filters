@@ -312,6 +312,9 @@
     <ClInclude Include="..\..\..\source\craplib\include\math\matrix2.h">
       <Filter>Header Files\math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\opengljoystick.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp">
@@ -537,6 +540,9 @@
       <Filter>libraries\openAL\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglmouse.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\opengljoystick.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>

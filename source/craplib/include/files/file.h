@@ -137,7 +137,7 @@ void file::write_bytes( const T* buffer, size_t32 bytes, bool byte_wise /* = fal
 
     set_byte_position(byte_position);
 
-    void* ptr = (void*) &buffer;
+    void* ptr = (void*) buffer;
     size_t32 result = 0;
 
     if( byte_wise )
@@ -170,13 +170,13 @@ void file::append_bytes( const T* buffer, size_t32 bytes, bool byte_wise /* = fa
         open(append_binary);
     }
 
-    void* ptr = (void*) &buffer;
+    void* ptr = (void*) buffer;
     size_t32 result = 0;
 
     if( byte_wise )
     {
         result = (size_t32) fwrite( ptr, 1, bytes, _handle );
-        CRAP_ASSERT_DEBUG(result == sizeof(buffer), "Reading bytes was not successful (bytewise)");
+        CRAP_ASSERT_DEBUG(result == bytes, "Reading bytes was not successful (bytewise)");
     }
     else
     {

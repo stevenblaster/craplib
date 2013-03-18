@@ -24,23 +24,23 @@
 namespace crap
 {
 
-bit_set<325> openglkeyboard::_bitset;
+bit_set<325> opengl_keyboard::_bitset;
 
-openglkeyboard::user_callback_function openglkeyboard::_on_pressed_function = 0;
+opengl_keyboard::user_callback_function opengl_keyboard::_on_pressed_function = 0;
 
-openglkeyboard::user_callback_function openglkeyboard::_on_release_function = 0;
+opengl_keyboard::user_callback_function opengl_keyboard::_on_release_function = 0;
 
-openglkeyboard::openglkeyboard( void )
+opengl_keyboard::opengl_keyboard( void )
 {
-	glfwSetKeyCallback( &openglkeyboard::callback_function );
+	glfwSetKeyCallback( &opengl_keyboard::callback_function );
 }
 
-openglkeyboard::~openglkeyboard( void )
+opengl_keyboard::~opengl_keyboard( void )
 {
 	glfwSetKeyCallback(NULL);
 }
 
-void openglkeyboard::callback_function( i32 key_id, i32 key_state )
+void opengl_keyboard::callback_function( i32 key_id, i32 key_state )
 {
 	if( key_state )
 	{
@@ -56,22 +56,22 @@ void openglkeyboard::callback_function( i32 key_id, i32 key_state )
 	}
 }
 
-b8 openglkeyboard::is_pressed( key key_id )
+b8 opengl_keyboard::is_pressed( key key_id )
 {
 	return _bitset.test( key_id );
 }
 
-void openglkeyboard::overwrite_callback( void (*function)( i32 key_id, i32 key_state ) )
+void opengl_keyboard::overwrite_callback( void (*function)( i32 key_id, i32 key_state ) )
 {
 	glfwSetKeyCallback( (GLFWkeyfun)function );
 }
 
-void openglkeyboard::set_on_pressed_function( void (*function)(i32 key_id) )
+void opengl_keyboard::set_on_pressed_function( void (*function)(i32 key_id) )
 {
 	_on_pressed_function = function;
 }
 
-void openglkeyboard::set_on_release_function( void (*function)(i32 key_id) )
+void opengl_keyboard::set_on_release_function( void (*function)(i32 key_id) )
 {
 	_on_release_function = function;
 }

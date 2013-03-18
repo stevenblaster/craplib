@@ -26,7 +26,7 @@
 namespace crap
 {
 
-class openglkeyboard
+class opengl_keyboard
 {
 public:
 	enum key
@@ -196,8 +196,8 @@ private:
 	static user_callback_function _on_release_function;
 
 public:
-	openglkeyboard( void );
-	~openglkeyboard( void );
+	opengl_keyboard( void );
+	~opengl_keyboard( void );
 
 	b8 is_pressed( key key_id );
 

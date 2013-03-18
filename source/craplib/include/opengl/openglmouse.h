@@ -27,7 +27,7 @@
 namespace crap
 {
 
-class openglmouse
+class opengl_mouse
 {
 public:
 	enum button
@@ -67,8 +67,8 @@ private:
 	static user_wheel_callback_function _on_wheel_function;
 
 public:
-	openglmouse( void );
-	~openglmouse( void );
+	opengl_mouse( void );
+	~opengl_mouse( void );
 
 	static b8 is_pressed( button button_id );
 	static vector2i position( void );

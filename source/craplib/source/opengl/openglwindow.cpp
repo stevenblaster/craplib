@@ -30,7 +30,7 @@
 namespace crap
 {
 
-openglwindow::openglwindow( const window_setup& setup ) : _window_setup( setup )
+opengl_window::opengl_window( const window_setup& setup ) : _window_setup( setup )
 {
 #ifndef CRAP_GLFW_INIT
 #define CRAP_GLFW_INIT
@@ -40,17 +40,22 @@ openglwindow::openglwindow( const window_setup& setup ) : _window_setup( setup )
 #endif
 }
 
-openglwindow::~openglwindow( void )
+opengl_window::~opengl_window( void )
 {
     close();
 }
 
-void openglwindow::update_settings( const window_setup& setup )
+void opengl_window::update_settings( const window_setup& setup )
 {
 	_window_setup = setup;
 }
 
-void openglwindow::open( void )
+b8 opengl_window::is_open( void ) const
+{
+	return glfwGetWindowParam( GLFW_OPENED );
+}
+
+void opengl_window::open( void )
 {
 	glfwOpenWindowHint( GLFW_REFRESH_RATE, _window_setup.refresh_rate );
 	glfwOpenWindowHint( GLFW_ACCUM_RED_BITS, _window_setup.accumulation_color_bits.r );
@@ -69,6 +74,9 @@ void openglwindow::open( void )
 
 	int fullscreen = ( _window_setup.fullscreen ) ? GLFW_FULLSCREEN : GLFW_WINDOW;
 
+	glfwSetWindowTitle( _window_setup.title.cstring() );
+	glfwSetWindowPos( _window_setup.position.x, _window_setup.position.y );
+
     int result = glfwOpenWindow( 
 		_window_setup.width,
 		_window_setup.height, 
@@ -81,54 +89,46 @@ void openglwindow::open( void )
 		fullscreen );
 
     CRAP_ASSERT_DEBUG( result == GL_TRUE, "Failed to create a GLFW Window");
-#if defined(CRAP_PLATFORM_WIN) && defined(UNICODE)
-	wchar_t wide_char[64] = {};
-	mbstowcs(wide_char, _window_setup.title.cstring(), _window_setup.title.size());
-	glfwSetWindowTitle( (string_t*) wide_char );
-#else
-	glfwSetWindowTitle( _window_setup.title.cstring() );
-#endif
-	glfwSetWindowPos( _window_setup.position.x, _window_setup.position.y );
 }
 
-void openglwindow::close( void )
+void opengl_window::close( void )
 {
 	glfwCloseWindow();
 }
 
-void openglwindow::reset_window( void )
+void opengl_window::reset_window( void )
 {
 	close();
 	open();
 }
 
-vector2i openglwindow::size( void ) const
+vector2i opengl_window::size( void ) const
 {
 	vector2i rtn;
 	glfwGetWindowSize( &rtn.x, &rtn.y );
 	return rtn;
 }
 
-void openglwindow::set_position( const vector2i& pos )
+void opengl_window::set_position( const vector2i& pos )
 {
 	_window_setup.position = pos;
 	glfwSetWindowPos( pos.x, pos.y );
 }
 
-void openglwindow::set_size( int width, int height )
+void opengl_window::set_size( int width, int height )
 {
 	_window_setup.width = width;
 	_window_setup.height = height;
 	glfwSetWindowSize( width, height );
 }
 
-void openglwindow::set_title( const string64& name )
+void opengl_window::set_title( const string64& name )
 {
 	_window_setup.title = name;
 	glfwSetWindowTitle( name.cstring() );
 }
 
-void openglwindow::set_fullscreen( bool value )
+void opengl_window::set_fullscreen( bool value )
 {
 	if( value && _window_setup.fullscreen )
 	{
@@ -145,26 +145,30 @@ void openglwindow::set_fullscreen( bool value )
 	}
 }
 
-void openglwindow::swap( void )
+void opengl_window::swap( void )
 {
 	glfwSwapBuffers();
 }
 
 
-void set_window_close_function( void* function )
+void opengl_window::set_window_close_function( void* function )
 {
 	glfwSetWindowCloseCallback( (GLFWwindowclosefun)function );
 }
 
-void set_window_size_function( void* function )
+void opengl_window::set_window_size_function( void* function )
 {
 	glfwSetWindowSizeCallback( (GLFWwindowsizefun)function );
 }
 
-void set_window_refresh_function( void* function )
+void opengl_window::set_window_refresh_function( void* function )
 {
 	glfwSetWindowRefreshCallback( (GLFWwindowrefreshfun)function );
 }
 
+void opengl_window::poll_events( void )
+{
+	glfwPollEvents();
+}
 
 } //namespace crap

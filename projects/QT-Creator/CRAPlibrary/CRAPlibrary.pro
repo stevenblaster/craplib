@@ -95,7 +95,8 @@ SOURCES += \
     ../../../libraries/openal/Alc/backends/alsa.c \
     ../../../libraries/openal/Alc/backends/pulseaudio.c \
     ../../../libraries/openal/Alc/backends/loopback.c \
-    ../../../source/craplib/source/opengl/openglmouse.cpp
+    ../../../source/craplib/source/opengl/openglmouse.cpp \
+    ../../../source/craplib/source/opengl/opengljoystick.cpp
 
 HEADERS += \
     ../../../source/craplib/include/audio/wavefile.h \
@@ -167,7 +168,8 @@ HEADERS += \
     ../../../libraries/glfw/lib/internal.h \
     ../../../source/craplib/include/audio/audiodevice.h \
     ../../../source/craplib/include/opengl/openglmouse.h \
-    ../../../libraries/openal/Alc/mixer_defs.h
+    ../../../libraries/openal/Alc/mixer_defs.h \
+    ../../../source/craplib/include/opengl/opengljoystick.h
 
 OTHER_FILES += \
     ../../../libraries/openal/Alc/hrtf_tables.inc

@@ -24,39 +24,39 @@
 namespace crap
 {
 
-bit_set<8> openglmouse::_bitset;
+bit_set<8> opengl_mouse::_bitset;
 
-vector2i openglmouse::_position;
+vector2i opengl_mouse::_position;
 
-vector2i openglmouse::_movement;
+vector2i opengl_mouse::_movement;
 
-i32 openglmouse::_wheel = 0;
+i32 opengl_mouse::_wheel = 0;
 
-i32 openglmouse::_wheel_movement = 0;
+i32 opengl_mouse::_wheel_movement = 0;
 
-openglmouse::user_button_callback_function openglmouse::_on_pressed_function = 0;
+opengl_mouse::user_button_callback_function opengl_mouse::_on_pressed_function = 0;
 
-openglmouse::user_button_callback_function openglmouse::_on_release_function = 0;
+opengl_mouse::user_button_callback_function opengl_mouse::_on_release_function = 0;
 
-openglmouse::user_move_callback_function openglmouse::_on_move_function = 0;
+opengl_mouse::user_move_callback_function opengl_mouse::_on_move_function = 0;
 
-openglmouse::user_wheel_callback_function openglmouse::_on_wheel_function = 0;
+opengl_mouse::user_wheel_callback_function opengl_mouse::_on_wheel_function = 0;
 
-openglmouse::openglmouse( void )
+opengl_mouse::opengl_mouse( void )
 {
-	glfwSetMouseButtonCallback( &openglmouse::button_callback_function );
-	glfwSetMousePosCallback( &openglmouse::move_callback_function );
-	glfwSetMouseWheelCallback( &openglmouse::wheel_callback_function );
+	glfwSetMouseButtonCallback( &opengl_mouse::button_callback_function );
+	glfwSetMousePosCallback( &opengl_mouse::move_callback_function );
+	glfwSetMouseWheelCallback( &opengl_mouse::wheel_callback_function );
 }
 
-openglmouse::~openglmouse( void )
+opengl_mouse::~opengl_mouse( void )
 {
 	glfwSetMouseButtonCallback(NULL);
 	glfwSetMousePosCallback(NULL);
 	glfwSetMouseWheelCallback( NULL );
 }
 
-void openglmouse::button_callback_function( i32 button_id, i32 button_state )
+void opengl_mouse::button_callback_function( i32 button_id, i32 button_state )
 {
 	if( button_state )
 	{
@@ -72,7 +72,7 @@ void openglmouse::button_callback_function( i32 button_id, i32 button_state )
 	}
 }
 
-void openglmouse::move_callback_function( i32 pos_x, i32 pos_y )
+void opengl_mouse::move_callback_function( i32 pos_x, i32 pos_y )
 {
 	_movement.x = pos_x - _position.x; 
 	_movement.y = pos_y - _position.y; 
@@ -82,7 +82,7 @@ void openglmouse::move_callback_function( i32 pos_x, i32 pos_y )
 		_on_move_function( pos_x, pos_y );
 }
 
-void openglmouse::wheel_callback_function( i32 pos )
+void opengl_mouse::wheel_callback_function( i32 pos )
 {
 	_wheel_movement = pos - _wheel;
 	_wheel = pos;
@@ -90,62 +90,62 @@ void openglmouse::wheel_callback_function( i32 pos )
 		_on_wheel_function( pos );
 }
 
-b8 openglmouse::is_pressed( button button_id )
+b8 opengl_mouse::is_pressed( button button_id )
 {
 	return _bitset.test( button_id );
 }
 
-vector2i openglmouse::position( void )
+vector2i opengl_mouse::position( void )
 {
 	return _position;
 }
 
-vector2i openglmouse::movement( void )
+vector2i opengl_mouse::movement( void )
 {
 	return _movement;
 }
 
-i32 openglmouse::wheel( void )
+i32 opengl_mouse::wheel( void )
 {
 	return _wheel;
 }
 
-i32 openglmouse::wheel_movement( void )
+i32 opengl_mouse::wheel_movement( void )
 {
 	return _wheel_movement;
 }
 
-void openglmouse::overwrite_button_callback( void (*function)( i32 button_id, i32 button_state ) )
+void opengl_mouse::overwrite_button_callback( void (*function)( i32 button_id, i32 button_state ) )
 {
 	glfwSetMouseButtonCallback( (GLFWmousebuttonfun)function );
 }
 
-void openglmouse::overwrite_move_callback( void (*function)( i32 pos_x, i32 pos_y ) )
+void opengl_mouse::overwrite_move_callback( void (*function)( i32 pos_x, i32 pos_y ) )
 {
 	glfwSetMousePosCallback( (GLFWmouseposfun)function );
 }
 
-void openglmouse::overwrite_wheel_callback( void (*function)( i32 pos ) )
+void opengl_mouse::overwrite_wheel_callback( void (*function)( i32 pos ) )
 {
 	glfwSetMouseWheelCallback( (GLFWmousewheelfun)function );
 }
 
-void openglmouse::set_on_pressed_function( void (*function)( i32 key_id ) )
+void opengl_mouse::set_on_pressed_function( void (*function)( i32 key_id ) )
 {
 	_on_pressed_function = function;
 }
 
-void openglmouse::set_on_release_function( void (*function)( i32 key_id ) )
+void opengl_mouse::set_on_release_function( void (*function)( i32 key_id ) )
 {
 	_on_release_function = function;
 }
 
-void openglmouse::set_on_move_function( void (*function)( i32 pos_x, i32 pos_y ) )
+void opengl_mouse::set_on_move_function( void (*function)( i32 pos_x, i32 pos_y ) )
 {
 	_on_move_function = function;
 }
 
-void openglmouse::set_on_wheel_function( void (*function)( i32 key_id ) )
+void opengl_mouse::set_on_wheel_function( void (*function)( i32 key_id ) )
 {
 	_on_wheel_function = function;
 }

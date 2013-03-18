@@ -76,15 +76,16 @@ struct window_setup
 }
 window_setup;
 
-class openglwindow
+class opengl_window
 {
 public:
-    openglwindow( const window_setup& setup );
-    ~openglwindow( void );
+    opengl_window( const window_setup& setup );
+    ~opengl_window( void );
 
 	void update_settings( const window_setup& setup );
 	void reset_window( void );
 
+	b8 is_open( void ) const;
 	void open( void );
 	void close( void );
 
@@ -100,6 +101,8 @@ public:
     void set_window_close_function( void* ptr );
     void set_window_size_function( void* ptr );
     void set_window_refresh_function( void* ptr );
+
+	void poll_events( void );
 	
 private:
 	window_setup _window_setup;
