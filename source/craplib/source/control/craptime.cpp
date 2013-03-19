@@ -26,17 +26,6 @@ namespace crap
 
 const u32 time::TICKS_PER_SECOND = CLOCKS_PER_SEC;
 
-time* time::_instance = 0;
-
-time& time::instance( void )
-{
-	if( _instance == 0 )
-	{
-		_instance = new time();
-	}
-	return *_instance;
-}
-
 time::time( void )
 {
 

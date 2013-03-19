@@ -170,6 +170,9 @@ struct tree_node
 	//! @brief maximum value starting from node iterativley
 	inline node_pointer max_iterative(node_pointer node) const;
 
+	//! @brief adding new node with data starting from node iteraively, returns 0 if failed
+	node_pointer insert_iterative(node_pointer new_node, node_pointer parse_node);
+
 	//! @brief next lower value starting from node
 	inline node_pointer successor_iterative(node_pointer node) const;
 
@@ -500,6 +503,50 @@ tree_node<T,C>* tree_node<T,C>::max_iterative(node_pointer node) const
 			node = node->sub_node[right];
 	}
 	return node;
+}
+
+template <class T, class C>
+tree_node<T,C>* tree_node<T,C>::insert_iterative(node_pointer new_node, node_pointer parse_node)
+{
+	if( parse_node == 0 )
+	{
+		return new_node;
+	}
+	node_pointer current_node = parse_node;
+	while( current_node != 0 )
+	{
+		if( is_less(new_node->data, current_node->data) )
+		{
+			if( current_node->sub_node[left] == 0 )
+			{
+				current_node->sub_node[left] = new_node;
+				new_node->sub_node[parent] = current_node;
+				return new_node;
+			}
+			else
+			{
+				current_node = current_node->sub_node[left];
+				continue;
+			}
+		}
+		else if( !is_less(new_node->data, current_node->data) )
+		{
+			if( current_node->sub_node[right] == 0 )
+			{
+				current_node->sub_node[right] = new_node;
+				new_node->sub_node[parent] = current_node;
+				return new_node;
+			}
+			else
+			{
+				current_node = current_node->sub_node[right];
+				continue;
+			}
+		}
+		else
+			current_node = 0;
+	}
+	return current_node;
 }
 
 template <class T, class C>

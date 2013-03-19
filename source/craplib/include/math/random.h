@@ -61,7 +61,7 @@ void random<T>::init( void )
 {
     if( crap::random_seed == 0 )
     {
-        crap::random_seed = (u32)time( NULL );
+        crap::random_seed = (u32)::time( NULL );
         srand( crap::random_seed );
     }
 }

@@ -263,7 +263,8 @@ typename binary_tree<T,C,A>::iterator binary_tree<T,C,A>::insert(const_reference
 {
 	node_pointer new_node = _allocator.allocate();
 	_allocator.construct(new_node, key);
-	new_node = _root->insert_recursive(new_node, _root);
+	//new_node = _root->insert_recursive(new_node, _root);
+	new_node = _root->insert_iterative(new_node, _root);
 
 	CRAP_ASSERT_DEBUG( new_node != 0, "Insert: Node insertion failed" );
 
@@ -293,11 +294,11 @@ bool binary_tree<T,C,A>::remove( const_reference key )
 			if( searched_node == 0 )
 				return false;
 
-			if(root_left->sub_node[node_type::right] == root_right)
+			if(root_left != 0 && root_left->sub_node[node_type::right] == root_right)
 			{
 				_root = root_left;
 			}
-			else if(root_right->sub_node[node_type::left] == root_left)
+			else if(root_right != 0 && root_right->sub_node[node_type::left] == root_left)
 			{
 				_root = root_left;
 			}

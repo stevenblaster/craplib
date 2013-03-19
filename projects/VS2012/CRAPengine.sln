@@ -8,6 +8,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unittests", "unittests\unit
 		{E4C60B61-16F0-4C02-8CA2-B39C5C12E9D5} = {E4C60B61-16F0-4C02-8CA2-B39C5C12E9D5}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opengltest", "opengltest\opengltest.vcxproj", "{A59912ED-7902-4AB4-AD1C-F5E3E983F1EE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "performancetests", "performancetests\performancetests.vcxproj", "{2AB7D086-F5D4-492B-A1C7-4CC03B043C6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -22,6 +26,14 @@ Global
 		{79532E44-0E6C-4E7A-8528-CC42E08EBCD8}.Debug|Win32.Build.0 = Debug|Win32
 		{79532E44-0E6C-4E7A-8528-CC42E08EBCD8}.Release|Win32.ActiveCfg = Release|Win32
 		{79532E44-0E6C-4E7A-8528-CC42E08EBCD8}.Release|Win32.Build.0 = Release|Win32
+		{A59912ED-7902-4AB4-AD1C-F5E3E983F1EE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A59912ED-7902-4AB4-AD1C-F5E3E983F1EE}.Debug|Win32.Build.0 = Debug|Win32
+		{A59912ED-7902-4AB4-AD1C-F5E3E983F1EE}.Release|Win32.ActiveCfg = Release|Win32
+		{A59912ED-7902-4AB4-AD1C-F5E3E983F1EE}.Release|Win32.Build.0 = Release|Win32
+		{2AB7D086-F5D4-492B-A1C7-4CC03B043C6F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AB7D086-F5D4-492B-A1C7-4CC03B043C6F}.Debug|Win32.Build.0 = Debug|Win32
+		{2AB7D086-F5D4-492B-A1C7-4CC03B043C6F}.Release|Win32.ActiveCfg = Release|Win32
+		{2AB7D086-F5D4-492B-A1C7-4CC03B043C6F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
