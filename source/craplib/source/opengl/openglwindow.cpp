@@ -21,6 +21,7 @@
 #pragma warning (disable:4005)
 #endif
 
+#include "GL/glew.h"
 #include "GL/glfw.h"
 
 #include "container/staticstring.h"
@@ -89,6 +90,9 @@ void opengl_window::open( void )
 		fullscreen );
 
     CRAP_ASSERT_DEBUG( result == GL_TRUE, "Failed to create a GLFW Window");
+
+	result = glewInit();
+	CRAP_ASSERT_DEBUG( result == GLEW_OK, "Failed to init GLEW");
 }
 
 void opengl_window::close( void )

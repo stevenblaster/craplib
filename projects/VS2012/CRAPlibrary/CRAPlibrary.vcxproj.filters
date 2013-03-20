@@ -97,6 +97,9 @@
     <Filter Include="libraries\openAL\source">
       <UniqueIdentifier>{86bab048-c0c0-4b55-a1f0-01c1db3a5401}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libraries\glew">
+      <UniqueIdentifier>{53a507d1-1cb4-405b-a16e-f7f3be110980}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -544,6 +547,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\opengljoystick.cpp">
       <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\glew\src\glew.c">
+      <Filter>libraries\glew</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

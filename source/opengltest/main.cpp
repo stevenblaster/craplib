@@ -22,6 +22,7 @@ int main()
 	setup.title = "Funny Window";
 	setup.width = 1024;
 	setup.height = 768;
+	//setup.opengl_version = 3.3f;
 
     crap::opengl_window window( setup );
 	window.open();

@@ -1,5 +1,4 @@
 #include "crap.h"
-
 #include "UnitTest++.h"
 
 int main ()
