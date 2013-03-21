@@ -14,12 +14,12 @@ SOURCES += \
     ../../../source/opengltest/main.cpp
 
 
-unix:!macx: LIBS += -L$$PWD/../../../../CRAP/binary/ -lCRAPlibrary
+unix:!macx: LIBS += -L$$PWD/../../../../CRAP/build/qt-creator/craplibrary/debug/ -lCRAPlibrary
 
-INCLUDEPATH += $$PWD/../../../../CRAP/binary
-DEPENDPATH += $$PWD/../../../../CRAP/binary
+INCLUDEPATH += $$PWD/../../../../CRAP/build/qt-creator/craplibrary/debug/
+DEPENDPATH += $$PWD/../../../../CRAP/build/qt-creator/craplibrary/debug/
 
-unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../CRAP/binary/libCRAPlibrary.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../../../CRAP/build/qt-creator/craplibrary/debug/libCRAPlibrary.a
 
 unix:!macx: LIBS += -ldl
 unix:!macx: LIBS += -lpthread

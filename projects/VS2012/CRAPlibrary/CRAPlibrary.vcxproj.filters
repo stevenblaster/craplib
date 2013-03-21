@@ -554,7 +554,7 @@
     <ClCompile Include="..\..\..\libraries\glew\src\glew.c">
       <Filter>libraries\glew</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\include\opengl\openglshader.cpp">
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\openglshader.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>

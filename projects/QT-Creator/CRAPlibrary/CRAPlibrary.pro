@@ -7,12 +7,11 @@ CONFIG += x11
 
 INCLUDEPATH += ../../../../CRAP/source/craplib/include/
 INCLUDEPATH += ../../../../CRAP/libraries/glfw/include/
-INCLUDEPATH += ../../../../CRAP/libraries/glfw/lib/x11/
-INCLUDEPATH += ../../../../CRAP/libraries/glfw/lib/
 INCLUDEPATH += ../../../../CRAP/libraries/openal/build/Linux/
 INCLUDEPATH += ../../../../CRAP/libraries/openal/include/
 INCLUDEPATH += ../../../../CRAP/libraries/openal/OpenAL32/Include/
 INCLUDEPATH += ../../../../CRAP/libraries/openal/Alc/
+INCLUDEPATH += ../../../../CRAP/libraries/glew/include/
 LIBS += -lpthread
 
 DEFINES += AL_ALEXT_PROTOTYPES
@@ -96,7 +95,9 @@ SOURCES += \
     ../../../libraries/openal/Alc/backends/pulseaudio.c \
     ../../../libraries/openal/Alc/backends/loopback.c \
     ../../../source/craplib/source/opengl/openglmouse.cpp \
-    ../../../source/craplib/source/opengl/opengljoystick.cpp
+    ../../../source/craplib/source/opengl/opengljoystick.cpp \
+    ../../../source/craplib/source/opengl/openglshader.cpp \
+    ../../../libraries/glew/src/glew.c
 
 HEADERS += \
     ../../../source/craplib/include/audio/wavefile.h \
@@ -169,7 +170,8 @@ HEADERS += \
     ../../../source/craplib/include/audio/audiodevice.h \
     ../../../source/craplib/include/opengl/openglmouse.h \
     ../../../libraries/openal/Alc/mixer_defs.h \
-    ../../../source/craplib/include/opengl/opengljoystick.h
+    ../../../source/craplib/include/opengl/opengljoystick.h \
+    ../../../source/craplib/include/opengl/openglshader.h
 
 OTHER_FILES += \
     ../../../libraries/openal/Alc/hrtf_tables.inc
