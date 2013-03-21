@@ -3,14 +3,15 @@
 #include "opengl/openglkeyboard.h"
 #include "opengl/openglmouse.h"
 #include "opengl/opengljoystick.h"
+#include "opengl/openglshader.h"
 #include "audio/audiodevice.h"
 #include "files/file.h"
 #include "math/vector3.h"
 #include "audio/wavefile.h"
 
 #if defined( CRAP_PLATFORM_WIN )
-#include <gl\GL.h>
-#include <gl\GLU.h>
+#include <gl/GL.h>
+#include <gl/GLU.h>
 #else
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -35,6 +36,10 @@ int main()
 
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
+
+	crap::opengl_shader( "vertexshader.vs", crap::opengl_shader::vertex_shader );
+	crap::opengl_shader( "fragmentshader.ps", crap::opengl_shader::fragment_shader );
+	crap::opengl_shader( "geometryshader.gs", crap::opengl_shader::geometry_shader );
 
 	//OGL////////////////
 	GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */

@@ -37,6 +37,7 @@ opengl_window::opengl_window( const window_setup& setup ) : _window_setup( setup
 #define CRAP_GLFW_INIT
 
     CRAP_ASSERT_DEBUG( glfwInit(), "Could not init GLFW" );
+	glfwDisable(GLFW_AUTO_POLL_EVENTS); //disable autopolling, thats our stuff 
 
 #endif
 }

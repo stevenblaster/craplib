@@ -60,7 +60,7 @@ struct window_setup
 	//default values
 	window_setup( void ) : width(640), height(480), position(vector2i()), color_bits(vector4i()), depth_bits(0), stencil_bits(0), fullscreen(false), refresh_rate(0),
 		accumulation_color_bits(vector4i()), auxiliary_buffer(0), stereo_rendering(false), resizeable(true),
-		multisampling_count(0), opengl_version(1.1f), forward_compatible(false), debug_context(false), opengl_profile(0), title(string64("Default Window"))
+		multisampling_count(0), opengl_version(1.2f), forward_compatible(false), debug_context(false), opengl_profile(0), title(string64("Default Window"))
 	{
 	}
 

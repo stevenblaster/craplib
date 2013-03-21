@@ -150,6 +150,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\opengljoystick.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglkeyboard.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglmouse.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglshader.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglwindow.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\functorthread.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\mutex.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alSource.c" />
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alState.c" />
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alThunk.c" />
+    <ClCompile Include="..\..\..\source\craplib\include\opengl\openglshader.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\audiodevice.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\wavefile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\container\bitmask.cpp" />

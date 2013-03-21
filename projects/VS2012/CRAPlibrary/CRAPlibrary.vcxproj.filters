@@ -318,6 +318,9 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\opengljoystick.h">
       <Filter>Header Files\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglshader.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp">
@@ -550,6 +553,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\libraries\glew\src\glew.c">
       <Filter>libraries\glew</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\include\opengl\openglshader.cpp">
+      <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
