@@ -27,16 +27,17 @@
 namespace crap
 {
 
-opengl_shader::opengl_shader( const char* filename , opengl_shader::shader_type type ) 
+u32 opengl_shader::compile( const char* filename , opengl_shader::shader_type type ) 
 {
+	u32 type_macro = 0;
 	if( type == vertex_shader )
-		_type = GL_VERTEX_SHADER;
+		type_macro = GL_VERTEX_SHADER;
 	else if( type == fragment_shader )
-		_type = GL_FRAGMENT_SHADER;
-	else 
-		_type = GL_GEOMETRY_SHADER;
+		type_macro = GL_FRAGMENT_SHADER;
+	else if( type == geometry_shader )
+		type_macro = GL_GEOMETRY_SHADER;
 
-	_shader = glCreateShader(_type);
+	GLuint shader = glCreateShader( type_macro );
 
 	file source_file( filename );
 	CRAP_ASSERT_DEBUG( source_file.readable(), "Could not open file" );
@@ -47,23 +48,56 @@ opengl_shader::opengl_shader( const char* filename , opengl_shader::shader_type 
 
 	const char* c_text = buffer.cstring();
 
-	glShaderSource(_shader, 1, &c_text, NULL);
-    glCompileShader(_shader);
+	glShaderSource(shader, 1, &c_text, NULL);
+    glCompileShader(shader);
 
 	GLint result = GL_FALSE;
-	glGetShaderiv(_shader, GL_COMPILE_STATUS, &result);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
+
+	string1024 info;
+	glGetShaderInfoLog(shader, 1024, NULL, (GLchar*)&info );
+    std::cout << info << std::endl;
 
 	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Compiling failed" );
+
+	return shader;
 }
 
-opengl_shader::~opengl_shader( void )
+u32 opengl_shader::link( u32 vs, u32 fs, u32 gs )
 {
-	glDeleteShader(_shader);
+	GLuint program = glCreateProgram();
+
+	if( vs != 0 )
+		glAttachShader(program, vs);
+
+	if( fs != 0 )
+		glAttachShader(program, fs);
+
+	if( gs != 0 )
+		glAttachShader(program, gs);
+
+    glLinkProgram(program);
+
+	GLint result = GL_FALSE;
+	glGetProgramiv(program, GL_LINK_STATUS, &result);
+
+	string1024 info;
+	glGetProgramInfoLog(program, 1024, NULL, (GLchar*)&info );
+    std::cout << info << std::endl;
+
+	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Linking shader program failed" );
+
+	return program;
 }
 
-u32 opengl_shader::source( void ) const
+void opengl_shader::delete_shader( u32 shader )
 {
-	return _shader;
+	glDeleteShader(shader);
+}
+
+void opengl_shader::delete_program( u32 program )
+{
+	glDeleteShader(program);
 }
 
 }	//lib namespace

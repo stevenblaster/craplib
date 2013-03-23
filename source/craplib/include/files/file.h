@@ -206,9 +206,13 @@ void file::read_text( static_string<S>& str, size_t32 size, i32 char_position /*
     }
 
     set_byte_position(char_position);
+	char buffer[1024];
 
-    char* result = fgets( const_cast<char*>(str.cstring()) , size , _handle);
-    CRAP_ASSERT_DEBUG(result != 0, "Could not get string");
+	while( fgets(buffer, 1024, _handle) != 0 ) 
+		str += buffer;
+    //char* result = fgets( const_cast<char*>(str.cstring()) , size , _handle);
+
+    //CRAP_ASSERT_DEBUG(result == 1, "Could not get string");
 
     if(previous_state != read )
     {

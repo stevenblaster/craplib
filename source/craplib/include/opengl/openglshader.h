@@ -34,17 +34,13 @@ public:
 		geometry_shader = 2
 	};
 
-private:
-	u32 _shader;
-	u32 _type;
+	static u32 compile( const char* file, shader_type type );
+	static u32 link( u32 vs, u32 fs, u32 gs );
 
-public:
-	opengl_shader( const char* file, shader_type type );
-	~opengl_shader( void );
-
-	u32 source( void ) const;
+	static void delete_shader( u32 shader );
+	static void delete_program( u32 program );
 };
 
-}
+} // lib namespace
 
 #endif //CRAP_OPENGLSHADER_H

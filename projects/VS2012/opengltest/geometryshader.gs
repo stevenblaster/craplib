@@ -1,28 +1,18 @@
-#version 150
+/* geometry shader #version 150 */
  
-layout(triangles) in;
-layout (triangle_strip, max_vertices=3) out;
+#version 120
+#extension GL_EXT_geometry_shader4 : enable
  
-in VertexData
-{
-    vec2 texCoord;
-    vec3 normal;
-} VertexIn[3];
- 
-out VertexData
-{
-    vec2 texCoord;
-    vec3 normal;
-} VertexOut;
- 
+// a passthrough geometry shader for color and position
 void main()
 {
-  for(int i = 0; i < gl_in.length(); i++)
+  for(int i = 0; i < gl_VerticesIn; ++i)
   {
-     // copy attributes
-    gl_Position = gl_in[i].gl_Position;
-    VertexOut.normal = VertexIn[i].normal;
-    VertexOut.texCoord = VertexIn[i].texCoord;
+    // copy color
+    gl_FrontColor = gl_FrontColorIn[i];
+ 
+    // copy position
+    gl_Position = gl_PositionIn[i];
  
     // done with the vertex
     EmitVertex();

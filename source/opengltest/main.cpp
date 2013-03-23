@@ -37,9 +37,11 @@ int main()
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
 
-	crap::opengl_shader( "vertexshader.vs", crap::opengl_shader::vertex_shader );
-	crap::opengl_shader( "fragmentshader.ps", crap::opengl_shader::fragment_shader );
-	crap::opengl_shader( "geometryshader.gs", crap::opengl_shader::geometry_shader );
+	u32 vs = crap::opengl_shader::compile( "vertexshader.vs", crap::opengl_shader::vertex_shader );
+	u32 fs = crap::opengl_shader::compile( "fragmentshader.ps", crap::opengl_shader::fragment_shader );
+	u32 gs = crap::opengl_shader::compile( "geometryshader.gs", crap::opengl_shader::geometry_shader );
+
+	u32 shader = crap::opengl_shader::link( vs, fs, gs );
 
 	//OGL////////////////
 	GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
