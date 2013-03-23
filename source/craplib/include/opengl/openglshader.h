@@ -39,6 +39,7 @@ public:
 
 	static void delete_shader( u32 shader );
 	static void delete_program( u32 program );
+	static void activate_program( u32 program );
 };
 
 } // lib namespace

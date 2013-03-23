@@ -100,4 +100,9 @@ void opengl_shader::delete_program( u32 program )
 	glDeleteShader(program);
 }
 
+void opengl_shader::activate_program( u32 program )
+{
+	glUseProgram(program);
+}
+
 }	//lib namespace
