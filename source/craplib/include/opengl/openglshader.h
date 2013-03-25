@@ -34,12 +34,53 @@ public:
 		geometry_shader = 2
 	};
 
-	static u32 compile( const char* file, shader_type type );
-	static u32 link( u32 vs, u32 fs, u32 gs );
+	struct object
+	{
+		u32 _id;
 
-	static void delete_shader( u32 shader );
-	static void delete_program( u32 program );
-	static void activate_program( u32 program );
+		object( u32 id ) : _id(id) {}
+		~object( void );
+	};
+
+	struct program
+	{
+		u32 _id;
+		program( u32 id ) : _id(id) {}
+		~program( void );
+
+		void activate( void );
+		void deactivate( void );
+
+		u32 uniform_location( const char* name );
+
+		void uniform_matrix4f_value( u32 handle, u32 count, f32* ptr );
+
+		struct vertex_attribute_array
+		{
+			void enable( u32 index );
+			void disable( u32 index );
+		} 
+		vertex_attribute_array;
+
+		void vertex_attribute_pointer( u32 array_index, u32 size, b8 normalized, u32 stride, void* ptr ); 
+	};
+
+	struct vertex_array
+	{
+		u32 _id;
+
+		void bind( void );
+
+		vertex_array( u32 id ) : _id(id) {}
+		~vertex_array( void );
+	};
+
+	static opengl_shader::object compile( const char* file, shader_type type );
+	static opengl_shader::program link( opengl_shader::object vs, opengl_shader::object fs, opengl_shader::object gs );
+	static opengl_shader::vertex_array create_vertex_array( void );
+
+	static void delete_object( opengl_shader::object obj );
+	static void delete_program( opengl_shader::program pro );
 };
 
 } // lib namespace

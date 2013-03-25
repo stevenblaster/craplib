@@ -1,8 +1,8 @@
-/* geometry shader #version 150 */
+/* geometry shader */
  
-#version 120
-#extension GL_EXT_geometry_shader4 : enable
- 
+#version 330
+//#extension GL_EXT_geometry_shader4 : enable
+
 // a passthrough geometry shader for color and position
 void main()
 {

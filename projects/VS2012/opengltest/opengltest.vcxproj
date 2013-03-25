@@ -43,14 +43,14 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\binary\opengltest\$(Configuration)\</OutDir>
     <IntDir>..\..\..\build\vs2012\opengltest\$(Configuration)\</IntDir>
-    <IncludePath>..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\libraries\glm;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\bin\craplibrary\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\binary\opengltest\$(Configuration)\</OutDir>
     <IntDir>..\..\..\build\vs2012\opengltest\$(Configuration)\</IntDir>
-    <IncludePath>..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\libraries\glm\;..\..\..\source\craplib\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\bin\craplibrary\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

@@ -1,5 +1,6 @@
 #include "crap.h"
 #include "opengl/openglwindow.h"
+#include "opengl/openglbuffer.h"
 #include "opengl/openglkeyboard.h"
 #include "opengl/openglmouse.h"
 #include "opengl/opengljoystick.h"
@@ -8,6 +9,7 @@
 #include "files/file.h"
 #include "math/vector3.h"
 #include "audio/wavefile.h"
+#include "opengl/wavefrontfile.h"
 
 #if defined( CRAP_PLATFORM_WIN )
 #include <gl/GL.h>
@@ -17,13 +19,17 @@
 #include <GL/glu.h>
 #endif
 
+#include "glm/glm.hpp"
+#include "glm/ext.hpp"
+
 int main()
 {
 	crap::window_setup setup;
 	setup.title = "Funny Window";
 	setup.width = 1024;
 	setup.height = 768;
-	//setup.opengl_version = 3.3f;
+	setup.multisampling_count = 8;
+	setup.opengl_version = 3.3f;
 
     crap::opengl_window window( setup );
 	window.open();
@@ -37,83 +43,162 @@ int main()
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
 
-	u32 shader = crap::opengl_shader::link(
+	crap::opengl_shader::program shader = crap::opengl_shader::link(
 		crap::opengl_shader::compile( "vertexshader.vs", crap::opengl_shader::vertex_shader ),
-		crap::opengl_shader::compile( "fragmentshader.ps", crap::opengl_shader::fragment_shader ),
+		crap::opengl_shader::compile( "fragmentshader.ps", crap::opengl_shader::fragment_shader ), 
 		crap::opengl_shader::compile( "geometryshader.gs", crap::opengl_shader::geometry_shader )
 	);
 
-	crap::opengl_shader::activate_program( 0 );
+	// Enable depth test
+    glEnable(GL_DEPTH_TEST);
+    // Accept fragment if it closer to the camera than the former one
+    glDepthFunc(GL_LESS); 
 
-	//OGL////////////////
-	GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
-	GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  /* Infinite light location. */
-	GLfloat n[6][3] = {  /* Normals for the 6 faces of a cube. */
-	  {-1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {1.0, 0.0, 0.0},
-	  {0.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, -1.0} };
-	GLint faces[6][4] = {  /* Vertex indices for the 6 faces of a cube. */
-	  {0, 1, 2, 3}, {3, 2, 6, 7}, {7, 6, 5, 4},
-	  {4, 5, 1, 0}, {5, 6, 2, 1}, {7, 4, 0, 3} };
-	GLfloat v[8][3];  /* Will be filled in with X,Y,Z vertexes. */
+	crap::opengl_shader::vertex_array vert_array = crap::opengl_shader::create_vertex_array();
+	vert_array.bind();
 
-	  /* Setup cube vertex data. */
-	v[0][0] = v[1][0] = v[2][0] = v[3][0] = -1;
-	v[4][0] = v[5][0] = v[6][0] = v[7][0] = 1;
-	v[0][1] = v[1][1] = v[4][1] = v[5][1] = -1;
-	v[2][1] = v[3][1] = v[6][1] = v[7][1] = 1;
-	v[0][2] = v[3][2] = v[4][2] = v[7][2] = 1;
-	v[1][2] = v[2][2] = v[5][2] = v[6][2] = -1;
+	crap::wavefront_file obj( "cube.obj" );
 
-	/* Enable a single OpenGL light. */
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHTING);
+	// Get a handle for our "MVP" uniform
+	GLuint MatrixID = shader.uniform_location("MVP");
 
-	/* Use depth buffering for hidden surface elimination. */
-	glEnable(GL_DEPTH_TEST);
+    // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+    glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+    
+	// Camera matrix
+    glm::mat4 View       = glm::lookAt(
+                glm::vec3(4,3,-3), // Camera is at (4,3,-3), in World Space
+                glm::vec3(0,0,0), // and looks at the origin
+                glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+    );
+    
+	// Model matrix : an identity matrix (model will be at the origin)
+    glm::mat4 Model      = glm::mat4(1.0f);
+    // Our ModelViewProjection : multiplication of our 3 matrices
+    glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
 
-	/* Setup the view of the cube. */
-	glMatrixMode(GL_PROJECTION);
-	gluPerspective( /* field of view in degree */ 40.0,
-    /* aspect ratio */ 1.0,
-    /* Z near */ 1.0, /* Z far */ 10.0);
-	glMatrixMode(GL_MODELVIEW);
-	gluLookAt(0.0, 0.0, 5.0,  /* eye is at (0,0,5) */
-    0.0, 0.0, 0.0,      /* center is at (0,0,0) */
-    0.0, 1.0, 0.);      /* up is in positive Y direction */
+	// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
+    // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
+    static const GLfloat g_vertex_buffer_data[] = {
+                -1.0f,-1.0f,-1.0f,
+                -1.0f,-1.0f, 1.0f,
+                -1.0f, 1.0f, 1.0f,
+                 1.0f, 1.0f,-1.0f,
+                -1.0f,-1.0f,-1.0f,
+                -1.0f, 1.0f,-1.0f,
+                 1.0f,-1.0f, 1.0f,
+                -1.0f,-1.0f,-1.0f,
+                 1.0f,-1.0f,-1.0f,
+                 1.0f, 1.0f,-1.0f,
+                 1.0f,-1.0f,-1.0f,
+                -1.0f,-1.0f,-1.0f,
+                -1.0f,-1.0f,-1.0f,
+                -1.0f, 1.0f, 1.0f,
+                -1.0f, 1.0f,-1.0f,
+                 1.0f,-1.0f, 1.0f,
+                -1.0f,-1.0f, 1.0f,
+                -1.0f,-1.0f,-1.0f,
+                -1.0f, 1.0f, 1.0f,
+                -1.0f,-1.0f, 1.0f,
+                 1.0f,-1.0f, 1.0f,
+                 1.0f, 1.0f, 1.0f,
+                 1.0f,-1.0f,-1.0f,
+                 1.0f, 1.0f,-1.0f,
+                 1.0f,-1.0f,-1.0f,
+                 1.0f, 1.0f, 1.0f,
+                 1.0f,-1.0f, 1.0f,
+                 1.0f, 1.0f, 1.0f,
+                 1.0f, 1.0f,-1.0f,
+                -1.0f, 1.0f,-1.0f,
+                 1.0f, 1.0f, 1.0f,
+                -1.0f, 1.0f,-1.0f,
+                -1.0f, 1.0f, 1.0f,
+                 1.0f, 1.0f, 1.0f,
+                -1.0f, 1.0f, 1.0f,
+                 1.0f,-1.0f, 1.0f
+        };
 
-	/* Adjust cube position to be asthetic angle. */
-	glTranslatef(0.0, 0.0, -1.0);
-	glRotatef(60, 1.0, 0.0, 0.0);
-	glRotatef(-20, 0.0, 0.0, 1.0);
+    // One color for each vertex. They were generated randomly.
+    static const GLfloat g_color_buffer_data[] = {
+                0.583f,  0.771f,  0.014f,
+                0.609f,  0.115f,  0.436f,
+                0.327f,  0.483f,  0.844f,
+                0.822f,  0.569f,  0.201f,
+                0.435f,  0.602f,  0.223f,
+                0.310f,  0.747f,  0.185f,
+                0.597f,  0.770f,  0.761f,
+                0.559f,  0.436f,  0.730f,
+                0.359f,  0.583f,  0.152f,
+                0.483f,  0.596f,  0.789f,
+                0.559f,  0.861f,  0.639f,
+                0.195f,  0.548f,  0.859f,
+                0.014f,  0.184f,  0.576f,
+                0.771f,  0.328f,  0.970f,
+                0.406f,  0.615f,  0.116f,
+                0.676f,  0.977f,  0.133f,
+                0.971f,  0.572f,  0.833f,
+                0.140f,  0.616f,  0.489f,
+                0.997f,  0.513f,  0.064f,
+                0.945f,  0.719f,  0.592f,
+                0.543f,  0.021f,  0.978f,
+                0.279f,  0.317f,  0.505f,
+                0.167f,  0.620f,  0.077f,
+                0.347f,  0.857f,  0.137f,
+                0.055f,  0.953f,  0.042f,
+                0.714f,  0.505f,  0.345f,
+                0.783f,  0.290f,  0.734f,
+                0.722f,  0.645f,  0.174f,
+                0.302f,  0.455f,  0.848f,
+                0.225f,  0.587f,  0.040f,
+                0.517f,  0.713f,  0.338f,
+                0.053f,  0.959f,  0.120f,
+                0.393f,  0.621f,  0.362f,
+                0.673f,  0.211f,  0.457f,
+                0.820f,  0.883f,  0.371f,
+                0.982f,  0.099f,  0.879f
+        };
 
-	/////////////////////
+	crap::opengl_buffer vertex_buffer( crap::opengl_buffer::array_buffer, crap::opengl_buffer::static_draw );
+	crap::opengl_buffer color_buffer( crap::opengl_buffer::array_buffer, crap::opengl_buffer::static_draw );
+
+	vertex_buffer.bind();
+	vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
+
+	color_buffer.bind();
+	color_buffer.set_data( sizeof(g_color_buffer_data), (void*)g_color_buffer_data );
 
 	wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
 
-    glCullFace( GL_NONE );
-
 	while( !keyboard.is_pressed( crap::opengl_keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::opengl_mouse::button_1) )
 	{
-		//OGL//////////////////////////////////
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		int i;
 
-		for (i = 0; i < 6; i++)
-		{
-			glBegin(GL_QUADS);
-			glNormal3fv(&n[i][0]);
-			glVertex3fv(&v[faces[i][0]][0]);
-			glVertex3fv(&v[faces[i][1]][0]);
-			glVertex3fv(&v[faces[i][2]][0]);
-			glVertex3fv(&v[faces[i][3]][0]);
-			glEnd();
-		}
-		///////////////////////////////////////
+		// Use our shader
+        shader.activate();
+
+        // Send our transformation to the currently bound shader,
+        // in the "MVP" uniform
+		shader.uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
+
+        // 1rst attribute buffer : vertices
+		shader.vertex_attribute_array.enable(0);
+		vertex_buffer.bind();
+		shader.vertex_attribute_pointer( 0, 3, false, 0, (void*)0);
+
+        // 2nd attribute buffer : colors
+        shader.vertex_attribute_array.enable(1);
+		color_buffer.bind();
+		shader.vertex_attribute_pointer( 1, 3, false, 0, (void*)0);
+
+        // Draw the triangle !
+        glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles
+
+		shader.vertex_attribute_array.disable(0);
+		shader.vertex_attribute_array.disable(1);
+
 		window.swap();
-		//window.poll_events();
+		window.poll_events();
 		joy.poll_events();
 	}
 }

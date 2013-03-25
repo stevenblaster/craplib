@@ -100,6 +100,9 @@
     <Filter Include="libraries\glew">
       <UniqueIdentifier>{53a507d1-1cb4-405b-a16e-f7f3be110980}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libraries\glm">
+      <UniqueIdentifier>{58f69e07-ef8e-448d-9e77-2006f41bb274}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -320,6 +323,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglshader.h">
       <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\wavefrontfile.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglbuffer.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\glm\glm\ext.hpp">
+      <Filter>libraries\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\libraries\glm\glm\glm.hpp">
+      <Filter>libraries\glm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -555,6 +570,12 @@
       <Filter>libraries\glew</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglshader.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\include\opengl\wavefrontfile.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\openglbuffer.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>

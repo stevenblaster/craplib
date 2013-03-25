@@ -27,7 +27,7 @@
 namespace crap
 {
 
-u32 opengl_shader::compile( const char* filename , opengl_shader::shader_type type ) 
+opengl_shader::object opengl_shader::compile( const char* filename , opengl_shader::shader_type type ) 
 {
 	u32 type_macro = 0;
 	if( type == vertex_shader )
@@ -63,18 +63,18 @@ u32 opengl_shader::compile( const char* filename , opengl_shader::shader_type ty
 	return shader;
 }
 
-u32 opengl_shader::link( u32 vs, u32 fs, u32 gs )
+opengl_shader::program opengl_shader::link( opengl_shader::object vs, opengl_shader::object fs, opengl_shader::object gs )
 {
 	GLuint program = glCreateProgram();
 
-	if( vs != 0 )
-		glAttachShader(program, vs);
+	if( vs._id != 0 )
+		glAttachShader(program, vs._id);
 
-	if( fs != 0 )
-		glAttachShader(program, fs);
+	if( fs._id != 0 )
+		glAttachShader(program, fs._id);
 
-	if( gs != 0 )
-		glAttachShader(program, gs);
+	if( gs._id != 0 )
+		glAttachShader(program, gs._id);
 
     glLinkProgram(program);
 
@@ -90,19 +90,83 @@ u32 opengl_shader::link( u32 vs, u32 fs, u32 gs )
 	return program;
 }
 
-void opengl_shader::delete_shader( u32 shader )
+opengl_shader::vertex_array opengl_shader::create_vertex_array( void )
 {
-	glDeleteShader(shader);
+	u32 id;
+	glGenVertexArrays(1, &id);
+	return id;
 }
 
-void opengl_shader::delete_program( u32 program )
+opengl_shader::vertex_array::~vertex_array( void )
 {
-	glDeleteShader(program);
+	glDeleteVertexArrays(1, &_id );
 }
 
-void opengl_shader::activate_program( u32 program )
+void opengl_shader::vertex_array::bind( void )
 {
-	glUseProgram(program);
+	glBindVertexArray(_id);
+}
+
+void opengl_shader::delete_object( opengl_shader::object shader )
+{
+	glDeleteShader(shader._id);
+}
+
+void opengl_shader::delete_program( opengl_shader::program program )
+{
+	glDeleteProgram(program._id);
+}
+
+opengl_shader::object::~object( void )
+{
+	glDeleteShader(_id);
+}
+
+opengl_shader::program::~program( void )
+{
+	glDeleteProgram(_id);
+}
+
+void opengl_shader::program::activate( void )
+{
+	glUseProgram(_id);
+}
+
+void opengl_shader::program::deactivate( void )
+{
+	glUseProgram(0);
+}
+
+u32 opengl_shader::program::uniform_location( const char* name )
+{
+	return glGetUniformLocation(_id, name);
+}
+
+void opengl_shader::program::uniform_matrix4f_value( u32 id, u32 size, f32* ptr )
+{
+	glUniformMatrix4fv(id, 1, GL_FALSE, ptr);
+}
+
+void opengl_shader::program::vertex_attribute_array::enable( u32 index )
+{
+	glEnableVertexAttribArray( index );
+}
+
+void opengl_shader::program::vertex_attribute_array::disable( u32 index )
+{
+	glDisableVertexAttribArray( index );
+}
+
+void opengl_shader::program::vertex_attribute_pointer( u32 array_index, u32 size, b8 normalized, u32 stride, void* ptr )
+{
+	glVertexAttribPointer(
+                array_index,             // attribute. No particular reason for 0, but must match the layout in the shader.
+                size,               // size
+                GL_FLOAT,           // type
+                normalized,         // normalized?
+                stride,             // stride
+                ptr			        // array buffer offset
+                );
 }
 
 }	//lib namespace
