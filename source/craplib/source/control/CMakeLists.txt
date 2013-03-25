@@ -1,0 +1,8 @@
+set(SOURCES
+   ${SOURCES}
+   ${CMAKE_CURRENT_SOURCE_DIR}/cpuinfo.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/craptime.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/limits.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/zero.cpp
+   PARENT_SCOPE
+)

@@ -1,0 +1,16 @@
+
+set(HEADERS
+   ${HEADERS}
+   ${CMAKE_CURRENT_SOURCE_DIR}/asserts.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/breakpoints.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/checkvtable.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/compare.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/converter.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/copyobject.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/cpuinfo.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/craptime.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/endian.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/limits.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/zero.h
+   PARENT_SCOPE
+)
