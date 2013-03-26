@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 // CRAP Library
-//!		@file openglbuffer.h
+//!		@file opengldata.h
 //
 //	Author(s):
 //! 	@author Steffen Kopany <steffen@kopany.at>
@@ -9,7 +9,7 @@
 //!		@copyright Copyright (c) 2012 Steffen Kopany
 //
 //	Description:
-//!		@brief wrapper for openglbuffer functions
+//!		@brief wrapper for opengl data handling
 //
 //	Status (scratch, developed, final):
 //!		@version scratch
@@ -17,14 +17,14 @@
 ////////////////////////////////////////////////////////
 #pragma once
 
-#ifndef CRAP_OPENGL_OPENGLBUFFER_H
-#define CRAP_OPENGL_OPENGLBUFFER_H
+#ifndef CRAP_OPENGL_DATA_H
+#define CRAP_OPENGL_DATA_H
 
 //lib namespace
 namespace crap
 {
 
-struct opengl_buffer
+namespace opengl
 {
 	enum buffer_type
 	{
@@ -56,20 +56,35 @@ struct opengl_buffer
 		dynamic_copy
 	};
 
-	opengl_buffer( buffer_type type, buffer_usage usage );
-	~opengl_buffer( void );
+struct buffer
+{
+	buffer( buffer_type type, buffer_usage usage, size_t32 size = 1 );
+	~buffer( void );
 
 	void bind( void );
 
-	void set_data( size_t32 size, void* data );
-
-private:
+	void set_data( size_t32 size, void* data);
 
 	u32 _buffer;
+	size_t32 _size;
 	u32 _type;
 	u32 _usage;
 };
 
-}	//lib namespace
 
-#endif //CRAP_OPENGL_OPENGLBUFFER_H
+struct vertex_array
+{
+	u32 _id;
+	size_t32 _size;
+
+	void bind( void );
+
+	vertex_array( size_t32 size = 1 );
+	~vertex_array( void );
+};
+
+} // namespace opengl
+
+} // lib namespace
+
+#endif //CRAP_OPENGL_BUFFER_H

@@ -149,7 +149,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\network\networkheaders.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\packet.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\sockets.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\opengl\openglbuffer.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\opengldata.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\opengljoystick.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglkeyboard.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglmouse.h" />
@@ -233,7 +233,7 @@
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\networkheaders.cpp" />
-    <ClCompile Include="..\..\..\source\craplib\source\opengl\openglbuffer.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\opengldata.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\opengljoystick.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglkeyboard.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglmouse.cpp" />

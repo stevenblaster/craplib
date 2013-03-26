@@ -26,16 +26,20 @@
 #include <GL/glu.h>
 #endif
 
-#include "opengl/openglbuffer.h"
+#include "opengl/opengldata.h"
 
 //lib namespace
 namespace crap
 {
 
-
-opengl_buffer::opengl_buffer( buffer_type type, buffer_usage usage )
+//ogl namespace
+namespace opengl
 {
-	glGenBuffers( 1, &_buffer );
+
+buffer::buffer( buffer_type type, buffer_usage usage, size_t32 size/* = 1 */ ) : 
+	_buffer(0), _size(size), _type(0), _usage(0)
+{
+	glGenBuffers( size, &_buffer );
 
 	if( type == array_buffer ) _type = GL_ARRAY_BUFFER;
 	else if( type == atomic_counter_buffer ) _type = GL_ATOMIC_COUNTER_BUFFER;
@@ -65,22 +69,38 @@ opengl_buffer::opengl_buffer( buffer_type type, buffer_usage usage )
 	else CRAP_ASSERT_ERROR( "Buffer usage not known" );
 }
 
-opengl_buffer::~opengl_buffer( void )
+buffer::~buffer( void )
 {
-	glDeleteBuffers(1, &_buffer);
-
+	glDeleteBuffers(_size, &_buffer);
 }
 
-void opengl_buffer::bind( void )
+void buffer::bind( void )
 {
 	glBindBuffer( _type, _buffer );
 }
 
-void opengl_buffer::set_data( size_t32 size, void* data )
+void buffer::set_data( size_t32 size, void* data )
 {
 	glBufferData( _type, size, data, _usage );
 }
 
-
-
+vertex_array::vertex_array( size_t32 size /* = 1*/ ) : _id(0), _size(size)
+{
+	glGenVertexArrays(size, &_id);
 }
+
+vertex_array::~vertex_array( void )
+{
+	glDeleteVertexArrays(_size, &_id );
+}
+
+void vertex_array::bind( void )
+{
+	glBindVertexArray(_id);
+}
+
+
+
+} //namespace opengl
+
+} //namespace crap

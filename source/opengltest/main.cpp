@@ -1,6 +1,6 @@
 #include "crap.h"
 #include "opengl/openglwindow.h"
-#include "opengl/openglbuffer.h"
+#include "opengl/opengldata.h"
 #include "opengl/openglkeyboard.h"
 #include "opengl/openglmouse.h"
 #include "opengl/opengljoystick.h"
@@ -43,21 +43,22 @@ int main()
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
 
-	crap::opengl_shader::program shader = crap::opengl_shader::link(
-		crap::opengl_shader::compile( "vertexshader.vs", crap::opengl_shader::vertex_shader ),
-		crap::opengl_shader::compile( "fragmentshader.ps", crap::opengl_shader::fragment_shader ), 
-		crap::opengl_shader::compile( "geometryshader.gs", crap::opengl_shader::geometry_shader )
-	);
-
 	// Enable depth test
     glEnable(GL_DEPTH_TEST);
     // Accept fragment if it closer to the camera than the former one
     glDepthFunc(GL_LESS); 
 
-	crap::opengl_shader::vertex_array vert_array = crap::opengl_shader::create_vertex_array();
+	crap::opengl::vertex_array vert_array = crap::opengl::vertex_array();
 	vert_array.bind();
 
-	crap::wavefront_file obj( "cube.obj" );
+	//crap::wavefront_file obj( "cube.obj" );
+
+	crap::opengl::program shader = crap::opengl::shader::link(
+		crap::opengl::shader::compile( "vertexshader.vs", crap::opengl::vertex_shader ),
+		crap::opengl::shader::compile( "fragmentshader.ps", crap::opengl::fragment_shader ), 
+		crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
+	);
+
 
 	// Get a handle for our "MVP" uniform
 	GLuint MatrixID = shader.uniform_location("MVP");
@@ -158,12 +159,11 @@ int main()
                 0.982f,  0.099f,  0.879f
         };
 
-	crap::opengl_buffer vertex_buffer( crap::opengl_buffer::array_buffer, crap::opengl_buffer::static_draw );
-	crap::opengl_buffer color_buffer( crap::opengl_buffer::array_buffer, crap::opengl_buffer::static_draw );
-
+	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
 	vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
 
+	crap::opengl::buffer color_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	color_buffer.bind();
 	color_buffer.set_data( sizeof(g_color_buffer_data), (void*)g_color_buffer_data );
 
@@ -184,12 +184,12 @@ int main()
         // 1rst attribute buffer : vertices
 		shader.vertex_attribute_array.enable(0);
 		vertex_buffer.bind();
-		shader.vertex_attribute_pointer( 0, 3, false, 0, (void*)0);
+		shader.vertex_attribute_array.pointer( 0, 3, false, 0, (void*)0);
 
         // 2nd attribute buffer : colors
         shader.vertex_attribute_array.enable(1);
 		color_buffer.bind();
-		shader.vertex_attribute_pointer( 1, 3, false, 0, (void*)0);
+		shader.vertex_attribute_array.pointer( 1, 3, false, 0, (void*)0);
 
         // Draw the triangle !
         glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles

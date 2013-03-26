@@ -92,6 +92,7 @@ void opengl_window::open( void )
 
     CRAP_ASSERT_DEBUG( result == GL_TRUE, "Failed to create a GLFW Window");
 
+	//glewExperimental = true;
 	result = glewInit();
 	CRAP_ASSERT_DEBUG( result == GLEW_OK, "Failed to init GLEW");
 }
