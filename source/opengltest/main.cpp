@@ -30,6 +30,7 @@ int main()
 	setup.height = 768;
 	setup.multisampling_count = 8;
 	setup.opengl_version = 3.3f;
+	setup.opengl_profile = 0x00050001;
 
     crap::opengl_window window( setup );
 	window.open();
@@ -44,19 +45,22 @@ int main()
 	crap::wave_file wav( "audiofile.wav" );
 
 	// Enable depth test
-    glEnable(GL_DEPTH_TEST);
-    // Accept fragment if it closer to the camera than the former one
-    glDepthFunc(GL_LESS); 
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS); 
+
+	// Cull triangles which normal is not towards the camera
+	glEnable(GL_CULL_FACE);
 
 	crap::opengl::vertex_array vert_array = crap::opengl::vertex_array();
 	vert_array.bind();
 
-	//crap::wavefront_file obj( "cube.obj" );
+	crap::wavefront_file obj( "cube.obj" );
 
 	crap::opengl::program shader = crap::opengl::shader::link(
 		crap::opengl::shader::compile( "vertexshader.vs", crap::opengl::vertex_shader ),
-		crap::opengl::shader::compile( "fragmentshader.ps", crap::opengl::fragment_shader ), 
-		crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
+		crap::opengl::shader::compile( "fragmentshader.ps", crap::opengl::fragment_shader ), 0
+		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
 
 
@@ -162,6 +166,7 @@ int main()
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
 	vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
+	//vertex_buffer.set_data( obj.vertices_index(), obj.vertices() );
 
 	crap::opengl::buffer color_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	color_buffer.bind();

@@ -56,7 +56,6 @@ buffer::buffer( buffer_type type, buffer_usage usage, size_t32 size/* = 1 */ ) :
 	else if( type == uniform_buffer ) _type = GL_UNIFORM_BUFFER;
 	else CRAP_ASSERT_ERROR( "Buffer type not known" );
 
-	u32 _usage = 0;
 	if( usage == stream_draw ) _usage = GL_STREAM_DRAW; 
 	else if( usage == stream_read ) _usage = GL_STREAM_READ;  
 	else if( usage == stream_copy ) _usage = GL_STREAM_COPY; 
