@@ -1,13 +1,13 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT(CRAP_PROJECT)
-#########################################################################
+PROJECT(CRAP_LIBRARY)
 
+#########################################################################
 
 ################################################
 # Add Option to enable Unit tests and examples #
 ################################################
 
-OPTION(CRAP_BUILD_UNITTEST "Build unit tests" ON)
+OPTION(CRAP_BUILD_UNITTEST "Build unit tests" OFF)
 
 IF(CRAP_BUILD_UNITTEST)
     ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/unittests)
@@ -53,81 +53,155 @@ ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
 #   FIXME: CHECK DIFFERENT PLATFORM DEPENDENCIES
 ###
 
-SET(CRAP_LIB_PATH ${CMAKE_CURRENT_DIRECTORY}/../libraries)
+SET(CRAPLIB_PATH ${CMAKE_SOURCE_DIR}/../libraries)
 
 #####################################
 #         Adding include dirs       #
 #####################################
 
 ### OPENAL
-SET(CRAP_OPENAL_INCLUDE_PATH
-    ${CRAP_LIB_PATH}/openal/include/
-    ${CRAP_LIB_PATH}/openal/OpenAL32/Include/
-    ${CRAP_LIB_PATH}/openal/Alc/
-)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/include)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/OpenAL32/Include)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/Alc)
 
 IF(WIN32)
-    SET(CRAP_OPENAL_INCLUDE_PATH
-        ${CRAP_OPENAL_INCLUDE_PATH}
-        ${CRAP_LIB_PATH}/openal/build/Win32/
-    )
+    INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Win32/)
 ELSE(WIN32)
-    SET(
-        CRAP_OPENAL_INCLUDE_PATH
-        ${CRAP_OPENAL_INCLUDE_PATH}
-        ${CRAP_LIB_PATH}/openal/build/Linux/
-    )
+    INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Linux)
 ENDIF(WIN32)
 
-INCLUDE_DIRECTORIES(${CRAP_INCLUDE_DIRS} ${CRAP_OPENAL_INCLUDE_PATH})
-
 ### GLFW
-INCLUDE_DIRECTORIES(${CRAP_LIB_PATH}/glfw/include/)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/include)
 
 ### GLEW
-INCLUDE_DIRECTORIES(${CRAP_LIB_PATH}/glew/include/)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glew/include)
 
 
-# Attention:
-# Adding new source file to any lib in the libraries dir
-# needs a new Configure and Generate step from CMake
-# FIXME: add files manually
+#################################################
+#                 External sources              #
+#################################################
 
 #####################################
 #       Adding openAL sources       #
 #####################################
-file(GLOB_RECURSE OPENAL_SOURCES_ALC "../libraries/openal/Alc/*.c")
-file(GLOB_RECURSE OPENAL_SOURCES_OpenAL "../libraries/openal/OpenAL32*.c")
+
+# FIXME: switch backends for different platforms
+# FIXME: check which backends are available before compiling
+
 SET(OPENAL_SOURCES
-    ${OPENAL_SOURCES_AL}
-    ${OpenAL_SOURCES_OpenAL}
-    )
+    "../libraries/openal/OpenAL32/alThunk.c"
+    "../libraries/openal/OpenAL32/alState.c"
+    "../libraries/openal/OpenAL32/alSource.c"
+    "../libraries/openal/OpenAL32/alListener.c"
+    "../libraries/openal/OpenAL32/alFilter.c"
+    "../libraries/openal/OpenAL32/alExtension.c"
+    "../libraries/openal/OpenAL32/alError.c"
+    "../libraries/openal/OpenAL32/alEffect.c"
+    "../libraries/openal/OpenAL32/alBuffer.c"
+    "../libraries/openal/OpenAL32/alAuxEffectSlot.c"
+    "../libraries/openal/Alc/panning.c"
+    "../libraries/openal/Alc/mixer_sse.c"
+    "../libraries/openal/Alc/mixer_c.c"
+    "../libraries/openal/Alc/mixer.c"
+    "../libraries/openal/Alc/hrtf.c"
+    "../libraries/openal/Alc/helpers.c"
+    "../libraries/openal/Alc/bs2b.c"
+    "../libraries/openal/Alc/ALu.c"
+    "../libraries/openal/Alc/alcThread.c"
+    "../libraries/openal/Alc/alcRing.c"
+    "../libraries/openal/Alc/alcReverb.c"
+    "../libraries/openal/Alc/alcModulator.c"
+    "../libraries/openal/Alc/alcFlanger.c"
+    "../libraries/openal/Alc/alcEcho.c"
+    "../libraries/openal/Alc/alcDedicated.c"
+    "../libraries/openal/Alc/alcConfig.c"
+    "../libraries/openal/Alc/alcChorus.c"
+    "../libraries/openal/Alc/ALc.c"
+    "../libraries/openal/Alc/backends/wave.c"
+    "../libraries/openal/Alc/backends/oss.c"
+    "../libraries/openal/Alc/backends/null.c"
+    "../libraries/openal/Alc/backends/alsa.c"
+    "../libraries/openal/Alc/backends/pulseaudio.c"
+    "../libraries/openal/Alc/backends/loopback.c"
+    "../libraries/openal/Alc/hrtf_tables.inc"
+)
 
 #####################################
 #        Adding GLFW sources        #
 #####################################
+SET(GLFW_SOURCES
+    "../libraries/glfw/lib/window.c"
+    "../libraries/glfw/lib/time.c"
+    "../libraries/glfw/lib/thread.c"
+    "../libraries/glfw/lib/tga.c"
+    "../libraries/glfw/lib/stream.c"
+    "../libraries/glfw/lib/joystick.c"
+    "../libraries/glfw/lib/input.c"
+    "../libraries/glfw/lib/init.c"
+    "../libraries/glfw/lib/image.c"
+    "../libraries/glfw/lib/glext.c"
+    "../libraries/glfw/lib/fullscreen.c"
+    "../libraries/glfw/lib/enable.c"
+)
 IF(WIN32)
-    file(GLOB_RECURSE GLFW_SOURCES "../libraries/glfw/lib/win32/*.c")
+    SET(GLFW_SOURCES
+        ${GLFW_SOURCES}
+        "../libraries/glfw/lib/win32/win32_window.c"
+        "../libraries/glfw/lib/win32/win32_time.c"
+        "../libraries/glfw/lib/win32/win32_thread.c"
+        "../libraries/glfw/lib/win32/win32_joystick.c"
+        "../libraries/glfw/lib/win32/win32_init.c"
+        "../libraries/glfw/lib/win32/win32_glext.c"
+        "../libraries/glfw/lib/win32/win32_fullscreen.c"
+        "../libraries/glfw/lib/win32/win32_enable.c"
+        "../libraries/glfw/lib/win32/win32_dllmain.c"
+    )
 ELSEIF(APPLE)
-    file(GLOB_RECURSE GLFW_SOURCES "../libraries/glfw/lib/cocoa/*.c")
-ELSE(WIN32) #Unix, linux, ...
-    file(GLOB_RECURSE GLFW_SOURCES "../libraries/glfw/lib/x11/*.c")
+    SET(GLFW_SOURCES
+        ${GLFW_SOURCES}
+        "../libraries/glfw/lib/cocoa/cocoa_window.c"
+        "../libraries/glfw/lib/cocoa/cocoa_time.c"
+        "../libraries/glfw/lib/cocoa/cocoa_thread.c"
+        "../libraries/glfw/lib/cocoa/cocoa_joystick.c"
+        "../libraries/glfw/lib/cocoa/cocoa_init.c"
+        "../libraries/glfw/lib/cocoa/cocoa_glext.c"
+        "../libraries/glfw/lib/cocoa/cocoa_fullscreen.c"
+        "../libraries/glfw/lib/cocoa/cocoa_enable.c"
+    )
+ELSE(WIN32) #X11 (linux, unix, ...)
+    SET(GLFW_SOURCES
+        ${GLFW_SOURCES}
+        "../libraries/glfw/lib/x11/x11_window.c"
+        "../libraries/glfw/lib/x11/x11_time.c"
+        "../libraries/glfw/lib/x11/x11_thread.c"
+        "../libraries/glfw/lib/x11/x11_keysym2unicode.c"
+        "../libraries/glfw/lib/x11/x11_joystick.c"
+        "../libraries/glfw/lib/x11/x11_init.c"
+        "../libraries/glfw/lib/x11/x11_glext.c"
+        "../libraries/glfw/lib/x11/x11_fullscreen.c"
+        "../libraries/glfw/lib/x11/x11_enable.c"
+    )
 ENDIF(WIN32)
 
 #####################################
 #        Adding GLEW sources        #
 #####################################
-file(GLOB_RECURSE GLEW_SOURCES "../libraries/glew/src/*.c")
+SET(GLEW_SOURCES
+    "../libraries/glew/src/glew.c"
+)
 
 ########################################################################
 
 #####################################
 #       Other dependencies          #
 #####################################
+
 FIND_PACKAGE(OpenGL)
+
 IF(NOT WIN32)
 IF(NOT APPLE)
     FIND_PACKAGE(X11)
+    FIND_PACKAGE(Threads)
 ENDIF(NOT APPLE)
 ENDIF(NOT WIN32)
 
@@ -137,6 +211,10 @@ ENDIF(NOT WIN32)
 #       Building source tree        #
 #   Setting up source&header vars   #
 #####################################
+
+### CRAPLIB
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/craplib/include)
+
 ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/craplib)
 SET(SOURCES
     ${SOURCES}
@@ -147,8 +225,8 @@ SET(SOURCES
 
 SET(HEADERS
     ${HEADERS}
-    ../libraries/glfw/lib/internal.h
-    ../libraries/openal/Alc/mixer_defs.h
+    ${CRAPLIB_PATH}/glfw/lib/internal.h
+    ${CRAPLIB_PATH}/openal/Alc/mixer_defs.h
 )
 
 #########################################################################
