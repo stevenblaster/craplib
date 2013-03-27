@@ -72,7 +72,7 @@ struct bmp_header
 
 	bool validate( void ) const
 	{
-		return bm == 19778 && color_depth == 24; 
+		return bm == 19778 && (color_depth == 24 || color_depth == 0 ); 
 	}
 };
 

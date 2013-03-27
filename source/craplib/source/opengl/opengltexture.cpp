@@ -38,37 +38,6 @@ texture::~texture( void )
 	glDeleteTextures(1, &_id);
 }
 
-texture texture::create( const char* name, image_type type )
-{
-	i32 ogl_id[]= {GL_TEXTURE0,GL_TEXTURE1, GL_TEXTURE2, GL_TEXTURE3, GL_TEXTURE4, GL_TEXTURE5,
-		GL_TEXTURE6, GL_TEXTURE7, GL_TEXTURE8, GL_TEXTURE9, GL_TEXTURE10, GL_TEXTURE11, GL_TEXTURE12, GL_TEXTURE13,
-		GL_TEXTURE14, GL_TEXTURE15, GL_TEXTURE16, GL_TEXTURE17, GL_TEXTURE18, GL_TEXTURE19, GL_TEXTURE20,
-		GL_TEXTURE21, GL_TEXTURE22, GL_TEXTURE23, GL_TEXTURE24, GL_TEXTURE25, GL_TEXTURE26, GL_TEXTURE27,
-		GL_TEXTURE28, GL_TEXTURE29, GL_TEXTURE30, GL_TEXTURE31 };
-		/* .. continue .. */
-
-	static i32 index_counter = 0;
-	texture rtn_tex;
-
-	switch( type )
-	{
-	case bmp:
-		rtn_tex = from_bmp( name );
-		break;
-	case tga:
-		rtn_tex = from_tga( name );
-		break;
-	case dds:
-		rtn_tex = from_dds( name );
-		break;
-	default:
-		CRAP_ASSERT_ERROR("Unknown image type");
-		return 0;
-	}
-	rtn_tex._index = ogl_id[index_counter++];
-	return rtn_tex;
-}
-
 texture::texture( u32 id /*=0*/ ) : _id(id), _index(0)
 {
 
@@ -93,15 +62,10 @@ void texture::bind( void )
 
 void texture::activate( void )
 {
-	glActiveTexture(_index); //TODO
-}
-	
-void texture::uniform_1i( u32 location, u32 num )
-{
-	glUniform1i(location, num);
+	glActiveTexture(_index);
 }
 
-texture texture::from_bmp( const char* name )
+u32 create_texture_bmp( const char* name )
 {
 	bmp_header head;
 	file bmp_file(name);
@@ -147,7 +111,7 @@ texture texture::from_bmp( const char* name )
 	return id;
 }
 
-texture texture::from_tga( const char* name )
+u32 create_texture_tga( const char* name )
 {
 	// Create one OpenGL texture
 	GLuint textureID;
@@ -170,7 +134,7 @@ texture texture::from_tga( const char* name )
 	return textureID;
 }
 
-texture texture::from_dds( const char* name )
+u32 create_texture_dds( const char* name )
 {
 	dds_header head;
 	file dds_file( name );
@@ -228,6 +192,37 @@ texture texture::from_dds( const char* name )
 	delete[] buffer; 
 
 	return textureID;
+}
+
+texture create_texture( const char* name, image_type type )
+{
+	i32 ogl_id[]= {GL_TEXTURE0,GL_TEXTURE1, GL_TEXTURE2, GL_TEXTURE3, GL_TEXTURE4, GL_TEXTURE5,
+		GL_TEXTURE6, GL_TEXTURE7, GL_TEXTURE8, GL_TEXTURE9, GL_TEXTURE10, GL_TEXTURE11, GL_TEXTURE12, GL_TEXTURE13,
+		GL_TEXTURE14, GL_TEXTURE15, GL_TEXTURE16, GL_TEXTURE17, GL_TEXTURE18, GL_TEXTURE19, GL_TEXTURE20,
+		GL_TEXTURE21, GL_TEXTURE22, GL_TEXTURE23, GL_TEXTURE24, GL_TEXTURE25, GL_TEXTURE26, GL_TEXTURE27,
+		GL_TEXTURE28, GL_TEXTURE29, GL_TEXTURE30, GL_TEXTURE31 };
+		/* .. continue .. */
+
+	static i32 index_counter = 0;
+	texture rtn_tex;
+	//rtn_tex._index = ogl_id[index_counter++];
+
+	switch( type )
+	{
+	case bmp:
+		rtn_tex._id = create_texture_bmp( name );
+		break;
+	case tga:
+		rtn_tex._id = create_texture_tga( name );
+		break;
+	case dds:
+		rtn_tex._id = create_texture_dds( name );
+		break;
+	default:
+		CRAP_ASSERT_ERROR("Unknown image type");
+		return 0;
+	}
+	return rtn_tex;
 }
 
 } // amespace opengl

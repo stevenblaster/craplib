@@ -28,12 +28,19 @@ namespace crap
 namespace opengl
 {
 
-	enum shader_type
-	{
-		vertex_shader = 0,
-		fragment_shader = 1,
-		geometry_shader = 2
-	};
+enum shader_type
+{
+	vertex_shader = 0,
+	fragment_shader = 1,
+	geometry_shader = 2
+};
+
+struct uniform
+{
+	u32 _id;
+
+	uniform( u32 id ) : _id(id) {}
+};
 
 struct object
 {
@@ -53,9 +60,11 @@ struct program
 
 	void deactivate( void );
 
-	u32 uniform_location( const char* name );
+	uniform uniform_location( const char* name );
 
-	void uniform_matrix4f_value( u32 handle, u32 count, f32* ptr );
+	void uniform_matrix4f_value( uniform id, u32 count, f32* ptr );
+
+	void uniform_1i( uniform id, u32 count ); //TODO
 
 	struct vertex_attribute_array
 	{

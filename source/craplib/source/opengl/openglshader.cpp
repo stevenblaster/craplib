@@ -125,14 +125,19 @@ void program::deactivate( void )
 	glUseProgram(0);
 }
 
-u32 program::uniform_location( const char* name )
+uniform program::uniform_location( const char* name )
 {
 	return glGetUniformLocation(_id, name);
 }
 
-void program::uniform_matrix4f_value( u32 id, u32 size, f32* ptr )
+void program::uniform_matrix4f_value( uniform id, u32 size, f32* ptr )
 {
-	glUniformMatrix4fv(id, 1, GL_FALSE, ptr);
+	glUniformMatrix4fv(id._id, 1, GL_FALSE, ptr);
+}
+
+void program::uniform_1i( uniform id, u32 count )
+{
+	glUniform1i(id._id, count);
 }
 
 void program::vertex_attribute_array::enable( u32 index )

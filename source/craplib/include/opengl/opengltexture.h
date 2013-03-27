@@ -43,22 +43,16 @@ struct texture
 
 	void bind( void );
 	void activate( void );
-	void uniform_1i( u32 location, u32 num ); //TODO
-
-	static texture create( const char* name, image_type type );
-
-	texture& operator=( const texture& other );
-	texture( const texture& other );
-
-private:
+	
 	texture( u32 id=0 );
-	
-	
-	static texture from_bmp( const char* name );
-	static texture from_tga( const char* name );
-	static texture from_dds( const char* name );
-
+	texture( const texture& other );
+	texture& operator=( const texture& other );
 };
+
+texture create_texture( const char* name, image_type type );
+u32 create_texture_bmp( const char* name );
+u32 create_texture_tga( const char* name );
+u32 create_texture_dds( const char* name );
 
 } // namespace opengl
 
