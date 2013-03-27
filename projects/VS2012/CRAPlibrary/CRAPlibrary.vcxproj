@@ -154,6 +154,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglkeyboard.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglmouse.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglshader.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\opengltexture.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\openglwindow.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\wavefrontfile.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\functorthread.h" />
@@ -238,6 +239,7 @@
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglkeyboard.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglmouse.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglshader.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\opengltexture.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglwindow.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\runnable.cpp" />
