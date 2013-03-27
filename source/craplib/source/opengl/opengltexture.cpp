@@ -35,34 +35,76 @@ namespace opengl
 
 texture::~texture( void )
 {
-
+	glDeleteTextures(1, &_id);
 }
 
 texture texture::create( const char* name, image_type type )
 {
+	i32 ogl_id[]= {GL_TEXTURE0,GL_TEXTURE1, GL_TEXTURE2, GL_TEXTURE3, GL_TEXTURE4, GL_TEXTURE5,
+		GL_TEXTURE6, GL_TEXTURE7, GL_TEXTURE8, GL_TEXTURE9, GL_TEXTURE10, GL_TEXTURE11, GL_TEXTURE12, GL_TEXTURE13,
+		GL_TEXTURE14, GL_TEXTURE15, GL_TEXTURE16, GL_TEXTURE17, GL_TEXTURE18, GL_TEXTURE19, GL_TEXTURE20,
+		GL_TEXTURE21, GL_TEXTURE22, GL_TEXTURE23, GL_TEXTURE24, GL_TEXTURE25, GL_TEXTURE26, GL_TEXTURE27,
+		GL_TEXTURE28, GL_TEXTURE29, GL_TEXTURE30, GL_TEXTURE31 };
+		/* .. continue .. */
+
+	static i32 index_counter = 0;
+	texture rtn_tex;
+
 	switch( type )
 	{
 	case bmp:
-		return from_bmp( name );
+		rtn_tex = from_bmp( name );
+		break;
 	case tga:
-		return from_tga( name );
+		rtn_tex = from_tga( name );
+		break;
 	case dds:
-		return from_dds( name );
+		rtn_tex = from_dds( name );
+		break;
 	default:
 		CRAP_ASSERT_ERROR("Unknown image type");
 		return 0;
 	}
+	rtn_tex._index = ogl_id[index_counter++];
+	return rtn_tex;
 }
 
-texture::texture( u32 id ) : _id(id)
+texture::texture( u32 id /*=0*/ ) : _id(id), _index(0)
 {
 
 }
+
+texture::texture( const texture& other )  : _id(other._id), _index(other._index)
+{
+
+}
+
+texture& texture::operator=( const texture& other )
+{
+	_id = other._id;
+	_index = other._index;
+	return *this;
+}
+
+void texture::bind( void )
+{
+	glBindTexture(GL_TEXTURE_2D, _id);
+}
+
+void texture::activate( void )
+{
+	glActiveTexture(_index); //TODO
+}
 	
+void texture::uniform_1i( u32 location, u32 num )
+{
+	glUniform1i(location, num);
+}
+
 texture texture::from_bmp( const char* name )
 {
 	bmp_header head;
-	file bmp_file;
+	file bmp_file(name);
 	CRAP_ASSERT_DEBUG( bmp_file.readable(), "BMP File does not exist or is not readable" );
 	bmp_file.read_bytes( &head, sizeof(head) );
 	CRAP_ASSERT_DEBUG( head.validate(), "Not a valid BMP-file" );
@@ -131,12 +173,13 @@ texture texture::from_tga( const char* name )
 texture texture::from_dds( const char* name )
 {
 	dds_header head;
-	file dds_file;
+	file dds_file( name );
 	CRAP_ASSERT_DEBUG( dds_file.readable(), "DDS File does not exist or is not readable" );
 	dds_file.read_bytes( &head, sizeof(head) );
 	CRAP_ASSERT_DEBUG( head.validate(), "Not a valid DDS-file" );
 
-	u32 buffer_size = head.mip_map_count > 1 ? head.pitch_or_linear_s * 2 : head.pitch_or_linear_s; 
+	u32 buffer_size = (size_t32) dds_file.size() - sizeof( head);
+	//u32 buffer_size = head.mip_map_count > 1 ? head.pitch_or_linear_s * 2 : head.pitch_or_linear_s; 
 	u8* buffer = new u8[buffer_size];
 	dds_file.read_bytes( buffer, buffer_size );
 	dds_file.close();

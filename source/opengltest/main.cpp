@@ -5,6 +5,7 @@
 #include "opengl/openglmouse.h"
 #include "opengl/opengljoystick.h"
 #include "opengl/openglshader.h"
+#include "opengl/opengltexture.h"
 #include "audio/audiodevice.h"
 #include "files/file.h"
 #include "math/vector3.h"
@@ -63,9 +64,12 @@ int main()
 		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
 
-
 	// Get a handle for our "MVP" uniform
 	GLuint MatrixID = shader.uniform_location("MVP");
+
+	crap::opengl::texture tex = crap::opengl::texture::create( "uvtemplate.tga", crap::opengl::tga );
+
+	GLuint TextureID = shader.uniform_location("myTextureSampler");
 
     // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
     glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -163,14 +167,58 @@ int main()
                 0.982f,  0.099f,  0.879f
         };
 
+	// Two UV coordinatesfor each vertex. They were created withe Blender.
+	static const GLfloat g_uv_buffer_data[] = { 
+		0.000059f, 1.0f-0.000004f, 
+		0.000103f, 1.0f-0.336048f, 
+		0.335973f, 1.0f-0.335903f, 
+		1.000023f, 1.0f-0.000013f, 
+		0.667979f, 1.0f-0.335851f, 
+		0.999958f, 1.0f-0.336064f, 
+		0.667979f, 1.0f-0.335851f, 
+		0.336024f, 1.0f-0.671877f, 
+		0.667969f, 1.0f-0.671889f, 
+		1.000023f, 1.0f-0.000013f, 
+		0.668104f, 1.0f-0.000013f, 
+		0.667979f, 1.0f-0.335851f, 
+		0.000059f, 1.0f-0.000004f, 
+		0.335973f, 1.0f-0.335903f, 
+		0.336098f, 1.0f-0.000071f, 
+		0.667979f, 1.0f-0.335851f, 
+		0.335973f, 1.0f-0.335903f, 
+		0.336024f, 1.0f-0.671877f, 
+		1.000004f, 1.0f-0.671847f, 
+		0.999958f, 1.0f-0.336064f, 
+		0.667979f, 1.0f-0.335851f, 
+		0.668104f, 1.0f-0.000013f, 
+		0.335973f, 1.0f-0.335903f, 
+		0.667979f, 1.0f-0.335851f, 
+		0.335973f, 1.0f-0.335903f, 
+		0.668104f, 1.0f-0.000013f, 
+		0.336098f, 1.0f-0.000071f, 
+		0.000103f, 1.0f-0.336048f, 
+		0.000004f, 1.0f-0.671870f, 
+		0.336024f, 1.0f-0.671877f, 
+		0.000103f, 1.0f-0.336048f, 
+		0.336024f, 1.0f-0.671877f, 
+		0.335973f, 1.0f-0.335903f, 
+		0.667969f, 1.0f-0.671889f, 
+		1.000004f, 1.0f-0.671847f, 
+		0.667979f, 1.0f-0.335851f
+	};
+
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
 	vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
 	//vertex_buffer.set_data( obj.vertices_index(), obj.vertices() );
 
-	crap::opengl::buffer color_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
-	color_buffer.bind();
-	color_buffer.set_data( sizeof(g_color_buffer_data), (void*)g_color_buffer_data );
+	//crap::opengl::buffer color_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
+	//color_buffer.bind();
+	//color_buffer.set_data( sizeof(g_color_buffer_data), (void*)g_color_buffer_data );
+
+	crap::opengl::buffer uv_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
+	uv_buffer.bind();
+	uv_buffer.set_data( sizeof(g_uv_buffer_data), (void*)g_uv_buffer_data );
 
 	wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
@@ -186,6 +234,12 @@ int main()
         // in the "MVP" uniform
 		shader.uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
 
+		// Bind our texture in Texture Unit 0
+		tex.activate();
+		tex.bind();
+		// Set our "myTextureSampler" sampler to user Texture Unit 0
+		tex.uniform_1i(TextureID, 0);
+
         // 1rst attribute buffer : vertices
 		shader.vertex_attribute_array.enable(0);
 		vertex_buffer.bind();
@@ -193,8 +247,8 @@ int main()
 
         // 2nd attribute buffer : colors
         shader.vertex_attribute_array.enable(1);
-		color_buffer.bind();
-		shader.vertex_attribute_array.pointer( 1, 3, false, 0, (void*)0);
+		uv_buffer.bind();
+		shader.vertex_attribute_array.pointer( 1, 2, false, 0, (void*)0);
 
         // Draw the triangle !
         glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles

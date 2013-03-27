@@ -38,12 +38,21 @@ enum image_type
 struct texture
 {
 	u32 _id;
+	u32 _index;
 	~texture( void );
+
+	void bind( void );
+	void activate( void );
+	void uniform_1i( u32 location, u32 num ); //TODO
 
 	static texture create( const char* name, image_type type );
 
+	texture& operator=( const texture& other );
+	texture( const texture& other );
+
 private:
-	texture( u32 );
+	texture( u32 id=0 );
+	
 	
 	static texture from_bmp( const char* name );
 	static texture from_tga( const char* name );
