@@ -1,0 +1,7 @@
+
+set(HEADERS
+   ${HEADERS}
+   ${CMAKE_CURRENT_SOURCE_DIR}/fileheaders.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/file.h
+   PARENT_SCOPE
+)

@@ -1,0 +1,10 @@
+
+set(HEADERS
+   ${HEADERS}
+   ${CMAKE_CURRENT_SOURCE_DIR}/addressip4.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/addressip6.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/networkheaders.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/packet.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/sockets.h
+   PARENT_SCOPE
+)

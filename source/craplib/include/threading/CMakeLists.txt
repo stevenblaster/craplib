@@ -1,0 +1,12 @@
+
+set(HEADERS
+   ${HEADERS}
+   ${CMAKE_CURRENT_SOURCE_DIR}/functorthread.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/mutex.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/runnable.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/runthread.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/scopelock.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/semaphore.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/sleep.h
+   PARENT_SCOPE
+)

@@ -1,0 +1,9 @@
+set(SOURCES
+   ${SOURCES}
+   ${CMAKE_CURRENT_SOURCE_DIR}/opengljoystick.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/openglkeyboard.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/openglmouse.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/openglshader.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/openglwindow.cpp
+   PARENT_SCOPE
+)
