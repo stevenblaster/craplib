@@ -339,6 +339,12 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\opengltexture.h">
       <Filter>Header Files\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\config\config_logger.h">
+      <Filter>Header Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\control\logger.h">
+      <Filter>Header Files\control</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp">
@@ -583,6 +589,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\opengltexture.cpp">
       <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\control\logger.cpp">
+      <Filter>Source Files\control</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

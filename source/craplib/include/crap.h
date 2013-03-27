@@ -41,9 +41,11 @@
 #include "config/config_math.h"
 #include "config/config_network.h"
 #include "config/config_files.h"
+#include "config/config_logger.h"
 
 //include control headers
 #include "control/breakpoints.h"
+#include "control/logger.h"
 #include "control/asserts.h"
 
 //platform specific stuff
