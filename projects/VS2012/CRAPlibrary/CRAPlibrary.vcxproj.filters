@@ -103,6 +103,9 @@
     <Filter Include="libraries\glm">
       <UniqueIdentifier>{58f69e07-ef8e-448d-9e77-2006f41bb274}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libraries\anttweakbar">
+      <UniqueIdentifier>{dddce1c6-1512-4aca-b6dd-2d0ce1f170ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -592,6 +595,36 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\control\logger.cpp">
       <Filter>Source Files\control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\LoadOGL.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\LoadOGLCore.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwBar.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwColors.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwFonts.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwMgr.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwOpenGL.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwOpenGLCore.cpp">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwEventGLFW.c">
+      <Filter>libraries\anttweakbar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwEventWin.c">
+      <Filter>libraries\anttweakbar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
