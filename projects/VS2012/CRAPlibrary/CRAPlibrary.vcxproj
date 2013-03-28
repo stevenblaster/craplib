@@ -90,8 +90,6 @@
     <ClInclude Include="..\..\..\libraries\glfw\include\GL\glfw.h" />
     <ClInclude Include="..\..\..\libraries\glfw\lib\internal.h" />
     <ClInclude Include="..\..\..\libraries\glfw\lib\win32\platform.h" />
-    <ClInclude Include="..\..\..\libraries\glm\glm\ext.hpp" />
-    <ClInclude Include="..\..\..\libraries\glm\glm\glm.hpp" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\audiodevice.h" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\wavefile.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_compilers.h" />
@@ -168,16 +166,6 @@
     <ClInclude Include="..\..\..\source\craplib\include\threading\runthread.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\LoadOGL.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\LoadOGLCore.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwBar.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwColors.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwEventGLFW.c" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwEventWin.c" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwFonts.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwMgr.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwOpenGL.cpp" />
-    <ClCompile Include="..\..\..\libraries\anttweakbar\src\TwOpenGLCore.cpp" />
     <ClCompile Include="..\..\..\libraries\glew\src\glew.c" />
     <ClCompile Include="..\..\..\libraries\glfw\lib\enable.c" />
     <ClCompile Include="..\..\..\libraries\glfw\lib\fullscreen.c" />

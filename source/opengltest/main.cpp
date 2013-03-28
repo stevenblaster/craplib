@@ -11,6 +11,7 @@
 #include "math/vector3.h"
 #include "audio/wavefile.h"
 #include "opengl/wavefrontfile.h"
+#include "control/logger.h"
 
 #if defined( CRAP_PLATFORM_WIN )
 #include <gl/GL.h>
@@ -25,11 +26,10 @@
 
 int main()
 {
-<<<<<<< HEAD
+	typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::simple_format_policy,crap::writer_policy::console_writer_policy> ConsoleLogger;
 	ConsoleLogger c;
 	CRAP_LOG_INFO(crap::log_channel::log_opengl,"OpenGL-Test Startup.");
-=======
->>>>>>> 819b3a395d5e9b5227723792d5e1f450d91f3470
+
 	crap::window_setup setup;
 	setup.title = "Funny Window";
 	setup.width = 1024;
