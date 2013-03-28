@@ -58,10 +58,9 @@ object shader::compile( const char* filename , shader_type type )
 	GLint result = GL_FALSE;
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
 
-	string1024 info;
-	glGetShaderInfoLog(shader, 1024, NULL, (GLchar*)&info );
-    std::cout << info << std::endl;
-
+	string512 info;
+	glGetShaderInfoLog(shader, 512, NULL, (GLchar*)&info );
+	CRAP_LOG_INFO(crap::log_channel::log_opengl,info.cstring());
 	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Compiling failed" );
 
 	return shader;
@@ -85,10 +84,9 @@ program shader::link( object vs, object fs, object gs )
 	GLint result = GL_FALSE;
 	glGetProgramiv(program, GL_LINK_STATUS, &result);
 
-	string1024 info;
+	string512 info;
 	glGetProgramInfoLog(program, 1024, NULL, (GLchar*)&info );
-    std::cout << info << std::endl;
-
+    CRAP_LOG_INFO(crap::log_channel::log_opengl,info.cstring());
 	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Linking shader program failed" );
 
 	return program;

@@ -590,5 +590,8 @@
     <ClCompile Include="..\..\..\source\craplib\source\opengl\opengltexture.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\control\logger.cpp">
+      <Filter>Source Files\control</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

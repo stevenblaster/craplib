@@ -231,6 +231,7 @@
     <ClCompile Include="..\..\..\source\craplib\source\control\cpuinfo.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\control\limits.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\control\craptime.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\control\logger.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\control\zero.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\files\file.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp" />
