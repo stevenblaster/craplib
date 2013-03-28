@@ -97,6 +97,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\config\config_compilers.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_endianness.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_files.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\config\config_logger.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_math.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_memory.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_network.h" />
@@ -127,6 +128,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\control\endian.h" />
     <ClInclude Include="..\..\..\source\craplib\include\control\limits.h" />
     <ClInclude Include="..\..\..\source\craplib\include\control\craptime.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\control\logger.h" />
     <ClInclude Include="..\..\..\source\craplib\include\control\zero.h" />
     <ClInclude Include="..\..\..\source\craplib\include\crap.h" />
     <ClInclude Include="..\..\..\source\craplib\include\files\file.h" />

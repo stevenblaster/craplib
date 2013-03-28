@@ -30,8 +30,8 @@ wavefront_file::wavefront_file( string256 filename ) : _vertices_index(0), _uvs_
 	_face_index(0), _group_index(0), _material_index(0), _vertices(0), _uvs(0), _normals(0), _faces(0), _groups(0), _material_groups(0)
 {
 	file obj_file( filename );
-	u8* buffer = new u8[ obj_file.size() ];
-	obj_file.read_bytes( buffer, obj_file.size() );
+	u8* buffer = new u8[ (size_t32)obj_file.size() ];
+	obj_file.read_bytes( buffer, (size_t32)obj_file.size() );
 	obj_file.close();
 
 	u32 count_vertices = 0;
@@ -275,6 +275,25 @@ u32 wavefront_file::group_index( void ) const
 u32 wavefront_file::material_index( void ) const
 {
 	return _material_index;
+}
+
+void wavefront_file::generate_triangles( crap::vector3f* vertices, crap::vector2f* uvs, crap::vector3f* normals )
+{
+	int index = 0;
+	for(u32 i=0; i< _face_index; ++i)
+	{
+		vertices[index] = _vertices[ _faces[i].vertices[0] - 1 ];
+		uvs[index] = _uvs[ _faces[i].uvs[0] -1 ];
+		normals[index++] = _normals[ _faces[i].normals[0] -1 ];
+
+		vertices[index] = _vertices[ _faces[i].vertices[1] - 1 ];
+		uvs[index] = _uvs[ _faces[i].uvs[1] -1 ];
+		normals[index++] = _normals[ _faces[i].normals[1] -1 ];
+
+		vertices[index] = _vertices[ _faces[i].vertices[2] - 1 ];
+		uvs[index] = _uvs[ _faces[i].uvs[2] -1 ];
+		normals[index++] = _normals[ _faces[i].normals[2] -1 ];
+	}
 }
 
 } //lib namespace

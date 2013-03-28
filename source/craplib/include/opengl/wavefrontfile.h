@@ -95,6 +95,8 @@ public:
 	u32 group_index( void ) const;
 	u32 material_index( void ) const;
 
+	void generate_triangles( crap::vector3f* vertices, crap::vector2f* uvs, crap::vector3f* normals );
+
 private:
 	
 	vector3f* _vertices;

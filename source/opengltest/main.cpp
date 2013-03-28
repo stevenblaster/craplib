@@ -57,10 +57,14 @@ int main()
 	vert_array.bind();
 
 	crap::wavefront_file obj( "cube.obj" );
+	crap::vector3f* vertices = new crap::vector3f[ obj.face_index() * 3];
+	crap::vector2f* uvs = new crap::vector2f[ obj.face_index() * 3];
+	crap::vector3f* normals = new crap::vector3f[ obj.face_index() * 3];
+	obj.generate_triangles( vertices, uvs, normals );
 
 	crap::opengl::program shader = crap::opengl::shader::link(
-		crap::opengl::shader::compile( "vertexshader_texture.vs", crap::opengl::vertex_shader ),
-		crap::opengl::shader::compile( "fragmentshader_texture.ps", crap::opengl::fragment_shader ), 0
+		crap::opengl::shader::compile( "vertexshader_cube.vs", crap::opengl::vertex_shader ),
+		crap::opengl::shader::compile( "fragmentshader_cube.ps", crap::opengl::fragment_shader ), 0
 		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
 
@@ -68,7 +72,7 @@ int main()
 	crap::opengl::uniform MatrixID = shader.uniform_location("MVP");
 
 	//crap::opengl::texture tex = crap::opengl::create_texture( "uvtemplate.tga", crap::opengl::tga ); //doesnt work
-	crap::opengl::texture tex = crap::opengl::create_texture_tga( "uvtemplate.tga" );
+	crap::opengl::texture tex = crap::opengl::create_texture_tga( "uvmap.tga" );
 	tex._index = 0x84C0;
 
 	crap::opengl::uniform TextureID = shader.uniform_location("myTextureSampler");
@@ -88,91 +92,10 @@ int main()
     // Our ModelViewProjection : multiplication of our 3 matrices
     glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
 
-	// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
-    // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
-    static const GLfloat g_vertex_buffer_data[] = {
-                -1.0f,-1.0f,-1.0f,
-                -1.0f,-1.0f, 1.0f,
-                -1.0f, 1.0f, 1.0f,
-                 1.0f, 1.0f,-1.0f,
-                -1.0f,-1.0f,-1.0f,
-                -1.0f, 1.0f,-1.0f,
-                 1.0f,-1.0f, 1.0f,
-                -1.0f,-1.0f,-1.0f,
-                 1.0f,-1.0f,-1.0f,
-                 1.0f, 1.0f,-1.0f,
-                 1.0f,-1.0f,-1.0f,
-                -1.0f,-1.0f,-1.0f,
-                -1.0f,-1.0f,-1.0f,
-                -1.0f, 1.0f, 1.0f,
-                -1.0f, 1.0f,-1.0f,
-                 1.0f,-1.0f, 1.0f,
-                -1.0f,-1.0f, 1.0f,
-                -1.0f,-1.0f,-1.0f,
-                -1.0f, 1.0f, 1.0f,
-                -1.0f,-1.0f, 1.0f,
-                 1.0f,-1.0f, 1.0f,
-                 1.0f, 1.0f, 1.0f,
-                 1.0f,-1.0f,-1.0f,
-                 1.0f, 1.0f,-1.0f,
-                 1.0f,-1.0f,-1.0f,
-                 1.0f, 1.0f, 1.0f,
-                 1.0f,-1.0f, 1.0f,
-                 1.0f, 1.0f, 1.0f,
-                 1.0f, 1.0f,-1.0f,
-                -1.0f, 1.0f,-1.0f,
-                 1.0f, 1.0f, 1.0f,
-                -1.0f, 1.0f,-1.0f,
-                -1.0f, 1.0f, 1.0f,
-                 1.0f, 1.0f, 1.0f,
-                -1.0f, 1.0f, 1.0f,
-                 1.0f,-1.0f, 1.0f
-        };
-
-	// Two UV coordinatesfor each vertex. They were created withe Blender.
-	static const GLfloat g_uv_buffer_data[] = { 
-		0.000059f, 1.0f-0.000004f, 
-		0.000103f, 1.0f-0.336048f, 
-		0.335973f, 1.0f-0.335903f, 
-		1.000023f, 1.0f-0.000013f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.999958f, 1.0f-0.336064f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.336024f, 1.0f-0.671877f, 
-		0.667969f, 1.0f-0.671889f, 
-		1.000023f, 1.0f-0.000013f, 
-		0.668104f, 1.0f-0.000013f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.000059f, 1.0f-0.000004f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.336098f, 1.0f-0.000071f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.336024f, 1.0f-0.671877f, 
-		1.000004f, 1.0f-0.671847f, 
-		0.999958f, 1.0f-0.336064f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.668104f, 1.0f-0.000013f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.667979f, 1.0f-0.335851f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.668104f, 1.0f-0.000013f, 
-		0.336098f, 1.0f-0.000071f, 
-		0.000103f, 1.0f-0.336048f, 
-		0.000004f, 1.0f-0.671870f, 
-		0.336024f, 1.0f-0.671877f, 
-		0.000103f, 1.0f-0.336048f, 
-		0.336024f, 1.0f-0.671877f, 
-		0.335973f, 1.0f-0.335903f, 
-		0.667969f, 1.0f-0.671889f, 
-		1.000004f, 1.0f-0.671847f, 
-		0.667979f, 1.0f-0.335851f
-	};
-
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
-	vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
-	//vertex_buffer.set_data( obj.vertices_index(), obj.vertices() );
+	//vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
+	vertex_buffer.set_data( obj.face_index()*3*sizeof(crap::vector3f), &vertices[0] );
 
 	//crap::opengl::buffer color_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	//color_buffer.bind();
@@ -180,7 +103,8 @@ int main()
 
 	crap::opengl::buffer uv_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	uv_buffer.bind();
-	uv_buffer.set_data( sizeof(g_uv_buffer_data), (void*)g_uv_buffer_data );
+	//uv_buffer.set_data( sizeof(g_uv_buffer_data), (void*)g_uv_buffer_data );
+	uv_buffer.set_data( obj.face_index()*3*sizeof(crap::vector2f), &uvs[0] );
 
 	wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
@@ -213,7 +137,7 @@ int main()
 		shader.vertex_attribute_array.pointer( 1, 2, false, 0, (void*)0);
 
         // Draw the triangle !
-        glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles
+		glDrawArrays(GL_TRIANGLES, 0, obj.face_index()*3);
 
 		shader.vertex_attribute_array.disable(0);
 		shader.vertex_attribute_array.disable(1);
