@@ -28,9 +28,7 @@ typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::
 int main()
 {
 	ConsoleLogger c;
-
 	CRAP_LOG_INFO(crap::log_channel::log_opengl,"OpenGL-Test Startup.");
-
 	crap::window_setup setup;
 	setup.title = "Funny Window";
 	setup.width = 1024;
@@ -73,6 +71,7 @@ int main()
 		crap::opengl::shader::compile( "fragmentshader_cube.ps", crap::opengl::fragment_shader ), 0
 		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
+
 
 	// Get a handle for our "MVP" uniform
 	crap::opengl::uniform MatrixID = shader.uniform_location("MVP");
