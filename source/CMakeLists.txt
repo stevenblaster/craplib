@@ -41,10 +41,27 @@ OPTION(BUILD_SHARED_LIBS "Build CRAPLIB with shared libraries." OFF)
 #   USAGE: #define EXMAPLE=0      #
 #   ADD_DEFINITION(-DEXAMPLE=0)   #
 ###################################
-ADD_DEFINITIONS(-DAL_ALEXT_PROTOTYPES)
-ADD_DEFINITIONS(-D_GNU_SOURCE=1)
-ADD_DEFINITIONS(-DAL_LIBTYPE_STATIC)
-ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+IF(WIN32)
+	ADD_DEFINITIONS(-DGLEW_STATIC)
+	ADD_DEFINITIONS(-DAL_ALEXT_PROTOTYPES)
+	ADD_DEFINITIONS(-DAL_LIBTYPE_STATIC)
+	ADD_DEFINITIONS(-Dstrcasecmp=_stricmp)
+	ADD_DEFINITIONS(-Dstrncasecmp=_strnicmp)
+	ADD_DEFINITIONS(-Dsnprintf=_snprintf)
+	ADD_DEFINITIONS(-Disfinite=_finite)
+	ADD_DEFINITIONS(-Disnan=_isnan)
+	ADD_DEFINITIONS(-D_WIN32_WINNT=0x0501)
+	ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+	ADD_DEFINITIONS(-D_CRT_NONSTDC_NO_DEPRECATE)
+	ADD_DEFINITIONS(-D_DEBUG)
+ENDIF(WIN32)
+
+IF(LINUX)
+	ADD_DEFINITIONS(-DAL_ALEXT_PROTOTYPES)
+	ADD_DEFINITIONS(-D_GNU_SOURCE=1)
+	ADD_DEFINITIONS(-DAL_LIBTYPE_STATIC)
+	ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+ENDIF(LINUX)
 
 #########################################################################
 
@@ -67,14 +84,22 @@ INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/Alc)
 IF(WIN32)
     INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Win32/)
 ELSE(WIN32)
-    INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Linux)
+    INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Linux/)
 ENDIF(WIN32)
 
 ### GLFW
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/include)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/include/)
+IF(WIN32)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/win32/)
+ELSEIF(APPLE)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/cocoa/)
+ELSE(WIN32)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/x11/)
+ENDIF(WIN32)
 
 ### GLEW
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glew/include)
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glew/include/)
 
 
 #################################################
@@ -117,18 +142,85 @@ SET(OPENAL_SOURCES
     "../libraries/openal/Alc/alcConfig.c"
     "../libraries/openal/Alc/alcChorus.c"
     "../libraries/openal/Alc/ALc.c"
-    "../libraries/openal/Alc/backends/wave.c"
-    "../libraries/openal/Alc/backends/oss.c"
-    "../libraries/openal/Alc/backends/null.c"
-    "../libraries/openal/Alc/backends/alsa.c"
-    "../libraries/openal/Alc/backends/pulseaudio.c"
-    "../libraries/openal/Alc/backends/loopback.c"
     "../libraries/openal/Alc/hrtf_tables.inc"
+    "../libraries/openal/Alc/backends/wave.c"
 )
+
+
+### FIXME:
+### Find a way to add solaris, bsd, and other platforms support supported by openAL
+### is this required?
+### supported right now
+### PulseAudio, PortAudio, CoreAudio, Oss, Alsa, winmm
+### missing:
+### sndio (openBSD), solaris, opensl, mmdevapi, qsa, dsound
+
+IF(WIN32)
+    SET(OPENAL_SOURCES
+        ${OPENAL_SOURCES}
+        "../libraries/openal/Alc/backends/winmm.c"
+		"../libraries/openal/Alc/backends/loopback.c"
+		"../libraries/openal/Alc/backends/null.c"
+    )
+ELSEIF(APPLE)
+    SET(OPENAL_SOURCES
+        ${OPENAL_SOURCES}
+        "../libraries/openal/Alc/backends/coreaudio.c"
+    )
+ELSE(WIN32)
+
+    FIND_PACKAGE(PulseAudio)
+    IF(PulseAudio_FOUND)
+        SET(OPENAL_SOURCES
+            ${OPENAL_SOURCES}
+            "../libraries/openal/Alc/backends/pulseaudio.c"
+        )
+    ENDIF(PulseAudio_FOUND)
+
+    FIND_PACKAGE(Alsa)
+    IF(Alsa_FOUND)
+        SET(OPENAL_SOURCES
+           ${OPENAL_SOURCES}
+            "../libraries/openal/Alc/backends/alsa.c"
+        )
+    ENDIF(Alsa_FOUND)
+
+    FIND_PACKAGE(OSS)
+    IF(OSS_FOUND)
+        SET(OPENAL_SOURCES
+            ${OPENAL_SOURCES}
+            "../libraries/openal/Alc/backends/oss.c"
+        )
+    ENDIF(OSS_FOUND)
+
+ENDIF(WIN32)
+
 
 #####################################
 #        Adding GLFW sources        #
 #####################################
+
+SET(GLFW_PLATFORM_HEADER
+	"../libraries/glfw/lib/internal.h"
+)
+
+IF(WIN32)
+	SET(GLFW_PLATFORM_HEADER
+		${GLFW_PLATFORM_HEADER}
+		"../libraries/glfw/lib/win32/platform.h"
+	)
+ELSEIF(APPLE)
+	SET(GLFW_PLATFORM_HEADER
+		${GLFW_PLATFORM_HEADER}
+		"../libraries/glfw/lib/cocoa/platform.h"
+	)
+ELSE(WIN32)
+	SET(GLFW_PLATFORM_HEADER
+		${GLFW_PLATFORM_HEADER}
+		"../libraries/glfw/lib/x11/platform.h"
+	)
+ENDIF(WIN32)
+
 SET(GLFW_SOURCES
     "../libraries/glfw/lib/window.c"
     "../libraries/glfw/lib/time.c"
@@ -227,6 +319,7 @@ SET(HEADERS
     ${HEADERS}
     ${CRAPLIB_PATH}/glfw/lib/internal.h
     ${CRAPLIB_PATH}/openal/Alc/mixer_defs.h
+	${GLFW_PLATFORM_HEADER}
 )
 
 #########################################################################
