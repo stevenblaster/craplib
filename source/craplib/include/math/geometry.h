@@ -153,6 +153,14 @@ public:
     static const CRAP_INLINE
     vector3<T> quaternion_to_euler( const quaternion<T>& quat, b8 homogenous = true );
 
+	//! @brief create perspecive matrix with existing matrix 3d
+    static const CRAP_INLINE
+    matrix4<T>& perspective_matrix4( matrix4<T>* matrix, const T& fov_y, const T& aspect, const T& z_near, const T& z_far );
+
+	//! @brief create perspecive matrix with existing matrix 3d
+    static const CRAP_INLINE
+    matrix4<T>& look_at_matrix4( matrix4<T>* matrix, const vector3<T>& position, const vector3<T>& direction, const vector3<T>& up_vector );
+
 };	// class geometry
 
 /*
@@ -388,7 +396,7 @@ const quaternion<T> geometry<T>::euler_to_quaternion( const vector3<T>& euler_an
 {
     quaternion<T> result;
     vector3<T> tmp = euler_angles;
-    tmp *= 0.5f;
+    tmp *= T(0.5f);
 
     result.x = ( crap::basemath<T>::sin( tmp.x ) * crap::basemath<T>::cos( tmp.y ) * crap::basemath<T>::cos( tmp.z ) );
     result.x -= ( crap::basemath<T>::cos( tmp.x ) * crap::basemath<T>::sin( tmp.y ) * crap::basemath<T>::sin( tmp.z ) );
@@ -428,7 +436,7 @@ const quaternion<T> geometry<T>::quaternion_slerp( const quaternion<T>& quat1, c
     else
         result = quat2;
 
-    if (dot < (T) 0.95f)
+    if (dot < T(0.95f))
     {
         f32 angle = crap::basemath<T>::acos(dot);
         result = quat1 * crap::basemath<T>::sin( angle * (1-t) ) + result * crap::basemath<T>::sin( angle * t );
@@ -447,9 +455,9 @@ const quaternion<T> geometry<T>::quaternion_slerp_no_invert( const quaternion<T>
     quaternion<T> result;
     float dot_quat = dot(quat1, quat2);
 
-    if (dot_quat > (T) -0.95f && dot_quat < (T) 0.95f)
+    if (dot_quat >  T(-0.95f) && dot_quat < T(0.95f) )
     {
-        f32 angle = crap::basemath<T>::acos(dot);
+        T angle = crap::basemath<T>::acos(dot);
         result = quat1 * crap::basemath<T>::sin( angle * (1-t) ) + quat2 * crap::basemath<T>::sin( angle * t );
         result /= crap::basemath<T>::sin( angle );
     }
@@ -489,10 +497,10 @@ const quaternion<T> geometry<T>::quaternion_bezier( const quaternion<T>& quat1, 
 template<typename T>
 const vector3<T> geometry<T>::quaternion_to_euler( const quaternion<T>& quat, b8 homogenous /* = true */ )
 {
-    f32 square_x = quat.x * quat.x;
-    f32 square_y = quat.y * quat.y;
-    f32 square_z = quat.z * quat.z;
-    f32 square_w = quat.w * quat.w;
+    T square_x = quat.x * quat.x;
+    T square_y = quat.y * quat.y;
+    T square_z = quat.z * quat.z;
+    T square_w = quat.w * quat.w;
 
     vector3<T> result;
 
@@ -509,6 +517,51 @@ const vector3<T> geometry<T>::quaternion_to_euler( const quaternion<T>& quat, b8
         result.z = crap::basemath<T>::atan2( 2.f * ( quat.x * quat.y + quat.z * quat.w ), 1 - 2*(square_y + square_z) );
     }
     return result;
+}
+
+// create perspecive matrix with existing matrix 3d
+template<typename T>
+const matrix4<T>& geometry<T>::perspective_matrix4( matrix4<T>* matrix, const T& fov_y, const T& aspect, const T& z_near, const T& z_far )
+{
+	T range = crap::basemath<T>::tan( fov_y / T(2)) * z_near;	
+	T left = -range * aspect;
+	T right = range * aspect;
+	T bottom = -range;
+	T top = range;
+
+	matrix->m[0][0] = (T(2) * z_near) / (right - left);
+	matrix->m[1][1] = (T(2) * z_near) / (top - bottom);
+	matrix->m[2][2] = - (z_far + z_near) / (z_far - z_near);
+	matrix->m[2][3] = - T(1);
+	matrix->m[3][2] = - (T(2) * z_far * z_near) / (z_far - z_near);
+	return *matrix;
+}
+
+template<typename T>
+const matrix4<T>& geometry<T>::look_at_matrix4( matrix4<T>* matrix, const vector3<T>& position, const vector3<T>& direction, const vector3<T>& up_vector )
+{
+	vector3<T> f = direction;
+	geometry<T>::normalize( &f );
+	vector3<T> u = up_vector;
+	geometry<T>::normalize( &u );
+	vector3<T> s = geometry<T>::cross(f, u);
+	geometry<T>::normalize( &s );
+	u = cross(s, f);
+
+	geometry<T>::identity_matrix4( matrix );
+	matrix->m[0][0] = s.x;
+	matrix->m[1][0] = s.y;
+	matrix->m[2][0] = s.z;
+	matrix->m[0][1] = u.x;
+	matrix->m[1][1] = u.y;
+	matrix->m[2][1] = u.z;
+	matrix->m[0][2] =-f.x;
+	matrix->m[1][2] =-f.y;
+	matrix->m[2][2] =-f.z;
+	matrix->m[3][0] =-crap::geometry<T>::dot(s, position + direction);
+	matrix->m[3][1] =-crap::geometry<T>::dot(u, position + direction);
+	matrix->m[3][2] = crap::geometry<T>::dot(f, position + direction);
+	return *matrix;
 }
 
 typedef geometry<i32> geometryi;

@@ -26,9 +26,9 @@ namespace crap
 
 bit_set<8> opengl_mouse::_bitset;
 
-vector2i opengl_mouse::_position;
+vector2i opengl_mouse::_position(0,0);
 
-vector2i opengl_mouse::_movement;
+vector2i opengl_mouse::_movement(0,0);
 
 i32 opengl_mouse::_wheel = 0;
 
@@ -100,9 +100,17 @@ vector2i opengl_mouse::position( void )
 	return _position;
 }
 
+void opengl_mouse::set_position( vector2i pos )
+{
+	glfwSetMousePos(pos.x, pos.y);
+}
+
 vector2i opengl_mouse::movement( void )
 {
-	return _movement;
+	vector2i rtn_mov = _movement;
+	_movement.x = 0;
+	_movement.y = 0;
+	return rtn_mov;
 }
 
 i32 opengl_mouse::wheel( void )

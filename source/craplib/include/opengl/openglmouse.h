@@ -72,6 +72,7 @@ public:
 
 	static b8 is_pressed( button button_id );
 	static vector2i position( void );
+	void set_position( vector2i pos );
 	static vector2i movement( void );
 	static i32 wheel( void );
 	static i32 wheel_movement( void );

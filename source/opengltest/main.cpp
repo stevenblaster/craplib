@@ -12,6 +12,9 @@
 #include "audio/wavefile.h"
 #include "opengl/wavefrontfile.h"
 #include "control/logger.h"
+#include "control/craptime.h"
+#include "math/geometry.h"
+#include "math/basemath.h"
 
 #if defined( CRAP_PLATFORM_WIN )
 #include <gl/GL.h>
@@ -23,6 +26,17 @@
 
 #include "glm/glm.hpp"
 #include "glm/ext.hpp"
+
+glm::mat4 getViewMatrix();
+glm::mat4 getProjectionMatrix();
+
+crap::matrix4f& getVMatrix( void );
+crap::matrix4f& getPMatrix( void );
+
+void computeMatricesFromInputs( crap::opengl_keyboard& keyboard, crap::opengl_mouse& mouse );
+
+float speed = 3.0f; // 3 units / second
+float mouseSpeed = 0.005f;
 
 int main()
 {
@@ -84,19 +98,19 @@ int main()
 	crap::opengl::uniform TextureID = shader.uniform_location("myTextureSampler");
 
     // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-    glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-    
-	// Camera matrix
-    glm::mat4 View       = glm::lookAt(
-                glm::vec3(4,3,-3), // Camera is at (4,3,-3), in World Space
-                glm::vec3(0,0,0), // and looks at the origin
-                glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-    );
-    
-	// Model matrix : an identity matrix (model will be at the origin)
-    glm::mat4 Model      = glm::mat4(1.0f);
-    // Our ModelViewProjection : multiplication of our 3 matrices
-    glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
+ //   glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+ //   
+	//// Camera matrix
+    //ViewMatrix       = glm::lookAt(
+    //            glm::vec3(4,3,-3), // Camera is at (4,3,-3), in World Space
+    //            glm::vec3(0,0,0), // and looks at the origin
+    //            glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
+    //);
+ //   
+	//// Model matrix : an identity matrix (model will be at the origin)
+ //   glm::mat4 Model      = glm::mat4(1.0f);
+ //   // Our ModelViewProjection : multiplication of our 3 matrices
+ //   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
 
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
@@ -122,9 +136,24 @@ int main()
 		// Use our shader
         shader.activate();
 
+		// Compute the MVP matrix from keyboard and mouse input
+		computeMatricesFromInputs(keyboard, mouse);
+		glm::mat4 ProjectionMatrix = getProjectionMatrix();
+		glm::mat4 ViewMatrix = getViewMatrix();
+		glm::mat4 ModelMatrix = glm::mat4(1.0);
+		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+		shader.uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
+
+		//crap::matrix4f ProjectionMatrix = getPMatrix();
+		//crap::matrix4f ViewMatrix = getVMatrix();
+		//crap::matrix4f ModelMatrix;
+		//crap::geometryf::identity_matrix4( &ModelMatrix );
+		//crap::matrix4f MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+		//shader.uniform_matrix4f_value( MatrixID, 1, &MVP.m[0][0]);
+
         // Send our transformation to the currently bound shader,
         // in the "MVP" uniform
-		shader.uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
+		//shader.uniform_matrix4f_value( MatrixID, 1, &MVP.m[0][0]);
 
 		// Bind our texture in Texture Unit 0
 		tex.activate();
@@ -152,4 +181,142 @@ int main()
 		window.poll_events();
 		joy.poll_events();
 	}
+}
+
+//controls
+glm::mat4 ViewMatrix;
+glm::mat4 ProjectionMatrix;
+
+crap::matrix4f vMatrix;
+crap::matrix4f pMatrix;
+
+crap::matrix4f& getVMatrix( void )
+{
+	return vMatrix;
+}
+
+crap::matrix4f& getPMatrix( void )
+{
+	return pMatrix;
+}
+
+glm::mat4 getViewMatrix(){
+	return ViewMatrix;
+}
+glm::mat4 getProjectionMatrix(){
+	return ProjectionMatrix;
+}
+// Initial position : on +Z
+glm::vec3 position = glm::vec3( 0, 0, -5 ); 
+crap::vector3f position_vec(0,0,-5);
+
+// Initial horizontal angle : toward -Z
+float horizontalAngle = 3.14f;
+f32 horizontalAng = 3.14f;
+
+// Initial vertical angle : none
+float verticalAngle = 0.0f;
+f32 verticalAng = 0.0f;
+
+// Initial Field of View
+float initialFoV = 45.0f;
+f32 initFoV = 45.f;
+
+void computeMatricesFromInputs( crap::opengl_keyboard& keyboard, crap::opengl_mouse& mouse ){
+
+	//crap::opengl_keyboard keyboard;
+
+	//crap::opengl_mouse mouse;
+	// glfwGetTime is called only once, the first time this function is called
+	static double lastTime = ((double) crap::time::current_tick()) / crap::time::TICKS_PER_SECOND;
+
+	// Compute time difference between current and last frame
+	double currentTime = ((double)  crap::time::current_tick()) / crap::time::TICKS_PER_SECOND;
+	float deltaTime = float(currentTime - lastTime);
+
+	// Get mouse position
+	crap::vector2i pos = mouse.position();
+
+	// Reset mouse position for next frame
+	crap::vector2i middle(1024/2, 768/2);
+	//mouse.set_position( middle );
+	
+
+	// Compute new orientation
+	horizontalAngle += mouseSpeed * mouse.movement().x;
+	verticalAngle   += mouseSpeed * mouse.movement().y;
+
+	// Direction : Spherical coordinates to Cartesian coordinates conversion
+	glm::vec3 direction(
+		cos(verticalAngle) * sin(horizontalAngle), 
+		sin(verticalAngle),
+		cos(verticalAngle) * cos(horizontalAngle)
+	);
+
+	crap::vector3f direct(
+		crap::basemathf::cos(verticalAng) * crap::basemathf::sin(horizontalAng),
+		crap::basemathf::sin(verticalAng),
+		crap::basemathf::cos(verticalAng) * crap::basemathf::cos(horizontalAng)
+		);
+	
+	// Right vector
+	glm::vec3 right = glm::vec3(
+		sin(horizontalAngle - 3.14f/2.0f), 
+		0,
+		cos(horizontalAngle - 3.14f/2.0f)
+	);
+
+	crap::vector3f ri_vec(
+		crap::basemathf::sin(horizontalAng - 3.14f/2.f),
+		0,
+		crap::basemathf::cos(horizontalAng - 3.14f/2.f)
+		);
+	
+	// Up vector
+	glm::vec3 up = glm::cross( right, direction );
+
+	crap::vector3f up_vec( crap::geometryf::cross( ri_vec, direct ) );
+
+	// Move forward
+	if (keyboard.is_pressed( crap::opengl_keyboard::key_up )){
+		position += direction * deltaTime * speed;
+		position_vec += direct * deltaTime * speed;
+	}
+	// Move backward
+	if (keyboard.is_pressed( crap::opengl_keyboard::key_down )){
+		position -= direction * deltaTime * speed;
+		position_vec -= direct * deltaTime * speed;
+	}
+	// Strafe right
+	if (keyboard.is_pressed( crap::opengl_keyboard::key_right )){
+		position += right * deltaTime * speed;
+		position_vec += ri_vec * deltaTime * speed;
+	}
+	// Strafe left
+	if (keyboard.is_pressed( crap::opengl_keyboard::key_left )){
+		position -= right * deltaTime * speed;
+		position_vec -= ri_vec * deltaTime * speed;
+	}
+
+	float FoV = initialFoV - 5 *  mouse.wheel();// glfwGetMouseWheel();
+
+	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+	ProjectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 100.0f);
+	crap::geometryf::perspective_matrix4(&pMatrix,FoV, 4.f/3.f, 0.1f, 100.f);
+	// Camera matrix
+	ViewMatrix       = glm::lookAt(
+								position,           // Camera is here
+								position+direction, // and looks here : at the same position, plus "direction"
+								up                  // Head is up (set to 0,-1,0 to look upside-down)
+						   );
+
+	crap::geometryf::look_at_matrix4(
+		&vMatrix,
+		position_vec,
+		direct,
+		up_vec
+		);
+
+	// For the next frame, the "last time" will be "now"
+	lastTime = currentTime;
 }
