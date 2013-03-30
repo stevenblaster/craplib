@@ -66,6 +66,8 @@ struct program
 
 	void uniform_1i( uniform id, u32 count ); //TODO
 
+	void uniform_3f( uniform id, f32 x, f32 y, f32 z );
+
 	struct vertex_attribute_array
 	{
 		void enable( u32 index );

@@ -75,27 +75,30 @@ int main()
 	crap::opengl::vertex_array vert_array = crap::opengl::vertex_array();
 	vert_array.bind();
 
-	crap::wavefront_file obj( "cube.obj" );
+	crap::wavefront_file obj( "suzanne.obj" );
 	crap::vector3f* vertices = new crap::vector3f[ obj.face_index() * 3];
 	crap::vector2f* uvs = new crap::vector2f[ obj.face_index() * 3];
 	crap::vector3f* normals = new crap::vector3f[ obj.face_index() * 3];
 	obj.generate_triangles( vertices, uvs, normals );
 
 	crap::opengl::program shader = crap::opengl::shader::link(
-		crap::opengl::shader::compile( "vertexshader_cube.vs", crap::opengl::vertex_shader ),
-		crap::opengl::shader::compile( "fragmentshader_cube.ps", crap::opengl::fragment_shader ), 0
+		crap::opengl::shader::compile( "vertexshader_ape.vs", crap::opengl::vertex_shader ),
+		crap::opengl::shader::compile( "fragmentshader_ape.ps", crap::opengl::fragment_shader ), 0
 		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
 
 
 	// Get a handle for our "MVP" uniform
 	crap::opengl::uniform MatrixID = shader.uniform_location("MVP");
+	crap::opengl::uniform ViewMatrixID = shader.uniform_location("V");
+	crap::opengl::uniform ModelMatrixID = shader.uniform_location("M");
 
 	//crap::opengl::texture tex = crap::opengl::create_texture( "uvtemplate.tga", crap::opengl::tga ); //doesnt work
-	crap::opengl::texture tex = crap::opengl::create_texture_tga( "uvmap.tga" );
+	crap::opengl::texture tex = crap::opengl::create_texture_tga( "uvmap2.tga" );
 	tex._index = 0x84C0;
 
 	crap::opengl::uniform TextureID = shader.uniform_location("myTextureSampler");
+	crap::opengl::uniform LightID = shader.uniform_location("LightPosition_worldspace");
 
     // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
  //   glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -126,6 +129,10 @@ int main()
 	//uv_buffer.set_data( sizeof(g_uv_buffer_data), (void*)g_uv_buffer_data );
 	uv_buffer.set_data( obj.face_index()*3*sizeof(crap::vector2f), &uvs[0] );
 
+	crap::opengl::buffer normal_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
+	normal_buffer.bind();
+	normal_buffer.set_data( obj.face_index()*3*sizeof(crap::vector3f), &normals[0] );
+
 	wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
 
@@ -143,6 +150,11 @@ int main()
 		glm::mat4 ModelMatrix = glm::mat4(1.0);
 		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 		shader.uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
+		shader.uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
+		shader.uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
+
+		glm::vec3 lightPos = glm::vec3(4,4,4);
+		shader.uniform_3f( LightID, lightPos.x, lightPos.y, lightPos.z);
 
 		//crap::matrix4f ProjectionMatrix = getPMatrix();
 		//crap::matrix4f ViewMatrix = getVMatrix();
@@ -170,6 +182,11 @@ int main()
         shader.vertex_attribute_array.enable(1);
 		uv_buffer.bind();
 		shader.vertex_attribute_array.pointer( 1, 2, false, 0, (void*)0);
+
+		// 3rd attribute buffer : normals
+        shader.vertex_attribute_array.enable(2);
+		normal_buffer.bind();
+		shader.vertex_attribute_array.pointer( 2, 3, false, 0, (void*)0);
 
         // Draw the triangle !
 		glDrawArrays(GL_TRIANGLES, 0, obj.face_index()*3);
