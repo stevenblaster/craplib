@@ -20,7 +20,11 @@
 #include "math/vector3.h"
 #include "container/staticstring.h"
 #include "files/file.h"
+#include "opengl/openglvertex.h"
+#include "opengl/openglvbo.h"
 #include "opengl/wavefrontfile.h"
+
+#include "container/vector.h"
 
 //lib namespace
 namespace crap
@@ -294,6 +298,60 @@ void wavefront_file::generate_triangles( crap::vector3f* vertices, crap::vector2
 		uvs[index] = _uvs[ _faces[i].uvs[2] -1 ];
 		normals[index++] = _normals[ _faces[i].normals[2] -1 ];
 	}
+}
+
+void wavefront_file::generate_simple_vbo( opengl::simple_vbo* vbo_struct )
+{
+	crap::vector<opengl::simple_vertex_index> vertex_list;
+	crap::vector<u16> index_list;
+
+	i32 index = 0;
+	for(u32 i=0; i< _face_index; ++i)
+	{
+		for(u32 j=0; j<3; ++j)
+		{
+			opengl::simple_vertex_index ind;
+			ind.position = _faces[i].vertices[j];
+			ind.uv = _faces[i].uvs[j];
+			ind.normal = _faces[i].normals[j];
+
+			std::vector<opengl::simple_vertex_index>::iterator find_iterator = std::find(vertex_list.begin(), vertex_list.end(), ind);
+			if( find_iterator == vertex_list.end() )
+			{
+				ind.index = index;
+				vertex_list.push_back( ind );
+				index_list.push_back( index++ );
+			}
+			else
+			{
+				u16 idx = find_iterator->index;
+				index_list.push_back( idx );
+			}
+		}
+	}
+
+	vbo_struct->index_size = index_list.size();
+	vbo_struct->vertices_size = vertex_list.size();
+	vbo_struct->indices = new u16[ index_list.size() ];
+	vbo_struct->positions = new vector3f[ vertex_list.size() ];
+	vbo_struct->uvs = new vector2f[ vertex_list.size() ];
+	vbo_struct->normals = new vector3f[ vertex_list.size() ];
+
+	memcpy( vbo_struct->indices, &(index_list[0]), index_list.size() );
+
+	index = 0;
+	std::vector<opengl::simple_vertex_index>::iterator it = vertex_list.begin();
+	for( it; it != vertex_list.end(); ++it )
+	{
+		vbo_struct->positions[index] = _vertices[ it->position -1 ];
+		vbo_struct->uvs[index] = _uvs[ it->uv -1 ];
+		vbo_struct->normals[index++] = _normals[ it->normal -1 ];
+	}
+}
+
+void wavefront_file::generate_vbo( opengl::vbo* vbo_struct )
+{
+
 }
 
 } //lib namespace

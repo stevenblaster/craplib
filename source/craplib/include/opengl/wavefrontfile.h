@@ -24,6 +24,17 @@
 namespace crap
 {
 
+template<typename T> struct vector3;
+template<typename T> struct vector2;
+typedef vector3<f32> vector3f;
+typedef vector2<f32> vector2f;
+
+namespace opengl
+{
+	struct simple_vbo;
+	struct vbo;
+}
+
 class wavefront_file
 {
 public:
@@ -96,6 +107,8 @@ public:
 	u32 material_index( void ) const;
 
 	void generate_triangles( crap::vector3f* vertices, crap::vector2f* uvs, crap::vector3f* normals );
+	void generate_simple_vbo( opengl::simple_vbo* vbo_struct );
+	void generate_vbo( opengl::vbo* vbo_struct );
 
 private:
 	

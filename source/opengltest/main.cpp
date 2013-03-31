@@ -6,6 +6,8 @@
 #include "opengl/opengljoystick.h"
 #include "opengl/openglshader.h"
 #include "opengl/opengltexture.h"
+#include "opengl/openglvertex.h"
+#include "opengl/openglvbo.h"
 #include "audio/audiodevice.h"
 #include "files/file.h"
 #include "math/vector3.h"
@@ -81,6 +83,9 @@ int main()
 	crap::vector3f* normals = new crap::vector3f[ obj.face_index() * 3];
 	obj.generate_triangles( vertices, uvs, normals );
 
+	crap::opengl::simple_vbo vbo;
+	obj.generate_simple_vbo( &vbo );
+
 	crap::opengl::program shader = crap::opengl::shader::link(
 		crap::opengl::shader::compile( "vertexshader_ape.vs", crap::opengl::vertex_shader ),
 		crap::opengl::shader::compile( "fragmentshader_ape.ps", crap::opengl::fragment_shader ), 0
@@ -93,45 +98,31 @@ int main()
 	crap::opengl::uniform ViewMatrixID = shader.uniform_location("V");
 	crap::opengl::uniform ModelMatrixID = shader.uniform_location("M");
 
-	//crap::opengl::texture tex = crap::opengl::create_texture( "uvtemplate.tga", crap::opengl::tga ); //doesnt work
+	//crap::opengl::texture tex = crap::opengl::create_texture( "uvmap2.tga", crap::opengl::tga ); //doesnt work
 	crap::opengl::texture tex = crap::opengl::create_texture_tga( "uvmap2.tga" );
 	tex._index = 0x84C0;
 
 	crap::opengl::uniform TextureID = shader.uniform_location("myTextureSampler");
 	crap::opengl::uniform LightID = shader.uniform_location("LightPosition_worldspace");
 
-    // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
- //   glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
- //   
-	//// Camera matrix
-    //ViewMatrix       = glm::lookAt(
-    //            glm::vec3(4,3,-3), // Camera is at (4,3,-3), in World Space
-    //            glm::vec3(0,0,0), // and looks at the origin
-    //            glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-    //);
- //   
-	//// Model matrix : an identity matrix (model will be at the origin)
- //   glm::mat4 Model      = glm::mat4(1.0f);
- //   // Our ModelViewProjection : multiplication of our 3 matrices
- //   glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
-
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
-	//vertex_buffer.set_data( sizeof(g_vertex_buffer_data), (void*)g_vertex_buffer_data );
-	vertex_buffer.set_data( obj.face_index()*3*sizeof(crap::vector3f), &vertices[0] );
-
-	//crap::opengl::buffer color_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
-	//color_buffer.bind();
-	//color_buffer.set_data( sizeof(g_color_buffer_data), (void*)g_color_buffer_data );
+	//vertex_buffer.set_data( obj.face_index()*3*sizeof(crap::vector3f), &vertices[0] );
+	vertex_buffer.set_data( vbo.vertices_size*3*sizeof(crap::vector3f), &vbo.positions[0] );
 
 	crap::opengl::buffer uv_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	uv_buffer.bind();
-	//uv_buffer.set_data( sizeof(g_uv_buffer_data), (void*)g_uv_buffer_data );
-	uv_buffer.set_data( obj.face_index()*3*sizeof(crap::vector2f), &uvs[0] );
+	//uv_buffer.set_data( obj.face_index()*3*sizeof(crap::vector2f), &uvs[0] );
+	uv_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector2f), &vbo.uvs[0] );
 
 	crap::opengl::buffer normal_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	normal_buffer.bind();
-	normal_buffer.set_data( obj.face_index()*3*sizeof(crap::vector3f), &normals[0] );
+	//normal_buffer.set_data( obj.face_index()*3*sizeof(crap::vector3f), &normals[0] );
+	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.normals[0] );
+
+	crap::opengl::buffer element_buffer( crap::opengl::element_array_buffer, crap::opengl::static_draw );
+	element_buffer.bind();
+	element_buffer.set_data( vbo.index_size *sizeof(u16), &vbo.indices[0] );
 
 	wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
@@ -156,17 +147,6 @@ int main()
 		glm::vec3 lightPos = glm::vec3(4,4,4);
 		shader.uniform_3f( LightID, lightPos.x, lightPos.y, lightPos.z);
 
-		//crap::matrix4f ProjectionMatrix = getPMatrix();
-		//crap::matrix4f ViewMatrix = getVMatrix();
-		//crap::matrix4f ModelMatrix;
-		//crap::geometryf::identity_matrix4( &ModelMatrix );
-		//crap::matrix4f MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
-		//shader.uniform_matrix4f_value( MatrixID, 1, &MVP.m[0][0]);
-
-        // Send our transformation to the currently bound shader,
-        // in the "MVP" uniform
-		//shader.uniform_matrix4f_value( MatrixID, 1, &MVP.m[0][0]);
-
 		// Bind our texture in Texture Unit 0
 		tex.activate();
 		tex.bind();
@@ -176,23 +156,32 @@ int main()
         // 1rst attribute buffer : vertices
 		shader.vertex_attribute_array.enable(0);
 		vertex_buffer.bind();
-		shader.vertex_attribute_array.pointer( 0, 3, false, 0, (void*)0);
+		shader.vertex_attribute_array.pointer( 0, 3, crap::opengl::gl_float, false, 0, (void*)0);
 
         // 2nd attribute buffer : colors
         shader.vertex_attribute_array.enable(1);
 		uv_buffer.bind();
-		shader.vertex_attribute_array.pointer( 1, 2, false, 0, (void*)0);
+		shader.vertex_attribute_array.pointer( 1, 2, crap::opengl::gl_float, false, 0, (void*)0);
 
 		// 3rd attribute buffer : normals
         shader.vertex_attribute_array.enable(2);
 		normal_buffer.bind();
-		shader.vertex_attribute_array.pointer( 2, 3, false, 0, (void*)0);
+		shader.vertex_attribute_array.pointer( 2, 3, crap::opengl::gl_float, false, 0, (void*)0);
+
+		// 4th run elemt fun
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			vbo.index_size,    // count
+			GL_UNSIGNED_SHORT,   // type
+			(void*)0           // element array buffer offset
+		);
 
         // Draw the triangle !
-		glDrawArrays(GL_TRIANGLES, 0, obj.face_index()*3);
+		//glDrawArrays(GL_TRIANGLES, 0, obj.face_index()*3);
 
 		shader.vertex_attribute_array.disable(0);
 		shader.vertex_attribute_array.disable(1);
+		shader.vertex_attribute_array.disable(2);
 
 		window.swap();
 		window.poll_events();
@@ -224,11 +213,11 @@ glm::mat4 getProjectionMatrix(){
 	return ProjectionMatrix;
 }
 // Initial position : on +Z
-glm::vec3 position = glm::vec3( 0, 0, -5 ); 
-crap::vector3f position_vec(0,0,-5);
+glm::vec3 position = glm::vec3( 0, 0, 5 ); 
+crap::vector3f position_vec(0,0,5);
 
 // Initial horizontal angle : toward -Z
-float horizontalAngle = 3.14f;
+float horizontalAngle = 0.f;//3.14f;
 f32 horizontalAng = 3.14f;
 
 // Initial vertical angle : none

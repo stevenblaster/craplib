@@ -28,6 +28,21 @@ namespace crap
 namespace opengl
 {
 
+enum data_type
+{
+	gl_byte = 0x1400,
+	gl_ubyte = 0x1401,
+	gl_short = 0x1402,
+	gl_ushort = 0x1403,
+	gl_int = 0x1404,
+	gl_uint = 0x1405,
+	gl_float = 0x1406,
+	gl_2_bytes = 0x1407,
+	gl_3_bytes = 0x1408,
+	gl_4_bytes = 0x1409,
+	gl_double = 0x140A
+};
+
 enum shader_type
 {
 	vertex_shader = 0,
@@ -72,7 +87,7 @@ struct program
 	{
 		void enable( u32 index );
 		void disable( u32 index );
-		void pointer ( u32 array_index, u32 size, b8 normalized, u32 stride, void* ptr );
+		void pointer ( u32 array_index, u32 size, data_type type, b8 normalized, u32 stride, void* ptr );
 	} 
 	vertex_attribute_array;
 };

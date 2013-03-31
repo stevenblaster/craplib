@@ -153,12 +153,12 @@ void program::vertex_attribute_array::disable( u32 index )
 	glDisableVertexAttribArray( index );
 }
 
-void program::vertex_attribute_array::pointer( u32 array_index, u32 size, b8 normalized, u32 stride, void* ptr )
+void program::vertex_attribute_array::pointer( u32 array_index, u32 size ,data_type type, b8 normalized, u32 stride, void* ptr )
 {
 	glVertexAttribPointer(
                 array_index,        // attribute. No particular reason for 0, but must match the layout in the shader.
                 size,               // size
-                GL_FLOAT,           // type
+                type,				// type
                 normalized,         // normalized?
                 stride,             // stride
                 ptr			        // array buffer offset
