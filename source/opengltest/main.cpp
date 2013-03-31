@@ -78,10 +78,10 @@ int main()
 	vert_array.bind();
 
 	crap::wavefront_file obj( "suzanne.obj" );
-	crap::vector3f* vertices = new crap::vector3f[ obj.face_index() * 3];
-	crap::vector2f* uvs = new crap::vector2f[ obj.face_index() * 3];
-	crap::vector3f* normals = new crap::vector3f[ obj.face_index() * 3];
-	obj.generate_triangles( vertices, uvs, normals );
+	//crap::vector3f* vertices = new crap::vector3f[ obj.face_index() * 3];
+	//crap::vector2f* uvs = new crap::vector2f[ obj.face_index() * 3];
+	//crap::vector3f* normals = new crap::vector3f[ obj.face_index() * 3];
+	//obj.generate_triangles( vertices, uvs, normals );
 
 	crap::opengl::simple_vbo vbo;
 	obj.generate_simple_vbo( &vbo );

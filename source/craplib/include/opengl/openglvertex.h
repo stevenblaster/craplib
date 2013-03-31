@@ -58,7 +58,7 @@ struct simple_vertex_index
 	i32 uv;
 	i32 normal;
 
-	b8 operator<( const simple_vertex_index& other );
+	//b8 operator<( const simple_vertex_index& other );
 	b8 operator==( const simple_vertex_index& other );
 };
 
@@ -67,7 +67,7 @@ struct vertex_index : simple_vertex_index
 	i32 tangent;
 	i32 binormal;
 
-	b8 operator<( const vertex_index& other );
+	//b8 operator<( const vertex_index& other );
 	b8 operator==( const vertex_index& other );
 };
 

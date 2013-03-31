@@ -337,7 +337,11 @@ void wavefront_file::generate_simple_vbo( opengl::simple_vbo* vbo_struct )
 	vbo_struct->uvs = new vector2f[ vertex_list.size() ];
 	vbo_struct->normals = new vector3f[ vertex_list.size() ];
 
-	memcpy( vbo_struct->indices, &(index_list[0]), index_list.size() );
+	index = 0;
+	for( crap::vector<u16>::iterator it = index_list.begin(); it != index_list.end(); ++it )
+	{
+		vbo_struct->indices[index++] = *it;
+	}
 
 	index = 0;
 	std::vector<opengl::simple_vertex_index>::iterator it = vertex_list.begin();

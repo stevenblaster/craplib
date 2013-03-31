@@ -54,20 +54,20 @@ b8 vertex<T>::operator==( const vertex& other )
 }
 
 //
-b8 simple_vertex_index::operator<( const simple_vertex_index& other )
-{
-	return index < other.index;
-}
+//b8 simple_vertex_index::operator<( const simple_vertex_index& other )
+//{
+//	return index < other.index;
+//}
 
 b8 simple_vertex_index::operator==( const simple_vertex_index& other )
 {
 	return position == other.position && uv == other.uv && normal == other.normal;
 }
 
-b8 vertex_index::operator<( const vertex_index& other )
-{
-	return index < other.index;
-}
+//b8 vertex_index::operator<( const vertex_index& other )
+//{
+//	return index < other.index;
+//}
 
 b8 vertex_index::operator==( const vertex_index& other )
 {
