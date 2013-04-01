@@ -9,16 +9,18 @@ PROJECT(CRAP_LIBRARY)
 
 OPTION(CRAP_BUILD_UNITTEST "Build unit tests" OFF)
 
-IF(CRAP_BUILD_UNITTEST)
-    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/unittests)
-ENDIF(CRAP_BUILD_UNITTEST)
+OPTION(CRAP_BUILD_EXAMPLES "Build unit tests" OFF)
 
-OPTION(CRAP_BUILD_OPENGLTEST "Build unit tests" OFF)
 
 IF(CRAP_BUILD_EXAMPLES)
-    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/opengltest)
-    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/performancetests)
+    ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/opengltest)
+    ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/performancetests)
 ENDIF(CRAP_BUILD_EXAMPLES)
+
+IF(CRAP_BUILD_UNITTEST)
+    ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/unittests)
+ENDIF(CRAP_BUILD_UNITTEST)
+
 
 #########################################################################
 
@@ -90,17 +92,17 @@ ENDIF(WIN32)
 ### GLFW
 INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/)
 INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/include/)
+
 IF(WIN32)
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/win32/)
+	INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/win32/)
 ELSEIF(APPLE)
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/cocoa/)
+	INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/cocoa/)
 ELSE(WIN32)
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/x11/)
+	INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/x11/)
 ENDIF(WIN32)
 
 ### GLEW
 INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glew/include/)
-
 
 #################################################
 #                 External sources              #
@@ -201,13 +203,13 @@ ENDIF(WIN32)
 #####################################
 
 SET(GLFW_PLATFORM_HEADER
-	"../libraries/glfw/lib/internal.h"
+#	"../libraries/glfw/lib/internal.h"
 )
 
 IF(WIN32)
 	SET(GLFW_PLATFORM_HEADER
 		${GLFW_PLATFORM_HEADER}
-		"../libraries/glfw/lib/win32/platform.h"
+	#	"../libraries/glfw/lib/win32/platform.h"
 	)
 ELSEIF(APPLE)
 	SET(GLFW_PLATFORM_HEADER
@@ -327,4 +329,4 @@ SET(HEADERS
 #####################################
 #           Creating Lib            #
 #####################################
-ADD_LIBRARY(CRAPLIB, ${SOURCES} ${HEADERS})
+ADD_LIBRARY(crap ${SOURCES} ${HEADERS})
