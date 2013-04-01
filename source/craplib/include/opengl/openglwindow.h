@@ -34,6 +34,16 @@
 namespace crap
 {
 
+//ogl namespace
+namespace opengl
+{
+
+enum profile
+{
+	core,
+	compat
+};
+
 //window setup struct
 typedef
 struct window_setup
@@ -54,13 +64,13 @@ struct window_setup
 	float opengl_version;
 	bool forward_compatible;
 	bool debug_context;
-	int opengl_profile;
+	profile opengl_profile;
 	string64 title;
 
 	//default values
 	window_setup( void ) : width(640), height(480), position(vector2i()), color_bits(vector4i()), depth_bits(0), stencil_bits(0), fullscreen(false), refresh_rate(0),
 		accumulation_color_bits(vector4i()), auxiliary_buffer(0), stereo_rendering(false), resizeable(true),
-		multisampling_count(0), opengl_version(1.2f), forward_compatible(false), debug_context(false), opengl_profile(0), title(string64("Default Window"))
+		multisampling_count(0), opengl_version(1.2f), forward_compatible(false), debug_context(false), opengl_profile(core), title(string64("Default Window"))
 	{
 	}
 
@@ -76,11 +86,11 @@ struct window_setup
 }
 window_setup;
 
-class opengl_window
+class window
 {
 public:
-    opengl_window( const window_setup& setup );
-    ~opengl_window( void );
+    window( const window_setup& setup );
+    ~window( void );
 
 	void update_settings( const window_setup& setup );
 	void reset_window( void );
@@ -109,6 +119,8 @@ private:
 
 };
 
-}
+} //ogl namespace
+
+} //namepace crap
 
 #endif // CRAP_OPENGLWINDOW_H

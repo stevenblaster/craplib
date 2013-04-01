@@ -38,7 +38,7 @@ texture::~texture( void )
 	glDeleteTextures(1, &_id);
 }
 
-texture::texture( u32 id /*=0*/ ) : _id(id), _index(0)
+texture::texture( u32 id , u32 index ) : _id(id), _index(index)
 {
 
 }
@@ -142,7 +142,8 @@ u32 create_texture_dds( const char* name )
 	dds_file.read_bytes( &head, sizeof(head) );
 	CRAP_ASSERT_DEBUG( head.validate(), "Not a valid DDS-file" );
 
-	u32 buffer_size = (size_t32) dds_file.size() - sizeof( head);
+	//int fun = sizeof(head);
+	u32 buffer_size = (size_t32) dds_file.size() - sizeof(head);
 	//u32 buffer_size = head.mip_map_count > 1 ? head.pitch_or_linear_s * 2 : head.pitch_or_linear_s; 
 	u8* buffer = new u8[buffer_size];
 	dds_file.read_bytes( buffer, buffer_size );
@@ -190,7 +191,6 @@ u32 create_texture_dds( const char* name )
 	} 
 
 	delete[] buffer; 
-
 	return textureID;
 }
 
@@ -204,25 +204,29 @@ texture create_texture( const char* name, image_type type )
 		/* .. continue .. */
 
 	static i32 index_counter = 0;
-	texture rtn_tex;
-	//rtn_tex._index = ogl_id[index_counter++];
-
-	switch( type )
+	if( type == bmp )
 	{
-	case bmp:
-		rtn_tex._id = create_texture_bmp( name );
-		break;
-	case tga:
-		rtn_tex._id = create_texture_tga( name );
-		break;
-	case dds:
-		rtn_tex._id = create_texture_dds( name );
-		break;
-	default:
-		CRAP_ASSERT_ERROR("Unknown image type");
-		return 0;
+		u32 id = create_texture_bmp( name );
+		u32 index = ogl_id[index_counter++];
+		return texture(id, index);
 	}
-	return rtn_tex;
+
+	if( type == tga )
+	{
+		u32 id = create_texture_tga( name );
+		u32 index = ogl_id[index_counter++];
+		return texture(id, index);
+	}
+
+	if( type == dds )
+	{
+		u32 id = create_texture_dds( name );
+		u32 index = ogl_id[index_counter++];
+		return texture(id, index);
+	}
+
+	CRAP_ASSERT_ERROR("Unknown image type");
+	return texture(0,0);
 }
 
 } // amespace opengl

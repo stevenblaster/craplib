@@ -44,7 +44,7 @@ struct texture
 	void bind( void );
 	void activate( void );
 	
-	texture( u32 id=0 );
+	texture( u32 id , u32 index );
 	texture( const texture& other );
 	texture& operator=( const texture& other );
 };

@@ -31,7 +31,11 @@
 namespace crap
 {
 
-opengl_window::opengl_window( const window_setup& setup ) : _window_setup( setup )
+//ogl namespace
+namespace opengl
+{
+
+window::window( const window_setup& setup ) : _window_setup( setup )
 {
 #ifndef CRAP_GLFW_INIT
 #define CRAP_GLFW_INIT
@@ -42,22 +46,22 @@ opengl_window::opengl_window( const window_setup& setup ) : _window_setup( setup
 #endif
 }
 
-opengl_window::~opengl_window( void )
+window::~window( void )
 {
     close();
 }
 
-void opengl_window::update_settings( const window_setup& setup )
+void window::update_settings( const window_setup& setup )
 {
 	_window_setup = setup;
 }
 
-b8 opengl_window::is_open( void ) const
+b8 window::is_open( void ) const
 {
 	return glfwGetWindowParam( GLFW_OPENED );
 }
 
-void opengl_window::open( void )
+void window::open( void )
 {
 	glfwOpenWindowHint( GLFW_REFRESH_RATE, _window_setup.refresh_rate );
 	glfwOpenWindowHint( GLFW_ACCUM_RED_BITS, _window_setup.accumulation_color_bits.r );
@@ -72,7 +76,11 @@ void opengl_window::open( void )
     glfwOpenWindowHint( GLFW_OPENGL_VERSION_MINOR, minor );
 	glfwOpenWindowHint( GLFW_OPENGL_FORWARD_COMPAT, (int)_window_setup.forward_compatible );
 	glfwOpenWindowHint( GLFW_OPENGL_DEBUG_CONTEXT, _window_setup.debug_context );
-	glfwOpenWindowHint( GLFW_OPENGL_PROFILE, _window_setup.opengl_profile ); 
+
+	if(_window_setup.opengl_profile == core)
+		glfwOpenWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
+	else
+		glfwOpenWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE );
 
 	int fullscreen = ( _window_setup.fullscreen ) ? GLFW_FULLSCREEN : GLFW_WINDOW;
 
@@ -97,44 +105,44 @@ void opengl_window::open( void )
 	CRAP_ASSERT_DEBUG( result == GLEW_OK, "Failed to init GLEW");
 }
 
-void opengl_window::close( void )
+void window::close( void )
 {
 	glfwCloseWindow();
 }
 
-void opengl_window::reset_window( void )
+void window::reset_window( void )
 {
 	close();
 	open();
 }
 
-vector2i opengl_window::size( void ) const
+vector2i window::size( void ) const
 {
 	vector2i rtn;
 	glfwGetWindowSize( &rtn.x, &rtn.y );
 	return rtn;
 }
 
-void opengl_window::set_position( const vector2i& pos )
+void window::set_position( const vector2i& pos )
 {
 	_window_setup.position = pos;
 	glfwSetWindowPos( pos.x, pos.y );
 }
 
-void opengl_window::set_size( int width, int height )
+void window::set_size( int width, int height )
 {
 	_window_setup.width = width;
 	_window_setup.height = height;
 	glfwSetWindowSize( width, height );
 }
 
-void opengl_window::set_title( const string64& name )
+void window::set_title( const string64& name )
 {
 	_window_setup.title = name;
 	glfwSetWindowTitle( name.cstring() );
 }
 
-void opengl_window::set_fullscreen( bool value )
+void window::set_fullscreen( bool value )
 {
 	if( value && _window_setup.fullscreen )
 	{
@@ -151,30 +159,32 @@ void opengl_window::set_fullscreen( bool value )
 	}
 }
 
-void opengl_window::swap( void )
+void window::swap( void )
 {
 	glfwSwapBuffers();
 }
 
 
-void opengl_window::set_window_close_function( void* function )
+void window::set_window_close_function( void* function )
 {
 	glfwSetWindowCloseCallback( (GLFWwindowclosefun)function );
 }
 
-void opengl_window::set_window_size_function( void* function )
+void window::set_window_size_function( void* function )
 {
 	glfwSetWindowSizeCallback( (GLFWwindowsizefun)function );
 }
 
-void opengl_window::set_window_refresh_function( void* function )
+void window::set_window_refresh_function( void* function )
 {
 	glfwSetWindowRefreshCallback( (GLFWwindowrefreshfun)function );
 }
 
-void opengl_window::poll_events( void )
+void window::poll_events( void )
 {
 	glfwPollEvents();
 }
+
+} //namespace opengl
 
 } //namespace crap

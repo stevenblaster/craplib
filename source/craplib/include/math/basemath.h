@@ -703,6 +703,9 @@ public:
     static CRAP_INLINE f32
     sin( const f32& x )
     {
+		if( x == 0.f )
+			return 0.f;
+
         return cos( CRAP_PI_HALF - x );
     }
 

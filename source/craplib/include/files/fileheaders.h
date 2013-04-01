@@ -52,6 +52,9 @@ struct wav_header
 	}
 };
 
+#if defined (CRAP_COMPILER_VC)
+#pragma pack(1)
+#endif
 struct bmp_header
 {
 	i16		bm;					// "BM" decimal 19778
@@ -76,6 +79,15 @@ struct bmp_header
 	}
 };
 
+#if defined (CRAP_COMPILER_VC)
+#pragma pack()
+#endif
+
+
+
+#if defined (CRAP_COMPILER_VC)
+#pragma pack(1)
+#endif
 struct dds_header
 {
 	struct pix_f
@@ -112,6 +124,10 @@ struct dds_header
 			header_size == 124;
 	}
 };
+
+#if defined (CRAP_COMPILER_VC)
+#pragma pack()
+#endif
 
 } // lib namespace
 
