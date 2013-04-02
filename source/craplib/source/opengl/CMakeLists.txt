@@ -1,9 +1,14 @@
 set(SOURCES
-   ${SOURCES}
+   ${SOURCES} 
+   ${CMAKE_CURRENT_SOURCE_DIR}/opengldata.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/opengljoystick.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/openglkeyboard.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/openglmouse.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/openglshader.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/opengltexture.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/openglvbo.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/openglvertex.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/openglwindow.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/wavefrontfile.cpp
    PARENT_SCOPE
 )

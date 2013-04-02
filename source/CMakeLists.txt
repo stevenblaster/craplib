@@ -1,6 +1,37 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(CRAP_LIBRARY)
 
+SET(CRAPLIB_PATH ${CMAKE_SOURCE_DIR}/../libraries)
+
+#########################################################################
+
+### BUILD OPENAL
+
+include(ExternalProject)
+
+set(OpenAL_args
+	-DALSOFT_EXAMPLES=OFF -DALSOFT_UTILS=OFF -DFORCE_STATIC_VCRT=OFF	
+)
+
+if(WIN32)
+set(OpenAL_args
+	${OpenAL_args}
+	)
+elseif(LINUX)
+set(OpenAL_args
+	${OpenAL_args}
+	-DAL_ALEXT_PROTOTYPES=1
+	)
+endif()
+
+ExternalProject_Add(openal
+  PREFIX ${CMAKE_BINARY_DIR}/openal
+  SOURCE_DIR ${CRAPLIB_PATH}/openal
+  CMAKE_ARGS ${OpenAL_args}
+  BINARY_DIR ${CMAKE_BINARY_DIR}/openal
+  INSTALL_COMMAND ""
+)
+
 #########################################################################
 
 ################################################
@@ -45,8 +76,6 @@ OPTION(BUILD_SHARED_LIBS "Build CRAPLIB with shared libraries." OFF)
 ###################################
 IF(WIN32)
 	ADD_DEFINITIONS(-DGLEW_STATIC)
-	ADD_DEFINITIONS(-DAL_ALEXT_PROTOTYPES)
-	ADD_DEFINITIONS(-DAL_LIBTYPE_STATIC)
 	ADD_DEFINITIONS(-Dstrcasecmp=_stricmp)
 	ADD_DEFINITIONS(-Dstrncasecmp=_strnicmp)
 	ADD_DEFINITIONS(-Dsnprintf=_snprintf)
@@ -78,16 +107,9 @@ SET(CRAPLIB_PATH ${CMAKE_SOURCE_DIR}/../libraries)
 #         Adding include dirs       #
 #####################################
 
-### OPENAL
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/include)
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/OpenAL32/Include)
-INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/Alc)
-
-IF(WIN32)
-    INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Win32/)
-ELSE(WIN32)
-    INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/build/Linux/)
-ENDIF(WIN32)
+### AL
+INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/openal/include/)
+LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/openal/)
 
 ### GLFW
 INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glfw/lib/)
@@ -107,96 +129,6 @@ INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glew/include/)
 #################################################
 #                 External sources              #
 #################################################
-
-#####################################
-#       Adding openAL sources       #
-#####################################
-
-# FIXME: switch backends for different platforms
-# FIXME: check which backends are available before compiling
-
-SET(OPENAL_SOURCES
-    "../libraries/openal/OpenAL32/alThunk.c"
-    "../libraries/openal/OpenAL32/alState.c"
-    "../libraries/openal/OpenAL32/alSource.c"
-    "../libraries/openal/OpenAL32/alListener.c"
-    "../libraries/openal/OpenAL32/alFilter.c"
-    "../libraries/openal/OpenAL32/alExtension.c"
-    "../libraries/openal/OpenAL32/alError.c"
-    "../libraries/openal/OpenAL32/alEffect.c"
-    "../libraries/openal/OpenAL32/alBuffer.c"
-    "../libraries/openal/OpenAL32/alAuxEffectSlot.c"
-    "../libraries/openal/Alc/panning.c"
-    "../libraries/openal/Alc/mixer_sse.c"
-    "../libraries/openal/Alc/mixer_c.c"
-    "../libraries/openal/Alc/mixer.c"
-    "../libraries/openal/Alc/hrtf.c"
-    "../libraries/openal/Alc/helpers.c"
-    "../libraries/openal/Alc/bs2b.c"
-    "../libraries/openal/Alc/ALu.c"
-    "../libraries/openal/Alc/alcThread.c"
-    "../libraries/openal/Alc/alcRing.c"
-    "../libraries/openal/Alc/alcReverb.c"
-    "../libraries/openal/Alc/alcModulator.c"
-    "../libraries/openal/Alc/alcFlanger.c"
-    "../libraries/openal/Alc/alcEcho.c"
-    "../libraries/openal/Alc/alcDedicated.c"
-    "../libraries/openal/Alc/alcConfig.c"
-    "../libraries/openal/Alc/alcChorus.c"
-    "../libraries/openal/Alc/ALc.c"
-    "../libraries/openal/Alc/hrtf_tables.inc"
-    "../libraries/openal/Alc/backends/wave.c"
-)
-
-
-### FIXME:
-### Find a way to add solaris, bsd, and other platforms support supported by openAL
-### is this required?
-### supported right now
-### PulseAudio, PortAudio, CoreAudio, Oss, Alsa, winmm
-### missing:
-### sndio (openBSD), solaris, opensl, mmdevapi, qsa, dsound
-
-IF(WIN32)
-    SET(OPENAL_SOURCES
-        ${OPENAL_SOURCES}
-        "../libraries/openal/Alc/backends/winmm.c"
-		"../libraries/openal/Alc/backends/loopback.c"
-		"../libraries/openal/Alc/backends/null.c"
-    )
-ELSEIF(APPLE)
-    SET(OPENAL_SOURCES
-        ${OPENAL_SOURCES}
-        "../libraries/openal/Alc/backends/coreaudio.c"
-    )
-ELSE(WIN32)
-
-    FIND_PACKAGE(PulseAudio)
-    IF(PulseAudio_FOUND)
-        SET(OPENAL_SOURCES
-            ${OPENAL_SOURCES}
-            "../libraries/openal/Alc/backends/pulseaudio.c"
-        )
-    ENDIF(PulseAudio_FOUND)
-
-    FIND_PACKAGE(Alsa)
-    IF(Alsa_FOUND)
-        SET(OPENAL_SOURCES
-           ${OPENAL_SOURCES}
-            "../libraries/openal/Alc/backends/alsa.c"
-        )
-    ENDIF(Alsa_FOUND)
-
-    FIND_PACKAGE(OSS)
-    IF(OSS_FOUND)
-        SET(OPENAL_SOURCES
-            ${OPENAL_SOURCES}
-            "../libraries/openal/Alc/backends/oss.c"
-        )
-    ENDIF(OSS_FOUND)
-
-ENDIF(WIN32)
-
 
 #####################################
 #        Adding GLFW sources        #
@@ -312,7 +244,6 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/craplib/include)
 ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/craplib)
 SET(SOURCES
     ${SOURCES}
-    ${OPENAL_SOURCES}
     ${GLFW_SOURCES}
     ${GLEW_SOURCES}
 )
@@ -320,7 +251,6 @@ SET(SOURCES
 SET(HEADERS
     ${HEADERS}
     ${CRAPLIB_PATH}/glfw/lib/internal.h
-    ${CRAPLIB_PATH}/openal/Alc/mixer_defs.h
 	${GLFW_PLATFORM_HEADER}
 )
 
@@ -330,3 +260,8 @@ SET(HEADERS
 #           Creating Lib            #
 #####################################
 ADD_LIBRARY(crap ${SOURCES} ${HEADERS})
+if(WIN32)
+TARGET_LINK_LIBRARIES(crap OpenAL32)
+else()
+TARGET_LINK_LIBRARIES(crap OpenAL32)
+endif()
