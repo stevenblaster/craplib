@@ -13,7 +13,7 @@
 #include "math/vector3.h"
 #include "audio/wavefile.h"
 #include "opengl/wavefrontfile.h"
-#include "control/logger.h"
+//#include "control/logger.h"
 #include "control/craptime.h"
 #include "math/geometry.h"
 #include "math/basemath.h"
@@ -34,14 +34,14 @@ glm::mat4 getProjectionMatrix();
 
 void computeMatricesFromInputs( crap::opengl_keyboard& keyboard, crap::opengl_mouse& mouse );
 
-float speed = 3.0f; // 3 units / second
-float mouseSpeed = 0.005f;
+glm::mat4 getViewMatrix();
+glm::mat4 getProjectionMatrix();
 
 int main()
 {
-	typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::simple_format_policy,crap::writer_policy::console_writer_policy> ConsoleLogger;
-	ConsoleLogger c;
-	CRAP_LOG_INFO(crap::log_channel::log_opengl,"OpenGL-Test Startup.");
+    //typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::simple_format_policy,crap::writer_policy::console_writer_policy> ConsoleLogger;
+    //ConsoleLogger c;
+    //CRAP_LOG_INFO(crap::log_opengl,"OpenGL-Test Startup.");
 
 	crap::opengl::window_setup setup;
 	setup.title = "Funny Window";
@@ -49,7 +49,7 @@ int main()
 	setup.height = 768;
 	setup.multisampling_count = 8;
 	setup.opengl_version = 3.3f;
-	setup.opengl_profile = crap::opengl::profile::core;
+    setup.opengl_profile = crap::opengl::core;
 
     crap::opengl::window window( setup );
 	window.open();
@@ -74,12 +74,12 @@ int main()
 
 	crap::wavefront_file obj( "suzanne.obj" );
 
-	crap::opengl::simple_vbo vbo;
-	obj.generate_simple_vbo( &vbo );
+	crap::opengl::vbo vbo;
+	obj.generate_vbo( &vbo );
 
 	crap::opengl::program shader = crap::opengl::shader::link(
-		crap::opengl::shader::compile( "vertexshader_ape.vs", crap::opengl::vertex_shader ),
-		crap::opengl::shader::compile( "fragmentshader_ape.ps", crap::opengl::fragment_shader ), 0
+		crap::opengl::shader::compile( "vertexshader_normal.vs", crap::opengl::vertex_shader ),
+		crap::opengl::shader::compile( "fragmentshader_normal.ps", crap::opengl::fragment_shader ), 0
 		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
 
@@ -88,11 +88,16 @@ int main()
 	crap::opengl::uniform MatrixID = shader.uniform_location("MVP");
 	crap::opengl::uniform ViewMatrixID = shader.uniform_location("V");
 	crap::opengl::uniform ModelMatrixID = shader.uniform_location("M");
-	crap::opengl::uniform TextureID = shader.uniform_location("myTextureSampler");
-	crap::opengl::uniform LightID = shader.uniform_location("LightPosition_worldspace");
+	crap::opengl::uniform ModelView3x3MatrixID = shader.uniform_location("MV3x3");
+	crap::opengl::uniform DiffuseTextureID  = shader.uniform_location("DiffuseTextureSampler");
+	crap::opengl::uniform NormalTextureID  = shader.uniform_location("NormalTextureSampler");
+	crap::opengl::uniform SpecularTextureID  = shader.uniform_location("SpecularTextureSampler");
+	crap::opengl::uniform LightID  = shader.uniform_location("LightPosition_worldspace");
 
 	//load texture
-	crap::opengl::texture tex = crap::opengl::create_texture( "uvmap2.tga", crap::opengl::tga );
+	crap::opengl::texture DiffuseTexture = crap::opengl::create_texture( "uvmap2.tga", crap::opengl::tga );
+	crap::opengl::texture NormalTexture = crap::opengl::create_texture( "normalmap.tga", crap::opengl::tga );
+	crap::opengl::texture SpecularTexture = crap::opengl::create_texture( "specular.tga", crap::opengl::tga );
 
 	//setup buffers
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
@@ -106,6 +111,14 @@ int main()
 	crap::opengl::buffer normal_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	normal_buffer.bind();
 	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.normals[0] );
+
+	crap::opengl::buffer tangent_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
+	normal_buffer.bind();
+	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.tangents[0] );
+
+	crap::opengl::buffer binormal_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
+	normal_buffer.bind();
+	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.binormals[0] );
 
 	crap::opengl::buffer element_buffer( crap::opengl::element_array_buffer, crap::opengl::static_draw );
 	element_buffer.bind();
@@ -128,27 +141,37 @@ int main()
 		glm::mat4 ProjectionMatrix = getProjectionMatrix();
 		glm::mat4 ViewMatrix = getViewMatrix();
 		glm::mat4 ModelMatrix = glm::mat4(1.0);
+		glm::mat4 ModelViewMatrix = ViewMatrix * ModelMatrix;
+		glm::mat3 ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
 		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
 		shader.uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
 		shader.uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
 		shader.uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
+		shader.uniform_matrix3f_value(ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
 
 		glm::vec3 lightPos = glm::vec3(4,4,4);
 		shader.uniform_3f( LightID, lightPos.x, lightPos.y, lightPos.z);
 
 		// Bind our texture in Texture Unit 0
-		tex.activate();
-		tex.bind();
-		// Set our "myTextureSampler" sampler to user Texture Unit 0
-		shader.uniform_1i( TextureID, 0);
+		DiffuseTexture.activate();
+		DiffuseTexture.bind();
+		shader.uniform_1i( DiffuseTextureID, 0);
+
+		NormalTexture.activate();
+		NormalTexture.bind();
+		shader.uniform_1i( NormalTextureID, 1);
+
+		SpecularTexture.activate();
+		SpecularTexture.bind();
+		shader.uniform_1i( SpecularTextureID, 2);
 
         // 1rst attribute buffer : vertices
 		shader.vertex_attribute_array.enable(0);
 		vertex_buffer.bind();
 		shader.vertex_attribute_array.pointer( 0, 3, crap::opengl::gl_float, false, 0, (void*)0);
 
-        // 2nd attribute buffer : colors
+        // 2nd attribute buffer : uvs
         shader.vertex_attribute_array.enable(1);
 		uv_buffer.bind();
 		shader.vertex_attribute_array.pointer( 1, 2, crap::opengl::gl_float, false, 0, (void*)0);
@@ -157,6 +180,18 @@ int main()
         shader.vertex_attribute_array.enable(2);
 		normal_buffer.bind();
 		shader.vertex_attribute_array.pointer( 2, 3, crap::opengl::gl_float, false, 0, (void*)0);
+
+		// 4th attribute buffer : tangent
+        shader.vertex_attribute_array.enable(3);
+		tangent_buffer.bind();
+		shader.vertex_attribute_array.pointer( 3, 3, crap::opengl::gl_float, false, 0, (void*)0);
+
+		// 5th attribute buffer : binormal
+        shader.vertex_attribute_array.enable(4);
+		binormal_buffer.bind();
+		shader.vertex_attribute_array.pointer( 4, 3, crap::opengl::gl_float, false, 0, (void*)0);
+
+		element_buffer.bind();
 
 		// 4th run elemt fun
 		glDrawElements(
@@ -169,6 +204,8 @@ int main()
 		shader.vertex_attribute_array.disable(0);
 		shader.vertex_attribute_array.disable(1);
 		shader.vertex_attribute_array.disable(2);
+		shader.vertex_attribute_array.disable(3);
+		shader.vertex_attribute_array.disable(4);
 
 		window.swap();
 		window.poll_events();
@@ -176,7 +213,7 @@ int main()
 	}
 }
 
-//controls
+
 glm::mat4 ViewMatrix;
 glm::mat4 ProjectionMatrix;
 
@@ -186,17 +223,20 @@ glm::mat4 getViewMatrix(){
 glm::mat4 getProjectionMatrix(){
 	return ProjectionMatrix;
 }
+
+
 // Initial position : on +Z
 glm::vec3 position = glm::vec3( 0, 0, 5 ); 
-
 // Initial horizontal angle : toward -Z
-f32 horizontalAngle = 0.94f;
-
+float horizontalAngle = 0.9f;
 // Initial vertical angle : none
-f32 verticalAngle = 0.f;
-
+float verticalAngle = 0.0f;
 // Initial Field of View
-f32 initialFoV = 45.0f;
+float initialFoV = 45.0f;
+
+float speed = 3.0f; // 3 units / second
+float mouseSpeed = 0.005f;
+
 
 void computeMatricesFromInputs( crap::opengl_keyboard& keyboard, crap::opengl_mouse& mouse ){
 
@@ -211,7 +251,7 @@ void computeMatricesFromInputs( crap::opengl_keyboard& keyboard, crap::opengl_mo
 	horizontalAngle += mouseSpeed * mouse.movement().x;
 	verticalAngle   += mouseSpeed * mouse.movement().y;
 
-	// Direction : Spherical coordinates to Cartesian coordinates conversion
+		// Direction : Spherical coordinates to Cartesian coordinates conversion
 	glm::vec3 direction(
 		cos(verticalAngle) * sin(horizontalAngle), 
 		sin(verticalAngle),

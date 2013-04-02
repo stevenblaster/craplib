@@ -77,6 +77,8 @@ struct program
 
 	uniform uniform_location( const char* name );
 
+	void uniform_matrix3f_value( uniform id, u32 size, f32* ptr );
+
 	void uniform_matrix4f_value( uniform id, u32 count, f32* ptr );
 
 	void uniform_1i( uniform id, u32 count ); //TODO

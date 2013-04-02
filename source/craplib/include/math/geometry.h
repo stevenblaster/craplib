@@ -380,7 +380,8 @@ const T geometry<T>::lenght( const vector2<T>& vec2 )
 template<typename T>
 const T geometry<T>::lenght( const vector3<T>& vec3 )
 {
-    return crap::basemath<T>::sqrt( vec3.x*vec3.x + vec3.y*vec3.y + vec3.z*vec3.z );
+    //return crap::basemath<T>::sqrt( vec3.x*vec3.x + vec3.y*vec3.y + vec3.z*vec3.z 
+	return ::sqrt( vec3.x*vec3.x + vec3.y*vec3.y + vec3.z*vec3.z );
 }
 
 //! lenght vector4

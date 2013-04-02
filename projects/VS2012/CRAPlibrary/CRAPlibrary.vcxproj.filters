@@ -578,9 +578,6 @@
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglshader.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\include\opengl\wavefrontfile.cpp">
-      <Filter>Source Files\opengl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\opengldata.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
@@ -594,6 +591,9 @@
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglvbo.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\wavefrontfile.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>

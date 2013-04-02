@@ -33,7 +33,7 @@
 	crap::IntrusiveListNode* t; \
 	t = crap::logger_list.root.next; \
 	while(t != &crap::logger_list.root) { \
-		reinterpret_cast<crap::base_logger *>(reinterpret_cast<char *>(t) - crap::logger_list._offset)->log(channel,crap::log_type::log_info,__FILE__,__LINE__,msg,__VA_ARGS__); \
+        reinterpret_cast<crap::base_logger *>(reinterpret_cast<char *>(t) - crap::logger_list._offset)->log(channel,crap::log_info,__FILE__,__LINE__,msg,__VA_ARGS__); \
 		t = t->next; \
 	} \
 } while(0)
@@ -42,7 +42,7 @@
 	crap::IntrusiveListNode* t; \
 	t = crap::logger_list.root.next; \
 	while(t != &crap::logger_list.root) { \
-		reinterpret_cast<crap::base_logger *>(reinterpret_cast<char *>(t) - crap::logger_list._offset)->log(channel,crap::log_type::log_warn,__FILE__,__LINE__,msg,__VA_ARGS__); \
+        reinterpret_cast<crap::base_logger *>(reinterpret_cast<char *>(t) - crap::logger_list._offset)->log(channel,crap::log_warn,__FILE__,__LINE__,msg,__VA_ARGS__); \
 		t = t->next; \
 	} \
 } while(0)
@@ -51,7 +51,7 @@
 	crap::IntrusiveListNode* t; \
 	t = crap::logger_list.root.next; \
 	while(t != &crap::logger_list.root) { \
-		reinterpret_cast<crap::base_logger *>(reinterpret_cast<char *>(t) - crap::logger_list._offset)->log(channel,crap::log_type::log_error,__FILE__,__LINE__,msg,__VA_ARGS__); \
+        reinterpret_cast<crap::base_logger *>(reinterpret_cast<char *>(t) - crap::logger_list._offset)->log(channel,crap::log_error,__FILE__,__LINE__,msg,__VA_ARGS__); \
 		t = t->next; \
 	} \
 } while(0)
@@ -90,7 +90,7 @@ namespace filter_policy
 		bool filter(const size_t32 channel, const size_t32 type)
 		{
 			// no filter at all
-			return true;
+            return sizeof(channel)==sizeof(type);
 		}
 	};
 
@@ -98,7 +98,7 @@ namespace filter_policy
 	{
 		bool filter(const size_t32 channel, const size_t32 type)
 		{
-			return type <= (size_t32) CRAP_LOGGER_VERBOSITY_LEVEL;
+            return type <= (size_t32) CRAP_LOGGER_VERBOSITY_LEVEL && sizeof(channel)==sizeof(type);
 		}
 	};
 
@@ -106,7 +106,7 @@ namespace filter_policy
 	{
 		bool filter(const size_t32 channel, const size_t32 type)
 		{
-			return channel == (size_t32) CRAP_LOGGER_FILTER_CHANNEL;
+            return channel == (size_t32) CRAP_LOGGER_FILTER_CHANNEL && sizeof(channel)==sizeof(type);
 		}
 	};
 	

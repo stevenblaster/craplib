@@ -53,25 +53,37 @@ b8 vertex<T>::operator==( const vertex& other )
 	return position == other.position && uv == other.uv && normal == other.normal && tangent == other.tangent && binormal == other.binormal;
 }
 
-//
-//b8 simple_vertex_index::operator<( const simple_vertex_index& other )
-//{
-//	return index < other.index;
-//}
+
+b8 simple_vertex_index::operator<( const simple_vertex_index& other )
+{
+    return position < other.position && uv < other.uv && normal < other.normal;
+    //return index < other.index;
+}
 
 b8 simple_vertex_index::operator==( const simple_vertex_index& other )
 {
 	return position == other.position && uv == other.uv && normal == other.normal;
 }
 
-//b8 vertex_index::operator<( const vertex_index& other )
-//{
-//	return index < other.index;
-//}
+b8 simple_vertex_index::operator!=( const simple_vertex_index& other )
+{
+    return !(*this == other);
+}
+
+b8 vertex_index::operator<( const vertex_index& other )
+{
+    return position < other.position && uv < other.uv && normal < other.normal && tangent < other.tangent && binormal < other.binormal;
+    //return index < other.index;
+}
 
 b8 vertex_index::operator==( const vertex_index& other )
 {
 	return position == other.position && uv == other.uv && normal == other.normal && tangent == other.tangent && binormal == other.binormal;
+}
+
+b8 vertex_index::operator!=( const vertex_index& other )
+{
+    return !(*this == other);
 }
 
 } //ogl namespace

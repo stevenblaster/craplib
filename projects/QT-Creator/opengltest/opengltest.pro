@@ -6,6 +6,7 @@ CONFIG += opengl
 CONFIG += x11
 
 INCLUDEPATH += ../../../../CRAP/source/craplib/include/
+INCLUDEPATH += ../../../../CRAP/libraries/glm/
 LIBS += -lpthread
 LIBS += -ldl
 

@@ -15,7 +15,7 @@ INCLUDEPATH += ../../../../CRAP/libraries/glew/include/
 LIBS += -lpthread
 
 DEFINES += AL_ALEXT_PROTOTYPES
-DEFINES += _GNU_SOURCE=1
+//DEFINES += _GNU_SOURCE=1
 DEFINES += AL_LIBTYPE_STATIC
 DEFINES += _CRT_SECURE_NO_WARNINGS
 
@@ -97,7 +97,12 @@ SOURCES += \
     ../../../source/craplib/source/opengl/openglmouse.cpp \
     ../../../source/craplib/source/opengl/opengljoystick.cpp \
     ../../../source/craplib/source/opengl/openglshader.cpp \
-    ../../../libraries/glew/src/glew.c
+    ../../../libraries/glew/src/glew.c \
+    ../../../source/craplib/source/opengl/wavefrontfile.cpp \
+    ../../../source/craplib/source/opengl/openglvertex.cpp \
+    ../../../source/craplib/source/opengl/openglvbo.cpp \
+    ../../../source/craplib/source/opengl/opengltexture.cpp \
+    ../../../source/craplib/source/opengl/opengldata.cpp
 
 HEADERS += \
     ../../../source/craplib/include/audio/wavefile.h \
@@ -171,7 +176,12 @@ HEADERS += \
     ../../../source/craplib/include/opengl/openglmouse.h \
     ../../../libraries/openal/Alc/mixer_defs.h \
     ../../../source/craplib/include/opengl/opengljoystick.h \
-    ../../../source/craplib/include/opengl/openglshader.h
+    ../../../source/craplib/include/opengl/openglshader.h \
+    ../../../source/craplib/include/opengl/wavefrontfile.h \
+    ../../../source/craplib/include/opengl/openglvertex.h \
+    ../../../source/craplib/include/opengl/openglvbo.h \
+    ../../../source/craplib/include/opengl/opengltexture.h \
+    ../../../source/craplib/include/opengl/opengldata.h
 
 OTHER_FILES += \
     ../../../libraries/openal/Alc/hrtf_tables.inc

@@ -21,6 +21,7 @@
 
 #include "container/string.h"
 #include "files/file.h"
+#include "control/logger.h"
 #include "opengl/openglshader.h"
 
 //lib namespace
@@ -46,8 +47,8 @@ object shader::compile( const char* filename , shader_type type )
 	file source_file( filename );
 	CRAP_ASSERT_DEBUG( source_file.readable(), "Could not open file" );
 
-	static_string<2048> buffer;
-	source_file.read_text( buffer, 2048 );
+	static_string<4096> buffer;
+	source_file.read_text( buffer, 4096 );
 	source_file.close();
 
 	const char* c_text = buffer.cstring();
@@ -60,7 +61,7 @@ object shader::compile( const char* filename , shader_type type )
 
 	string512 info;
 	glGetShaderInfoLog(shader, 512, NULL, (GLchar*)&info );
-	CRAP_LOG_INFO(crap::log_channel::log_opengl,info.cstring());
+    //CRAP_LOG_INFO( crap::log_opengl, info.cstring() );
 	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Compiling failed" );
 
 	return shader;
@@ -86,7 +87,7 @@ program shader::link( object vs, object fs, object gs )
 
 	string512 info;
 	glGetProgramInfoLog(program, 1024, NULL, (GLchar*)&info );
-    CRAP_LOG_INFO(crap::log_channel::log_opengl,info.cstring());
+    //CRAP_LOG_INFO(crap::log_opengl,info.cstring());
 	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Linking shader program failed" );
 
 	return program;
@@ -126,6 +127,11 @@ void program::deactivate( void )
 uniform program::uniform_location( const char* name )
 {
 	return glGetUniformLocation(_id, name);
+}
+
+void program::uniform_matrix3f_value( uniform id, u32 size, f32* ptr )
+{
+	glUniformMatrix3fv(id._id, 1, GL_FALSE, ptr);
 }
 
 void program::uniform_matrix4f_value( uniform id, u32 size, f32* ptr )

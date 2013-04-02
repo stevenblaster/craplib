@@ -224,7 +224,6 @@
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alSource.c" />
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alState.c" />
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alThunk.c" />
-    <ClCompile Include="..\..\..\source\craplib\include\opengl\wavefrontfile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\audiodevice.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\wavefile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\container\bitmask.cpp" />
@@ -246,6 +245,7 @@
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglvbo.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglvertex.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\openglwindow.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\wavefrontfile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\runnable.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\scopelock.cpp" />

@@ -45,7 +45,7 @@
 
 //include control headers
 #include "control/breakpoints.h"
-#include "control/logger.h"
+//#include "control/logger.h"
 #include "control/asserts.h"
 
 //platform specific stuff
