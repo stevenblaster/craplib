@@ -208,3 +208,10 @@ lib/openal/build/*
 /libraries/glfw/examples
 
 /libraries/glfw/support
+
+binary
+
+build
+binary
+
+bin
