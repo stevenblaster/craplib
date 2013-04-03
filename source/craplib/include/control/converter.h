@@ -26,7 +26,7 @@
 #include <limits>
 
 #include "control/zero.h"
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 
 
 //lib namespace
@@ -1118,87 +1118,87 @@ inline f64 convert<u64, f64>( const u64& variable )
 }
 
 template<>
-inline crap::static_string<64> convert<i8, crap::static_string<64> >( const i8& variable )
+inline crap::fixed_string<64> convert<i8, crap::fixed_string<64> >( const i8& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIi8, variable);
-	return crap::static_string<64>( buffer );
+	return crap::fixed_string<64>( buffer );
 }
 
 template<>
-inline crap::static_string<64> convert<u8, crap::static_string<64> >( const u8& variable )
+inline crap::fixed_string<64> convert<u8, crap::fixed_string<64> >( const u8& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIu8, variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<i16, crap::static_string<64> >( const i16& variable )
+inline crap::fixed_string<64> convert<i16, crap::fixed_string<64> >( const i16& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIi16, variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<u16, crap::static_string<64> >( const u16& variable )
+inline crap::fixed_string<64> convert<u16, crap::fixed_string<64> >( const u16& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIu16, variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<i32, crap::static_string<64> >( const i32& variable )
+inline crap::fixed_string<64> convert<i32, crap::fixed_string<64> >( const i32& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIi32, variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<u32, crap::static_string<64> >( const u32& variable )
+inline crap::fixed_string<64> convert<u32, crap::fixed_string<64> >( const u32& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIu32, variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<f32, crap::static_string<64> >( const f32& variable )
+inline crap::fixed_string<64> convert<f32, crap::fixed_string<64> >( const f32& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%f", variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<i64, crap::static_string<64> >( const i64& variable )
+inline crap::fixed_string<64> convert<i64, crap::fixed_string<64> >( const i64& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIi64, variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline crap::static_string<64> convert<u64, crap::static_string<64> >( const u64& variable )
+inline crap::fixed_string<64> convert<u64, crap::fixed_string<64> >( const u64& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%" PRIu64, variable);
-	return crap::static_string<64>( buffer );
+	return crap::fixed_string<64>( buffer );
 }
 
 template<>
-inline crap::static_string<64> convert<f64, crap::static_string<64> >( const f64& variable )
+inline crap::fixed_string<64> convert<f64, crap::fixed_string<64> >( const f64& variable )
 {
 	c8 buffer[64];
 	sprintf(buffer, "%lf", variable);
-	return crap::static_string<64>( buffer);
+	return crap::fixed_string<64>( buffer);
 }
 
 template<>
-inline i8 convert< crap::static_string<64>, i8 >( const crap::static_string<64>& variable )
+inline i8 convert< crap::fixed_string<64>, i8 >( const crap::fixed_string<64>& variable )
 {
 	i8 buffer;
 	sscanf(&variable[0], "%" SCNi8, &buffer);
@@ -1206,7 +1206,7 @@ inline i8 convert< crap::static_string<64>, i8 >( const crap::static_string<64>&
 }
 
 template<>
-inline u8 convert< crap::static_string<64>, u8 >( const crap::static_string<64>& variable )
+inline u8 convert< crap::fixed_string<64>, u8 >( const crap::fixed_string<64>& variable )
 {
 	u8 buffer;
 	sscanf(&variable[0], "%"SCNu8, &buffer);
@@ -1214,7 +1214,7 @@ inline u8 convert< crap::static_string<64>, u8 >( const crap::static_string<64>&
 }
 
 template<>
-inline i16 convert< crap::static_string<64>, i16 >( const crap::static_string<64>& variable )
+inline i16 convert< crap::fixed_string<64>, i16 >( const crap::fixed_string<64>& variable )
 {
 	i16 buffer;
 	sscanf(&variable[0], "%" SCNi16, &buffer);
@@ -1222,7 +1222,7 @@ inline i16 convert< crap::static_string<64>, i16 >( const crap::static_string<64
 }
 
 template<>
-inline u16 convert< crap::static_string<64>, u16 >( const crap::static_string<64>& variable )
+inline u16 convert< crap::fixed_string<64>, u16 >( const crap::fixed_string<64>& variable )
 {
 	u16 buffer;
 	sscanf(&variable[0], "%" SCNu16, &buffer);
@@ -1230,7 +1230,7 @@ inline u16 convert< crap::static_string<64>, u16 >( const crap::static_string<64
 }
 
 template<>
-inline i32 convert< crap::static_string<64>, i32 >( const crap::static_string<64>& variable )
+inline i32 convert< crap::fixed_string<64>, i32 >( const crap::fixed_string<64>& variable )
 {
 	i32 buffer;
 	sscanf(&variable[0], "%" SCNi32, &buffer);
@@ -1238,7 +1238,7 @@ inline i32 convert< crap::static_string<64>, i32 >( const crap::static_string<64
 }
 
 template<>
-inline u32 convert< crap::static_string<64>, u32 >( const crap::static_string<64>& variable )
+inline u32 convert< crap::fixed_string<64>, u32 >( const crap::fixed_string<64>& variable )
 {
 	u32 buffer;
 	sscanf(&variable[0], "%" SCNu32, &buffer);
@@ -1246,7 +1246,7 @@ inline u32 convert< crap::static_string<64>, u32 >( const crap::static_string<64
 }
 
 template<>
-inline f32 convert< crap::static_string<64>, f32 >( const crap::static_string<64>& variable )
+inline f32 convert< crap::fixed_string<64>, f32 >( const crap::fixed_string<64>& variable )
 {
 	f32 buffer;
 	sscanf(&variable[0], "%f", &buffer);
@@ -1254,7 +1254,7 @@ inline f32 convert< crap::static_string<64>, f32 >( const crap::static_string<64
 }
 
 template<>
-inline i64 convert< crap::static_string<64>, i64 >( const crap::static_string<64>& variable )
+inline i64 convert< crap::fixed_string<64>, i64 >( const crap::fixed_string<64>& variable )
 {
 	i64 buffer;
 	sscanf(&variable[0], "%" SCNi64, &buffer);
@@ -1262,7 +1262,7 @@ inline i64 convert< crap::static_string<64>, i64 >( const crap::static_string<64
 }
 
 template<>
-inline u64 convert< crap::static_string<64>, u64 >( const crap::static_string<64>& variable )
+inline u64 convert< crap::fixed_string<64>, u64 >( const crap::fixed_string<64>& variable )
 {
 	u64 buffer;
 	sscanf(&variable[0], "%" SCNu64, &buffer);
@@ -1270,7 +1270,7 @@ inline u64 convert< crap::static_string<64>, u64 >( const crap::static_string<64
 }
 
 template<>
-inline f64 convert< crap::static_string<64>, f64 >( const crap::static_string<64>& variable )
+inline f64 convert< crap::fixed_string<64>, f64 >( const crap::fixed_string<64>& variable )
 {
 	f64 buffer;
 	sscanf(&variable[0], "%lf", &buffer);

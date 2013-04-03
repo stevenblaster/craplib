@@ -21,7 +21,7 @@
 #define CRAP_FILES_FILE_H
 
 #include <cstdio>
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 
 //lib namespace
 namespace crap
@@ -81,13 +81,13 @@ public:
 	void append_bytes( const T* buffer, size_t32 bytes, bool byte_wise = false);
 
 	template<size_t32 S>
-	void read_text( static_string<S>& str, size_t32 size, i32 char_position = -1 );
+	void read_text( fixed_string<S>& str, size_t32 size, i32 char_position = -1 );
 
 	template<size_t32 S>
-	void write_text( const static_string<S>& str, i32 char_position = -1 );
+	void write_text( const fixed_string<S>& str, i32 char_position = -1 );
 
 	template<size_t32 S>
-	void append_text( const static_string<S>& str );
+	void append_text( const fixed_string<S>& str );
 
 	size_t64 size( void );
 };
@@ -194,7 +194,7 @@ void file::append_bytes( const T* buffer, size_t32 bytes, bool byte_wise /* = fa
 }
 
 template<size_t32 S>
-void file::read_text( static_string<S>& str, size_t32 size, i32 char_position /*= -1*/ )
+void file::read_text( fixed_string<S>& str, size_t32 size, i32 char_position /*= -1*/ )
 {
     CRAP_ASSERT_DEBUG(size <= S, "Size bigger then buffer");
 
@@ -224,7 +224,7 @@ void file::read_text( static_string<S>& str, size_t32 size, i32 char_position /*
 }
 
 template<size_t32 S>
-void file::write_text( const static_string<S>& str, i32 char_position /*= -1*/ )
+void file::write_text( const fixed_string<S>& str, i32 char_position /*= -1*/ )
 {
     mode previous_state = _state;
     if(_state != write )
@@ -248,7 +248,7 @@ void file::write_text( const static_string<S>& str, i32 char_position /*= -1*/ )
 }
 
 template<size_t32 S>
-void file::append_text( const static_string<S>& str )
+void file::append_text( const fixed_string<S>& str )
 {
     mode previous_state = _state;
     if(_state != append )

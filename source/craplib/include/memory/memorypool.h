@@ -113,7 +113,7 @@ memory_pool::memory_pool(void) : _block_start(0), _biggest_block(0), _size(0), _
 }
 
 // constructor with initialization
-memory_pool::memory_pool(size_t32 size)
+memory_pool::memory_pool(size_t32 size) : _block_start(0), _biggest_block(0), _size(0), _current_size(0)
 {
 	init(size);
 }
@@ -121,7 +121,7 @@ memory_pool::memory_pool(size_t32 size)
 // initialization
 void memory_pool::init(size_t32 size)
 {
-	CRAP_ASSERT_DEBUG( _block_start = 0, "Memory pool already initialized" );
+	CRAP_ASSERT_DEBUG( _block_start == 0, "Memory pool already initialized" );
 
 	CRAP_ASSERT_DEBUG( size > sizeof(memory_block), "Size of memory pool is too low" );
 

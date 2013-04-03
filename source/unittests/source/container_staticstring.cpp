@@ -2,28 +2,28 @@
 #include "crap.h"
 
 //lib includes
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 
 namespace
 {
 
-crap::static_string<64>* _staticstring;
+crap::fixed_string<64>* _fixedstring;
 
 TEST(ContainerStaticstringTitle)
 {
-    std::cout << "Testing \"container/staticstring.h\"" << std::endl;
+    std::cout << "Testing \"container/fixedstring.h\"" << std::endl;
 }
 
 TEST(ContainerStaticstringConstruction)
 {
 	std::cout << "\tConstruction" << std::endl;
-	_staticstring = new crap::static_string<64>;
+	_fixedstring = new crap::fixed_string<64>;
 }
 
 TEST(StringCopyConstructorTest)
 {
 	std::cout << "\tdoing tests..." << std::endl;
-	crap::string64 testString2( *_staticstring );
+	crap::string64 testString2( *_fixedstring );
 	CHECK_EQUAL( (size_t32)0, testString2.size() );
 }
 
@@ -36,8 +36,8 @@ TEST(StringCstringConstructorTest)
 TEST(StringAssignmentOperator)
 {
 	crap::string64 testString2("IAmATest");
-	*_staticstring = testString2;
-	CHECK_EQUAL((size_t32)8,_staticstring->size());
+	*_fixedstring = testString2;
+	CHECK_EQUAL((size_t32)8,_fixedstring->size());
 }
 
 TEST(StringCstringAssignmentOperator)
@@ -77,8 +77,8 @@ TEST(StringComparisionTest)
 
 	testString2 == testString3;
 
-	CHECK_EQUAL( true, testString2 != *_staticstring );
-	CHECK_EQUAL( true, testString3 == *_staticstring );
+	CHECK_EQUAL( true, testString2 != *_fixedstring );
+	CHECK_EQUAL( true, testString3 == *_fixedstring );
 	CHECK_EQUAL( false, testString2 == testString3 );
 }
 
@@ -175,7 +175,7 @@ TEST(StringSplitAndMergeTest)
 TEST(ContainerStaticstringDestruction)
 {
 	std::cout << "\tDestruction" << std::endl;
-	delete 	_staticstring;
+	delete 	_fixedstring;
 }
 
 }   // namespace

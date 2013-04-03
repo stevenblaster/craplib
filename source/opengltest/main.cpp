@@ -1,9 +1,9 @@
 #include "crap.h"
-#include "opengl/openglwindow.h"
+#include "opengl/window.h"
 #include "opengl/opengldata.h"
-#include "opengl/openglkeyboard.h"
-#include "opengl/openglmouse.h"
-#include "opengl/opengljoystick.h"
+#include "opengl/keyboard.h"
+#include "opengl/mouse.h"
+#include "opengl/joystick.h"
 #include "opengl/openglshader.h"
 #include "opengl/opengltexture.h"
 #include "opengl/openglvertex.h"
@@ -58,6 +58,9 @@ int main()
 	crap::opengl_mouse mouse;
 	crap::opengl_joystick joy;
 
+	mouse.set_position( crap::vector2i(1024/2, 768/2) );
+	mouse.movement();
+
 	crap::audiodevice audio_device;
 	crap::wave_file wav( "audiofile.wav" );
 
@@ -69,13 +72,8 @@ int main()
 	// Cull triangles which normal is not towards the camera
 	glEnable(GL_CULL_FACE);
 
-	crap::opengl::vertex_array vert_array = crap::opengl::vertex_array();
+	crap::opengl::vertex_array vert_array; // = crap::opengl::vertex_array();
 	vert_array.bind();
-
-	crap::wavefront_file obj( "suzanne.obj" );
-
-	crap::opengl::vbo vbo;
-	obj.generate_vbo( &vbo );
 
 	crap::opengl::program shader = crap::opengl::shader::link(
 		crap::opengl::shader::compile( "vertexshader_normal.vs", crap::opengl::vertex_shader ),
@@ -83,7 +81,7 @@ int main()
 		//crap::opengl::shader::compile( "geometryshader.gs", crap::opengl::geometry_shader )
 	);
 
-
+	shader.activate();
 	// Get a handle for our uniforms in shader
 	crap::opengl::uniform MatrixID = shader.uniform_location("MVP");
 	crap::opengl::uniform ViewMatrixID = shader.uniform_location("V");
@@ -99,26 +97,31 @@ int main()
 	crap::opengl::texture NormalTexture = crap::opengl::create_texture( "normalmap.tga", crap::opengl::tga );
 	crap::opengl::texture SpecularTexture = crap::opengl::create_texture( "specular.tga", crap::opengl::tga );
 
+	crap::geometry_file obj( "cube.obj" );
+
+	crap::opengl::vbo vbo;
+	obj.generate_vbo( &vbo );
+
 	//setup buffers
 	crap::opengl::buffer vertex_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	vertex_buffer.bind();
-	vertex_buffer.set_data( vbo.vertices_size*3*sizeof(crap::vector3f), &vbo.positions[0] );
+	vertex_buffer.set_data( vbo.vertices_size*sizeof(crap::vector3f), &vbo.positions[0] );
 
 	crap::opengl::buffer uv_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	uv_buffer.bind();
-	uv_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector2f), &vbo.uvs[0] );
+	uv_buffer.set_data( vbo.vertices_size*sizeof(crap::vector2f), &vbo.uvs[0] );
 
 	crap::opengl::buffer normal_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	normal_buffer.bind();
-	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.normals[0] );
+	normal_buffer.set_data( vbo.vertices_size*sizeof(crap::vector3f), &vbo.normals[0] );
 
 	crap::opengl::buffer tangent_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	normal_buffer.bind();
-	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.tangents[0] );
+	normal_buffer.set_data( vbo.vertices_size*sizeof(crap::vector3f), &vbo.tangents[0] );
 
 	crap::opengl::buffer binormal_buffer( crap::opengl::array_buffer, crap::opengl::static_draw );
 	normal_buffer.bind();
-	normal_buffer.set_data( vbo.vertices_size *3*sizeof(crap::vector3f), &vbo.binormals[0] );
+	normal_buffer.set_data( vbo.vertices_size*sizeof(crap::vector3f), &vbo.binormals[0] );
 
 	crap::opengl::buffer element_buffer( crap::opengl::element_array_buffer, crap::opengl::static_draw );
 	element_buffer.bind();
@@ -127,6 +130,9 @@ int main()
 	//play sound
 	wav.play( crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0), crap::vector3f(0,0,0),
 		crap::vector3f(0,0,-1), crap::vector3f(0,1,0) );
+
+	// Dark blue background
+	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	//loop
 	while( !keyboard.is_pressed( crap::opengl_keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::opengl_mouse::button_1) )
@@ -193,7 +199,7 @@ int main()
 
 		element_buffer.bind();
 
-		// 4th run elemt fun
+		// 6th run elemt fun
 		glDrawElements(
 			GL_TRIANGLES,      // mode
 			vbo.index_size,    // count

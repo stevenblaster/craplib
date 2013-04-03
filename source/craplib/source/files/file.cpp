@@ -21,7 +21,7 @@
 #include <sys/stat.h>
 #include <fstream>
 
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 #include "files/file.h"
 
 

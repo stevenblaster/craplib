@@ -24,7 +24,7 @@
 #define CRAP_CONTROL_LOGGER_H
 
 #include "crap.h"
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 #include "config/config_types.h"
 #include "config/config_logger.h"
 
@@ -76,7 +76,7 @@ namespace crap
 {
 	
 //the current maximum is 10 (i dont think there is need for more)
-const crap::static_string<CRAP_LOGGER_CHANNEL_SIZE> channel_string[] = 
+const crap::fixed_string<CRAP_LOGGER_CHANNEL_SIZE> channel_string[] = 
 {
 	"[CORE    ]",
 	"[MEMORY  ]",

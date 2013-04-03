@@ -18,7 +18,7 @@
 ////////////////////////////////////////////////////////
 #include "crap.h"
 
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 #include "control/cpuinfo.h"
 
 namespace crap

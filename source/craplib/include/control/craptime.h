@@ -22,7 +22,7 @@
 #ifndef CRAP_CONTROL_TIME_H
 #define CRAP_CONTROL_TIME_H
 
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 
 //lib namespace
 namespace crap

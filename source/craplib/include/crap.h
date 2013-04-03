@@ -42,6 +42,7 @@
 #include "config/config_network.h"
 #include "config/config_files.h"
 #include "config/config_logger.h"
+#include "config/config_sound.h"
 
 //include control headers
 #include "control/breakpoints.h"

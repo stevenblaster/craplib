@@ -25,7 +25,7 @@
 //macro for stopping at checkpoints
 #define CRAP_THREAD_CHECKPOINT() if( _stopRunnable ) return 0x00
 
-#include "container/staticstring.h"
+#include "container/fixedstring.h"
 
 //lib namespace
 namespace crap
