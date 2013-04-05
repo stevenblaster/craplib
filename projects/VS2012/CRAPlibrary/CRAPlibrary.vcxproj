@@ -91,7 +91,6 @@
     <ClInclude Include="..\..\..\libraries\glfw\lib\internal.h" />
     <ClInclude Include="..\..\..\libraries\glfw\lib\win32\platform.h" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\audiodevice.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\audio\test.h" />
     <ClInclude Include="..\..\..\source\craplib\include\audio\wavefile.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_compilers.h" />
     <ClInclude Include="..\..\..\source\craplib\include\config\config_endianness.h" />
@@ -153,10 +152,13 @@
     <ClInclude Include="..\..\..\source\craplib\include\network\networkheaders.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\packet.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\sockets.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\buffer.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\controller.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\keyboard.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\mouse.h" />
     <ClInclude Include="..\..\..\source\craplib\include\opengl\renderwindow.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\shader.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\texture.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\functorthread.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\mutex.h" />
     <ClInclude Include="..\..\..\source\craplib\include\threading\runnable.h" />
@@ -223,7 +225,6 @@
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alState.c" />
     <ClCompile Include="..\..\..\libraries\openal\OpenAL32\alThunk.c" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\audiodevice.cpp" />
-    <ClCompile Include="..\..\..\source\craplib\source\audio\test.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\audio\wavefile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\container\bitmask.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\control\cpuinfo.cpp" />
@@ -234,13 +235,17 @@
     <ClCompile Include="..\..\..\source\craplib\source\files\file.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\files\geometryfile.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\files\imagefile.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\memory\memorypool.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip6.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\network\networkheaders.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\buffer.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\controller.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\keyboard.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\mouse.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\opengl\renderwindow.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\shader.cpp" />
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\texture.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\mutex.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\runnable.cpp" />
     <ClCompile Include="..\..\..\source\craplib\source\threading\scopelock.cpp" />

@@ -89,14 +89,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\SPG\contentmanager.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\indexedgeometry.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\geometryfile.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\geometrycontent.cpp" />
     <ClCompile Include="..\..\..\source\SPG\main.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\sbo.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\shaderconent.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\shaderfile.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\tbo.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\texturecontent.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\texturefile.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\vbo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\SPG\contentmanager.h" />
-    <ClInclude Include="..\..\..\source\SPG\indexgeometry.h" />
+    <ClInclude Include="..\..\..\source\SPG\geometryfile.h" />
+    <ClInclude Include="..\..\..\source\SPG\geometrycontent.h" />
     <ClInclude Include="..\..\..\source\SPG\precompiled.h" />
+    <ClInclude Include="..\..\..\source\SPG\sbo.h" />
+    <ClInclude Include="..\..\..\source\SPG\shadercontent.h" />
+    <ClInclude Include="..\..\..\source\SPG\shaderfile.h" />
     <ClInclude Include="..\..\..\source\SPG\stringhash.h" />
+    <ClInclude Include="..\..\..\source\SPG\tbo.h" />
+    <ClInclude Include="..\..\..\source\SPG\texturecontent.h" />
+    <ClInclude Include="..\..\..\source\SPG\texturefile.h" />
+    <ClInclude Include="..\..\..\source\SPG\vbo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

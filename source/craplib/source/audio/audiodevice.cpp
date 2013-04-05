@@ -17,6 +17,9 @@
 ////////////////////////////////////////////////////////
 #include "crap.h"
 
+#include "AL/al.h"
+#include "AL/alc.h"
+
 #include "audio/audiodevice.h"
 
 //lib namespace

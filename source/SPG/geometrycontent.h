@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef INDEXGEOMETRY_H
-#define INDEXGEOMETRY_H
+#ifndef GEOMETRYCONTENT_H
+#define GEOMETRYCONTENT_H
 
 //predeclare
 namespace crap
@@ -12,7 +12,7 @@ typedef vector3<f32> vector3f;
 typedef vector2<f32> vector2f;
 }
 
-struct indexed_geometry
+struct geometry_content
 {
 	size_t32 indices_size;
 	size_t32 vertices_size;
@@ -24,8 +24,7 @@ struct indexed_geometry
 	crap::vector3f* tangents;
 	crap::vector3f* binormals;
 
-	indexed_geometry( void );
-	~indexed_geometry( void );
+	geometry_content( void );
 };
 
-#endif //INDEXGEOMETRY_H
+#endif //GEOMETRYCONTENT_H

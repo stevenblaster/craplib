@@ -330,11 +330,17 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\controller.h">
       <Filter>Header Files\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\audio\test.h">
-      <Filter>Header Files\audio</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\config\config_sound.h">
       <Filter>Header Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\buffer.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\texture.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\shader.h">
+      <Filter>Header Files\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -578,8 +584,17 @@
     <ClCompile Include="..\..\..\source\craplib\source\opengl\renderwindow.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\audio\test.cpp">
-      <Filter>Source Files\audio</Filter>
+    <ClCompile Include="..\..\..\source\craplib\source\memory\memorypool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\buffer.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\texture.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\shader.cpp">
+      <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

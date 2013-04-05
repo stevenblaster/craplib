@@ -34,7 +34,7 @@ image_file::image_file( const string256& filename , file_type type  ) : _data(0)
 	else if( type == bmp )
 		load_bmp( filename );
 	else
-		CRAP_ASSERT_ERROR( "Only TGA supported yet" );
+		CRAP_ASSERT_ERROR( "Only TGA and BMP supported yet" );
 }
 
 image_file::~image_file( void )
@@ -105,6 +105,13 @@ void image_file::load_bmp( const string256& str )
 	_bpp = 24;
 	_size = head.width * head.height * 3;
 	_data = dat;
+}
+
+int image_file::load_glfw_tga( const string256& str, void* data )
+{
+	GLFWimage* img = (GLFWimage*) data;
+	i32 result = glfwReadImage( str.cstring() , img, 0 );
+	return result;
 }
 
 } //crap lib namespace

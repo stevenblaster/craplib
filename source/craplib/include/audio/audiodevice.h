@@ -20,9 +20,6 @@
 #ifndef CRAP_AUDIODEVICE_H
 #define CRAP_AUDIODEVICE_H
 
-#include "AL/al.h"
-#include "AL/alc.h"
-
 //lib namespace
 namespace crap
 {
