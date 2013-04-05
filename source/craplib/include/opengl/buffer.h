@@ -71,6 +71,17 @@ struct buffer
 	u32 _usage;
 };
 
+struct vertex_array
+{
+	u32 _id;
+	size_t32 _size;
+
+	void bind( void );
+
+	vertex_array( size_t32 size = 1 );
+	~vertex_array( void );
+};
+
 } // lib namespace
 
 #endif //CRAP_BUFFER_H

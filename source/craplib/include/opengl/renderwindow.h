@@ -25,11 +25,6 @@
 #include "math/vector2.h"
 #include "math/vector4.h"
 
-#if defined(CRAP_PLATFORM_WIN)
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "glu32.lib")
-#endif
-
 //lib namespace
 namespace crap
 {

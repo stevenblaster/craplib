@@ -1,8 +1,18 @@
 #include "precompiled.h"
 
+#if defined( CRAP_PLATFORM_WIN )
+#include <gl/GL.h>
+#include <gl/GLU.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
+
 #include "opengl/renderwindow.h"
 #include "opengl/keyboard.h"
 #include "opengl/mouse.h"
+
+#include "opengl/buffer.h"
 
 #include "contentmanager.h"
 #include "geometrycontent.h"
@@ -36,6 +46,17 @@ int main( void )
 	content_manager cm;
 	cm.init( "spg.ini" );
 
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS); 
+
+	// Cull triangles which normal is not towards the camera
+	glEnable(GL_CULL_FACE);
+
+	crap::vertex_array vert_array;
+	vert_array.bind();
+
 	//test: load vbo onto GPU
 	vbo cube_vbo( "cube", &cm, vbo::static_draw );
 
@@ -43,7 +64,7 @@ int main( void )
 	tbo cube_tbo( "color", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
-	sbo cube_sbo( "vertex_ape", "fragment_ape", &cm );
+	sbo cube_sbo( "vertex_ck", "fragment_ck", &cm );
 
 	//while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	//{

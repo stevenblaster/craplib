@@ -24,6 +24,20 @@
 #include "GL/glew.h"
 #include "GL/glfw.h"
 
+#if defined( CRAP_PLATFORM_WIN )
+#include <gl/GL.h>
+#include <gl/GLU.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
+
+
+#if defined(CRAP_PLATFORM_WIN)
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glu32.lib")
+#endif
+
 #include "container/fixedstring.h"
 #include "opengl/renderwindow.h"
 

@@ -19,7 +19,7 @@
 
 #include "GL/glew.h"
 
-#include "container/string.h"
+#include "container/fixedstring.h"
 #include "files/file.h"
 #include "opengl/shader.h"
 
@@ -27,7 +27,7 @@
 namespace crap
 {
 
-object shader::compile( void* data , shader_type type ) 
+object shader::compile( const c8* data , shader_type type ) 
 {
 	u32 type_macro = 0;
 	if( type == vertex_shader )
@@ -39,9 +39,7 @@ object shader::compile( void* data , shader_type type )
 
 	GLuint shader = glCreateShader( type_macro );
 
-	const char* c_text = (const char*) data;
-
-	glShaderSource(shader, 1, &c_text, NULL);
+	glShaderSource(shader, 1, &data, NULL);
     glCompileShader(shader);
 
 	GLint result = GL_FALSE;
@@ -50,7 +48,7 @@ object shader::compile( void* data , shader_type type )
 	string512 info;
 	glGetShaderInfoLog(shader, 512, NULL, (GLchar*)&info );
 	std::cout << info << std::endl;
-	std::cout << c_text << std::endl;
+	//std::cout << data << std::endl;
 	CRAP_ASSERT_DEBUG( result != GL_FALSE, "Compiling failed" );
 
 	return shader;
@@ -100,7 +98,8 @@ object::~object( void )
 
 program::~program( void )
 {
-	glDeleteProgram(_id);
+	if(_id != 0)
+		glDeleteProgram(_id);
 }
 
 void program::activate( void )

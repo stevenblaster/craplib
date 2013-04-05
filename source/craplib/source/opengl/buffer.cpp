@@ -116,4 +116,20 @@ void buffer::set_data( size_t32 size, void* data )
 	glBufferData( _type, size, data, _usage );
 }
 
+vertex_array::vertex_array( size_t32 size /* = 1*/ ) : _id(0), _size(size)
+{
+	glGenVertexArrays(size, &_id);
+}
+
+vertex_array::~vertex_array( void )
+{
+	glDeleteVertexArrays(_size, &_id );
+}
+
+void vertex_array::bind( void )
+{
+	glBindVertexArray(_id);
+}
+
+
 } //namespace crap

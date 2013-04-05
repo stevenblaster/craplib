@@ -3,10 +3,7 @@
 #ifndef SBO_H
 #define SBO_H
 
-namespace crap
-{
-	struct program;
-}
+#include "opengl/shader.h"
 
 class content_manager;
 
@@ -25,7 +22,7 @@ public:
 	crap::program* operator->( void );
 
 private:
-	crap::program* _program;
+	crap::program _program;
 };
 
 #endif //SBO_H

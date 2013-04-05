@@ -18,7 +18,7 @@ public:
 	shader_file( const crap::string256& filename , crap::memory_pool* pool  );
 	~shader_file( void );
 
-	u8* data;
+	crap::fixed_string<4096> data;
 	size_t32 size;
 
 	void create_shader_content( shader_content* content );

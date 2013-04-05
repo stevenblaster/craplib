@@ -93,7 +93,7 @@ struct program
 
 struct shader
 {
-	static object compile( void* data , shader_type type );
+	static object compile( const c8* data , shader_type type );
 	static program link( object vs, object fs, object gs );
 
 	static void delete_object( object obj );

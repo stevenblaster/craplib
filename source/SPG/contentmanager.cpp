@@ -206,7 +206,7 @@ void content_manager::save_binary( u32 str_hash, void* ptr, type_name type )
 		u32 offset = 0;
 		memcpy( buffer + offset, &sdr_mem->size, sizeof(size_t32) );
 		offset += sizeof(size_t32);
-		memcpy( buffer + offset, sdr_mem->data, sdr_mem->size );
+		memcpy( buffer + offset, &sdr_mem->data, sdr_mem->size );
 
 		binary_file.write_bytes( buffer, total_size );
 		binary_file.close();
@@ -302,8 +302,8 @@ void content_manager::load_binary( u32 str_hash, void* ptr,  type_name type )
 		memcpy( &sdr_mem->size, buffer + offset, sizeof(size_t32) );
 		offset += sizeof(size_t32);
 
-		sdr_mem->data = (u8*)_content_pool->allocate( sdr_mem->size );
-		memcpy( sdr_mem->data, buffer + offset, sdr_mem->size );
+		sdr_mem->data = (c8*)_content_pool->allocate( sdr_mem->size );
+		memcpy( &sdr_mem->data, buffer + offset, sdr_mem->size );
 
 		_content_pool->deallocate( buffer );
 
@@ -355,7 +355,7 @@ void content_manager::delete_content( const crap::string64& id, void* ptr, type_
 	if( type == type_name::shader )
 	{
 		shader_content* sc = (shader_content*) ptr;
-		_content_pool->deallocate( sc->data );
+		//_content_pool->deallocate( sc->data );
 		return;
 	}
 }
