@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "opengl/renderwindow.h"
+#include "opengl/setup.h"
 #include "opengl/keyboard.h"
 #include "opengl/mouse.h"
 #include "opengl/buffer.h"
@@ -47,9 +48,9 @@ int main( void )
 	crap::mouse mouse;
 
 	// temporary
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
-	glEnable(GL_CULL_FACE);
+	crap::opengl::enable(crap::opengl::depth_test);
+	crap::opengl::setDepthComparison(crap::opengl::less);
+	crap::opengl::enable(crap::opengl::cull_face);
 
 	//create contentmanager
 	content_manager cm;
@@ -87,12 +88,12 @@ int main( void )
 	glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
 
 	// temporary
-	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+	crap::opengl::clearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	{
 		//temporary
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		crap::opengl::clear(crap::opengl::color_depth_buffer);
 
 		//activate shader porgram and connect data
 		cube_sbo->activate();
@@ -113,13 +114,13 @@ int main( void )
 		cube_sbo->vertex_attribute_array.pointer( 1, 2, crap::gl_float, false, 0, (void*)0);
 
 		//draw the fuck
-		cube_vbo.bind_buffer( vbo::indicies );
+		cube_vbo.bind_buffer( vbo::indicies );/*
 		glDrawElements(
 			GL_TRIANGLES,      // mode
 			cube_vbo.indicies_size,    // count
 			GL_UNSIGNED_SHORT,   // type
 			(void*)0           // element array buffer offset
-		);
+		);*/
 
 		//disable data define stuff
 		cube_sbo->vertex_attribute_array.disable(0);

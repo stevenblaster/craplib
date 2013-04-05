@@ -342,6 +342,9 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\shader.h">
       <Filter>Header Files\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\opengl\setup.h">
+      <Filter>Header Files\opengl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp">
@@ -594,6 +597,9 @@
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\shader.cpp">
+      <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\opengl\setup.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
   </ItemGroup>
