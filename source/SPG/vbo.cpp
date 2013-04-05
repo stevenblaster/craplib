@@ -9,12 +9,15 @@
 #include "vbo.h"
 
 
-vbo::vbo( const crap::string64& id, content_manager* cm, draw_type type )
+vbo::vbo( const crap::string64& id, content_manager* cm, draw_type type ) : indicies_size(0), vertices_size(0)
 {
 	crap::buffer::buffer_usage bu = ( type == static_draw ) ? crap::buffer::static_draw : crap::buffer::dynamic_draw;
 
 	geometry_content ig;
 	cm->create_content( id , &ig, type_name::geometry );
+
+	indicies_size = ig.indices_size;
+	vertices_size = ig.vertices_size;
 
 	_indicies_buffer.init( crap::buffer::element_array_buffer, bu );
 	_indicies_buffer.bind();

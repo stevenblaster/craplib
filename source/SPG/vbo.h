@@ -30,8 +30,11 @@ public:
 
 	void bind_buffer( buffer_type type );
 
-private:
+	size_t32 indicies_size;
+	size_t32 vertices_size;
 
+private:
+	
 	crap::buffer _indicies_buffer;
 	crap::buffer _vertices_buffer;
 	crap::buffer _uvs_buffer;
