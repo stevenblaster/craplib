@@ -81,7 +81,7 @@ int main( void )
 	//tbo normal_tbo( "specular", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
-	sbo cube_sbo( "vertex_texture_only", "fragment_texture_only", &cm );
+	sbo cube_sbo( "vertex_std", "fragment_std", &cm );
 
 	//get stuff from shader program
 	crap::uniform MatrixID = cube_sbo->uniform_location("MVP");
