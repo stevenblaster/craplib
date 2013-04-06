@@ -69,6 +69,26 @@ namespace crap
 			color_depth_stencilbuffer
 		};
 
+		enum draw_mode
+		{
+			points,
+			line_strip, 
+			line_loop, 
+			lines,
+			triangle_strip,
+			triangle_fan,
+			triangles,
+			triangle_strip_adjacency,
+			triangles_adjacency
+		};
+
+		enum buffer_type
+		{
+			unsigned_byte,
+			unsigned_short,
+			unsigned_int
+		};
+
 		void enable(graphics_settings id);
 		void disable(graphics_settings id);
 
@@ -78,6 +98,8 @@ namespace crap
 		void clearColor(float red, float green, float blue, float alpha);
 
 		void setDepthComparison(depth_comparison id);
+
+		void draw_elements(draw_mode draw_mode_id, size_t32 count, buffer_type buffer_type_id, void* offset = 0);
 
 	}
 }
