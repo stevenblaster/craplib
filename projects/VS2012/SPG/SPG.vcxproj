@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\SPG\camera.cpp" />
     <ClCompile Include="..\..\..\source\SPG\contentmanager.cpp" />
     <ClCompile Include="..\..\..\source\SPG\geometryfile.cpp" />
     <ClCompile Include="..\..\..\source\SPG\geometrycontent.cpp" />
@@ -101,6 +102,7 @@
     <ClCompile Include="..\..\..\source\SPG\vbo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\source\SPG\camera.h" />
     <ClInclude Include="..\..\..\source\SPG\contentmanager.h" />
     <ClInclude Include="..\..\..\source\SPG\geometryfile.h" />
     <ClInclude Include="..\..\..\source\SPG\geometrycontent.h" />

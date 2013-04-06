@@ -10,7 +10,7 @@ SET(CRAPLIB_PATH ${CMAKE_SOURCE_DIR}/../libraries)
 include(ExternalProject)
 
 set(OpenAL_args
-	-DALSOFT_EXAMPLES=OFF -DALSOFT_UTILS=OFF -DFORCE_STATIC_VCRT=OFF	
+	-DALSOFT_EXAMPLES=OFF -DALSOFT_UTILS=OFF -DLIBTYPE=STATIC
 )
 
 if(WIN32)
@@ -39,13 +39,13 @@ ExternalProject_Add(openal
 ################################################
 
 OPTION(CRAP_BUILD_UNITTEST "Build unit tests" OFF)
-
 OPTION(CRAP_BUILD_EXAMPLES "Build unit tests" OFF)
 
 
 IF(CRAP_BUILD_EXAMPLES)
     ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/opengltest)
     ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/performancetests)
+	ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/SPG)
 ENDIF(CRAP_BUILD_EXAMPLES)
 
 IF(CRAP_BUILD_UNITTEST)
@@ -98,10 +98,7 @@ ENDIF(LINUX)
 
 ####
 #   EXTERNAL DEPENDENCIES
-#   FIXME: CHECK DIFFERENT PLATFORM DEPENDENCIES
-###
-
-SET(CRAPLIB_PATH ${CMAKE_SOURCE_DIR}/../libraries)
+####
 
 #####################################
 #         Adding include dirs       #
@@ -133,27 +130,6 @@ INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/glew/include/)
 #####################################
 #        Adding GLFW sources        #
 #####################################
-
-SET(GLFW_PLATFORM_HEADER
-#	"../libraries/glfw/lib/internal.h"
-)
-
-IF(WIN32)
-	SET(GLFW_PLATFORM_HEADER
-		${GLFW_PLATFORM_HEADER}
-	#	"../libraries/glfw/lib/win32/platform.h"
-	)
-ELSEIF(APPLE)
-	SET(GLFW_PLATFORM_HEADER
-		${GLFW_PLATFORM_HEADER}
-		"../libraries/glfw/lib/cocoa/platform.h"
-	)
-ELSE(WIN32)
-	SET(GLFW_PLATFORM_HEADER
-		${GLFW_PLATFORM_HEADER}
-		"../libraries/glfw/lib/x11/platform.h"
-	)
-ENDIF(WIN32)
 
 SET(GLFW_SOURCES
     "../libraries/glfw/lib/window.c"
@@ -250,18 +226,31 @@ SET(SOURCES
 
 SET(HEADERS
     ${HEADERS}
-    ${CRAPLIB_PATH}/glfw/lib/internal.h
-	${GLFW_PLATFORM_HEADER}
 )
-
-#########################################################################
 
 #####################################
 #           Creating Lib            #
 #####################################
 ADD_LIBRARY(crap ${SOURCES} ${HEADERS})
-if(WIN32)
 TARGET_LINK_LIBRARIES(crap OpenAL32)
-else()
-TARGET_LINK_LIBRARIES(crap OpenAL32)
-endif()
+
+IF(MSVC)
+### SET VISUAL STUDIO FILTERS
+SOURCE_GROUP("source" FILES ${SOURCES})
+SOURCE_GROUP("source\\audio" REGULAR_EXPRESSION ".*/source/audio/.*[;]*" FILES ${SOURCES})
+SOURCE_GROUP("source\\container" REGULAR_EXPRESSION ".*/source/container/.*" FILES ${SOURCES})
+SOURCE_GROUP("source\\control" REGULAR_EXPRESSION ".*/source/control/.*" FILES ${SOURCES})
+SOURCE_GROUP("source\\files" REGULAR_EXPRESSION ".*/source/files/.*" FILES ${SOURCES})
+SOURCE_GROUP("source\\network" REGULAR_EXPRESSION ".*/source/network/.*" FILES ${SOURCES})
+SOURCE_GROUP("source\\opengl" REGULAR_EXPRESSION ".*/source/opengl/.*" FILES ${SOURCES})
+SOURCE_GROUP("source\\threading" REGULAR_EXPRESSION ".*/source/threading/.*" FILES ${SOURCES})
+
+SOURCE_GROUP("include" FILES ${HEADERS})
+SOURCE_GROUP("include\\audio" REGULAR_EXPRESSION ".*/audio/.*" FILES ${HEADERS})
+SOURCE_GROUP("include\\container" REGULAR_EXPRESSION ".*/container/.*" FILES ${HEADERS})
+SOURCE_GROUP("include\\control" REGULAR_EXPRESSION ".*/control/.*" FILES ${HEADERS})
+SOURCE_GROUP("include\\files" REGULAR_EXPRESSION ".*/files/.*" FILES ${HEADERS})
+SOURCE_GROUP("include\\network" REGULAR_EXPRESSION ".*/network/.*" FILES ${HEADERS})
+SOURCE_GROUP("include\\opengl" REGULAR_EXPRESSION ".*/opengl/.*" FILES ${HEADERS})
+SOURCE_GROUP("include\\threading" REGULAR_EXPRESSION ".*/threading/.*" FILES ${HEADERS})
+ENDIF(MSVC)

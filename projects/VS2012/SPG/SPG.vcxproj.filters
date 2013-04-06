@@ -54,6 +54,9 @@
     <ClCompile Include="..\..\..\source\SPG\sbo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\SPG\camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\SPG\precompiled.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files\content</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\SPG\sbo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\SPG\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
