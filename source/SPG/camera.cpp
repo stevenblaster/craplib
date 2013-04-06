@@ -1,5 +1,4 @@
 
-
 #include "camera.h"
 
 camera::camera()
@@ -30,14 +29,16 @@ void camera::set_position(const glm::vec3 position)
 void camera::up()
 {
 	update = true;
-	glm::vec3 dir(0.0f, 0.01f, 0.0f);
+	glm::vec3 dir = get_up();
+	dir *= 0.01f;
 	move(dir);
 }
 
 void camera::down()
 {
 	update = true;
-	glm::vec3 dir(0.0f, -0.01f, 0.0f);
+	glm::vec3 dir = get_up();
+	dir *= -0.01f;
 	move(dir);
 }
 
@@ -61,7 +62,7 @@ void camera::forward()
 {
 	update = true;
 	glm::vec3 dir = get_lookat();
-	//dir *= 0.01f;
+	dir *= 0.01f;
 	move(dir);
 }
 
@@ -117,26 +118,22 @@ glm::mat4 camera::get_view()
 	return viewmat;
 }
 
-/*
-	private 
-*/
-
 glm::vec3 camera::get_up()
 {
 	glm::mat3 rotationMatrix = glm::toMat3(rotation);
-	return glm::vec3( rotationMatrix[0][1], rotationMatrix[1][1], rotationMatrix[2][1] );
+	return glm::vec3( rotationMatrix[0][1], -rotationMatrix[1][1], rotationMatrix[2][1] );
 }
 
 glm::vec3 camera::get_lookat()
 {
 	glm::mat3 rotationMatrix = glm::toMat3(rotation);
-	return glm::vec3( rotationMatrix[0][2], rotationMatrix[1][2], rotationMatrix[2][2] );
+	return glm::vec3( rotationMatrix[0][0], rotationMatrix[1][0], -rotationMatrix[2][0] );
 }
 
 glm::vec3 camera::get_right()
 {
 	glm::mat3 rotationMatrix = glm::toMat3(rotation);
-	return glm::vec3( rotationMatrix[0][0], rotationMatrix[1][0], rotationMatrix[2][0] );
+	return glm::vec3( -rotationMatrix[0][2], rotationMatrix[1][2], rotationMatrix[2][2] );
 }
 
 void camera::move( glm::vec3 dir )
