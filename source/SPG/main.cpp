@@ -1,6 +1,7 @@
 #include "precompiled.h"
 
 #include "opengl/renderwindow.h"
+#include "opengl/setup.h"
 #include "opengl/keyboard.h"
 #include "opengl/mouse.h"
 #include "opengl/buffer.h"
@@ -60,9 +61,9 @@ int main( void )
 	crap::mouse mouse;
 
 	// temporary
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
-	glEnable(GL_CULL_FACE);
+	crap::opengl::enable(crap::opengl::depth_test);
+	crap::opengl::setDepthComparison(crap::opengl::less);
+	crap::opengl::enable(crap::opengl::cull_face);
 
 	//create contentmanager
 	content_manager cm;
@@ -103,14 +104,18 @@ int main( void )
 	glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
 
 	// temporary
-	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+	crap::opengl::clearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	{
 		//temporary
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
+
+		crap::opengl::clear(crap::opengl::color_depth_buffer);
 		computeMatricesFromInputs();
 		glm::mat4 ModelMatrix = glm::mat4(1.0);
+
 
 		//activate shader porgram and connect data
 		cube_sbo->activate();
