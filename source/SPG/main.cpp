@@ -77,17 +77,23 @@ int main( void )
 	vbo cube_vbo( "cube", &cm, vbo::static_draw );
 
 	//test: load texture onto GPU
-	tbo cube_tbo( "color", &cm, tbo::tga );
-	//tbo normal_tbo( "specular", &cm, tbo::tga );
+	tbo diffuse_tbo( "flower_diff", &cm, tbo::tga );
+	tbo normal_tbo( "flower_norm", &cm, tbo::tga );
+	tbo specular_tbo( "flower_spec", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
-	sbo cube_sbo( "vertex_std", "fragment_std", &cm );
+	sbo cube_sbo( "vertex_bump_and_specular", "fragment_bump_and_specular", &cm );
+	//sbo cube_sbo( "vertex_std", "fragment_std", &cm );
 
 	//get stuff from shader program
 	crap::uniform MatrixID = cube_sbo->uniform_location("MVP");
 	crap::uniform ViewMatrixID = cube_sbo->uniform_location("V");
 	crap::uniform ModelMatrixID = cube_sbo->uniform_location("M");
+	crap::uniform ModelView3x3MatrixID = cube_sbo->uniform_location("MV3x3");
 	crap::uniform TextureID  = cube_sbo->uniform_location("myTextureSampler");
+	crap::uniform DiffuseTextureID  = cube_sbo->uniform_location("DiffuseTextureSampler");
+	crap::uniform NormalTextureID  = cube_sbo->uniform_location("NormalTextureSampler");
+	crap::uniform SpecularTextureID  = cube_sbo->uniform_location("SpecularTextureSampler");
 	crap::uniform LightID = cube_sbo->uniform_location("LightPosition_worldspace");
 
 	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
@@ -110,26 +116,35 @@ int main( void )
 	{
 		//temporary
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
-
 		crap::opengl::clear(crap::opengl::color_depth_buffer);
+
 		computeMatricesFromInputs();
 		glm::mat4 ModelMatrix = glm::mat4(1.0);
-
+		glm::mat4 ModelViewMatrix = ViewMatrix * ModelMatrix;
+		glm::mat3 ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
 
 		//activate shader porgram and connect data
 		cube_sbo->activate();
 		cube_sbo->uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
 		cube_sbo->uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
 		cube_sbo->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
+		cube_sbo->uniform_matrix4f_value(ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
 
 		glm::vec3 lightPos = glm::vec3(4,4,4);
 		cube_sbo->uniform_3f(LightID, lightPos.x, lightPos.y, lightPos.z);
 
 		//activate texture buffer and connect data
-		cube_tbo.activate();
-		cube_tbo.bind_buffer();
-		cube_sbo->uniform_1i( TextureID, 0);
+		diffuse_tbo.activate();
+		diffuse_tbo.bind_buffer();
+		cube_sbo->uniform_1i( DiffuseTextureID, 0);
+
+		normal_tbo.activate();
+		normal_tbo.bind_buffer();
+		cube_sbo->uniform_1i( NormalTextureID, 1);
+
+		specular_tbo.activate();
+		specular_tbo.bind_buffer();
+		cube_sbo->uniform_1i( SpecularTextureID, 2);
 
 		//define data of buffers
 		cube_sbo->vertex_attribute_array.enable(0);
@@ -144,6 +159,14 @@ int main( void )
 		cube_vbo.bind_buffer( vbo::normals );
 		cube_sbo->vertex_attribute_array.pointer( 2, 3, crap::gl_float, false, 0, (void*)0);
 
+		cube_sbo->vertex_attribute_array.enable(3);
+		cube_vbo.bind_buffer( vbo::tangents );
+		cube_sbo->vertex_attribute_array.pointer( 3, 3, crap::gl_float, false, 0, (void*)0);
+
+		cube_sbo->vertex_attribute_array.enable(4);
+		cube_vbo.bind_buffer( vbo::binormals );
+		cube_sbo->vertex_attribute_array.pointer( 4, 3, crap::gl_float, false, 0, (void*)0);
+
 		//draw the fuck
 		cube_vbo.bind_buffer( vbo::indicies );
 		glDrawElements(
@@ -157,6 +180,8 @@ int main( void )
 		cube_sbo->vertex_attribute_array.disable(0);
 		cube_sbo->vertex_attribute_array.disable(1);
 		cube_sbo->vertex_attribute_array.disable(2);
+		cube_sbo->vertex_attribute_array.disable(3);
+		cube_sbo->vertex_attribute_array.disable(4);
 
 		//poll and swap
 		window.swap();

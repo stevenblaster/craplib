@@ -108,7 +108,9 @@ void content_manager::load_file( u32 str_hash, void* data, type_name type)
 		else
 		{
 			((texture_content*)data)->data = (crap::texture*)_content_pool->allocate( sizeof(crap::texture) );
-			*((texture_content*)data)->data = crap::create_texture( _filelist.find( str_hash )->second.cstring(), crap::tga );
+			crap::string256 path = DATA_PATH;
+			path += _filelist.find( str_hash )->second;
+			*((texture_content*)data)->data = crap::create_texture( path.cstring(), crap::tga );
 		}
 		return;
 	}
