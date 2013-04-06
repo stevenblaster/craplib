@@ -19,10 +19,6 @@ vbo::vbo( const crap::string64& id, content_manager* cm, draw_type type ) : indi
 	indicies_size = ig.indices_size;
 	vertices_size = ig.vertices_size;
 
-	_indicies_buffer.init( crap::buffer::element_array_buffer, bu );
-	_indicies_buffer.bind();
-	_indicies_buffer.set_data( ig.indices_size *sizeof(u16), &ig.indices[0] );
-
 	_vertices_buffer.init( crap::buffer::array_buffer, bu );
 	_vertices_buffer.bind();
 	_vertices_buffer.set_data( ig.vertices_size*sizeof(crap::vector3f), &ig.positions[0] );
@@ -42,6 +38,10 @@ vbo::vbo( const crap::string64& id, content_manager* cm, draw_type type ) : indi
 	_binormals_buffer.init( crap::buffer::array_buffer, bu);
 	_binormals_buffer.bind();
 	_binormals_buffer.set_data( ig.vertices_size*sizeof(crap::vector3f), &ig.binormals[0] );
+
+	_indicies_buffer.init( crap::buffer::element_array_buffer, bu );
+	_indicies_buffer.bind();
+	_indicies_buffer.set_data( ig.indices_size *sizeof(u16), &ig.indices[0] );
 
 	cm->delete_content( id , &ig, type_name::geometry );
 }

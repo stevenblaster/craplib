@@ -352,6 +352,7 @@ void content_manager::delete_content( const crap::string64& id, void* ptr, type_
 	if( type == type_name::texture )
 	{
 		texture_content* tc = (texture_content*) ptr;
+		tc->data->delete_texture();
 		_content_pool->deallocate( tc->data );
 		return;
 	}

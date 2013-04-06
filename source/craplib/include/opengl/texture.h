@@ -38,6 +38,7 @@ struct texture
 	u32 _id;
 	u32 _index;
 	~texture( void );
+	void delete_texture( void );
 
 	void bind( void );
 	void activate( void );

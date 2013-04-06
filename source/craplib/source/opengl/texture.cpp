@@ -225,4 +225,9 @@ texture create_texture( const char* name, image_type type )
 	return texture(0,0);
 }
 
+void texture::delete_texture( void )
+{
+	glDeleteTextures(1, &_id);
+}
+
 } // namespace crap

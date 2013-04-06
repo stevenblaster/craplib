@@ -76,6 +76,10 @@ int main( void )
 	//test: load vbo onto GPU
 	vbo cube_vbo( "cube", &cm, vbo::static_draw );
 
+	//geometry_content ig;
+	//cm.create_content( "cube" , &ig, type_name::geometry );
+	//cm.save_content( "cube", &ig, type_name::geometry );
+
 	//test: load texture onto GPU
 	tbo diffuse_tbo( "flower_diff", &cm, tbo::tga );
 	tbo normal_tbo( "flower_norm", &cm, tbo::tga );
@@ -90,7 +94,7 @@ int main( void )
 	crap::uniform ViewMatrixID = cube_sbo->uniform_location("V");
 	crap::uniform ModelMatrixID = cube_sbo->uniform_location("M");
 	crap::uniform ModelView3x3MatrixID = cube_sbo->uniform_location("MV3x3");
-	crap::uniform TextureID  = cube_sbo->uniform_location("myTextureSampler");
+	//crap::uniform TextureID  = cube_sbo->uniform_location("myTextureSampler");
 	crap::uniform DiffuseTextureID  = cube_sbo->uniform_location("DiffuseTextureSampler");
 	crap::uniform NormalTextureID  = cube_sbo->uniform_location("NormalTextureSampler");
 	crap::uniform SpecularTextureID  = cube_sbo->uniform_location("SpecularTextureSampler");
@@ -120,8 +124,9 @@ int main( void )
 
 		computeMatricesFromInputs();
 		glm::mat4 ModelMatrix = glm::mat4(1.0);
-		glm::mat4 ModelViewMatrix = ViewMatrix * ModelMatrix;
+		glm::mat4 ModelViewMatrix = View * Model;
 		glm::mat3 ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
+		//glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
 		//activate shader porgram and connect data
 		cube_sbo->activate();
