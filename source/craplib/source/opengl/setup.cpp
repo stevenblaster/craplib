@@ -80,6 +80,15 @@ namespace crap
 				GL_GREATER, GL_NOTEQUAL, GL_GEQUAL, GL_ALWAYS };
 			glDepthFunc(depth_settings[id]);			
 		}
+
+		void draw_elements(draw_mode draw_mode_id, size_t32 count, buffer_type buffer_type_id, void* offset)
+		{
+			i32 draw_modes[] = { GL_POINTS, GL_LINE_STRIP, GL_LINE_LOOP,
+				GL_LINES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, GL_TRIANGLES};
+			i32 buffer_modes[] = {GL_UNSIGNED_BYTE, GL_UNSIGNED_SHORT, GL_UNSIGNED_INT};
+
+			glDrawElements(draw_modes[draw_mode_id], count, buffer_modes[buffer_type_id], offset);
+		}
 	}
 
 }
