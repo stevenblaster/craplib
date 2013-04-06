@@ -4,12 +4,12 @@ set(HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/binarytree.h
    ${CMAKE_CURRENT_SOURCE_DIR}/bitmask.h
    ${CMAKE_CURRENT_SOURCE_DIR}/bitset.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/fixedstring.h
    ${CMAKE_CURRENT_SOURCE_DIR}/list.h
    ${CMAKE_CURRENT_SOURCE_DIR}/map.h
    ${CMAKE_CURRENT_SOURCE_DIR}/pair.h
    ${CMAKE_CURRENT_SOURCE_DIR}/queue.h
    ${CMAKE_CURRENT_SOURCE_DIR}/stack.h
-   ${CMAKE_CURRENT_SOURCE_DIR}/staticstring.h
    ${CMAKE_CURRENT_SOURCE_DIR}/string.h
    ${CMAKE_CURRENT_SOURCE_DIR}/treemap.h
    ${CMAKE_CURRENT_SOURCE_DIR}/treenode.h

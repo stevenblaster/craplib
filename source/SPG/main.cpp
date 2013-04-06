@@ -6,6 +6,7 @@
 #include "opengl/mouse.h"
 #include "opengl/buffer.h"
 
+
 #include "math/vector3.h"
 #include "math/vector2.h"
 
@@ -27,22 +28,13 @@
 #include "tbo.h"
 #include "sbo.h"
 
+#include "camera.h"
+
 //math stuff yet done with glm
 #include "glm/glm.hpp"
 #include "glm/ext.hpp"
 
-//also temp
-glm::mat4 ViewMatrix;
-glm::mat4 ProjectionMatrix;
-
-glm::mat4 getViewMatrix(){
-	return ViewMatrix;
-}
-glm::mat4 getProjectionMatrix(){
-	return ProjectionMatrix;
-}
-
-void computeMatricesFromInputs();
+void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam);
 
 int main( void )
 {
@@ -103,40 +95,46 @@ int main( void )
 	crap::uniform SpecularTextureID  = cube_sbo->uniform_location("SpecularTextureSampler");
 	crap::uniform LightID = cube_sbo->uniform_location("LightPosition_worldspace");
 
-	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-	glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-	// Camera matrix
-	glm::mat4 View       = glm::lookAt(
-								glm::vec3(4,3,3), // Camera is at (4,3,3), in World Space
-								glm::vec3(0,0,0), // and looks at the origin
-								glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-						   );
-	// Model matrix : an identity matrix (model will be at the origin)
-	glm::mat4 Model      = glm::mat4(1.0f);
-	// Our ModelViewProjection : multiplication of our 3 matrices
-	glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
+	// setup camera
+	camera cam;
+	cam.lookat(
+				glm::vec3( 5.0f, 0.0f, 0.0f ),
+				glm::vec3( 0.0f, 0.0f, 0.0f ),
+				glm::vec3(0.0f, 1.0f, 0.0f )
+				);
+
+	// Projection matrix : 60° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+	glm::mat4 ProjectionMatrix = glm::perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+	// setup cube coordinates
+	glm::mat4 ModelMatrix(1.0f);
+	glm::mat4 ModelViewMatrix(1.0f);
+	// get view matrix
+	glm::mat4 ViewMatrix = cam.get_view();
+	// model view projection matrix
+	glm::mat4 MVP(1.0f);
+	glm::mat3 ModelView3x3Matrix(1.0f);
 
 	// temporary
-	crap::opengl::clearColor(0.0f, 0.0f, 0.4f, 0.0f);
+	crap::opengl::clearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
 	while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	{
-		//temporary
-		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		crap::opengl::clear(crap::opengl::color_depth_buffer);
 
-		computeMatricesFromInputs();
-		glm::mat4 ModelMatrix = glm::mat4(1.0);
-		glm::mat4 ModelViewMatrix = View * Model;
-		glm::mat3 ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
-		//glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+		// update positions
+		handleInput(keyboard, mouse, cam);
+
+		ViewMatrix = cam.get_view();
+		ModelViewMatrix = ViewMatrix * ModelMatrix;
+		ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
+		MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
 		//activate shader porgram and connect data
 		cube_sbo->activate();
 		cube_sbo->uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
 		cube_sbo->uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
 		cube_sbo->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
-		cube_sbo->uniform_matrix4f_value(ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
+		cube_sbo->uniform_matrix4f_value( ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
 
 		glm::vec3 lightPos = glm::vec3(4,4,4);
 		cube_sbo->uniform_3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -177,11 +175,10 @@ int main( void )
 
 		//draw the fuck
 		cube_vbo.bind_buffer( vbo::indicies );
-		glDrawElements(
-			GL_TRIANGLES,      // mode
-			cube_vbo.indicies_size,    // count
-			GL_UNSIGNED_SHORT,   // type
-			(void*)0           // element array buffer offset
+		crap::opengl::draw_elements(
+			crap::opengl::triangles,		// mode
+			cube_vbo.indicies_size,			// count
+			crap::opengl::unsigned_short	// type
 		);
 
 		//disable data define stuff
@@ -264,40 +261,35 @@ int main( void )
 	return 0;
 }
 
-void computeMatricesFromInputs(){
+void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
+{
+	if( keyboard.is_pressed(crap::keyboard::key_W) || keyboard.is_pressed(crap::keyboard::key_w))
+		cam.forward();
+	if( keyboard.is_pressed(crap::keyboard::key_S) || keyboard.is_pressed(crap::keyboard::key_s))
+		cam.backward();
+	if( keyboard.is_pressed(crap::keyboard::key_A) || keyboard.is_pressed(crap::keyboard::key_a))
+		cam.left();
+	if( keyboard.is_pressed(crap::keyboard::key_D) || keyboard.is_pressed(crap::keyboard::key_D))
+		cam.right();
+	if( keyboard.is_pressed(crap::keyboard::key_up) || keyboard.is_pressed(crap::keyboard::key_page_up))
+		cam.up();
+	if( keyboard.is_pressed(crap::keyboard::key_down) || keyboard.is_pressed(crap::keyboard::key_page_down))
+		cam.down();
 
-	// Compute new orientation
-	float horizontalAngle = 3.14f;
-	// Initial vertical angle : none
-	float verticalAngle = 0.0f;
+	// FIXME: mouse rotation does not currently work!
+	/*
+	if(mouse.movement().x > 0.1f)
+		cam.turnright();
+	else if(mouse.movement().x < -0.1f)
+		cam.turnleft();
 
-	// Direction : Spherical coordinates to Cartesian coordinates conversion
-	glm::vec3 direction(
-		cos(verticalAngle) * sin(horizontalAngle), 
-		sin(verticalAngle),
-		cos(verticalAngle) * cos(horizontalAngle)
-	);
+	if(mouse.movement().y > 0.1f)
+		cam.turnup();
+	else if(mouse.movement().y < -0.1f)
+		cam.turndown();
+
+	mouse.set_position(crap::vector2i(0,0));
+	mouse.movement();
+	*/
 	
-	// Right vector
-	glm::vec3 right = glm::vec3(
-		sin(horizontalAngle - 3.14f/2.0f), 
-		0,
-		cos(horizontalAngle - 3.14f/2.0f)
-	);
-	
-	// Up vector
-	glm::vec3 up = glm::cross( right, direction );
-
-
-	float FoV = 45.0f;
-
-	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-	ProjectionMatrix = glm::perspective(FoV, 4.0f / 3.0f, 0.1f, 100.0f);
-	glm::vec3 position = glm::vec3( 0, 0, 5 ); 
-	// Camera matrix
-	ViewMatrix       = glm::lookAt(
-								position,           // Camera is here
-								position+direction, // and looks here : at the same position, plus "direction"
-								up                  // Head is up (set to 0,-1,0 to look upside-down)
-						   );
 }
