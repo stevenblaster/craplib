@@ -202,6 +202,7 @@ void geometry_file::load_wavefront( const crap::string256& filename )
 					{
 						crap::vector2f uv_vec;
 						sscanf( (const char*)buffer+i+3, "%f %f", &uv_vec.x, &uv_vec.y );
+						uv_vec.y *= -1;
 						_uvs[ count_uvs++ ] = uv_vec;
 					}
 					else if( buffer[ i+1 ] == 'n' )

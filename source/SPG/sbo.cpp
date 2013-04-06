@@ -21,8 +21,10 @@ sbo::sbo( const crap::string64& vs, const crap::string64& ps, content_manager* c
 	_program._id = tmp_program._id;
 	tmp_program._id = 0;
 
+	sc_vs.~sc_vs();
+	sc_ps.~sc_ps();
 	cm->delete_content( vs , &sc_vs, type_name::shader );
-	cm->create_content( ps , &sc_ps, type_name::shader );
+	cm->delete_content( ps , &sc_ps, type_name::shader );
 }
 
 crap::program* sbo::operator->( void )
