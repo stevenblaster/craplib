@@ -7,11 +7,19 @@ in vec3 Normal_cameraspace;
 in vec3 EyeDirection_cameraspace;
 in vec3 LightDirection_cameraspace;
 
+in vec3 LightDirection_tangentspace;
+in vec3 EyeDirection_tangentspace;
+
 // Ouput data
 out vec3 color;
 
 // Values that stay constant for the whole mesh.
-uniform sampler2D myTextureSampler;
+uniform sampler2D DiffuseTextureSampler;
+uniform sampler2D NormalTextureSampler;
+uniform sampler2D SpecularTextureSampler;
+uniform mat4 V;
+uniform mat4 M;
+uniform mat3 MV3x3;
 uniform mat4 MV;
 uniform vec3 LightPosition_worldspace;
 
@@ -23,15 +31,20 @@ void main(){
 	float LightPower = 50.0f;
 	
 	// Material properties
-	vec3 MaterialDiffuseColor = texture2D( myTextureSampler, UV ).rgb;
+	vec3 MaterialDiffuseColor = texture2D( DiffuseTextureSampler, UV ).rgb;
 	vec3 MaterialAmbientColor = vec3(0.1,0.1,0.1) * MaterialDiffuseColor;
-	vec3 MaterialSpecularColor = vec3(0.3,0.3,0.3);
+	//vec3 MaterialSpecularColor = vec3(0.3,0.3,0.3);
+	vec3 MaterialSpecularColor = texture2D( SpecularTextureSampler, UV ).rgb * 0.3;
 
+	// Local normal, in tangent space. V tex coordinate is inverted because normal map is in TGA (not in DDS) for better quality
+	vec3 TextureNormal_tangentspace = normalize(texture2D( NormalTextureSampler, vec2(UV.x,-UV.y) ).rgb*2.0 - 1.0);
+	
 	// Distance to the light
 	float distance = length( LightPosition_worldspace - Position_worldspace );
 
 	// Normal of the computed fragment, in camera space
-	vec3 n = normalize( Normal_cameraspace );
+	//vec3 n = normalize( Normal_cameraspace );
+	vec3 n = TextureNormal_tangentspace;
 	// Direction of the light (from the fragment to the light)
 	vec3 l = normalize( LightDirection_cameraspace );
 	// Cosine of the angle between the normal and the light direction, 

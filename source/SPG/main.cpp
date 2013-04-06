@@ -6,6 +6,9 @@
 #include "opengl/mouse.h"
 #include "opengl/buffer.h"
 
+#include "math/vector3.h"
+#include "math/vector2.h"
+
 // temporary until jean luc is done
 #if defined( CRAP_PLATFORM_WIN )
 #include <gl/GL.h>
@@ -50,7 +53,7 @@ int main( void )
 	win_setup.height = 768;
 	win_setup.multisampling_count = 8;
 	win_setup.opengl_version = 3.3f;
-    win_setup.opengl_profile = crap::core;
+    win_setup.opengl_profile = crap::compat;
 
 	//create window
 	crap::window window( win_setup );
@@ -76,8 +79,8 @@ int main( void )
 	//test: load vbo onto GPU
 	vbo cube_vbo( "cube", &cm, vbo::static_draw );
 
-	//geometry_content ig;
-	//cm.create_content( "cube" , &ig, type_name::geometry );
+	geometry_content ig;
+	cm.create_content( "cube" , &ig, type_name::geometry );
 	//cm.save_content( "cube", &ig, type_name::geometry );
 
 	//test: load texture onto GPU
@@ -86,15 +89,15 @@ int main( void )
 	tbo specular_tbo( "flower_spec", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
-	sbo cube_sbo( "vertex_bump_and_specular", "fragment_bump_and_specular", &cm );
-	//sbo cube_sbo( "vertex_std", "fragment_std", &cm );
+	//sbo cube_sbo( "vertex_bump_and_specular", "fragment_bump_and_specular", &cm );
+	sbo cube_sbo( "vertex_std", "fragment_std", &cm );
 
 	//get stuff from shader program
 	crap::uniform MatrixID = cube_sbo->uniform_location("MVP");
 	crap::uniform ViewMatrixID = cube_sbo->uniform_location("V");
 	crap::uniform ModelMatrixID = cube_sbo->uniform_location("M");
 	crap::uniform ModelView3x3MatrixID = cube_sbo->uniform_location("MV3x3");
-	//crap::uniform TextureID  = cube_sbo->uniform_location("myTextureSampler");
+	crap::uniform TextureID  = cube_sbo->uniform_location("myTextureSampler");
 	crap::uniform DiffuseTextureID  = cube_sbo->uniform_location("DiffuseTextureSampler");
 	crap::uniform NormalTextureID  = cube_sbo->uniform_location("NormalTextureSampler");
 	crap::uniform SpecularTextureID  = cube_sbo->uniform_location("SpecularTextureSampler");
@@ -187,6 +190,61 @@ int main( void )
 		cube_sbo->vertex_attribute_array.disable(2);
 		cube_sbo->vertex_attribute_array.disable(3);
 		cube_sbo->vertex_attribute_array.disable(4);
+
+
+		glMatrixMode(GL_PROJECTION);
+		glLoadMatrixf((const GLfloat*)&ProjectionMatrix[0]);
+		glMatrixMode(GL_MODELVIEW);
+		glm::mat4 MV = ViewMatrix * ModelMatrix;
+		glLoadMatrixf((const GLfloat*)&MV[0]);
+
+
+		cube_sbo->activate();
+
+		// normals
+		glColor3f(0,0,1);
+		glBegin(GL_LINES);
+		for (unsigned int i=0; i<ig.indices_size; i++){
+			glm::vec3 p = glm::vec3(ig.positions[ig.indices[i]].x, ig.positions[ig.indices[i]].y, ig.positions[ig.indices[i]].z );
+			glVertex3fv(&p.x);
+			glm::vec3 o = glm::normalize( glm::vec3(ig.normals[ig.indices[i]].x, ig.normals[ig.indices[i]].y, ig.normals[ig.indices[i]].z)  );
+			p+=o*0.1f;
+			glVertex3fv(&p.x);
+		}
+		glEnd();
+		// tangents
+		glColor3f(1,0,0);
+		glBegin(GL_LINES);
+		for (unsigned int i=0; i<ig.indices_size; i++){
+			glm::vec3 p = glm::vec3(ig.positions[ig.indices[i]].x, ig.positions[ig.indices[i]].y, ig.positions[ig.indices[i]].z );
+			glVertex3fv(&p.x);
+			glm::vec3 o = glm::normalize( glm::vec3(ig.tangents[ig.indices[i]].x, ig.tangents[ig.indices[i]].y, ig.tangents[ig.indices[i]].z)  );
+			p+=o*0.1f;
+			glVertex3fv(&p.x);
+		}
+		glEnd();
+		// bitangents
+		glColor3f(0,1,0);
+		glBegin(GL_LINES);
+		for (unsigned int i=0; i<ig.indices_size; i++){
+			glm::vec3 p = glm::vec3(ig.positions[ig.indices[i]].x, ig.positions[ig.indices[i]].y, ig.positions[ig.indices[i]].z );
+			glVertex3fv(&p.x);
+			glm::vec3 o = glm::normalize( glm::vec3(ig.binormals[ig.indices[i]].x, ig.binormals[ig.indices[i]].y, ig.binormals[ig.indices[i]].z)  );
+			p+=o*0.1f;
+			glVertex3fv(&p.x);
+		}
+		glEnd();
+		// light pos
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+			glVertex3fv(&lightPos.x);
+			lightPos+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&lightPos.x);
+			lightPos-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&lightPos.x);
+			lightPos+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&lightPos.x);
+		glEnd();
 
 		//poll and swap
 		window.swap();
