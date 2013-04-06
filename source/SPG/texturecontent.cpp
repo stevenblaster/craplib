@@ -4,7 +4,7 @@
 
 #include "texturecontent.h"
 
-texture_content::texture_content( void ) : size(0), dimension(crap::vector2i(0,0)), format(0), bpp(0), data(0)
+texture_content::texture_content( void ) : data(0)
 {
 
 }

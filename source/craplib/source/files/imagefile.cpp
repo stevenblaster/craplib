@@ -16,6 +16,7 @@
 //
 ////////////////////////////////////////////////////////
 #include "crap.h"
+#include "GL/glew.h"
 #include "GL/glfw.h"
 #include "files/file.h"
 #include "files/fileheaders.h"
@@ -105,13 +106,6 @@ void image_file::load_bmp( const string256& str )
 	_bpp = 24;
 	_size = head.width * head.height * 3;
 	_data = dat;
-}
-
-int image_file::load_glfw_tga( const string256& str, void* data )
-{
-	GLFWimage* img = (GLFWimage*) data;
-	i32 result = glfwReadImage( str.cstring() , img, 0 );
-	return result;
 }
 
 } //crap lib namespace

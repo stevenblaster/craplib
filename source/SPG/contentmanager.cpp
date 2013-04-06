@@ -107,8 +107,8 @@ void content_manager::load_file( u32 str_hash, void* data, type_name type)
 		}
 		else
 		{
-			texture_file tex_file( _filelist.find( str_hash )->second, texture_file::tga, _content_pool );
-			tex_file.create_texture_content( (texture_content*)data );
+			((texture_content*)data)->data = (crap::texture*)_content_pool->allocate( sizeof(crap::texture) );
+			*((texture_content*)data)->data = crap::create_texture( _filelist.find( str_hash )->second.cstring(), crap::tga );
 		}
 		return;
 	}
@@ -167,30 +167,31 @@ void content_manager::save_binary( u32 str_hash, void* ptr, type_name type )
 
 	if( type == type_name::texture )
 	{
-		crap::file binary_file( BINARY_PATH + crap::convert<u32, crap::string256>(str_hash) );
-		CRAP_ASSERT_DEBUG( binary_file.writeable(), "Cannot wirte binary file." );
+		CRAP_ASSERT_ERROR("Not implemented yet");
+		//crap::file binary_file( BINARY_PATH + crap::convert<u32, crap::string256>(str_hash) );
+		//CRAP_ASSERT_DEBUG( binary_file.writeable(), "Cannot wirte binary file." );
 
-		texture_content* tex_mem = (texture_content*) ptr;
+		//texture_content* tex_mem = (texture_content*) ptr;
 
-		u32 total_size = sizeof(texture_content) + tex_mem->size;
-		u8* buffer = (u8*)_content_pool->allocate( total_size );
+		//u32 total_size = sizeof(texture_content) + tex_mem->width * tex_mem->height * tex_mem->bpp;
+		//u8* buffer = (u8*)_content_pool->allocate( total_size );
 
-		u32 offset = 0;
-		memcpy( buffer + offset, &tex_mem->size, sizeof(size_t32) );
-		offset += sizeof(size_t32);
-		memcpy( buffer + offset, &tex_mem->dimension, sizeof(crap::vector2i) );
-		offset += sizeof(crap::vector2i);
-		memcpy( buffer + offset, &tex_mem->format, sizeof(i32) );
-		offset += sizeof(i32);
-		memcpy( buffer + offset, &tex_mem->bpp, sizeof(i32) );
-		offset += sizeof(i32);
-		memcpy( buffer + offset, tex_mem->data, tex_mem->size );
+		//u32 offset = 0;
+		//memcpy( buffer + offset, &tex_mem->width, sizeof(i32) );
+		//offset += sizeof(i32);
+		//memcpy( buffer + offset, &tex_mem->height, sizeof(i32) );
+		//offset += sizeof(i32);
+		//memcpy( buffer + offset, &tex_mem->format, sizeof(i32) );
+		//offset += sizeof(i32);
+		//memcpy( buffer + offset, &tex_mem->bpp, sizeof(i32) );
+		//offset += sizeof(i32);
+		//memcpy( buffer + offset, tex_mem->data, tex_mem->width * tex_mem->height * tex_mem->bpp );
 
-		binary_file.write_bytes( buffer, total_size );
-		binary_file.close();
+		//binary_file.write_bytes( buffer, total_size );
+		//binary_file.close();
 
-		_content_pool->deallocate( buffer );
-		return;
+		//_content_pool->deallocate( buffer );
+		//return;
 	}
 
 	if( type == type_name::shader )
@@ -260,7 +261,8 @@ void content_manager::load_binary( u32 str_hash, void* ptr,  type_name type )
 
 	if( type == type_name::texture )
 	{
-		crap::file binary_file( BINARY_PATH + crap::convert<u32, crap::string256>(str_hash) );
+		CRAP_ASSERT_ERROR("Not implemented yet");
+		/*crap::file binary_file( BINARY_PATH + crap::convert<u32, crap::string256>(str_hash) );
 		CRAP_ASSERT_DEBUG( binary_file.readable(), "Cannot read binary file." );
 
 		texture_content* tex_mem = (texture_content*) ptr;
@@ -270,19 +272,19 @@ void content_manager::load_binary( u32 str_hash, void* ptr,  type_name type )
 		binary_file.close();
 
 		u32 offset = 0;
-		memcpy( &tex_mem->size, buffer + offset, sizeof(size_t32) );
-		offset += sizeof(size_t32);
-		memcpy( &tex_mem->dimension, buffer + offset, sizeof(crap::vector2i) );
-		offset += sizeof(crap::vector2i);
+		memcpy( &tex_mem->width, buffer + offset, sizeof(i32) );
+		offset += sizeof(i32);
+		memcpy( &tex_mem->height, buffer + offset, sizeof(i32) );
+		offset += sizeof(i32);
 		memcpy( &tex_mem->format, buffer + offset, sizeof(i32) );
 		offset += sizeof(i32);
 		memcpy( &tex_mem->bpp, buffer + offset, sizeof(i32) );
 		offset += sizeof(i32);
 
-		tex_mem->data = (u8*)_content_pool->allocate( tex_mem->size );
-		memcpy( tex_mem->data, buffer + offset, tex_mem->size );
+		tex_mem->data = (u8*)_content_pool->allocate( tex_mem->width * tex_mem->height * tex_mem->bpp );
+		memcpy( tex_mem->data, buffer + offset, tex_mem->width * tex_mem->height * tex_mem->bpp );
 
-		_content_pool->deallocate( buffer );
+		_content_pool->deallocate( buffer );*/
 
 		return;
 	}

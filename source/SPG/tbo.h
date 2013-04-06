@@ -3,12 +3,8 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-namespace crap
-{
-	class texture;
-}
-
 class content_manager;
+struct texture_content;
 
 class tbo
 {
@@ -27,7 +23,9 @@ public:
 	void activate( void );
 
 private:
-	crap::texture* _tex;
+	texture_content* _tex;
+	crap::string64 _id;
+	content_manager* _cm;
 };
 
 

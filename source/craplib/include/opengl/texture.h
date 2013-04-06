@@ -20,44 +20,38 @@
 #ifndef CRAP_TEXTURE_H
 #define CRAP_TEXTURE_H
 
+#include "math/vector2.h"
+
 //lib namespace
 namespace crap
 {
 
-class texture
+enum image_type
 {
-public:
-	enum image_type
-	{
-		bmp = 0,
-		tga,
-		dds
-	};
+	bmp = 0,
+	tga,
+	dds
+};
 
-	struct setup
-	{
-		u32 height;
-		u32 width;
-
-		i32 wrap_s;
-		i32 wrap_t;
-		i32 mag_filter;
-		i32 min_filter;
-
-		image_type type;
-
-		setup( void );
-	};
-
-	texture( void* data, size_t32 size, setup s );
+struct texture
+{
+	u32 _id;
+	u32 _index;
 	~texture( void );
 
 	void bind( void );
 	void activate( void );
-
-	u32 id;
-	u32 index;
+	
+	texture( u32 id , u32 index );
+	texture( const texture& other );
+	texture& operator=( const texture& other );
 };
+
+texture create_texture( const char* name, image_type type );
+u32 create_texture_bmp( const char* name );
+u32 create_texture_tga( const char* name );
+u32 create_texture_dds( const char* name );
+
 
 } //lib namespace
 

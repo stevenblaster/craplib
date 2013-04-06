@@ -41,8 +41,6 @@ public:
 	image_file( const string256& filename , file_type type  );
 	~image_file( void );
 
-	static int load_glfw_tga( const string256& str, void* data );
-
 	size_t32 size( void ) const;
 	vector2i dimension( void ) const;
 	i32 format( void ) const;
