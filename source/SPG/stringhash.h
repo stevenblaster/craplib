@@ -3,7 +3,7 @@
 #ifndef STRINGHASH_H
 #define STRINGHASH_H
 
-#include "crap.h"
+#include "precompiled.h"
 
 template<size_t32 S>
 CRAP_INLINE

@@ -46,7 +46,8 @@ void main(){
 	//vec3 n = normalize( Normal_cameraspace );
 	vec3 n = TextureNormal_tangentspace;
 	// Direction of the light (from the fragment to the light)
-	vec3 l = normalize( LightDirection_cameraspace );
+	vec3 l = normalize( LightDirection_tangentspace );
+elkdjSBDFOHWBO
 	// Cosine of the angle between the normal and the light direction, 
 	// clamped above 0
 	//  - light is at the vertical of the triangle -> 1

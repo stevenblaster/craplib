@@ -77,7 +77,9 @@ struct program
 
 	void uniform_matrix4f_value( uniform id, u32 count, f32* ptr );
 
-	void uniform_1i( uniform id, u32 count ); //TODO
+	void uniform_1i( uniform id, u32 number ); //TODO
+
+	void uniform_1f( uniform id, f32 number ); //TODO
 
 	void uniform_3f( uniform id, f32 x, f32 y, f32 z );
 

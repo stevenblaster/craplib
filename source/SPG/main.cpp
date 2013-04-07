@@ -23,6 +23,7 @@
 #include "geometrycontent.h"
 #include "texturecontent.h"
 #include "shadercontent.h"
+#include "shadermanager.h"
 
 #include "vbo.h"
 #include "tbo.h"
@@ -82,19 +83,50 @@ int main( void )
 	tbo specular_tbo( "flower_spec", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
-	//sbo cube_sbo( "vertex_bump_and_specular", "fragment_bump_and_specular", &cm );
-	sbo cube_sbo( "vertex_std", "fragment_std", &cm );
+	//sbo cube_sbo( "vertex_texture_only", "fragment_texture_only", &cm );
+	shader_manager sm(&cm);
+	sm.add("crop_vert", "crop_frag");
+	sm.add("vertex_texture_only", "fragment_texture_only");
+	sm.set_current("crop_vert", "crop_frag");
+	//sbo cube_sbo( "vertex_std", "fragment_std", &cm );
 
 	//get stuff from shader program
-	crap::uniform MatrixID = cube_sbo->uniform_location("MVP");
-	crap::uniform ViewMatrixID = cube_sbo->uniform_location("V");
-	crap::uniform ModelMatrixID = cube_sbo->uniform_location("M");
-	crap::uniform ModelView3x3MatrixID = cube_sbo->uniform_location("MV3x3");
-	crap::uniform TextureID  = cube_sbo->uniform_location("myTextureSampler");
-	crap::uniform DiffuseTextureID  = cube_sbo->uniform_location("DiffuseTextureSampler");
-	crap::uniform NormalTextureID  = cube_sbo->uniform_location("NormalTextureSampler");
-	crap::uniform SpecularTextureID  = cube_sbo->uniform_location("SpecularTextureSampler");
-	crap::uniform LightID = cube_sbo->uniform_location("LightPosition_worldspace");
+	crap::uniform MatrixID = sm.current()->uniform_location("world_matrix");
+	crap::uniform ViewMatrixID = sm.current()->uniform_location("view_matrix");
+	crap::uniform ModelMatrixID = sm.current()->uniform_location("model_matrix");
+	crap::uniform ModelView3x3MatrixID = sm.current()->uniform_location("model_view_matrix");
+	crap::uniform TextureID  = sm.current()->uniform_location("myTextureSampler");
+	crap::uniform DiffuseTextureID  = sm.current()->uniform_location("diffuse_texture");
+	crap::uniform NormalTextureID  = sm.current()->uniform_location("normal_texture");
+	crap::uniform SpecularTextureID  = sm.current()->uniform_location("specular_texture");
+	crap::uniform AmbientColorID = sm.current()->uniform_location("ambient_color");
+
+	//light 1
+	crap::uniform SpecularTypeID1 = sm.current()->uniform_location("specular_type1");
+	crap::uniform LightPositionID1 = sm.current()->uniform_location("light_position1");
+	crap::uniform LightViewMatrixID1 = sm.current()->uniform_location("light_view_matrix1");
+	crap::uniform LightTypeID1 = sm.current()->uniform_location("light_type1");
+	crap::uniform LightColorID1 = sm.current()->uniform_location("light_color1");
+	crap::uniform LightPowerID1 = sm.current()->uniform_location("light_power1");
+	crap::uniform SpecularColorID1 = sm.current()->uniform_location("specular_color1");
+
+	//light 2
+	crap::uniform SpecularTypeID2 = sm.current()->uniform_location("specular_type2");
+	crap::uniform LightPositionID2 = sm.current()->uniform_location("light_position2");
+	crap::uniform LightViewMatrixID2 = sm.current()->uniform_location("light_view_matrix2");
+	crap::uniform LightTypeID2 = sm.current()->uniform_location("light_type2");
+	crap::uniform LightColorID2 = sm.current()->uniform_location("light_color2");
+	crap::uniform LightPowerID2 = sm.current()->uniform_location("light_power2");
+	crap::uniform SpecularColorID2 = sm.current()->uniform_location("specular_color2");
+
+	//light 3
+	crap::uniform SpecularTypeID3 = sm.current()->uniform_location("specular_type3");
+	crap::uniform LightPositionID3 = sm.current()->uniform_location("light_position3");
+	crap::uniform LightViewMatrixID3 = sm.current()->uniform_location("light_view_matrix3");
+	crap::uniform LightTypeID3 = sm.current()->uniform_location("light_type3");
+	crap::uniform LightColorID3 = sm.current()->uniform_location("light_color3");
+	crap::uniform LightPowerID3 = sm.current()->uniform_location("light_power3");
+	crap::uniform SpecularColorID3 = sm.current()->uniform_location("specular_color3");
 
 	// setup camera
 	camera cam;
@@ -119,6 +151,43 @@ int main( void )
 	// temporary
 	crap::opengl::clearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
+	//light struct
+	struct light
+	{
+		int lightType;
+		glm::vec3 lightPos;
+		glm::vec3 lightColor;
+		float lightPower;
+		glm::vec3 specularColor;
+	};
+
+	//3 lights
+	glm::vec3 ambientColor = glm::vec3(0.1, 0.1, 0.1);
+	light l1;
+	light l2;
+	light l3;
+
+	//light 1
+	l1.lightType = 1;
+	l1.lightPos = glm::vec3(4,0,0);
+	l1.lightColor = glm::vec3(1,1,1);
+	l1.lightPower = 50.0f;
+	l1.specularColor = glm::vec3(0.0f,0.0f,0.0f);
+
+	//light 2
+	l2.lightType = 0;
+	l2.lightPos = glm::vec3(0,0,4);
+	l2.lightColor = glm::vec3(1,1,1);
+	l2.lightPower = 40.0f;
+	l2.specularColor = glm::vec3(0.3f,0.0f,0.0f);
+
+	//light 3
+	l3.lightType = 0;
+	l3.lightPos = glm::vec3(0,0,-4);
+	l3.lightColor = glm::vec3(1,1,1);
+	l3.lightPower = 40.0f;
+	l3.specularColor = glm::vec3(0.0f,0.3f,0.0f);
+
 	while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	{
 		crap::opengl::clear(crap::opengl::color_depth_buffer);
@@ -132,48 +201,67 @@ int main( void )
 		MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
 		//activate shader porgram and connect data
-		cube_sbo->activate();
-		cube_sbo->uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
-		cube_sbo->uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
-		cube_sbo->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
-		cube_sbo->uniform_matrix4f_value( ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
+		sm.activate();
+		sm.current()->uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
+		sm.current()->uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
+		sm.current()->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
+		sm.current()->uniform_matrix4f_value( ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
+		sm.current()->uniform_3f(AmbientColorID, ambientColor.x, ambientColor.y, ambientColor.z);
 
-		glm::vec3 lightPos = glm::vec3(4,4,4);
-		cube_sbo->uniform_3f(LightID, lightPos.x, lightPos.y, lightPos.z);
+		//light 1
+		sm.current()->uniform_1i(LightTypeID1, l1.lightType);
+		sm.current()->uniform_3f(LightPositionID1, l1.lightPos.x, l1.lightPos.y, l1.lightPos.z);
+		sm.current()->uniform_3f(LightColorID1, l1.lightColor.x, l1.lightColor.y, l1.lightColor.z);
+		sm.current()->uniform_1f(LightPowerID1, l1.lightPower);
+		sm.current()->uniform_3f(SpecularColorID1, l1.specularColor.x, l1.specularColor.y, l1.specularColor.z);
+
+		//light 2
+		sm.current()->uniform_1i(LightTypeID2, l2.lightType);
+		sm.current()->uniform_3f(LightPositionID2, l2.lightPos.x, l2.lightPos.y, l2.lightPos.z);
+		sm.current()->uniform_3f(LightColorID2, l2.lightColor.x, l2.lightColor.y, l2.lightColor.z);
+		sm.current()->uniform_1f(LightPowerID2, l2.lightPower);
+		sm.current()->uniform_3f(SpecularColorID2, l2.specularColor.x, l2.specularColor.y, l2.specularColor.z);
+
+		//light 3
+		sm.current()->uniform_1i(LightTypeID3, l3.lightType);
+		sm.current()->uniform_3f(LightPositionID3, l3.lightPos.x, l3.lightPos.y, l3.lightPos.z);
+		sm.current()->uniform_3f(LightColorID3, l3.lightColor.x, l3.lightColor.y, l3.lightColor.z);
+		sm.current()->uniform_1f(LightPowerID3, l3.lightPower);
+		sm.current()->uniform_3f(SpecularColorID3, l3.specularColor.x, l3.specularColor.y, l3.specularColor.z);
 
 		//activate texture buffer and connect data
 		diffuse_tbo.activate();
 		diffuse_tbo.bind_buffer();
-		cube_sbo->uniform_1i( DiffuseTextureID, 0);
+		sm.current()->uniform_1i( DiffuseTextureID, 0);
 
 		normal_tbo.activate();
 		normal_tbo.bind_buffer();
-		cube_sbo->uniform_1i( NormalTextureID, 1);
+		sm.current()->uniform_1i( NormalTextureID, 1);
 
 		specular_tbo.activate();
 		specular_tbo.bind_buffer();
-		cube_sbo->uniform_1i( SpecularTextureID, 2);
+		sm.current()->uniform_1i( SpecularTextureID, 2);
 
 		//define data of buffers
-		cube_sbo->vertex_attribute_array.enable(0);
+		sm.current()->vertex_attribute_array.enable(0);
 		cube_vbo.bind_buffer( vbo::verticies );
-		cube_sbo->vertex_attribute_array.pointer( 0, 3, crap::gl_float, false, 0, (void*)0);
+		sm.current()->vertex_attribute_array.pointer( 0, 3, crap::gl_float, false, 0, (void*)0);
 
-		cube_sbo->vertex_attribute_array.enable(1);
+		sm.current()->vertex_attribute_array.enable(1);
 		cube_vbo.bind_buffer( vbo::uvs );
-		cube_sbo->vertex_attribute_array.pointer( 1, 2, crap::gl_float, false, 0, (void*)0);
+		sm.current()->vertex_attribute_array.pointer( 1, 2, crap::gl_float, false, 0, (void*)0);
 
-		cube_sbo->vertex_attribute_array.enable(2);
+		sm.current()->vertex_attribute_array.enable(2);
 		cube_vbo.bind_buffer( vbo::normals );
-		cube_sbo->vertex_attribute_array.pointer( 2, 3, crap::gl_float, false, 0, (void*)0);
+		sm.current()->vertex_attribute_array.pointer( 2, 3, crap::gl_float, false, 0, (void*)0);
 
-		cube_sbo->vertex_attribute_array.enable(3);
+		sm.current()->vertex_attribute_array.enable(3);
 		cube_vbo.bind_buffer( vbo::tangents );
-		cube_sbo->vertex_attribute_array.pointer( 3, 3, crap::gl_float, false, 0, (void*)0);
+		sm.current()->vertex_attribute_array.pointer( 3, 3, crap::gl_float, false, 0, (void*)0);
 
-		cube_sbo->vertex_attribute_array.enable(4);
+		sm.current()->vertex_attribute_array.enable(4);
 		cube_vbo.bind_buffer( vbo::binormals );
-		cube_sbo->vertex_attribute_array.pointer( 4, 3, crap::gl_float, false, 0, (void*)0);
+		sm.current()->vertex_attribute_array.pointer( 4, 3, crap::gl_float, false, 0, (void*)0);
 
 		//draw the fuck
 		cube_vbo.bind_buffer( vbo::indicies );
@@ -184,11 +272,11 @@ int main( void )
 		);
 
 		//disable data define stuff
-		cube_sbo->vertex_attribute_array.disable(0);
-		cube_sbo->vertex_attribute_array.disable(1);
-		cube_sbo->vertex_attribute_array.disable(2);
-		cube_sbo->vertex_attribute_array.disable(3);
-		cube_sbo->vertex_attribute_array.disable(4);
+		sm.current()->vertex_attribute_array.disable(0);
+		sm.current()->vertex_attribute_array.disable(1);
+		sm.current()->vertex_attribute_array.disable(2);
+		sm.current()->vertex_attribute_array.disable(3);
+		sm.current()->vertex_attribute_array.disable(4);
 
 
 		glMatrixMode(GL_PROJECTION);
@@ -198,7 +286,7 @@ int main( void )
 		glLoadMatrixf((const GLfloat*)&MV[0]);
 
 
-		cube_sbo->activate();
+		sm.activate();
 
 		// normals
 		glColor3f(0,0,1);
@@ -222,6 +310,7 @@ int main( void )
 			glVertex3fv(&p.x);
 		}
 		glEnd();
+
 		// bitangents
 		glColor3f(0,1,0);
 		glBegin(GL_LINES);
@@ -233,21 +322,59 @@ int main( void )
 			glVertex3fv(&p.x);
 		}
 		glEnd();
-		// light pos
+
+		glm::vec3 debug_light;
+
+		// light pos 1
 		glColor3f(1,1,1);
 		glBegin(GL_LINES);
-			glVertex3fv(&lightPos.x);
-			lightPos+=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&lightPos.x);
-			lightPos-=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&lightPos.x);
-			lightPos+=glm::vec3(0,1,0)*0.1f;
-			glVertex3fv(&lightPos.x);
+			debug_light = l1.lightPos;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+		glEnd();
+
+		// light pos 2
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+			debug_light = l2.lightPos;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+		glEnd();
+
+		// light pos 3
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+			debug_light = l3.lightPos;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&debug_light.x);
 		glEnd();
 
 		//poll and swap
 		window.swap();
 		window.poll_events();
+
+		if( keyboard.is_pressed( crap::keyboard::key_C ) )
+		{
+			if( sm.is_current("crop_vert", "crop_frag") )
+				sm.set_current("vertex_texture_only", "fragment_texture_only");
+			else
+				sm.set_current("crop_vert", "crop_frag");
+		}
 	}
 
 	//geometry_content ig;
@@ -286,4 +413,5 @@ void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 
 	mouse.set_position( screencenter );
 	mouse.movement();
+
 }
