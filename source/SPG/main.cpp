@@ -85,9 +85,9 @@ int main( void )
 	//test: load linked shader progam onto GPU
 	//sbo cube_sbo( "vertex_texture_only", "fragment_texture_only", &cm );
 	shader_manager sm(&cm);
-	sm.add("crop_vert", "crop_frag");
-	sm.add("vertex_texture_only", "fragment_texture_only");
-	sm.set_current("crop_vert", "crop_frag");
+	sm.add("crap_vert", "crap_frag");
+	//sm.add("vertex_texture_only", "fragment_texture_only");
+	//sm.set_current("crap_vert", "crap_frag");
 	//sbo cube_sbo( "vertex_std", "fragment_std", &cm );
 
 	//get stuff from shader program
@@ -182,7 +182,7 @@ int main( void )
 	l2.specularColor = glm::vec3(0.3f,0.0f,0.0f);
 
 	//light 3
-	l3.lightType = 0;
+	l3.lightType = 1;
 	l3.lightPos = glm::vec3(0,0,-4);
 	l3.lightColor = glm::vec3(1,1,1);
 	l3.lightPower = 40.0f;
@@ -398,10 +398,10 @@ int main( void )
 
 		if( keyboard.is_pressed( crap::keyboard::key_C ) )
 		{
-			if( sm.is_current("crop_vert", "crop_frag") )
-				sm.set_current("vertex_texture_only", "fragment_texture_only");
-			else
-				sm.set_current("crop_vert", "crop_frag");
+			//if( sm.is_current("crop_vert", "crop_frag") )
+			//	//sm.set_current("vertex_texture_only", "fragment_texture_only");
+			//else
+			//	sm.set_current("crop_vert", "crop_frag");
 		}
 	}
 
