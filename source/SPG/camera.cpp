@@ -3,10 +3,16 @@
 
 camera::camera()
 {
-	update = false;
-	viewmat = glm::mat4(1.0f);
-	rotation = glm::toQuat(glm::mat4(1.0f));
-	position = glm::vec3(0.0f);
+	_updateRequired = false;
+
+	_viewmat = glm::mat4( 1.0f );
+	_orientation = glm::quat( 0.0f, 0.0f, 0.0f, 0.0f );
+
+	_eye = glm::vec3( 0.0f );
+	_axisX = glm::vec3( 1.0f, 0.0f, 0.0f );
+	_axisY = glm::vec3( 0.0f, 1.0f, 0.0f );
+	_axisZ = glm::vec3( 0.0f, 0.0f, 1.0f );
+	_viewDir = glm::vec3( 0.0f, 0.0f, -1.0f  );
 }
 
 camera::~camera()
@@ -14,140 +20,129 @@ camera::~camera()
 	;
 }
 
-void camera::set_rotation(const glm::quat rotation)
+void camera::lookAt( const glm::vec3 &target )
 {
-	this->rotation = rotation;
-	update = true;
+	lookAt( _eye, target, _axisY );
 }
 
-void camera::set_position(const glm::vec3 position)
+void camera::lookAt( const glm::vec3 &eye, const glm::vec3 &target, const glm::vec3 &up )
 {
-	this->position = position;
-	update = true;
+	_eye = eye;
+	_axisZ = eye - target;
+	glm::normalize( _axisZ );
+
+	_viewDir = - _axisZ;
+
+	_axisX = glm::cross( up, _axisZ );
+	glm::normalize( _axisX );
+
+	_axisY = glm::cross( _axisZ, _axisX );
+	glm::normalize( _axisY );
+
+	_viewmat[0][0] = _axisX.x;
+	_viewmat[1][0] = _axisX.y;
+	_viewmat[2][0] = _axisX.z;
+	_viewmat[3][0] = -glm::dot( _axisX, _eye );
+
+	_viewmat[0][1] = _axisY.x;
+	_viewmat[1][1] = _axisY.y;
+	_viewmat[2][1] = _axisY.z;
+	_viewmat[3][1] = -glm::dot( _axisY, _eye );
+
+	_viewmat[0][2] = _axisZ.x;
+	_viewmat[1][2] = _axisZ.y;
+	_viewmat[2][2] = _axisZ.z;
+	_viewmat[3][2] = -glm::dot( _axisZ, _eye );
+
+	_orientation = glm::toQuat( _viewmat );
 }
 
-void camera::up()
+void camera::move( float x, float y, float z )
 {
-	update = true;
-	glm::vec3 dir = get_up();
-	dir *= 0.01f;
-	move(dir);
+	glm::vec3 eye = _eye;
+	
+	eye += _axisX * x;
+	eye += glm::vec3( 0.0f, 1.0f, 0.0f ) * y;
+	eye += _viewDir * z;
+
+	setPosition( eye );
 }
 
-void camera::down()
+void camera::move( glm::vec3 direction, glm::vec3 length )
 {
-	update = true;
-	glm::vec3 dir = get_up();
-	dir *= -0.01f;
-	move(dir);
+	_eye += direction.x * length.x;
+	_eye += direction.y * length.y;
+	_eye += direction.z * length.z;
+
+	updateViewMatrix();
 }
 
-void camera::right()
+void camera::rotate( glm::vec3 &vec  )
 {
-	update = true;
-	glm::vec3 dir = get_right();
-	dir *= 0.01f;
-	move(dir);
+	rotate( vec.x, vec.y, vec.z );
 }
 
-void camera::left()
+void camera::rotate( float yawDegrees, float pitchDegrees, float rollDegrees )
 {
-	update = true;
-	glm::vec3 dir = get_right();
-	dir *= -0.01f;
-	move(dir);
+
+	pitchDegrees = -pitchDegrees;
+	yawDegrees = -yawDegrees;
+	rollDegrees = -rollDegrees;
+
+	glm::quat rotation;
+
+
+	rotation = glm::angleAxis(yawDegrees, 0.0f, 1.0f, 0.0f);
+	_orientation = _orientation * rotation;
+	rotation = glm::angleAxis(pitchDegrees, 1.0f, 0.0f, 0.0f);
+	_orientation = rotation * _orientation;
+
+	//glm::quat rot = glm::quat( glm::yawPitchRoll( headingDegrees, pitchDegrees, rollDegrees ) );
+
+
+	//_orientation = _orientation * rot;
+
+	updateViewMatrix();
 }
 
-void camera::forward()
+void camera::setOrientation( const glm::quat &orientation )
 {
-	update = true;
-	glm::vec3 dir = get_lookat();
-	dir *= 0.01f;
-	move(dir);
+	_orientation = orientation;
+
+	updateViewMatrix();
 }
 
-void camera::backward()
+void camera::setPosition( float x, float y, float z )
 {
-	update = true;
-	glm::vec3 dir = get_lookat();
-	dir *= -0.01f;
-	move(dir);
+	_eye.x = x;
+	_eye.y = y;
+	_eye.z = z;
+
+	updateViewMatrix();
 }
 
-void camera::turnup()
+void camera::setPosition( const glm::vec3 &position )
 {
-	update = true;
-	glm::vec3 up(1.0, 0.0f, 0.0);
-	glm::quat rot(0.001f, up);
-	rotation = rotation * rot;
+	_eye = position;
+	updateViewMatrix();
 }
 
-void camera::turndown()
+void camera::updateViewMatrix( void )
 {
-	update = true;
-	glm::vec3 down(-1.0, 0.0f, 0.0);
-	glm::quat rot(0.001f, down);
-	rotation = rotation * rot;
+	_viewmat = glm::toMat4( _orientation );
+
+	_axisX = glm::vec3( _viewmat[0][0], _viewmat[1][0], _viewmat[2][0] );
+	_axisY = glm::vec3( _viewmat[0][1], _viewmat[1][1], _viewmat[2][1] );
+	_axisZ = glm::vec3( _viewmat[0][2], _viewmat[1][2], _viewmat[2][2] );
+	_viewDir = -_axisZ;
+
+	_viewmat[3][0] = - glm::dot( _axisX, _eye);
+	_viewmat[3][1] = - glm::dot( _axisY, _eye);
+	_viewmat[3][2] = - glm::dot( _axisZ, _eye);
+
 }
 
-void camera::turnleft()
+glm::mat4 camera::getView( void )
 {
-	update = true;
-	glm::vec3 left(0.0, -1.0f, 0.0);
-	glm::quat rot(0.001f, left);
-	rotation = rotation * rot;
-}
-
-void camera::turnright()
-{
-	update = true;
-	glm::vec3 right(0.0, 1.0f, 0.0);
-	glm::quat rot(0.001f, right);
-	rotation = rotation * rot;
-}
-
-glm::mat4 camera::get_view()
-{
-	if(update)
-	{
-		glm::mat4 orientation = glm::toMat4(rotation);
-		glm::mat4 translation = glm::translate(glm::mat4(1.0f), position);
-		viewmat = translation * orientation;
-		update = false;
-	}
-	return viewmat;
-}
-
-glm::vec3 camera::get_up()
-{
-	glm::mat3 rotationMatrix = glm::toMat3(rotation);
-	return glm::vec3( rotationMatrix[0][1], -rotationMatrix[1][1], rotationMatrix[2][1] );
-}
-
-glm::vec3 camera::get_lookat()
-{
-	glm::mat3 rotationMatrix = glm::toMat3(rotation);
-	return glm::vec3( rotationMatrix[0][0], rotationMatrix[1][0], -rotationMatrix[2][0] );
-}
-
-glm::vec3 camera::get_right()
-{
-	glm::mat3 rotationMatrix = glm::toMat3(rotation);
-	return glm::vec3( -rotationMatrix[0][2], rotationMatrix[1][2], rotationMatrix[2][2] );
-}
-
-void camera::move( glm::vec3 dir )
-{
-	position += dir;
-	return;
-}
-
-void camera::lookat( const glm::vec3 pos, const glm::vec3 focalpoint, const glm::vec3 up )
-{
-	update = true;
-	glm::mat4 temp = glm::lookAt(pos, focalpoint, up);
-	position[0] = temp[3][0];
-	position[1] = temp[3][1];
-	position[2] = temp[3][2];
-	rotation = glm::toQuat(temp);
+	return _viewmat;
 }
