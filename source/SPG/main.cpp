@@ -326,6 +326,7 @@ int main( void )
 		glm::vec3 debug_light;
 
 		// light pos 1
+<<<<<<< HEAD
 		glColor3f(1,1,1);
 		glBegin(GL_LINES);
 			debug_light = l1.lightPos;
@@ -354,6 +355,36 @@ int main( void )
 		// light pos 3
 		glColor3f(1,1,1);
 		glBegin(GL_LINES);
+=======
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+			debug_light = l1.lightPos;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+		glEnd();
+
+		// light pos 2
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+			debug_light = l2.lightPos;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+		glEnd();
+
+		// light pos 3
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+>>>>>>> cf6de15526dc1215b64c6e9c18704a31ef3e5fbb
 			debug_light = l3.lightPos;
 			glVertex3fv(&debug_light.x);
 			debug_light+=glm::vec3(1,0,0)*0.1f;
@@ -403,7 +434,33 @@ void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 	if( keyboard.is_pressed(crap::keyboard::key_up) || keyboard.is_pressed(crap::keyboard::key_page_up))
 		cam.up();
 	if( keyboard.is_pressed(crap::keyboard::key_down) || keyboard.is_pressed(crap::keyboard::key_page_down))
+<<<<<<< HEAD
 		cam.down();
+=======
+
+		cam.down();
+
+	// FIXME: mouse rotation does not currently work!
+
+	//crap::vector2i movement = mouse.movement();
+	//if(movement.x > 0)
+	//	cam.turnright();
+	//else if(movement.x < 0)
+	//	cam.turnleft();
+
+	//if(movement.y > 0)
+	//	cam.turnup();
+	//else if(movement.y < 0)
+	//	cam.turndown();
+
+	//mouse.set_position(crap::vector2i(0,0));
+	//mouse.movement();
+
+
+		movement.y -= 0.01f;
+
+	cam.move( movement.x, movement.y, movement.z );
+>>>>>>> cf6de15526dc1215b64c6e9c18704a31ef3e5fbb
 
 	crap::vector2i mouse_position = mouse.position();
 	crap::vector2i screensize( 1024, 768 );
@@ -412,5 +469,9 @@ void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 	cam.turn(glm::vec3( (mouse_position.x - screencenter.x)/2, (mouse_position.y - screencenter.y)/2, 0 ));
 
 	mouse.set_position( screencenter );
+<<<<<<< HEAD
 	mouse.movement();
+=======
+
+>>>>>>> cf6de15526dc1215b64c6e9c18704a31ef3e5fbb
 }
