@@ -35,6 +35,7 @@
 #include "glm/ext.hpp"
 
 void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam);
+crap::vector2i mouse_pos;
 
 int main( void )
 {
@@ -97,12 +98,12 @@ int main( void )
 
 	// setup camera
 	camera cam;
-	//cam.setPosition( glm::vec3( 5.0f, 0.0f, 0.0f ) );
-	cam.lookAt(
-		glm::vec3( 5.0f, 0.0f, 0.0f ),
-		glm::vec3( 0.0f, 0.0f, 0.0f ),
-		glm::vec3( 0.0f, 1.0f, 0.0f )
-		);
+	cam.lookat(
+				glm::vec3( 5.0f, 0.0f, 0.0f ),
+				glm::vec3( 0.0f, 0.0f, 0.0f ),
+				glm::vec3( 0.0f, 1.0f, 0.0f )
+				);
+	mouse_pos = mouse.position();
 
 	// Projection matrix : 60° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
 	glm::mat4 ProjectionMatrix = glm::perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -110,7 +111,7 @@ int main( void )
 	glm::mat4 ModelMatrix(1.0f);
 	glm::mat4 ModelViewMatrix(1.0f);
 	// get view matrix
-	glm::mat4 ViewMatrix = cam.getView();
+	glm::mat4 ViewMatrix = cam.get_view();
 	// model view projection matrix
 	glm::mat4 MVP(1.0f);
 	glm::mat3 ModelView3x3Matrix(1.0f);
@@ -125,7 +126,7 @@ int main( void )
 		// update positions
 		handleInput(keyboard, mouse, cam);
 
-		ViewMatrix = cam.getView();
+		ViewMatrix = cam.get_view();
 		ModelViewMatrix = ViewMatrix * ModelMatrix;
 		ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
 		MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
@@ -264,28 +265,25 @@ int main( void )
 
 void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 {
-	glm::vec3 movement( 0.0f, 0.0f, 0.0f );
-
 	if( keyboard.is_pressed(crap::keyboard::key_W) || keyboard.is_pressed(crap::keyboard::key_w))
-		movement.z += 0.01f;
+		cam.forward();
 	if( keyboard.is_pressed(crap::keyboard::key_S) || keyboard.is_pressed(crap::keyboard::key_s))
-		movement.z -= 0.01f;
+		cam.backward();
 	if( keyboard.is_pressed(crap::keyboard::key_A) || keyboard.is_pressed(crap::keyboard::key_a))
-		movement.x -= 0.01f;
+		cam.left();
 	if( keyboard.is_pressed(crap::keyboard::key_D) || keyboard.is_pressed(crap::keyboard::key_D))
-		movement.x += 0.01f;
+		cam.right();
 	if( keyboard.is_pressed(crap::keyboard::key_up) || keyboard.is_pressed(crap::keyboard::key_page_up))
-		movement.y += 0.01f;
+		cam.up();
 	if( keyboard.is_pressed(crap::keyboard::key_down) || keyboard.is_pressed(crap::keyboard::key_page_down))
-		movement.y -= 0.01f;
-
-	cam.move( movement.x, movement.y, movement.z );
+		cam.down();
 
 	crap::vector2i mouse_position = mouse.position();
 	crap::vector2i screensize( 1024, 768 );
 	crap::vector2i screencenter = screensize / 2;
 
-	cam.rotate( glm::vec3( screencenter.x - mouse_position.x, screencenter.y - mouse_position.y, 0 ) );
+	cam.turn(glm::vec3( (mouse_position.x - screencenter.x)/2, (mouse_position.y - screencenter.y)/2, 0 ));
 
 	mouse.set_position( screencenter );
+	mouse.movement();
 }

@@ -16,38 +16,42 @@ public:
 	camera();
 	~camera();
 
-	void lookAt( const glm::vec3 &target);
-	void lookAt( const glm::vec3 &eye, const glm::vec3 &target, const glm::vec3 &up);
+	void set_rotation( const glm::quat &rotation );
+	void set_position( const glm::vec3 &position );
+	void lookat(const glm::vec3& pos, const glm::vec3& focalpoint, const glm::vec3& up);
 
-	void move( float x, float y, float z );
-	void move( glm::vec3 direction, glm::vec3 length );
+	glm::mat4 get_view();
 
-	void perspective( float fovx, float aspect, float znear, float zfar );
-	void rotate( float headingDegrees, float pitchDegrees, float rollDegrees );
-	void rotate( glm::vec3 &vec );
-	void setOrientation( const glm::quat &orientation );
-	void setPosition( float x, float y, float z );
-	void setPosition( const glm::vec3 &position );
-	void updateViewMatrix( void );
+	void up( void );
+	void down( void );
+	void left( void );
+	void right( void );
+	void forward( void );
+	void backward( void );
 
-	glm::mat4 getView( void );
-
+	void turn( const glm::vec3& movment );
+	void roll( const float& angle );
+	void yaw( const float& angle );
+	void pitch( const float& angle );
 	
 private:
 
 	// internal position
 	glm::quat _orientation;
-	glm::vec3 _eye;
+	glm::vec3 _position;
 
-	glm::vec3 _axisX;
-	glm::vec3 _axisY;
-	glm::vec3 _axisZ;
-
-	glm::vec3 _viewDir;
-
+	// viewmat cached for performance
 	glm::mat4 _viewmat;
-
 	bool _updateRequired;
+
+	// helper functions for implementation
+	glm::vec3 get_up( void );
+	glm::vec3 get_right( void );
+	glm::vec3 get_lookat( void );
+
+	// cache vars for movment
+	glm::vec3 _movementChange;
+	glm::vec3 _directionChange;
 
 };
 #endif // CAMERA_H
