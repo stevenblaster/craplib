@@ -413,5 +413,4 @@ void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 
 	mouse.set_position( screencenter );
 	mouse.movement();
-
 }
