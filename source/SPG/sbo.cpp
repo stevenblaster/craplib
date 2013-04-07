@@ -31,3 +31,8 @@ crap::program* sbo::operator->( void )
 {
 	return &_program;
 }
+
+crap::program& sbo::operator*( void )
+{
+	return _program;
+}

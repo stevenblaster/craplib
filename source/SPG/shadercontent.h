@@ -6,7 +6,7 @@
 struct shader_content
 {
 	size_t32 size;
-	crap::fixed_string<4096> data;
+	crap::fixed_string<4096*4> data;
 	shader_content( void );
 };
 

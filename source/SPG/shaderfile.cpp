@@ -12,7 +12,7 @@ shader_file::shader_file( const crap::string256& filename , crap::memory_pool* p
 	crap::file sdr_file(DATA_PATH + filename);
 	CRAP_ASSERT_DEBUG( sdr_file.readable(), "Shader File does not exist or is not readable" );
 
-	sdr_file.read_text( data, 4096 );
+	sdr_file.read_text( data, 4096*4 );
 	sdr_file.close();
 }
 

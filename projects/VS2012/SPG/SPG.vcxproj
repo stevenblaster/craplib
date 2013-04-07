@@ -96,6 +96,7 @@
     <ClCompile Include="..\..\..\source\SPG\sbo.cpp" />
     <ClCompile Include="..\..\..\source\SPG\shaderconent.cpp" />
     <ClCompile Include="..\..\..\source\SPG\shaderfile.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\shadermanager.cpp" />
     <ClCompile Include="..\..\..\source\SPG\tbo.cpp" />
     <ClCompile Include="..\..\..\source\SPG\texturecontent.cpp" />
     <ClCompile Include="..\..\..\source\SPG\texturefile.cpp" />
@@ -106,10 +107,12 @@
     <ClInclude Include="..\..\..\source\SPG\contentmanager.h" />
     <ClInclude Include="..\..\..\source\SPG\geometryfile.h" />
     <ClInclude Include="..\..\..\source\SPG\geometrycontent.h" />
+    <ClInclude Include="..\..\..\source\SPG\staticmodel.h" />
     <ClInclude Include="..\..\..\source\SPG\precompiled.h" />
     <ClInclude Include="..\..\..\source\SPG\sbo.h" />
     <ClInclude Include="..\..\..\source\SPG\shadercontent.h" />
     <ClInclude Include="..\..\..\source\SPG\shaderfile.h" />
+    <ClInclude Include="..\..\..\source\SPG\shadermanager.h" />
     <ClInclude Include="..\..\..\source\SPG\stringhash.h" />
     <ClInclude Include="..\..\..\source\SPG\tbo.h" />
     <ClInclude Include="..\..\..\source\SPG\texturecontent.h" />

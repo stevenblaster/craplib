@@ -132,6 +132,11 @@ void program::uniform_1i( uniform id, u32 count )
 	glUniform1i(id._id, count);
 }
 
+void program::uniform_1f( uniform id, f32 count )
+{
+	glUniform1f(id._id, count);
+}
+
 void program::uniform_3f( uniform id, f32 x, f32 y, f32 z )
 {
 	glUniform3f( id._id, x, y, z);
