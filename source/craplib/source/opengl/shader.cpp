@@ -127,6 +127,26 @@ void program::uniform_matrix4f_value( uniform id, u32 size, f32* ptr )
 	glUniformMatrix4fv(id._id, 1, GL_FALSE, ptr);
 }
 
+void program::uniform_4f_value( uniform id, u32 size, f32* ptr )
+{
+	glProgramUniform4fv(_id, id._id, 1, ptr);
+}
+
+void program::uniform_3f_value( uniform id, u32 size, f32* ptr )
+{
+	glProgramUniform3fv( _id, id._id, size, ptr );
+}
+
+void program::uniform_1f_value( uniform id, u32 size, f32* ptr )
+{
+	glProgramUniform1fv( _id, id._id, size, ptr );
+}
+
+void program::uniform_1i_value( uniform id, u32 size, i32* ptr )
+{
+	glProgramUniform1iv( _id, id._id, size, ptr );
+}
+
 void program::uniform_1i( uniform id, u32 count )
 {
 	glUniform1i(id._id, count);

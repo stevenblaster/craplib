@@ -75,58 +75,78 @@ int main( void )
 
 	geometry_content ig;
 	cm.create_content( "cube" , &ig, type_name::geometry );
-	//cm.save_content( "cube", &ig, type_name::geometry );
 
 	//test: load texture onto GPU
 	tbo diffuse_tbo( "flower_diff", &cm, tbo::tga );
 	tbo normal_tbo( "flower_norm", &cm, tbo::tga );
-	tbo specular_tbo( "flower_spec", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
-	//sbo cube_sbo( "vertex_texture_only", "fragment_texture_only", &cm );
 	shader_manager sm(&cm);
 	sm.add("crap_vert", "crap_frag");
-	//sm.add("vertex_texture_only", "fragment_texture_only");
-	//sm.set_current("crap_vert", "crap_frag");
-	//sbo cube_sbo( "vertex_std", "fragment_std", &cm );
+	sm.set_current("crap_vert", "crap_frag");
 
 	//get stuff from shader program
 	crap::uniform MatrixID = sm.current()->uniform_location("world_matrix");
 	crap::uniform ViewMatrixID = sm.current()->uniform_location("view_matrix");
 	crap::uniform ModelMatrixID = sm.current()->uniform_location("model_matrix");
 	crap::uniform ModelView3x3MatrixID = sm.current()->uniform_location("model_view_matrix");
-	crap::uniform TextureID  = sm.current()->uniform_location("myTextureSampler");
 	crap::uniform DiffuseTextureID  = sm.current()->uniform_location("diffuse_texture");
 	crap::uniform NormalTextureID  = sm.current()->uniform_location("normal_texture");
-	crap::uniform SpecularTextureID  = sm.current()->uniform_location("specular_texture");
-	crap::uniform AmbientColorID = sm.current()->uniform_location("ambient_color");
 
+	//lights
+	crap::uniform LightNumbersID = sm.current()->uniform_location("light_number");
+	crap::uniform LightInfoArrayID = sm.current()->uniform_location("light_infos");
+	
+
+	//light uniforms
+	struct light_uniforms
+	{
+		crap::uniform specular_type;
+		crap::uniform light_type;
+
+		crap::uniform light_position; 
+		crap::uniform light_power;
+
+		crap::uniform specular_color;
+	
+		crap::uniform camera_light_direction;
+		crap::uniform tangent_light_direction;
+	};
+
+	//light info struct
+	struct light_info
+	{
+		int specular_type;
+		int light_type;
+
+		glm::vec3 light_position; 
+		float light_power;
+
+		glm::vec3 specular_color;
+	
+		glm::vec3 camera_light_direction;
+		glm::vec3 tangent_light_direction;
+	};
+
+	//lights structs
+	light_info lights[1];
+
+	i32 light_number = 1;
 	//light 1
-	crap::uniform SpecularTypeID1 = sm.current()->uniform_location("specular_type1");
-	crap::uniform LightPositionID1 = sm.current()->uniform_location("light_position1");
-	crap::uniform LightViewMatrixID1 = sm.current()->uniform_location("light_view_matrix1");
-	crap::uniform LightTypeID1 = sm.current()->uniform_location("light_type1");
-	crap::uniform LightColorID1 = sm.current()->uniform_location("light_color1");
-	crap::uniform LightPowerID1 = sm.current()->uniform_location("light_power1");
-	crap::uniform SpecularColorID1 = sm.current()->uniform_location("specular_color1");
+	lights[0].specular_type = 0;
+	lights[0].light_type = 0;
+	lights[0].light_position = glm::vec3(0,0,-4);
+	lights[0].light_power = 50.f;
+	lights[0].specular_color = glm::vec3(1,1,1);
+	lights[0].camera_light_direction = glm::vec3(0,0,0);
+	lights[0].tangent_light_direction = glm::vec3(0,0,0);
 
-	//light 2
-	crap::uniform SpecularTypeID2 = sm.current()->uniform_location("specular_type2");
-	crap::uniform LightPositionID2 = sm.current()->uniform_location("light_position2");
-	crap::uniform LightViewMatrixID2 = sm.current()->uniform_location("light_view_matrix2");
-	crap::uniform LightTypeID2 = sm.current()->uniform_location("light_type2");
-	crap::uniform LightColorID2 = sm.current()->uniform_location("light_color2");
-	crap::uniform LightPowerID2 = sm.current()->uniform_location("light_power2");
-	crap::uniform SpecularColorID2 = sm.current()->uniform_location("specular_color2");
-
-	//light 3
-	crap::uniform SpecularTypeID3 = sm.current()->uniform_location("specular_type3");
-	crap::uniform LightPositionID3 = sm.current()->uniform_location("light_position3");
-	crap::uniform LightViewMatrixID3 = sm.current()->uniform_location("light_view_matrix3");
-	crap::uniform LightTypeID3 = sm.current()->uniform_location("light_type3");
-	crap::uniform LightColorID3 = sm.current()->uniform_location("light_color3");
-	crap::uniform LightPowerID3 = sm.current()->uniform_location("light_power3");
-	crap::uniform SpecularColorID3 = sm.current()->uniform_location("specular_color3");
+	light_uniforms uniforms[1];
+	uniforms[0].specular_type = sm.current()->uniform_location("in_specular_type[0]");
+	uniforms[0].light_type = sm.current()->uniform_location("in_light_type[0]");
+	uniforms[0].light_position = sm.current()->uniform_location("in_light_position[0]");
+	uniforms[0].light_power = sm.current()->uniform_location("in_light_power[0]");
+	uniforms[0].specular_color = sm.current()->uniform_location("in_specular_color[0]");
 
 	// setup camera
 	camera cam;
@@ -151,43 +171,6 @@ int main( void )
 	// temporary
 	crap::opengl::clearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
-	//light struct
-	struct light
-	{
-		int lightType;
-		glm::vec3 lightPos;
-		glm::vec3 lightColor;
-		float lightPower;
-		glm::vec3 specularColor;
-	};
-
-	//3 lights
-	glm::vec3 ambientColor = glm::vec3(0.1, 0.1, 0.1);
-	light l1;
-	light l2;
-	light l3;
-
-	//light 1
-	l1.lightType = 1;
-	l1.lightPos = glm::vec3(4,0,0);
-	l1.lightColor = glm::vec3(1,1,1);
-	l1.lightPower = 50.0f;
-	l1.specularColor = glm::vec3(0.0f,0.0f,0.0f);
-
-	//light 2
-	l2.lightType = 0;
-	l2.lightPos = glm::vec3(0,0,4);
-	l2.lightColor = glm::vec3(1,1,1);
-	l2.lightPower = 40.0f;
-	l2.specularColor = glm::vec3(0.3f,0.0f,0.0f);
-
-	//light 3
-	l3.lightType = 1;
-	l3.lightPos = glm::vec3(0,0,-4);
-	l3.lightColor = glm::vec3(1,1,1);
-	l3.lightPower = 40.0f;
-	l3.specularColor = glm::vec3(0.0f,0.3f,0.0f);
-
 	while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	{
 		crap::opengl::clear(crap::opengl::color_depth_buffer);
@@ -206,28 +189,22 @@ int main( void )
 		sm.current()->uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
 		sm.current()->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
 		sm.current()->uniform_matrix4f_value( ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
-		sm.current()->uniform_3f(AmbientColorID, ambientColor.x, ambientColor.y, ambientColor.z);
 
 		//light 1
-		sm.current()->uniform_1i(LightTypeID1, l1.lightType);
-		sm.current()->uniform_3f(LightPositionID1, l1.lightPos.x, l1.lightPos.y, l1.lightPos.z);
-		sm.current()->uniform_3f(LightColorID1, l1.lightColor.x, l1.lightColor.y, l1.lightColor.z);
-		sm.current()->uniform_1f(LightPowerID1, l1.lightPower);
-		sm.current()->uniform_3f(SpecularColorID1, l1.specularColor.x, l1.specularColor.y, l1.specularColor.z);
+		sm.activate();
+		//sm.current()->uniform_1i_value(LightNumbersID, 1, &light_number);
+		sm.current()->uniform_1i_value( uniforms[0].specular_type, 1, &(lights[0].specular_type) );
+		sm.current()->uniform_1i_value( uniforms[0].light_type, 1, &(lights[0].light_type) );
+		sm.current()->uniform_3f_value( uniforms[0].light_position, 1, (f32*)&(lights[0].light_position) );
+		sm.current()->uniform_1f_value( uniforms[0].light_power, 1, &(lights[0].light_power) );
+		sm.current()->uniform_3f_value( uniforms[0].specular_color, 1, (f32*)&(lights[0].specular_color) );
 
-		//light 2
-		sm.current()->uniform_1i(LightTypeID2, l2.lightType);
-		sm.current()->uniform_3f(LightPositionID2, l2.lightPos.x, l2.lightPos.y, l2.lightPos.z);
-		sm.current()->uniform_3f(LightColorID2, l2.lightColor.x, l2.lightColor.y, l2.lightColor.z);
-		sm.current()->uniform_1f(LightPowerID2, l2.lightPower);
-		sm.current()->uniform_3f(SpecularColorID2, l2.specularColor.x, l2.specularColor.y, l2.specularColor.z);
-
-		//light 3
-		sm.current()->uniform_1i(LightTypeID3, l3.lightType);
-		sm.current()->uniform_3f(LightPositionID3, l3.lightPos.x, l3.lightPos.y, l3.lightPos.z);
-		sm.current()->uniform_3f(LightColorID3, l3.lightColor.x, l3.lightColor.y, l3.lightColor.z);
-		sm.current()->uniform_1f(LightPowerID3, l3.lightPower);
-		sm.current()->uniform_3f(SpecularColorID3, l3.specularColor.x, l3.specularColor.y, l3.specularColor.z);
+		
+		//sm.current()->uniform_1i( uniforms[0].specular_type, lights[0].specular_type );
+		//sm.current()->uniform_1i( uniforms[0].light_type, lights[0].light_type );
+		//sm.current()->uniform_3f( uniforms[0].light_position, lights[0].light_position.x, lights[0].light_position.y, lights[0].light_position.z );
+		//sm.current()->uniform_1f( uniforms[0].light_power, lights[0].light_power );
+		//sm.current()->uniform_3f( uniforms[0].specular_color, lights[0].specular_color.x, lights[0].specular_color.y, lights[0].specular_color.z  );
 
 		//activate texture buffer and connect data
 		diffuse_tbo.activate();
@@ -237,10 +214,6 @@ int main( void )
 		normal_tbo.activate();
 		normal_tbo.bind_buffer();
 		sm.current()->uniform_1i( NormalTextureID, 1);
-
-		specular_tbo.activate();
-		specular_tbo.bind_buffer();
-		sm.current()->uniform_1i( SpecularTextureID, 2);
 
 		//define data of buffers
 		sm.current()->vertex_attribute_array.enable(0);
@@ -328,7 +301,7 @@ int main( void )
 		// light pos 1
 		glColor3f(1,1,1);
 		glBegin(GL_LINES);
-			debug_light = l1.lightPos;
+			debug_light = lights[0].light_position;
 			glVertex3fv(&debug_light.x);
 			debug_light+=glm::vec3(1,0,0)*0.1f;
 			glVertex3fv(&debug_light.x);
@@ -338,59 +311,6 @@ int main( void )
 			glVertex3fv(&debug_light.x);
 		glEnd();
 
-		// light pos 2
-		glColor3f(1,1,1);
-		glBegin(GL_LINES);
-			debug_light = l2.lightPos;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light-=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(0,1,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-		glEnd();
-
-		// light pos 3
-		glColor3f(1,1,1);
-		glBegin(GL_LINES);
-		glColor3f(1,1,1);
-		glBegin(GL_LINES);
-			debug_light = l1.lightPos;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light-=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(0,1,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-		glEnd();
-
-		// light pos 2
-		glColor3f(1,1,1);
-		glBegin(GL_LINES);
-			debug_light = l2.lightPos;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light-=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(0,1,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-		glEnd();
-
-		// light pos 3
-		glColor3f(1,1,1);
-		glBegin(GL_LINES);
-			debug_light = l3.lightPos;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light-=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(0,1,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-		glEnd();
 
 		//poll and swap
 		window.swap();

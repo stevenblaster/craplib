@@ -50,7 +50,8 @@ struct uniform
 {
 	u32 _id;
 
-	uniform( u32 id ) : _id(id) {}
+	uniform( u32 id = 0 ) : _id(id) {}
+	uniform& operator=( const uniform& other ) { _id = other._id; return *this; }
 };
 
 struct object
@@ -76,6 +77,14 @@ struct program
 	void uniform_matrix3f_value( uniform id, u32 size, f32* ptr );
 
 	void uniform_matrix4f_value( uniform id, u32 count, f32* ptr );
+
+	void uniform_4f_value( uniform id, u32 size, f32* ptr );
+
+	void uniform_3f_value( uniform id, u32 size, f32* ptr );
+
+	void uniform_1f_value( uniform id, u32 size, f32* ptr );
+
+	void uniform_1i_value( uniform id, u32 size, i32* ptr );
 
 	void uniform_1i( uniform id, u32 number ); //TODO
 
