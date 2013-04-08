@@ -71,14 +71,14 @@ int main( void )
 	vert_array.bind();
 
 	//test: load vbo onto GPU
-	vbo cube_vbo( "cube", &cm, vbo::static_draw );
+	vbo cube_vbo( "ape", &cm, vbo::static_draw );
 
 	geometry_content ig;
 	cm.create_content( "cube" , &ig, type_name::geometry );
 
 	//test: load texture onto GPU
-	tbo diffuse_tbo( "flower_diff", &cm, tbo::tga );
-	tbo normal_tbo( "flower_norm", &cm, tbo::tga );
+	tbo diffuse_tbo( "brick_diff", &cm, tbo::tga );
+	tbo normal_tbo( "brick_norm", &cm, tbo::tga );
 
 	//test: load linked shader progam onto GPU
 	shader_manager sm(&cm);
@@ -111,6 +111,8 @@ int main( void )
 	crap::uniform uni_camera_light_direction;
 	crap::uniform uni_tangent_light_direction;
 
+	crap::uniform uni_bump;
+
 
 	int specular_type[3];
 	int light_type[3];
@@ -119,46 +121,52 @@ int main( void )
 	glm::vec3 specular_color[3];
 	glm::vec3 camera_light_direction[3];
 	glm::vec3 tangent_light_direction[3];
+	int bump[3];
 
-	i32 light_number = 2;
+	i32 light_number = 1;
 	//light 1
 	specular_type[0] = 0;
-	light_type[0] = 0;
-	light_position[0] = glm::vec3(0,0,-4);
+	light_type[0] = 1;
+	light_position[0] = glm::vec3(4,0,0);
 	light_power[0] = 30.f;
 	specular_color[0] = glm::vec3(0,0,1);
 	camera_light_direction[0] = glm::vec3(0,0,0);
 	tangent_light_direction[0] = glm::vec3(0,0,0);
+	bump[0] = 0;
 
 	specular_type[1] = 0;
-	light_type[1] = 0;
-	light_position[1] = glm::vec3(4,0,0);
-	light_power[1] = 30.f;
+	light_type[1] = 1;
+	light_position[1] = glm::vec3(0,0,-4);
+	light_power[1] = 50.f;
 	specular_color[1] = glm::vec3(1,0,0);
 	camera_light_direction[1] = glm::vec3(0,0,0);
 	tangent_light_direction[1] = glm::vec3(0,0,0);
+	bump[1] = 0;
 
 	specular_type[2] = 0;
-	light_type[2] = 0;
+	light_type[2] = 1;
 	light_position[2] = glm::vec3(4,4,4);
-	light_power[2] = 30.f;
+	light_power[2] = 50.f;
 	specular_color[2] = glm::vec3(0,1,0);
 	camera_light_direction[2] = glm::vec3(0,0,0);
 	tangent_light_direction[2] = glm::vec3(0,0,0);
+	bump[2] = 0;
 
 	uni_specular_type = sm.current()->uniform_location(	"start_specular_type");
 	uni_light_type = sm.current()->uniform_location(	"start_light_type");
 	uni_light_position = sm.current()->uniform_location("start_light_position");
 	uni_light_power = sm.current()->uniform_location(	"start_light_power");
 	uni_specular_color = sm.current()->uniform_location("start_specular_color");
+	uni_bump = sm.current()->uniform_location("bump");
 
 	// setup camera
 	camera cam;
-	cam.lookat(
-				glm::vec3( 5.0f, 0.0f, 0.0f ),
-				glm::vec3( 0.0f, 0.0f, 0.0f ),
-				glm::vec3( 0.0f, 1.0f, 0.0f )
-				);
+	//cam.lookat(
+	//			glm::vec3( 5.0f, 0.0f, 0.0f ),
+	//			glm::vec3( 0.0f, 0.0f, 0.0f ),
+	//			glm::vec3( 0.0f, 1.0f, 0.0f )
+	//			);
+	cam.setPosition( glm::vec3( 0.0f, 0.0f, 5.0f ) );
 	mouse_pos = mouse.position();
 
 	// Projection matrix : 60° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
@@ -167,7 +175,7 @@ int main( void )
 	glm::mat4 ModelMatrix(1.0f);
 	glm::mat4 ModelViewMatrix(1.0f);
 	// get view matrix
-	glm::mat4 ViewMatrix = cam.get_view();
+	glm::mat4 ViewMatrix = cam.view();
 	// model view projection matrix
 	glm::mat4 MVP(1.0f);
 	glm::mat3 ModelView3x3Matrix(1.0f);
@@ -182,7 +190,7 @@ int main( void )
 		// update positions
 		handleInput(keyboard, mouse, cam);
 
-		ViewMatrix = cam.get_view();
+		ViewMatrix = cam.view();
 		ModelViewMatrix = ViewMatrix * ModelMatrix;
 		ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
 		MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
@@ -202,6 +210,7 @@ int main( void )
 		sm.current()->uniform_3f_value( uni_light_position, 3, (f32*)light_position );
 		sm.current()->uniform_1f_value( uni_light_power, 3, light_power );
 		sm.current()->uniform_3f_value( uni_specular_color, 3, (f32*)specular_color );
+		sm.current()->uniform_1i_value( uni_bump, 3, bump );
 
 		//activate texture buffer and connect data
 		diffuse_tbo.activate();
@@ -296,18 +305,49 @@ int main( void )
 		glm::vec3 debug_light;
 
 		// light pos 1
-		//glColor3f(1,1,1);
-		//glBegin(GL_LINES);
-		//	debug_light = lights[0].light_position;
-		//	glVertex3fv(&debug_light.x);
-		//	debug_light+=glm::vec3(1,0,0)*0.1f;
-		//	glVertex3fv(&debug_light.x);
-		//	debug_light-=glm::vec3(1,0,0)*0.1f;
-		//	glVertex3fv(&debug_light.x);
-		//	debug_light+=glm::vec3(0,1,0)*0.1f;
-		//	glVertex3fv(&debug_light.x);
-		//glEnd();
+		glColor3f(1,1,1);
+		glBegin(GL_LINES);
+			debug_light = light_position[0];
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light-=glm::vec3(1,0,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+			debug_light+=glm::vec3(0,1,0)*0.1f;
+			glVertex3fv(&debug_light.x);
+		glEnd();
 
+		if( light_number >= 2 )
+		{
+			// light pos 2
+			glColor3f(1,1,1);
+			glBegin(GL_LINES);
+				debug_light = light_position[1];
+				glVertex3fv(&debug_light.x);
+				debug_light+=glm::vec3(1,0,0)*0.1f;
+				glVertex3fv(&debug_light.x);
+				debug_light-=glm::vec3(1,0,0)*0.1f;
+				glVertex3fv(&debug_light.x);
+				debug_light+=glm::vec3(0,1,0)*0.1f;
+				glVertex3fv(&debug_light.x);
+			glEnd();
+		}
+
+		if( light_number >= 3 )
+		{
+			// light pos3
+			glColor3f(1,1,1);
+			glBegin(GL_LINES);
+				debug_light = light_position[2];
+				glVertex3fv(&debug_light.x);
+				debug_light+=glm::vec3(1,0,0)*0.1f;
+				glVertex3fv(&debug_light.x);
+				debug_light-=glm::vec3(1,0,0)*0.1f;
+				glVertex3fv(&debug_light.x);
+				debug_light+=glm::vec3(0,1,0)*0.1f;
+				glVertex3fv(&debug_light.x);
+			glEnd();
+		}
 
 		//poll and swap
 		window.swap();
@@ -326,14 +366,32 @@ int main( void )
 			light_number = 3;
 		}
 
+		if( keyboard.is_pressed( crap::keyboard::key_T ) )
+		{
+			light_type[0] = ( light_type[0] == 1 ) ? 0 : 1;
+			light_type[1] = ( light_type[1] == 1 ) ? 0 : 1;
+			light_type[2] = ( light_type[2] == 1 ) ? 0 : 1;
+		}
+
 		if( keyboard.is_pressed( crap::keyboard::key_B ) )
 		{
 			specular_type[0] = 0;
+			specular_type[1] = 0;
+			specular_type[2] = 0;
 		}
 
 		if( keyboard.is_pressed( crap::keyboard::key_P ) )
 		{
 			specular_type[0] = 1;
+			specular_type[1] = 1;
+			specular_type[2] = 1;
+		}
+
+		if( keyboard.is_pressed( crap::keyboard::key_return ) )
+		{
+			bump[0] = ( bump[0] == 1 ) ? 0 : 1;
+			bump[1] = ( bump[1] == 1 ) ? 0 : 1;
+			bump[2] = ( bump[2] == 1 ) ? 0 : 1;
 		}
 
 	}
@@ -372,7 +430,10 @@ void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 	 crap::vector2i screencenter = screensize / 2;
 
 	 crap::vector2i move = mouse.movement();
-	 cam.offsetOrientation( move.y/10.0f, move.x/10.0f );
+ 
+	 cam.offsetOrientation( move.y / 10.0f, move.x / 10.0f );
+
+	 mouse.set_position( screencenter );
 	 mouse.movement();
 
 }

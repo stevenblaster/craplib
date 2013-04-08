@@ -32,7 +32,8 @@ camera::camera() :
 {
 }
 
-const glm::vec3& camera::position() const {
+const glm::vec3& camera::position() const 
+{
 	return _position;
 }
 

@@ -103,6 +103,7 @@ vector2i mouse::position( void )
 void mouse::set_position( vector2i pos )
 {
 	glfwSetMousePos(pos.x, pos.y);
+	move_callback_function( pos.x, pos.y );
 }
 
 vector2i mouse::movement( void )

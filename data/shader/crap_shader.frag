@@ -17,6 +17,7 @@ in float light_power[MAX_LIGHTS];
 in vec3 specular_color[MAX_LIGHTS];
 in vec3 camera_light_direction[MAX_LIGHTS];
 in vec3 tangent_light_direction[MAX_LIGHTS];
+in vec3 vert_normal;
 
 // output
 out vec3 color;
@@ -26,7 +27,7 @@ uniform mat4 world_matrix;
 uniform mat4 view_matrix;
 uniform mat4 model_matrix; 
 uniform mat3 model_view_matrix;
-
+uniform int bump[MAX_LIGHTS];
 uniform sampler2D diffuse_texture;
 uniform sampler2D normal_texture;
 
@@ -43,8 +44,12 @@ void main()
 
 	for(int i=0; i< light_number; ++i)
 	{
-		// Local normal, in tangent space. V tex coordinate is inverted because normal map is in TGA (not in DDS) for better quality
-		vec3 tangent_texture_normal = normalize(texture2D( normal_texture, vec2(model_uv.x,-model_uv.y) ).rgb * 2.0 - 1.0);
+		// Local normal
+		vec3 tangent_texture_normal;
+		if( bump[i] == 1 )
+			tangent_texture_normal = normalize(texture2D( normal_texture, vec2(model_uv.x,-model_uv.y) ).rgb * 2.0 - 1.0);
+		else
+			tangent_texture_normal = vert_normal;
 		
 		// Distance to the light
 		float distance = length( light_position[i] - world_position );
@@ -64,7 +69,8 @@ void main()
 		//  - light is at the vertical of the triangle -> 1
 		//  - light is perpendicular to the triangle -> 0
 		//  - light is behind the triangle -> 0
-		float cosTheta = clamp( dot( fragment_normal, light_direction ), 0,1 );
+		float cosTheta;
+		
 		
 		// Eye vector (towards the camera)
 		vec3 camera_direction = normalize(camera_eye_direction);
@@ -72,6 +78,14 @@ void main()
 
 		// Direction in which the triangle reflects the light
 		vec3 reflection_direction = reflect(-light_direction, fragment_normal);
+		
+		vec3 half_vec = normalize(reflection_direction + light_direction);
+		
+		
+		if( specular_type[i] == 1 )
+			cosTheta = clamp( dot( fragment_normal, light_direction ), 0,1 );
+		else
+			cosTheta = clamp( dot( fragment_normal, half_vec ), 0,1 );
 
 		// Cosine of the angle between the Eye vector and the Reflect vector,
 		// clamped to 0
@@ -79,10 +93,10 @@ void main()
 		//  - Looking elsewhere -> < 1
 		
 		float cosAlpha;
-		if( specular_type[i] == 0 )
-			cosAlpha = clamp( dot( camera_direction, reflection_direction ), 0,1 ); //BLINN
-		else
-			cosAlpha = pow( max(dot(reflection_direction, camera_direction), 0.0), 0.3 ); //PHONG
+		//if( specular_type[i] == 0 )
+			cosAlpha = clamp( dot( camera_direction, reflection_direction ), 0,1 ); //PHONG
+		//else
+			//cosAlpha = pow( max(dot(reflection_direction, camera_direction), 0.0), 0.3 ); //PHONG
 		
 		colors[i] = 
 			// Ambient : simulates indirect lighting

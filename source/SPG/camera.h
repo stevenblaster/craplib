@@ -28,7 +28,8 @@ limitations under the License.
 
 	Includes the perspective projection matrix.
 	*/
-	class camera {
+	class camera 
+	{
 	public:
 		camera();
 

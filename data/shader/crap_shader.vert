@@ -16,7 +16,7 @@ out vec3 world_position;
 out vec3 camera_eye_direction;
 out vec3 tangent_eye_direction;
 
-//out light_info light_data[MAX_LIGHTS];
+// output stuff
 out flat int specular_type[MAX_LIGHTS];
 out flat int light_type[MAX_LIGHTS];
 out vec3 light_position[MAX_LIGHTS];
@@ -24,6 +24,7 @@ out float light_power[MAX_LIGHTS];
 out vec3 specular_color[MAX_LIGHTS];
 out vec3 camera_light_direction[MAX_LIGHTS];
 out vec3 tangent_light_direction[MAX_LIGHTS];
+out vec3 vert_normal;
 
 // uniforms
 uniform mat4 world_matrix; 
@@ -35,7 +36,6 @@ uniform sampler2D diffuse_texture;
 uniform sampler2D normal_texture;
 
 uniform int light_number = 1;
-//uniform light_info light_infos[MAX_LIGHTS];
 uniform int start_specular_type[MAX_LIGHTS];
 uniform int start_light_type[MAX_LIGHTS];
 uniform vec3 start_light_position[MAX_LIGHTS];
@@ -46,7 +46,7 @@ uniform vec3 start_tangent_light_direction[MAX_LIGHTS];
 
 void main()
 {
-
+	vert_normal = vertex_normal;
 	for( int i=0; i< light_number; ++i)
 	{
 		specular_type[i] = start_specular_type[i];
@@ -59,7 +59,7 @@ void main()
 	// position of vertex in clipspace
 	gl_Position =  world_matrix * vec4(vertex_position,1);
 	
-	// Position of the vertex, in worldspace
+	// position of the vertex, in worldspace
 	world_position = (model_matrix * vec4(vertex_position,1)).xyz;
 	
 	// Vector that goes from the vertex to the camera, in camera space.
