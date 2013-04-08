@@ -35,14 +35,14 @@ uniform int light_number = 1;
 void main()
 {
 	vec3 colors[MAX_LIGHTS];
+	
+	// Material properties
+		vec3 material_diffuse_color = texture2D( diffuse_texture, model_uv ).rgb;
+		vec3 material_ambient_color = material_diffuse_color * vec3(0.1, 0.1, 0.1);
+		vec3 material_specular_color = material_ambient_color;
 
 	for(int i=0; i< light_number; ++i)
 	{
-		// Material properties
-		vec3 material_diffuse_color = texture2D( diffuse_texture, model_uv ).rgb;
-		vec3 material_ambient_color = material_diffuse_color;
-		vec3 material_specular_color = material_ambient_color;
-
 		// Local normal, in tangent space. V tex coordinate is inverted because normal map is in TGA (not in DDS) for better quality
 		vec3 tangent_texture_normal = normalize(texture2D( normal_texture, vec2(model_uv.x,-model_uv.y) ).rgb * 2.0 - 1.0);
 		

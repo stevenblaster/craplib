@@ -162,6 +162,11 @@ void program::uniform_3f( uniform id, f32 x, f32 y, f32 z )
 	glUniform3f( id._id, x, y, z);
 }
 
+void program::uniform_4f( uniform id, f32 x, f32 y, f32 z, f32 w )
+{
+	glUniform4f( id._id, x, y, z, w);
+}
+
 void program::vertex_attribute_array::enable( u32 index )
 {
 	glEnableVertexAttribArray( index );

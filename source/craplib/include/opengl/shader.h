@@ -92,6 +92,8 @@ struct program
 
 	void uniform_3f( uniform id, f32 x, f32 y, f32 z );
 
+	void uniform_4f( uniform id, f32 x, f32 y, f32 z, f32 w );
+
 	struct vertex_attribute_array
 	{
 		void enable( u32 index );

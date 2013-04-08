@@ -99,54 +99,58 @@ int main( void )
 	
 
 	//light uniforms
-	struct light_uniforms
-	{
-		crap::uniform specular_type;
-		crap::uniform light_type;
 
-		crap::uniform light_position; 
-		crap::uniform light_power;
+	crap::uniform uni_specular_type;
+	crap::uniform uni_light_type;
 
-		crap::uniform specular_color;
-	
-		crap::uniform camera_light_direction;
-		crap::uniform tangent_light_direction;
-	};
+	crap::uniform uni_light_position;
+	crap::uniform uni_light_power;
 
-	//light info struct
-	struct light_info
-	{
-		int specular_type;
-		int light_type;
+	crap::uniform uni_specular_color;
 
-		glm::vec3 light_position; 
-		float light_power;
+	crap::uniform uni_camera_light_direction;
+	crap::uniform uni_tangent_light_direction;
 
-		glm::vec3 specular_color;
-	
-		glm::vec3 camera_light_direction;
-		glm::vec3 tangent_light_direction;
-	};
 
-	//lights structs
-	light_info lights[1];
+	int specular_type[3];
+	int light_type[3];
+	glm::vec3 light_position[3]; 
+	float light_power[3];
+	glm::vec3 specular_color[3];
+	glm::vec3 camera_light_direction[3];
+	glm::vec3 tangent_light_direction[3];
 
-	i32 light_number = 1;
+	i32 light_number = 2;
 	//light 1
-	lights[0].specular_type = 0;
-	lights[0].light_type = 0;
-	lights[0].light_position = glm::vec3(0,0,-4);
-	lights[0].light_power = 50.f;
-	lights[0].specular_color = glm::vec3(1,1,1);
-	lights[0].camera_light_direction = glm::vec3(0,0,0);
-	lights[0].tangent_light_direction = glm::vec3(0,0,0);
+	specular_type[0] = 0;
+	light_type[0] = 0;
+	light_position[0] = glm::vec3(0,0,-4);
+	light_power[0] = 30.f;
+	specular_color[0] = glm::vec3(0,0,1);
+	camera_light_direction[0] = glm::vec3(0,0,0);
+	tangent_light_direction[0] = glm::vec3(0,0,0);
 
-	light_uniforms uniforms[1];
-	uniforms[0].specular_type = sm.current()->uniform_location("in_specular_type[0]");
-	uniforms[0].light_type = sm.current()->uniform_location("in_light_type[0]");
-	uniforms[0].light_position = sm.current()->uniform_location("in_light_position[0]");
-	uniforms[0].light_power = sm.current()->uniform_location("in_light_power[0]");
-	uniforms[0].specular_color = sm.current()->uniform_location("in_specular_color[0]");
+	specular_type[1] = 0;
+	light_type[1] = 0;
+	light_position[1] = glm::vec3(4,0,0);
+	light_power[1] = 30.f;
+	specular_color[1] = glm::vec3(1,0,0);
+	camera_light_direction[1] = glm::vec3(0,0,0);
+	tangent_light_direction[1] = glm::vec3(0,0,0);
+
+	specular_type[2] = 0;
+	light_type[2] = 0;
+	light_position[2] = glm::vec3(4,4,4);
+	light_power[2] = 30.f;
+	specular_color[2] = glm::vec3(0,1,0);
+	camera_light_direction[2] = glm::vec3(0,0,0);
+	tangent_light_direction[2] = glm::vec3(0,0,0);
+
+	uni_specular_type = sm.current()->uniform_location(	"start_specular_type");
+	uni_light_type = sm.current()->uniform_location(	"start_light_type");
+	uni_light_position = sm.current()->uniform_location("start_light_position");
+	uni_light_power = sm.current()->uniform_location(	"start_light_power");
+	uni_specular_color = sm.current()->uniform_location("start_specular_color");
 
 	// setup camera
 	camera cam;
@@ -190,15 +194,14 @@ int main( void )
 		sm.current()->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
 		sm.current()->uniform_matrix4f_value( ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
 
-		//light 1
+		//light
 		sm.activate();
-		sm.current()->uniform_1i_value(LightNumbersID, 1, &light_number);
-		sm.current()->uniform_1i_value( uniforms[0].specular_type, 1, &(lights[0].specular_type) );
-		sm.current()->uniform_1i_value( uniforms[0].light_type, 1, &(lights[0].light_type) );
-		sm.current()->uniform_3f_value( uniforms[0].light_position, 1, (f32*)&(lights[0].light_position) );
-		sm.current()->uniform_1f_value( uniforms[0].light_power, 1, &(lights[0].light_power) );
-		sm.current()->uniform_3f_value( uniforms[0].specular_color, 1, (f32*)&(lights[0].specular_color) );
-
+		sm.current()->uniform_1i(LightNumbersID, light_number);
+		sm.current()->uniform_1i_value( uni_specular_type, 3, specular_type );
+		sm.current()->uniform_1i_value( uni_light_type, 3, light_type );
+		sm.current()->uniform_3f_value( uni_light_position, 3, (f32*)light_position );
+		sm.current()->uniform_1f_value( uni_light_power, 3, light_power );
+		sm.current()->uniform_3f_value( uni_specular_color, 3, (f32*)specular_color );
 
 		//activate texture buffer and connect data
 		diffuse_tbo.activate();
@@ -293,30 +296,46 @@ int main( void )
 		glm::vec3 debug_light;
 
 		// light pos 1
-		glColor3f(1,1,1);
-		glBegin(GL_LINES);
-			debug_light = lights[0].light_position;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light-=glm::vec3(1,0,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-			debug_light+=glm::vec3(0,1,0)*0.1f;
-			glVertex3fv(&debug_light.x);
-		glEnd();
+		//glColor3f(1,1,1);
+		//glBegin(GL_LINES);
+		//	debug_light = lights[0].light_position;
+		//	glVertex3fv(&debug_light.x);
+		//	debug_light+=glm::vec3(1,0,0)*0.1f;
+		//	glVertex3fv(&debug_light.x);
+		//	debug_light-=glm::vec3(1,0,0)*0.1f;
+		//	glVertex3fv(&debug_light.x);
+		//	debug_light+=glm::vec3(0,1,0)*0.1f;
+		//	glVertex3fv(&debug_light.x);
+		//glEnd();
 
 
 		//poll and swap
 		window.swap();
 		window.poll_events();
 
-		if( keyboard.is_pressed( crap::keyboard::key_C ) )
+		if( keyboard.is_pressed( crap::keyboard::key_1 ) )
 		{
-			//if( sm.is_current("crop_vert", "crop_frag") )
-			//	//sm.set_current("vertex_texture_only", "fragment_texture_only");
-			//else
-			//	sm.set_current("crop_vert", "crop_frag");
+			light_number = 1;
 		}
+		if( keyboard.is_pressed( crap::keyboard::key_2 ) )
+		{
+			light_number = 2;
+		}
+		if( keyboard.is_pressed( crap::keyboard::key_3 ) )
+		{
+			light_number = 3;
+		}
+
+		if( keyboard.is_pressed( crap::keyboard::key_B ) )
+		{
+			specular_type[0] = 0;
+		}
+
+		if( keyboard.is_pressed( crap::keyboard::key_P ) )
+		{
+			specular_type[0] = 1;
+		}
+
 	}
 
 	//geometry_content ig;
@@ -334,26 +353,26 @@ int main( void )
 
 void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam)
 {
-	if( keyboard.is_pressed(crap::keyboard::key_W) || keyboard.is_pressed(crap::keyboard::key_w))
-		cam.forward();
-	if( keyboard.is_pressed(crap::keyboard::key_S) || keyboard.is_pressed(crap::keyboard::key_s))
-		cam.backward();
-	if( keyboard.is_pressed(crap::keyboard::key_A) || keyboard.is_pressed(crap::keyboard::key_a))
-		cam.left();
-	if( keyboard.is_pressed(crap::keyboard::key_D) || keyboard.is_pressed(crap::keyboard::key_D))
-		cam.right();
-	if( keyboard.is_pressed(crap::keyboard::key_up) || keyboard.is_pressed(crap::keyboard::key_page_up))
-		cam.up();
-	if( keyboard.is_pressed(crap::keyboard::key_down) || keyboard.is_pressed(crap::keyboard::key_page_down))
-		cam.down();
+	 glm::vec3 offset( 0.0f, 0.0f, 0.0f);
+	 if( keyboard.is_pressed(crap::keyboard::key_W) || keyboard.is_pressed(crap::keyboard::key_w))
+	  cam.offsetPosition( cam.forward() * 0.1f);
+	 if( keyboard.is_pressed(crap::keyboard::key_S) || keyboard.is_pressed(crap::keyboard::key_s))
+	  cam.offsetPosition( -cam.forward() * 0.1f);
+	 if( keyboard.is_pressed(crap::keyboard::key_A) || keyboard.is_pressed(crap::keyboard::key_a))
+	  cam.offsetPosition( -cam.right() * 0.1f);
+	 if( keyboard.is_pressed(crap::keyboard::key_D) || keyboard.is_pressed(crap::keyboard::key_D))
+	  cam.offsetPosition( cam.right() * 0.1f);
+	 if( keyboard.is_pressed(crap::keyboard::key_up) || keyboard.is_pressed(crap::keyboard::key_page_up))
+	  cam.offsetPosition( cam.up() * 0.1f);
+	 if( keyboard.is_pressed(crap::keyboard::key_down) || keyboard.is_pressed(crap::keyboard::key_page_down))
+	  cam.offsetPosition( -cam.up() * 0.1f);
 
-	crap::vector2i mouse_position = mouse.position();
-	crap::vector2i screensize( 1024, 768 );
-	crap::vector2i screencenter = screensize / 2;
+	 crap::vector2i mouse_position = mouse.position();
+	 crap::vector2i screensize( 1024, 768 );
+	 crap::vector2i screencenter = screensize / 2;
 
-	cam.turn(glm::vec3( (mouse_position.x - screencenter.x)/2, (mouse_position.y - screencenter.y)/2, 0 ));
-
-	mouse.set_position( screencenter );
-	mouse.movement();
+	 crap::vector2i move = mouse.movement();
+	 cam.offsetOrientation( move.y/10.0f, move.x/10.0f );
+	 mouse.movement();
 
 }
