@@ -192,19 +192,13 @@ int main( void )
 
 		//light 1
 		sm.activate();
-		//sm.current()->uniform_1i_value(LightNumbersID, 1, &light_number);
+		sm.current()->uniform_1i_value(LightNumbersID, 1, &light_number);
 		sm.current()->uniform_1i_value( uniforms[0].specular_type, 1, &(lights[0].specular_type) );
 		sm.current()->uniform_1i_value( uniforms[0].light_type, 1, &(lights[0].light_type) );
 		sm.current()->uniform_3f_value( uniforms[0].light_position, 1, (f32*)&(lights[0].light_position) );
 		sm.current()->uniform_1f_value( uniforms[0].light_power, 1, &(lights[0].light_power) );
 		sm.current()->uniform_3f_value( uniforms[0].specular_color, 1, (f32*)&(lights[0].specular_color) );
 
-		
-		//sm.current()->uniform_1i( uniforms[0].specular_type, lights[0].specular_type );
-		//sm.current()->uniform_1i( uniforms[0].light_type, lights[0].light_type );
-		//sm.current()->uniform_3f( uniforms[0].light_position, lights[0].light_position.x, lights[0].light_position.y, lights[0].light_position.z );
-		//sm.current()->uniform_1f( uniforms[0].light_power, lights[0].light_power );
-		//sm.current()->uniform_3f( uniforms[0].specular_color, lights[0].specular_color.x, lights[0].specular_color.y, lights[0].specular_color.z  );
 
 		//activate texture buffer and connect data
 		diffuse_tbo.activate();
