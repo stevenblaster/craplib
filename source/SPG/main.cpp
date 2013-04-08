@@ -92,61 +92,11 @@ int main( void )
 	crap::uniform ModelView3x3MatrixID = sm.current()->uniform_location("model_view_matrix");
 	crap::uniform DiffuseTextureID  = sm.current()->uniform_location("diffuse_texture");
 	crap::uniform NormalTextureID  = sm.current()->uniform_location("normal_texture");
-
-	//lights
-	crap::uniform LightNumbersID = sm.current()->uniform_location("light_number");
-	crap::uniform LightInfoArrayID = sm.current()->uniform_location("light_infos");
-	
-
-	//light uniforms
-	struct light_uniforms
-	{
-		crap::uniform specular_type;
-		crap::uniform light_type;
-
-		crap::uniform light_position; 
-		crap::uniform light_power;
-
-		crap::uniform specular_color;
-	
-		crap::uniform camera_light_direction;
-		crap::uniform tangent_light_direction;
-	};
-
-	//light info struct
-	struct light_info
-	{
-		int specular_type;
-		int light_type;
-
-		glm::vec3 light_position; 
-		float light_power;
-
-		glm::vec3 specular_color;
-	
-		glm::vec3 camera_light_direction;
-		glm::vec3 tangent_light_direction;
-	};
-
-	//lights structs
-	light_info lights[1];
-
-	i32 light_number = 1;
-	//light 1
-	lights[0].specular_type = 0;
-	lights[0].light_type = 0;
-	lights[0].light_position = glm::vec3(0,0,-4);
-	lights[0].light_power = 50.f;
-	lights[0].specular_color = glm::vec3(1,1,1);
-	lights[0].camera_light_direction = glm::vec3(0,0,0);
-	lights[0].tangent_light_direction = glm::vec3(0,0,0);
-
-	light_uniforms uniforms[1];
-	uniforms[0].specular_type = sm.current()->uniform_location("in_specular_type[0]");
-	uniforms[0].light_type = sm.current()->uniform_location("in_light_type[0]");
-	uniforms[0].light_position = sm.current()->uniform_location("in_light_position[0]");
-	uniforms[0].light_power = sm.current()->uniform_location("in_light_power[0]");
-	uniforms[0].specular_color = sm.current()->uniform_location("in_specular_color[0]");
+	crap::uniform LightType1ID = sm.current()->uniform_location("lightType1");
+	crap::uniform LightType2ID = sm.current()->uniform_location("lightType2");
+	crap::uniform LightType3ID = sm.current()->uniform_location("lightType3");
+	crap::uniform SpecTypeID = sm.current()->uniform_location("specType");
+	crap::uniform BumpID = sm.current()->uniform_location("bumpEnabled");
 
 	// setup camera
 	camera cam;
@@ -171,6 +121,12 @@ int main( void )
 	// temporary
 	crap::opengl::clearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
+	int lightType[] = {0, 0, 0};
+	int specType[] = {0, 0, 0};
+	int bump[] = {0, 0, 0};
+
+	int activeComponent = 0;
+
 	while( !keyboard.is_pressed( crap::keyboard::key_escape ) && window.is_open() && !mouse.is_pressed(crap::mouse::button_1) )
 	{
 		crap::opengl::clear(crap::opengl::color_depth_buffer);
@@ -183,28 +139,19 @@ int main( void )
 		ModelView3x3Matrix = glm::mat3(ModelViewMatrix);
 		MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
-		//activate shader porgram and connect data
+		//activate shader program and connect data
 		sm.activate();
 		sm.current()->uniform_matrix4f_value( MatrixID, 1, &MVP[0][0]);
 		sm.current()->uniform_matrix4f_value( ModelMatrixID, 1, &ModelMatrix[0][0]);
 		sm.current()->uniform_matrix4f_value( ViewMatrixID, 1, &ViewMatrix[0][0]);
 		sm.current()->uniform_matrix4f_value( ModelView3x3MatrixID, 1, &ModelView3x3Matrix[0][0]);
+		sm.current()->uniform_1i( LightType1ID, lightType[0]);
+		sm.current()->uniform_1i( LightType2ID, lightType[1]);
+		sm.current()->uniform_1i( LightType3ID, lightType[2]);
+		sm.current()->uniform_1i( SpecTypeID, specType[0]);
+		sm.current()->uniform_1i( BumpID, bump[0] );
 
-		//light 1
 		sm.activate();
-		//sm.current()->uniform_1i_value(LightNumbersID, 1, &light_number);
-		sm.current()->uniform_1i_value( uniforms[0].specular_type, 1, &(lights[0].specular_type) );
-		sm.current()->uniform_1i_value( uniforms[0].light_type, 1, &(lights[0].light_type) );
-		sm.current()->uniform_3f_value( uniforms[0].light_position, 1, (f32*)&(lights[0].light_position) );
-		sm.current()->uniform_1f_value( uniforms[0].light_power, 1, &(lights[0].light_power) );
-		sm.current()->uniform_3f_value( uniforms[0].specular_color, 1, (f32*)&(lights[0].specular_color) );
-
-		
-		//sm.current()->uniform_1i( uniforms[0].specular_type, lights[0].specular_type );
-		//sm.current()->uniform_1i( uniforms[0].light_type, lights[0].light_type );
-		//sm.current()->uniform_3f( uniforms[0].light_position, lights[0].light_position.x, lights[0].light_position.y, lights[0].light_position.z );
-		//sm.current()->uniform_1f( uniforms[0].light_power, lights[0].light_power );
-		//sm.current()->uniform_3f( uniforms[0].specular_color, lights[0].specular_color.x, lights[0].specular_color.y, lights[0].specular_color.z  );
 
 		//activate texture buffer and connect data
 		diffuse_tbo.activate();
@@ -301,7 +248,7 @@ int main( void )
 		// light pos 1
 		glColor3f(1,1,1);
 		glBegin(GL_LINES);
-			debug_light = lights[0].light_position;
+			debug_light = glm::vec3( 0.0f,  1.0f,  2.0f );
 			glVertex3fv(&debug_light.x);
 			debug_light+=glm::vec3(1,0,0)*0.1f;
 			glVertex3fv(&debug_light.x);
@@ -322,6 +269,38 @@ int main( void )
 			//	//sm.set_current("vertex_texture_only", "fragment_texture_only");
 			//else
 			//	sm.set_current("crop_vert", "crop_frag");
+		}
+
+		if( keyboard.is_pressed( crap::keyboard::key_1 ) )
+			activeComponent = 1;
+		else if( keyboard.is_pressed(  crap::keyboard::key_2 ) )
+			activeComponent = 2;
+		else if( keyboard.is_pressed(  crap::keyboard::key_3 ) )
+			activeComponent = 3;
+		else if( keyboard.is_pressed(  crap::keyboard::key_4 ) )
+			activeComponent = 4;
+		else if( keyboard.is_pressed(  crap::keyboard::key_5 ) )
+			activeComponent = 5;
+		else if( keyboard.is_pressed(  crap::keyboard::key_6 ) )
+			activeComponent = 6;
+
+		if( activeComponent < 4)
+		{
+			if( keyboard.is_pressed( crap::keyboard::key_p ) )
+			{
+				lightType[activeComponent - 1] = ( lightType[activeComponent - 1] + 1 ) % 3;
+			}
+		}
+		else
+		{
+			if( keyboard.is_pressed( crap::keyboard::key_s ) )
+			{
+				specType[activeComponent - 4] = ( specType[activeComponent - 4] + 1 ) % 3;
+			}
+			if( keyboard.is_pressed( crap::keyboard::key_b ) )
+			{
+				bump[activeComponent - 4] = ( bump[activeComponent - 4] + 1 ) % 2;
+			}
 		}
 	}
 
