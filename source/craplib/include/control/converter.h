@@ -1277,6 +1277,15 @@ inline f64 convert< crap::fixed_string<64>, f64 >( const crap::fixed_string<64>&
 	return buffer;
 }
 
+//special need, finish me for every typedefed fixed string!
+template<>
+inline crap::fixed_string<512> convert<i32, crap::fixed_string<512> >( const i32& variable )
+{
+	c8 buffer[512];
+	sprintf(buffer, "%" PRIi32, variable);
+	return crap::fixed_string<512>( buffer);
+}
+
 
 }	// namespace crap
 
