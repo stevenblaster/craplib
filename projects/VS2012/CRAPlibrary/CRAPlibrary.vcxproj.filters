@@ -100,6 +100,9 @@
     <Filter Include="libraries\glew">
       <UniqueIdentifier>{53a507d1-1cb4-405b-a16e-f7f3be110980}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\memory">
+      <UniqueIdentifier>{5bb6a919-c950-477a-a403-2655588befed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -587,9 +590,6 @@
     <ClCompile Include="..\..\..\source\craplib\source\opengl\renderwindow.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\memory\memorypool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\buffer.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
@@ -601,6 +601,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\setup.cpp">
       <Filter>Source Files\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\craplib\source\memory\memorypool.cpp">
+      <Filter>Source Files\memory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
