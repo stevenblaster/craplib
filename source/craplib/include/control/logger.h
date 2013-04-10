@@ -170,7 +170,7 @@ namespace format_policy
 {
 	struct no_format_policy
 	{
-		i32 format(crap::string512* buffer = 0, log_channel channel = crap::log_core, log_type type = crap::log_info, string_t* file = 0, const i32 line = 0)
+		i32 format(crap::fixed_string<CRAP_LOGGER_MSG_SIZE>* buffer = 0, log_channel channel = crap::log_core, log_type type = crap::log_info, string_t* file = 0, const i32 line = 0)
 		{
 			//"MSG"
 			return 0;
@@ -179,7 +179,7 @@ namespace format_policy
 
 	struct simple_format_policy
 	{
-		i32 format(crap::string512* buffer, log_channel channel, log_type type , string_t* file = 0, const i32 line = 0)
+		i32 format(crap::fixed_string<CRAP_LOGGER_MSG_SIZE>* buffer, log_channel channel, log_type type , string_t* file = 0, const i32 line = 0)
 		{
 			//"[Channel] (TYPE) MSG"
 			*buffer = crap::channel_string[ channel ];
@@ -192,12 +192,12 @@ namespace format_policy
 
 	struct extended_format_policy
 	{
-		i32 format(crap::string512* buffer, log_channel channel, log_type type , string_t* file, const i32 line)
+		i32 format(crap::fixed_string<CRAP_LOGGER_MSG_SIZE>* buffer, log_channel channel, log_type type , string_t* file, const i32 line)
 		{
 			//"File.cpp:line [Channel] (Type) MSG"
 			*buffer = file;
 			*buffer += ":";
-			*buffer += crap::convert<i32, string512>( line );
+			*buffer += crap::convert<i32, fixed_string<CRAP_LOGGER_MSG_SIZE>>( line );
 			*buffer += " ";
 			*buffer += crap::channel_string[ channel ];
 			*buffer += " ";
@@ -262,19 +262,19 @@ class base_logger
 {
 	public:
 		virtual ~base_logger(void) {}
-		virtual void log(size_t channel, size_t type,  string_t* file, const i32 line, string_t* format, ...) = 0;
+		virtual void log(log_channel channel, log_type type,  string_t* file, const i32 line, string_t* format, ...) = 0;
 		IntrusiveListNode logger_list_node;
 };
 
 extern IntrusiveList logger_list;
 
-template <class filter_policy, class format_policy, class writer_policy>
+template <typename filter, typename format, typename writer>
 class logger : public base_logger
 {
 	private:
-		filter_policy _filter;
-		format_policy _formatter;
-		writer_policy _writer;
+		filter _filter;
+		format _formater;
+		writer _writer;
 	public:
 		logger() 
 		{
@@ -287,18 +287,18 @@ class logger : public base_logger
 			logger_list.remove(&logger_list_node);
 		}
 
-		virtual void log(size_t channel, size_t type,  string_t* file, const i32 line, string_t* format, ...)
+		virtual void log(log_channel channel, log_type type,  string_t* file, const i32 line, string_t* format, ...)
 		{
 			if (_filter.filter(channel,type))
 			{
-				crap::string512 buffer;
-				i32 c = _formater.format(buffer,file,line);
+				crap::fixed_string<CRAP_LOGGER_MSG_SIZE> buffer;
+				i32 c = _formater.format(&buffer, channel, type ,file,line);
 				va_list args;
 				va_start( args, format );
-				vsprintf_s(&(buffer[c]), format, args );
-				vsprintf(buffer, format, args );
+				c8* ptr = &buffer[c];
+				vsprintf(ptr, format, args );
 				va_end( args );
-				_writer.write(buffer);
+				_writer.write(buffer.cstring());
 			}
 		}
 };

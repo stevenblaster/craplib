@@ -6,6 +6,7 @@
 #include "opengl/mouse.h"
 #include "opengl/buffer.h"
 
+#include "control/logger.h"
 
 #include "math/vector3.h"
 #include "math/vector2.h"
@@ -38,8 +39,14 @@
 void handleInput(crap::keyboard& keyboard, crap::mouse& mouse, camera& cam);
 crap::vector2i mouse_pos;
 
+typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::simple_format_policy,crap::writer_policy::console_writer_policy> ConsoleLogger;
+
+
 int main( void )
 {
+	ConsoleLogger c;
+    CRAP_LOG_INFO(crap::log_opengl,"OpenGL-Test Startup.");
+
 	//setup window
 	crap::window_setup win_setup;
 	win_setup.title = "Funny Window";
