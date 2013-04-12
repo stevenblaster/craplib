@@ -225,9 +225,6 @@
     <ClInclude Include="..\..\..\source\craplib\include\container\treenode.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\audio\wavefile.h">
-      <Filter>Header Files\audio</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\control\zero.h">
       <Filter>Header Files\control</Filter>
     </ClInclude>
@@ -312,12 +309,6 @@
     <ClInclude Include="..\..\..\source\craplib\include\control\logger.h">
       <Filter>Header Files\control</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\files\imagefile.h">
-      <Filter>Header Files\files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\files\geometryfile.h">
-      <Filter>Header Files\files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\container\fixedstring.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
@@ -335,15 +326,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\config\config_sound.h">
       <Filter>Header Files\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\opengl\buffer.h">
-      <Filter>Header Files\opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\opengl\texture.h">
-      <Filter>Header Files\opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\opengl\shader.h">
-      <Filter>Header Files\opengl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\opengl\setup.h">
       <Filter>Header Files\opengl</Filter>
@@ -388,9 +370,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\threading\sleep.cpp">
       <Filter>Source Files\threading</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\audio\wavefile.cpp">
-      <Filter>Source Files\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\libraries\glfw\lib\enable.c">
       <Filter>libraries\glfw\source</Filter>
@@ -572,12 +551,6 @@
     <ClCompile Include="..\..\..\source\craplib\source\control\logger.cpp">
       <Filter>Source Files\control</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\files\geometryfile.cpp">
-      <Filter>Source Files\files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\files\imagefile.cpp">
-      <Filter>Source Files\files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\keyboard.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
@@ -588,15 +561,6 @@
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\renderwindow.cpp">
-      <Filter>Source Files\opengl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\opengl\buffer.cpp">
-      <Filter>Source Files\opengl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\opengl\texture.cpp">
-      <Filter>Source Files\opengl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\source\craplib\source\opengl\shader.cpp">
       <Filter>Source Files\opengl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\craplib\source\opengl\setup.cpp">

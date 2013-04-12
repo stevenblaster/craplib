@@ -20,7 +20,7 @@
 #include "files/file.h"
 #include "files/fileheaders.h"
 #include "math/vector3.h"
-#include "audio/wavefile.h"
+#include "files/wavefile.h"
 
 //lib namespace
 namespace crap

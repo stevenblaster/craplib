@@ -11,19 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{032AF1B3-E0FD-49A1-819B-1ED0DC33C7F7}</ProjectGuid>
+    <ProjectGuid>{C8E5053C-CD57-41DD-88E9-D917398B25A8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>SPG</RootNamespace>
+    <RootNamespace>CRAPengine</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -41,17 +41,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>..\..\..\binary\crapengine\$(Configuration);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
-    <IncludePath>..\..\..\libraries\glm;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
-    <IntDir>..\..\..\build\vs2012\SPG\$(Configuration)\</IntDir>
-    <OutDir>..\..\..\binary\SPG\$(Configuration)\</OutDir>
+    <OutDir>..\..\..\binary\CRAPengine\$(Configuration)\</OutDir>
+    <IntDir>..\..\..\build\CRAPengine\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\libraries\glew\include;..\..\..\libraries\openal\build\Win32;..\..\..\libraries\openal\OpenAL32\Include;..\..\..\libraries\glfw\lib;..\..\..\libraries\glfw\lib\win32;..\..\..\libraries\openal\include;..\..\..\libraries\glfw\include;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>..\..\..\binary\crapengine\$(Configuration);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
-    <IncludePath>..\..\..\libraries\glm;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
-    <IntDir>..\..\..\build\vs2012\SPG\$(Configuration)\</IntDir>
-    <OutDir>..\..\..\binary\SPG\$(Configuration)\</OutDir>
+    <OutDir>..\..\..\binary\CRAPengine\$(Configuration)\</OutDir>
+    <IntDir>..\..\..\build\CRAPengine\$(Configuration)\</IntDir>
+    <IncludePath>..\..\..\libraries\glew\include;..\..\..\libraries\openal\build\Win32;..\..\..\libraries\openal\OpenAL32\Include;..\..\..\libraries\glfw\lib;..\..\..\libraries\glfw\lib\win32;..\..\..\libraries\openal\include;..\..\..\libraries\glfw\include;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -59,14 +57,17 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TW_STATIC;GLEW_STATIC;AL_ALEXT_PROTOTYPES;AL_LIBTYPE_STATIC;strcasecmp=_stricmp;strncasecmp=_strnicmp;snprintf=_snprintf;isfinite=_finite;isnan=_isnan;_WIN32_WINNT=0x0501;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>CRAPengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>CRAPlibrary.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\bin\craplibrary\$(Configuration)\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -76,48 +77,33 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>TW_STATIC;GLEW_STATIC;AL_ALEXT_PROTOTYPES;AL_LIBTYPE_STATIC;strcasecmp=_stricmp;strncasecmp=_strnicmp;snprintf=_snprintf;isfinite=_finite;isnan=_isnan;_WIN32_WINNT=0x0501;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>CRAPengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>CRAPlibrary.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\source\SPG\camera.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\contentmanager.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\geometryfile.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\geometrycontent.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\main.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\sbo.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\shaderconent.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\shaderfile.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\shadermanager.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\tbo.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\texturecontent.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\texturefile.cpp" />
-    <ClCompile Include="..\..\..\source\SPG\vbo.cpp" />
+    <ClInclude Include="..\..\..\source\crapengine\include\files\geometryfile.h" />
+    <ClInclude Include="..\..\..\source\crapengine\include\files\imagefile.h" />
+    <ClInclude Include="..\..\..\source\crapengine\include\files\wavefile.h" />
+    <ClInclude Include="..\..\..\source\crapengine\include\opengl\buffer.h" />
+    <ClInclude Include="..\..\..\source\crapengine\include\opengl\shader.h" />
+    <ClInclude Include="..\..\..\source\crapengine\include\opengl\texture.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\source\SPG\camera.h" />
-    <ClInclude Include="..\..\..\source\SPG\contentmanager.h" />
-    <ClInclude Include="..\..\..\source\SPG\geometryfile.h" />
-    <ClInclude Include="..\..\..\source\SPG\geometrycontent.h" />
-    <ClInclude Include="..\..\..\source\SPG\staticmodel.h" />
-    <ClInclude Include="..\..\..\source\SPG\precompiled.h" />
-    <ClInclude Include="..\..\..\source\SPG\sbo.h" />
-    <ClInclude Include="..\..\..\source\SPG\shadercontent.h" />
-    <ClInclude Include="..\..\..\source\SPG\shaderfile.h" />
-    <ClInclude Include="..\..\..\source\SPG\shadermanager.h" />
-    <ClInclude Include="..\..\..\source\SPG\stringhash.h" />
-    <ClInclude Include="..\..\..\source\SPG\tbo.h" />
-    <ClInclude Include="..\..\..\source\SPG\texturecontent.h" />
-    <ClInclude Include="..\..\..\source\SPG\texturefile.h" />
-    <ClInclude Include="..\..\..\source\SPG\vbo.h" />
+    <ClCompile Include="..\..\..\source\crapengine\source\files\geometryfile.cpp" />
+    <ClCompile Include="..\..\..\source\crapengine\source\files\imagefile.cpp" />
+    <ClCompile Include="..\..\..\source\crapengine\source\files\wavefile.cpp" />
+    <ClCompile Include="..\..\..\source\crapengine\source\opengl\buffer.cpp" />
+    <ClCompile Include="..\..\..\source\crapengine\source\opengl\shader.cpp" />
+    <ClCompile Include="..\..\..\source\crapengine\source\opengl\texture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
