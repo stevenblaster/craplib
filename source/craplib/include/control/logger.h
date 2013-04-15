@@ -7,7 +7,7 @@
 //!		@author Steffen Kopany <steffen@kopany.info>
 //
 //	Copyright:
-//!		@copyright Copyright (c) 2012 Nikolaus Poettler Credit Stefan Reinalter
+//!		@copyright Copyright (c) 2013 Nikolaus Poettler Credit Stefan Reinalter
 //
 //	Description:
 //!		@brief The base of a policy based logger
@@ -102,7 +102,7 @@ namespace filter_policy
 		bool filter(const log_channel channel, const log_type type)
 		{
 			// no filter at all
-            return sizeof(channel) == sizeof(type);
+            return sizeof(channel) == sizeof(type); //returns true
 		}
 	};
 
@@ -123,7 +123,7 @@ namespace filter_policy
 	};
 	
 #if CRAP_LOGGER_ALLOW_OVERRULE == 2
-	
+	//not yet evaluated
 	template <log_type N> 
 	struct verbosity_filter_policy
 	{
@@ -149,7 +149,6 @@ namespace filter_policy
 			#endif
 		}
 	};
-	
 #endif
 
 	template <class FilterPolicy1, class FilterPolicy2>
