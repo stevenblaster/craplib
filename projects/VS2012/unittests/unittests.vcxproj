@@ -141,6 +141,7 @@
     <ClCompile Include="..\..\..\source\unittests\source\control_cpuinfo.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\control_endian.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\control_limits.cpp" />
+    <ClCompile Include="..\..\..\source\unittests\source\control_logger.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\control_time.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\control_zero.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\files_file.cpp" />

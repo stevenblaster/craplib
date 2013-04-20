@@ -267,8 +267,10 @@
     <ClCompile Include="..\..\..\libraries\unittest\Win32\TimeHelpers.cpp">
       <Filter>libraries\unitest++\Win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\unittests\source\container_intrusivelist.cpp">
+    <ClCompile Include="..\..\..\source\unittests\source\control_logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
+    <ClCompile Include="..\..\..\source\unittests\source\container_intrusivelist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>  </ItemGroup>
 </Project>
