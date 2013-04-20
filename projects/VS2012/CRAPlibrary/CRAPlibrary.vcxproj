@@ -107,6 +107,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\container\binarytree.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\bitmask.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\bitset.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\container\intrusivelist.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\list.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\map.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\pair.h" />

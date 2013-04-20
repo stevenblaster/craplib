@@ -90,6 +90,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\source\crapengine\include\core\component.h" />
     <ClInclude Include="..\..\..\source\crapengine\include\files\geometryfile.h" />
     <ClInclude Include="..\..\..\source\crapengine\include\files\imagefile.h" />
     <ClInclude Include="..\..\..\source\crapengine\include\files\wavefile.h" />

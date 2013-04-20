@@ -118,6 +118,7 @@
     <ClCompile Include="..\..\..\source\unittests\source\container_binarytree.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\container_bitmask.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\container_bitset.cpp" />
+    <ClCompile Include="..\..\..\source\unittests\source\container_intrusivelist.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\container_list.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\container_map.cpp" />
     <ClCompile Include="..\..\..\source\unittests\source\container_pair.cpp" />

@@ -330,6 +330,9 @@
     <ClInclude Include="..\..\..\source\craplib\include\opengl\setup.h">
       <Filter>Header Files\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\container\intrusivelist.h">
+      <Filter>Header Files\container</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp">

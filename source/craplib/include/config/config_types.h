@@ -99,6 +99,7 @@ typedef intptr_t iptr;
 typedef uintptr_t uptr;
 typedef const char string_t;
 
+
 //windows overrides
 #if !defined(CRAP_PLATFORM_WIN)
 
@@ -159,6 +160,24 @@ typedef i128 u128;
 
 #endif
 
+//pointer converter
+template<typename T>
+struct pointer_t
+{
+	union
+	{
+		T*		as_type;
+		void*	as_void;
+		u8*		as_u8;
+		u16*	as_u16;
+		u32*	as_u32;
+		u64*	as_u64;
+		u128*	as_u128;
+		uptr	as_uint;
+	};
+};
+
+typedef pointer_t<void> pointer_void;
 
 //min and max values
 #ifndef B8_MAX

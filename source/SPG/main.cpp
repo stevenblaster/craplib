@@ -78,7 +78,7 @@ int main( void )
 	vert_array.bind();
 
 	//test: load vbo onto GPU
-	vbo cube_vbo( "ape", &cm, vbo::static_draw );
+	vbo cube_vbo( "people", &cm, vbo::static_draw );
 
 	geometry_content ig;
 	cm.create_content( "cube" , &ig, type_name::geometry );
@@ -256,6 +256,9 @@ int main( void )
 			cube_vbo.indicies_size,			// count
 			crap::opengl::unsigned_short	// type
 		);
+
+		//glm::mat4x4 transe = glm::translate(2.f,0.f,0.f);
+		//sm.current()->uniform_matrix4f_value( ModelMatrixID, 1, &transe[0][0]);
 
 		//disable data define stuff
 		sm.current()->vertex_attribute_array.disable(0);

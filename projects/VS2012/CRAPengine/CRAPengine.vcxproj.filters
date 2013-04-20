@@ -25,6 +25,9 @@
     <Filter Include="Source Files\opengl">
       <UniqueIdentifier>{b610147c-05e3-4b65-8aba-496f3920ccd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{d20af960-1590-4172-bf0c-dd9cd98dd378}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\crapengine\include\files\geometryfile.h">
@@ -44,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\crapengine\include\opengl\texture.h">
       <Filter>Header Files\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\crapengine\include\core\component.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
