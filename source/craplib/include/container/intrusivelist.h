@@ -263,7 +263,7 @@ void intrusive_list<T>::pop_back( void )
 
 	if( _size != 0 )
 	{
-		intrusive_list_node del_node = _end;
+		intrusive_list_node<T> del_node = _end;
 		del_node->_previous->_next = 0;
 		_end = del_node->_previous;
 		del_node->_previous = 0;
@@ -285,7 +285,7 @@ void intrusive_list<T>::pop_front( void )
 
 	if( _size != 0 )
 	{
-		intrusive_list_node del_node = _begin;
+		intrusive_list_node<T> del_node = _begin;
 		del_node->_next->_previous = 0;
 		_begin = del_node->_next;
 		del_node->_next = 0;

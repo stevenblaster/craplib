@@ -12,7 +12,7 @@
 #define CRAP_LOGGER_VERBOSITY_LEVEL crap::log_error
 #define CRAP_LOGGER_FILTER_CHANNEL crap::log_opengl
 */
-
+/*
 namespace
 {
 	typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::no_format_policy,crap::writer_policy::console_writer_policy> NoNoConsoleLogger;
@@ -55,3 +55,4 @@ TEST(ControlLoggerNoNoCNothingWithArgs)
 	//CHECK_EQUAL( true, greater_object(11,10) );
 }
 }   // namespace
+*/

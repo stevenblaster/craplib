@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT(CRAP_LIBRARY)
+PROJECT(CRAP_LIBRARY C CXX)
 
 SET(CRAPLIB_PATH ${CMAKE_SOURCE_DIR}/../libraries)
 
@@ -229,6 +229,7 @@ SET(HEADERS
 #           Creating Lib            #
 #####################################
 ADD_LIBRARY(crap ${SOURCES} ${HEADERS})
+TARGET_LINK_LIBRARIES(crap ${CMAKE_THREAD_LIBS_INIT})
 ADD_DEPENDENCIES(crap openal)
 
 IF(MSVC)

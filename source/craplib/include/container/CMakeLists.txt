@@ -5,6 +5,7 @@ set(HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/bitmask.h
    ${CMAKE_CURRENT_SOURCE_DIR}/bitset.h
    ${CMAKE_CURRENT_SOURCE_DIR}/fixedstring.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/intrusivelist.h
    ${CMAKE_CURRENT_SOURCE_DIR}/list.h
    ${CMAKE_CURRENT_SOURCE_DIR}/map.h
    ${CMAKE_CURRENT_SOURCE_DIR}/pair.h
