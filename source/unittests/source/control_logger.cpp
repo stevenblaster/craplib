@@ -12,7 +12,7 @@
 #define CRAP_LOGGER_VERBOSITY_LEVEL crap::log_error
 #define CRAP_LOGGER_FILTER_CHANNEL crap::log_opengl
 */
-/*
+
 namespace
 {
 	typedef crap::logger<crap::filter_policy::no_filter_policy,crap::format_policy::no_format_policy,crap::writer_policy::console_writer_policy> NoNoConsoleLogger;
@@ -27,7 +27,7 @@ TEST(ControlLoggerNoNoC)
 {	
 	std::cout << "\tcrap::no filter no format console logger" << std::endl;
 	NoNoConsoleLogger nnc;
-	CRAP_LOG_INFO(crap::log_channel::log_core,"Core Channel Test %d.",10);
+	CRAP_LOG_INFO(crap::log_core,"Core Channel Test %d.",10);
 	//CHECK_EQUAL( true, less_object(10,11) );
 }
 
@@ -43,7 +43,7 @@ TEST(ControlLoggerNoNoCNothing)
 {
 	std::cout << "\tcrap::no filter no format console logger no msg no va_args" << std::endl;
 	NoNoConsoleLogger nnc;
-	CRAP_LOG_INFO(crap::log_channel::log_core,"");
+	CRAP_LOG_INFO(crap::log_core,"", 1);
 	//CHECK_EQUAL( false, less_object(11,11) );
 }
 
@@ -51,8 +51,8 @@ TEST(ControlLoggerNoNoCNothingWithArgs)
 {
 	std::cout << "\tcrap::no filter no format console logger no msg but va_args" << std::endl;
 	NoNoConsoleLogger nnc;
-	CRAP_LOG_INFO(crap::log_channel::log_core,"",1,2,3,4);
+	CRAP_LOG_INFO(crap::log_core,"",1,2,3,4);
 	//CHECK_EQUAL( true, greater_object(11,10) );
 }
 }   // namespace
-*/
+
