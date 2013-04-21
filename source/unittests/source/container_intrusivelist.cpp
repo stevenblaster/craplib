@@ -81,7 +81,7 @@ TEST(ContainerIntrusiveListRemove)
 	_intrusive_list->remove( &structOne.node );
 	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
-/*
+
 TEST(ContainerIntrusiveListPopBack) 
 {
 	std::cout << "Testing \"Intrusive List popback\"" << std::endl;
@@ -94,7 +94,7 @@ TEST(ContainerIntrusiveListPopBack)
 	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
 
-TEST(ContainerIntrusiveListRemove) 
+TEST(ContainerIntrusiveListPopFront) 
 {
 	std::cout << "Testing \"Intrusive List popfront\"" << std::endl;
 	IntrusiveStruct structOne;
@@ -105,7 +105,7 @@ TEST(ContainerIntrusiveListRemove)
 	_intrusive_list->pop_front();
 	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
-*/
+
 TEST(ContainerIntrusiveListPushFront) 
 {
 	std::cout << "Testing \"Intrusive List push front\"" << std::endl;
