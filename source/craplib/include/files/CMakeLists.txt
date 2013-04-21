@@ -3,7 +3,5 @@ set(HEADERS
    ${HEADERS}
    ${CMAKE_CURRENT_SOURCE_DIR}/fileheaders.h
    ${CMAKE_CURRENT_SOURCE_DIR}/file.h
-   ${CMAKE_CURRENT_SOURCE_DIR}/imagefile.h
-   ${CMAKE_CURRENT_SOURCE_DIR}/geometryfile.h
    PARENT_SCOPE
 )
