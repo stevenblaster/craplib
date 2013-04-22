@@ -27,49 +27,39 @@
 #include "crap.h"
 #include "control/converter.h"
 #include "container/fixedstring.h"
-/* all configs are in the crap header which
-should be included first in every cpp of crap 
-#include "config/config_types.h"
-#include "config/config_logger.h"*/
+#include "container/intrusivelist.h"
 
-//Reserve
 #ifndef CRAP_CONFIG_NODEBUG 
 #define CRAP_LOG_INFO(channel,msg, ...) do{ \
-	crap::IntrusiveListNode* t; \
-	t = crap::logger_list.root.next; \
-	while(t != &crap::logger_list.root) { \
-        reinterpret_cast<crap::base_logger *>(reinterpret_cast<c8*>(t) - crap::logger_list._offset)->log(channel,crap::log_info,__FILE__,__LINE__,msg,__VA_ARGS__); \
-		t = t->next; \
-	} \
-} while(0)
+		crap::intrusive_list<crap::base_logger>::iterator it; \
+		for(it = crap::intr_logger_list.begin(); it != crap::intr_logger_list.end(); ++it) \
+		{ \
+			it->log(channel,crap::log_info,__FILE__,__LINE__,msg,__VA_ARGS__); \
+		} \
+	} while(0)
 
 #define CRAP_LOG_WARN(channel,msg, ...) do{ \
-	crap::IntrusiveListNode* t; \
-	t = crap::logger_list.root.next; \
-	while(t != &crap::logger_list.root) { \
-        reinterpret_cast<crap::base_logger *>(reinterpret_cast<c8*>(t) - crap::logger_list._offset)->log(channel,crap::log_warn,__FILE__,__LINE__,msg,__VA_ARGS__); \
-		t = t->next; \
-	} \
-} while(0)
-
+		crap::intrusive_list<crap::base_logger>::iterator it; \
+		for(it = crap::intr_logger_list.begin(); it != crap::intr_logger_list.end(); ++it) \
+		{ \
+			it->log(channel,crap::log_warn,__FILE__,__LINE__,msg,__VA_ARGS__); \
+		} \
+	} while(0)
 #define CRAP_LOG_ERROR(channel,msg, ...) do{ \
-	crap::IntrusiveListNode* t; \
-	t = crap::logger_list.root.next; \
-	while(t != &crap::logger_list.root) { \
-        reinterpret_cast<crap::base_logger *>(reinterpret_cast<c8*>(t) - crap::logger_list._offset)->log(channel,crap::log_error,__FILE__,__LINE__,msg,__VA_ARGS__); \
-		t = t->next; \
-	} \
-} while(0)
+		crap::intrusive_list<crap::base_logger>::iterator it; \
+		for(it = crap::intr_logger_list.begin(); it != crap::intr_logger_list.end(); ++it) \
+		{ \
+			it->log(channel,crap::log_error,__FILE__,__LINE__,msg,__VA_ARGS__); \
+		} \
+	} while(0)
 
 #define CRAP_LOG_VERBOSE(channel,msg, ...) do{ \
-	crap::IntrusiveListNode* t; \
-	t = crap::logger_list.root.next; \
-	while(t != &crap::logger_list.root) { \
-		reinterpret_cast<crap::base_logger *>(reinterpret_cast<c8*>(t) - crap::logger_list._offset)->log(channel,crap::log_type::log_verbose,__FILE__,__LINE__,msg,__VA_ARGS__); \
-		t = t->next; \
-	} \
-} while(0)
-
+		crap::intrusive_list<crap::base_logger>::iterator it; \
+		for(it = crap::intr_logger_list.begin(); it != crap::intr_logger_list.end(); ++it) \
+		{ \
+			it->log(channel,crap::log_verbose,__FILE__,__LINE__,msg,__VA_ARGS__); \
+		} \
+	} while(0)
 #else
 	#define CRAP_LOG_INFO(channel,msg, ...)
 	#define CRAP_LOG_WARN(channel,msg, ...)
@@ -217,56 +207,73 @@ namespace writer_policy
 			printf("%s\n",buffer); 
 		}
 	};
+
+	struct stream_writer_policy
+	{
+		void write(string_t* buffer)
+		{
+			std::cout << buffer << std::endl; 
+		}
+	};
 }
 
-struct IntrusiveListNode 
-{
-  IntrusiveListNode* next;
-  IntrusiveListNode* prev;
-};
+//struct IntrusiveListNode 
+//{
+//  IntrusiveListNode* next;
+//  IntrusiveListNode* prev;
+//};
+//
+//struct IntrusiveList 
+//{
+//	IntrusiveListNode root;
+//	size_t32 _offset;
+//
+//	IntrusiveList(size_t32 offset) {
+//		_offset = offset;
+//		root.next = &root;
+//		root.prev = &root;
+//	}
+//
+//	void add(IntrusiveListNode* node, IntrusiveListNode* prev, IntrusiveListNode* next) 
+//	{
+//		node->next = next;
+//		node->prev = prev;
+//		next->prev = node;
+//		prev->next = node;
+//	}
+//
+//	void remove(IntrusiveListNode* node) 
+//	{
+//		node->next->prev = node->prev;
+//		node->prev->next = node->next;
+//		node->next = NULL;
+//		node->prev = NULL;
+//	}
+//
+//	void add_head(IntrusiveListNode * node) 
+//	{
+//		add(node, &root, root.next);
+//	}
+//};
 
-struct IntrusiveList 
-{
-	IntrusiveListNode root;
-	size_t32 _offset;
+//extern IntrusiveList logger_list;
 
-	IntrusiveList(size_t32 offset) {
-		_offset = offset;
-		root.next = &root;
-		root.prev = &root;
-	}
+class base_logger;
 
-	void add(IntrusiveListNode* node, IntrusiveListNode* prev, IntrusiveListNode* next) 
-	{
-		node->next = next;
-		node->prev = prev;
-		next->prev = node;
-		prev->next = node;
-	}
-
-	void remove(IntrusiveListNode* node) 
-	{
-		node->next->prev = node->prev;
-		node->prev->next = node->next;
-		node->next = NULL;
-		node->prev = NULL;
-	}
-
-	void add_head(IntrusiveListNode * node) 
-	{
-		add(node, &root, root.next);
-	}
-};
+extern intrusive_list<base_logger> intr_logger_list;
 
 class base_logger
 {
 	public:
+		base_logger() : logger_list_node(this,&intr_logger_list,false) {};
 		virtual ~base_logger(void) {}
 		virtual void log(log_channel channel, log_type type,  string_t* file, const i32 line, string_t* format, ...) = 0;
-		IntrusiveListNode logger_list_node;
+		//IntrusiveListNode logger_list_node;
+		intrusive_list_node<base_logger> logger_list_node;
 };
 
-extern IntrusiveList logger_list;
+
+
 
 template <typename filter, typename format, typename writer>
 class logger : public base_logger
@@ -278,13 +285,14 @@ class logger : public base_logger
 	public:
 		logger() 
 		{
-			logger_list.add_head(&logger_list_node);
-			//listByData.InsertHead(this);
+			//logger_list.add_head(&logger_list_node);
+			intr_logger_list.push_back( &(this->logger_list_node) );
 		}
 
 		~logger(void) 
 		{
-			logger_list.remove(&logger_list_node);
+			//logger_list.remove(&logger_list_node);
+			intr_logger_list.remove( &(this->logger_list_node) );
 		}
 
 		virtual void log(log_channel channel, log_type type,  string_t* file, const i32 line, string_t* format_str, ...)

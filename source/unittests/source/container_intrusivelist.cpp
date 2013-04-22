@@ -28,13 +28,13 @@ TEST(ContainerIntrusiveListTitle)
 
 TEST(ContainerIntrusiveListConstructor)
 {
-	std::cout << "Testing \"Intrusive List Constructor\"" << std::endl;
+	std::cout << "\tTesting \"Intrusive List Constructor\"" << std::endl;
 	_intrusive_list = new crap::intrusive_list<IntrusiveStruct>();
 }
 
 TEST(ContainerIntrusiveListPushback)
 {
-	std::cout << "Testing \"Intrusive List push_back\"" << std::endl;
+	std::cout << "\tTesting \"Intrusive List push_back\"" << std::endl;
 	IntrusiveStruct structOne;
 	IntrusiveStruct structTwo;
 	IntrusiveStruct structThree;
