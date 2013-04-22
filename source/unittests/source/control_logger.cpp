@@ -146,7 +146,7 @@ TEST(ControlLoggerNoNoMsgTypeFormat)
 		std::stringstream buffer;
 		std::streambuf *sbuf = std::cout.rdbuf();
 		std::cout.rdbuf(buffer.rdbuf());
-		CRAP_LOG_INFO(crap::log_channel::log_core,"Format Test Float(shortest) %g, Character %c, Hex %x.\n",10.0f,'c',0x7fa);
+		CRAP_LOG_INFO(crap::log_channel::log_core,"Format Test Float(shortest) %g, Character %c, Hex %x.",10.0f,'c',0x7fa);
 		std::cout.flush();
 		std::string check;
 		check = buffer.str();

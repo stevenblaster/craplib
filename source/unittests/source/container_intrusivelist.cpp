@@ -159,6 +159,7 @@ TEST(ContainerIntrusiveListScopes)
 	{
 		std::cout << it->number << " " << it->another_number << " " << it->str << std::endl;
 	}
+	CHECK_EQUAL( (size_t32)1, _intrusive_list->size() );
 }
 
 TEST(ContainerIntrusiveListPopBack) 
