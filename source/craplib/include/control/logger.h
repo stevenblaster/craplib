@@ -32,6 +32,7 @@ should be included first in every cpp of crap
 #include "config/config_types.h"
 #include "config/config_logger.h"*/
 
+//Reserve
 #ifndef CRAP_CONFIG_NODEBUG 
 #define CRAP_LOG_INFO(channel,msg, ...) do{ \
 	crap::IntrusiveListNode* t; \
