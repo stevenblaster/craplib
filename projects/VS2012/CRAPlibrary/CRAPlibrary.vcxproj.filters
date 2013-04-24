@@ -336,6 +336,9 @@
     <ClInclude Include="..\..\..\source\craplib\include\container\indexedarray.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memorymanager.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\craplib\source\network\addressip4.cpp">

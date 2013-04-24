@@ -142,6 +142,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\math\vector2.h" />
     <ClInclude Include="..\..\..\source\craplib\include\math\vector3.h" />
     <ClInclude Include="..\..\..\source\craplib\include\math\vector4.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memorymanager.h" />
     <ClInclude Include="..\..\..\source\craplib\include\memory\allocatordefault.h" />
     <ClInclude Include="..\..\..\source\craplib\include\memory\allocatormalloc.h" />
     <ClInclude Include="..\..\..\source\craplib\include\memory\allocatorstatic.h" />

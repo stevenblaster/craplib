@@ -87,17 +87,17 @@ TEST(ContainerIntrusiveListRemove)
 	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
 
-TEST(ContainerIntrusiveListPopBack) 
-{
-	std::cout << "Testing \"Intrusive List popback\"" << std::endl;
-	IntrusiveStruct structOne;
-	structOne.number = 1;
-	structOne.another_number = 1.1f;
-	strcpy( structOne.str, "I am the first Struct\0" );
-	_intrusive_list->push_back( &structOne.node );
-	_intrusive_list->pop_back();
-	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
-}
+//TEST(ContainerIntrusiveListPopBack) 
+//{
+//	std::cout << "Testing \"Intrusive List popback\"" << std::endl;
+//	IntrusiveStruct structOne;
+//	structOne.number = 1;
+//	structOne.another_number = 1.1f;
+//	strcpy( structOne.str, "I am the first Struct\0" );
+//	_intrusive_list->push_back( &structOne.node );
+//	_intrusive_list->pop_back();
+//	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
+//}
 
 TEST(ContainerIntrusiveListPopFront) 
 {
