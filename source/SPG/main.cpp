@@ -11,6 +11,10 @@
 #include "math/vector3.h"
 #include "math/vector2.h"
 
+#include "files/file.h"
+#include "audio/audiodevice.h"
+#include "files/wavefile.h"
+
 // temporary until jean luc is done
 #if defined( CRAP_PLATFORM_WIN )
 #include <gl/GL.h>
@@ -47,6 +51,15 @@ int main( void )
 	ConsoleLogger c;
     CRAP_LOG_INFO(crap::log_opengl,"OpenGL-Test Startup.");
 
+	crap::audiodevice audio_device;
+	
+	/*
+	openalcode
+
+
+
+	*/
+
 	//setup window
 	crap::window_setup win_setup;
 	win_setup.title = "Funny Window";
@@ -78,7 +91,7 @@ int main( void )
 	vert_array.bind();
 
 	//test: load vbo onto GPU
-	vbo cube_vbo( "people", &cm, vbo::static_draw );
+	vbo cube_vbo( "cube", &cm, vbo::static_draw );
 
 	geometry_content ig;
 	cm.create_content( "cube" , &ig, type_name::geometry );

@@ -20,6 +20,11 @@ struct IntrusiveStruct
 	IntrusiveStruct( void ) : node( this, _intrusive_list, false ) {}
 };
 
+TEST(ContainerIntrusiveListTitle)
+{
+    std::cout << "Testing \"container/intrusivelist.h\"" << std::endl;
+}
+
 
 TEST(ContainerIntrusiveListConstructor)
 {
@@ -96,6 +101,18 @@ TEST(ContainerIntruciveListScopes)
 	{
 		std::cout << it->number << " " << it->another_number << " " << it->str << std::endl;
 	}
+}
+
+TEST(ContainerIntrusiveListPopBack) 
+{
+	std::cout << "Testing \"Intrusive List pop back\"" << std::endl;
+	IntrusiveStruct structOne;
+	structOne.number = 1;
+	structOne.another_number = 1.1f;
+	strcpy( structOne.str, "I am the first Struct\0" );
+	_intrusive_list->push_back( &structOne.node );
+	_intrusive_list->pop_back();
+	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
 
 }
