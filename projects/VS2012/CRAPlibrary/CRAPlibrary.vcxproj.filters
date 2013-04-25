@@ -117,15 +117,6 @@
     <ClInclude Include="..\..\..\source\craplib\include\network\addressip6.h">
       <Filter>Header Files\network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\memory\allocatordefault.h">
-      <Filter>Header Files\memory</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\memory\allocatormalloc.h">
-      <Filter>Header Files\memory</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\memory\allocatorstatic.h">
-      <Filter>Header Files\memory</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\source\craplib\include\control\asserts.h">
       <Filter>Header Files\control</Filter>
     </ClInclude>
@@ -336,8 +327,32 @@
     <ClInclude Include="..\..\..\source\craplib\include\container\indexedarray.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\craplib\include\memorymanager.h">
+    <ClInclude Include="..\..\..\source\craplib\include\memory\allocator.h">
       <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stackallocator.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\memorymanager.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\linearallocator.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\poolallocator.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stlallocatordefault.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stlallocatormalloc.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stlallocatorstatic.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\craplib\include\container\vector.h">
+      <Filter>Header Files\container</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

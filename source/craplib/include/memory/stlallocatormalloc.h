@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//!		@file allocatormalloc.h
+//!		@file stlallocatormalloc.h
 //
 //	Author(s):
 //! 	@author Steffen Kopany <steffen@kopany.at>
@@ -29,7 +29,7 @@ namespace crap
 {
 
 template<typename T>
-class allocator_malloc
+class stl_allocator_malloc
 {
 public:
 
@@ -44,15 +44,15 @@ public:
 	template<typename U>
 	struct rebind
 	{
-		typedef allocator_malloc<U> other;
+		typedef stl_allocator_malloc<U> other;
 	};
 
-	inline explicit allocator_malloc() {}
-	inline ~allocator_malloc() {}
-	inline explicit allocator_malloc(allocator_malloc const&) {}
+	inline explicit stl_allocator_malloc() {}
+	inline ~stl_allocator_malloc() {}
+	inline explicit stl_allocator_malloc(stl_allocator_malloc const&) {}
 
 	template<typename U>
-	inline explicit allocator_malloc(allocator_malloc<U> const&) {}
+	inline explicit stl_allocator_malloc(stl_allocator_malloc<U> const&) {}
 
 	inline pointer address(reference r)
 	{
@@ -63,7 +63,7 @@ public:
 		return &r;
 	}
 
-	inline pointer allocate(size_type cnt = 1, typename allocator_malloc<T>::const_pointer = 0)
+	inline pointer allocate(size_type cnt = 1, typename stl_allocator_malloc<T>::const_pointer = 0)
 	{
 		return reinterpret_cast<pointer>(malloc(cnt * sizeof (T)));
 	}
@@ -88,12 +88,12 @@ public:
 		p->~T();
 	}
 
-	inline bool operator==(allocator_malloc const&)
+	inline bool operator==(stl_allocator_malloc const&)
 	{
 		return true;
 	}
 
-	inline bool operator!=(allocator_malloc const& a)
+	inline bool operator!=(stl_allocator_malloc const& a)
 	{
 		return !operator==(a);
 	}

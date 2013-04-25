@@ -25,7 +25,7 @@
 
 #include <queue>
 #include "control/copyobject.h"
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 
 //lib namespace
 namespace crap
@@ -35,7 +35,7 @@ namespace crap
  *! @brief Queue class
  */
 
-template<typename T, typename Allocator = crap::allocator_default<T> >
+template<typename T, typename Allocator = crap::stl_allocator_default<T> >
 class queue : public std::queue<T, Allocator>
 {
 

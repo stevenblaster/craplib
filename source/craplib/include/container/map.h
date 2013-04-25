@@ -20,13 +20,13 @@
 #ifndef CRAP_CONTAINER_MAP_H
 #define CRAP_CONTAINER_MAP_H
 
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 #include <map>
 
 //lib namespace
 namespace crap
 {
-	template<typename T1,typename T2, typename Allocator = crap::allocator_default< std::pair<T1,T2> > >
+	template<typename T1,typename T2, typename Allocator = crap::stl_allocator_default< std::pair<T1,T2> > >
 	class map : public std::map<T1, T2, Allocator>
 	{
 	};

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//!		@file allocatordefault.h
+//!		@file stlallocatordefault.h
 //
 //	Author(s):
 //! 	@author Steffen Kopany <steffen@kopany.at>
@@ -27,7 +27,7 @@ namespace crap
 {
 
 template<typename T>
-class allocator_default
+class stl_allocator_default
 {
 public:
 
@@ -42,15 +42,15 @@ public:
 	template<typename U>
 	struct rebind
 	{
-		typedef allocator_default<U> other;
+		typedef stl_allocator_default<U> other;
 	};
 
-	inline explicit allocator_default() {}
-	inline ~allocator_default() {}
-	inline explicit allocator_default(allocator_default const&) {}
+	inline explicit stl_allocator_default() {}
+	inline ~stl_allocator_default() {}
+	inline explicit stl_allocator_default(stl_allocator_default const&) {}
 
 	template<typename U>
-	inline allocator_default(allocator_default<U> const&) {}
+	inline stl_allocator_default(stl_allocator_default<U> const&) {}
 
 	inline pointer address(reference r)
 	{
@@ -61,7 +61,7 @@ public:
 		return &r;
 	}
 
-	inline pointer allocate(size_type cnt = 1, typename allocator_default<T>::const_pointer = 0)
+	inline pointer allocate(size_type cnt = 1, typename stl_allocator_default<T>::const_pointer = 0)
 	{
 		return reinterpret_cast<pointer>(::operator new(cnt * sizeof (T)));
 	}
@@ -89,12 +89,12 @@ public:
 		p->~T();
 	}
 
-	inline bool operator==(allocator_default const&)
+	inline bool operator==(stl_allocator_default const&)
 	{
 		return true;
 	}
 
-	inline bool operator!=(allocator_default const& a)
+	inline bool operator!=(stl_allocator_default const& a)
 	{
 		return !operator==(a);
 	}

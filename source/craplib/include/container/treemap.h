@@ -22,7 +22,7 @@
 #ifndef CRAP_CONTAINER_TREEMAP_H
 #define CRAP_CONTAINER_TREEMAP_H
 
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 #include "control/compare.h"
 #include "container/treenode.h"
 #include "container/pair.h"
@@ -72,7 +72,7 @@ struct less_second : binary_function<T2, T2, bool>
 
 //! @brief using binary tree with pair<>
 template<class T1, class T2, class C = crap::less_first<T1, T2>,
-		class A = crap::allocator_default<tree_node< pair<T1, T2> ,C> > >
+		class A = crap::stl_allocator_default<tree_node< pair<T1, T2> ,C> > >
 class tree_map : public binary_tree< crap::pair<T1, T2> , C, A>
 {
 

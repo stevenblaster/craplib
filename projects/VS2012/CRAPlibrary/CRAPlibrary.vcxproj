@@ -118,6 +118,7 @@
     <ClInclude Include="..\..\..\source\craplib\include\container\string.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\treemap.h" />
     <ClInclude Include="..\..\..\source\craplib\include\container\treenode.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\container\vector.h" />
     <ClInclude Include="..\..\..\source\craplib\include\control\asserts.h" />
     <ClInclude Include="..\..\..\source\craplib\include\control\breakpoints.h" />
     <ClInclude Include="..\..\..\source\craplib\include\control\checkvtable.h" />
@@ -142,11 +143,15 @@
     <ClInclude Include="..\..\..\source\craplib\include\math\vector2.h" />
     <ClInclude Include="..\..\..\source\craplib\include\math\vector3.h" />
     <ClInclude Include="..\..\..\source\craplib\include\math\vector4.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\memorymanager.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\memory\allocatordefault.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\memory\allocatormalloc.h" />
-    <ClInclude Include="..\..\..\source\craplib\include\memory\allocatorstatic.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\allocator.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stlallocatordefault.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stlallocatormalloc.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stlallocatorstatic.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\linearallocator.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\memorymanager.h" />
     <ClInclude Include="..\..\..\source\craplib\include\memory\memorypool.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\poolallocator.h" />
+    <ClInclude Include="..\..\..\source\craplib\include\memory\stackallocator.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\addressip4.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\addressip6.h" />
     <ClInclude Include="..\..\..\source\craplib\include\network\networkheaders.h" />

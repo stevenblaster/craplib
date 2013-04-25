@@ -21,14 +21,14 @@
 #ifndef CRAP_CONTAINER_LIST_H
 #define CRAP_CONTAINER_LIST_H
 
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 //#include "eastl/list.h"
 #include <list>
 
 //lib namespace
 namespace crap
 {
-	template<typename T, typename Allocator = crap::allocator_default<T> >
+	template<typename T, typename Allocator = crap::stl_allocator_default<T> >
 	class list : public std::list<T, Allocator>
 	{
 	};

@@ -21,7 +21,7 @@
 #ifndef CRAP_CONTAINER_BINARYTREE_H
 #define CRAP_CONTAINER_BINARYTREE_H
 
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 #include "control/compare.h"
 #include "container/treenode.h"
 
@@ -33,7 +33,7 @@ namespace crap
  *! @brief Binary search tree class
  */
 
-template <class T, class C = crap::less<T>, class A = crap::allocator_default<tree_node<T,C> > >
+template <class T, class C = crap::less<T>, class A = crap::stl_allocator_default<tree_node<T,C> > >
 class binary_tree
 {
 public:

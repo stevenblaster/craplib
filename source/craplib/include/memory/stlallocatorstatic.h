@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 //	CRAP Library
-//!		@file allocatorstatic.h
+//!		@file stlallocatorstatic.h
 //
 //	Author(s):
 //! 	@author Steffen Kopany <steffen@kopany.at>
@@ -28,7 +28,7 @@ namespace crap
 {
 
 template<typename T, size_t32 S>
-class allocator_static
+class stl_allocator_static
 {
 private:
 
@@ -51,25 +51,25 @@ public:
     template<typename U, size_t32 V>
     struct rebind
     {
-        typedef allocator_static<U,V> other;
+        typedef stl_allocator_static<U,V> other;
     };
 
     //! @brief constructor
     CRAP_INLINE explicit
-    allocator_static();
+    stl_allocator_static();
 
     //! @brief destructor
     CRAP_INLINE
-    ~allocator_static();
+    ~stl_allocator_static();
 
     //! @brief copy constructor
     CRAP_INLINE explicit
-    allocator_static( const allocator_static& other );
+    stl_allocator_static( const stl_allocator_static& other );
 
     //! @brief template copy constructor
     template<typename U, size_t32 V>
     CRAP_INLINE explicit
-    allocator_static( const allocator_static<U,V>& other );
+    stl_allocator_static( const stl_allocator_static<U,V>& other );
 
     //! @brief return address of reference
     CRAP_INLINE
@@ -81,7 +81,7 @@ public:
 
     //! @brief allocate amount of elements
     CRAP_INLINE
-    pointer allocate(size_type cnt = 1, typename allocator_static<T,S>::const_pointer = 0);
+    pointer allocate(size_type cnt = 1, typename stl_allocator_static<T,S>::const_pointer = 0);
 
     //! @brief deallocate amount of elements
     CRAP_INLINE
@@ -101,32 +101,32 @@ public:
 
     //! @brief comparision equal operator
     CRAP_INLINE
-    bool operator==( const allocator_static& other );
+    bool operator==( const stl_allocator_static& other );
 
     //! @brief conparision not equal operator
     CRAP_INLINE
-    bool operator!=(allocator_static const& a);
+    bool operator!=(stl_allocator_static const& a);
 };
 
 //definitions
 
 //cosntructor
 template<typename T, size_t32 S>
-allocator_static<T,S>::allocator_static()
+stl_allocator_static<T,S>::stl_allocator_static()
 {
     _index.reset();
 }
 
 //destructor
 template<typename T, size_t32 S>
-allocator_static<T,S>::~allocator_static()
+stl_allocator_static<T,S>::~stl_allocator_static()
 {
 
 }
 
 //copy constructor
 template<typename T, size_t32 S>
-allocator_static<T,S>::allocator_static( const allocator_static& other )
+stl_allocator_static<T,S>::stl_allocator_static( const stl_allocator_static& other )
 {
     _index = other._index;
     crap::copy_array( other._memory, _memory, S );
@@ -135,28 +135,28 @@ allocator_static<T,S>::allocator_static( const allocator_static& other )
 //template copy constructor
 template<typename T, size_t32 S>
 template<typename U, size_t32 V>
-allocator_static<T,S>::allocator_static( const allocator_static<U,V>& other )
+stl_allocator_static<T,S>::stl_allocator_static( const stl_allocator_static<U,V>& other )
 {
     _index.reset();
 }
 
 // return address of reference
 template<typename T, size_t32 S>
-T* allocator_static<T,S>::address(reference r)
+T* stl_allocator_static<T,S>::address(reference r)
 {
     return &r;
 }
 
 // return const address of const reference
 template<typename T, size_t32 S>
-const T* allocator_static<T,S>::address(const_reference r)
+const T* stl_allocator_static<T,S>::address(const_reference r)
 {
     return &r;
 }
 
 //allocate amount of elements
 template<typename T, size_t32 S>
-T* allocator_static<T,S>::allocate(size_type cnt /* = 1 */, typename allocator_static<T,S>::const_pointer ptr /*= 0*/)
+T* stl_allocator_static<T,S>::allocate(size_type cnt /* = 1 */, typename stl_allocator_static<T,S>::const_pointer ptr /*= 0*/)
 {
     size_t32 position = _index.find_unset();
 
@@ -175,7 +175,7 @@ T* allocator_static<T,S>::allocate(size_type cnt /* = 1 */, typename allocator_s
 
 //deallocate amount of elements
 template<typename T, size_t32 S>
-void allocator_static<T,S>::deallocate(pointer p, size_type s /*=1*/)
+void stl_allocator_static<T,S>::deallocate(pointer p, size_type s /*=1*/)
 {
     for( size_t32 i=0; i<S; ++i )
     {
@@ -190,35 +190,35 @@ void allocator_static<T,S>::deallocate(pointer p, size_type s /*=1*/)
 
 // return maximum allocations
 template<typename T, size_t32 S>
-size_t32 allocator_static<T,S>::max_size( void ) const
+size_t32 stl_allocator_static<T,S>::max_size( void ) const
 {
     return S;
 }
 
 // call constructor on object
 template<typename T, size_t32 S>
-void allocator_static<T,S>::construct(pointer p, const T& t)
+void stl_allocator_static<T,S>::construct(pointer p, const T& t)
 {
     new(p) T(t);
 }
 
 // call destructor on pointer
 template<typename T, size_t32 S>
-void allocator_static<T,S>::destroy(pointer p)
+void stl_allocator_static<T,S>::destroy(pointer p)
 {
     p->~T();
 }
 
 // comparision equal operator
 template<typename T, size_t32 S>
-bool allocator_static<T,S>::operator==( const allocator_static& other )
+bool stl_allocator_static<T,S>::operator==( const stl_allocator_static& other )
 {
     return (void*)_memory == (void*)other._memory;
 }
 
 //conparision not equal operator
 template<typename T, size_t32 S>
-bool allocator_static<T,S>::operator!=( const allocator_static& a )
+bool stl_allocator_static<T,S>::operator!=( const stl_allocator_static& a )
 {
     return !operator==(a);
 }

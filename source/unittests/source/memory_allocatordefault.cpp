@@ -2,12 +2,12 @@
 #include "crap.h"
 
 //lib includes
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 
 namespace
 {
 
-crap::allocator_default<i32>* _alldef;
+crap::stl_allocator_default<i32>* _alldef;
 i32* test_ptr; 
 
 TEST(MemoryAllocatorDefaultTitle)
@@ -18,12 +18,12 @@ TEST(MemoryAllocatorDefaultTitle)
 TEST(MemoryAllocatorDefaultConstructor)
 {
     std::cout << "\tConstruction" << std::endl;
-	_alldef = new crap::allocator_default<i32>();
+	_alldef = new crap::stl_allocator_default<i32>();
 }
 
 TEST(MemoryAllocatorCopyConstructor)
 {
-	crap::allocator_default<i32> tmp( *_alldef );
+	crap::stl_allocator_default<i32> tmp( *_alldef );
 }
 
 TEST(MemoryAllocatorAddress)
