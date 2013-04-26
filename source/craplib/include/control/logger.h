@@ -196,7 +196,7 @@ namespace format_policy
 			//"File.cpp:line [Channel] (Type) MSG"
 			*buffer = file;
 			*buffer += ":";
-			*buffer += crap::convert<i32, fixed_string<CRAP_LOGGER_MSG_SIZE> >( line );
+			*buffer += crap::convert< i32, fixed_string< CRAP_LOGGER_MSG_SIZE > >( line );
 			*buffer += " ";
 			*buffer += crap::channel_string[ channel ];
 			*buffer += " ";
@@ -286,16 +286,17 @@ class logger : public base_logger
 			logger_list.remove(&logger_list_node);
 		}
 
-		virtual void log(log_channel channel, log_type type,  string_t* file, const i32 line, string_t* format_, ...)
+		virtual void log(log_channel channel, log_type type,  string_t* file, const i32 line, string_t* format_str, ...)
+
 		{
 			if (_filter.filter(channel,type))
 			{
 				crap::fixed_string<CRAP_LOGGER_MSG_SIZE> buffer;
 				i32 c = _formater.format(&buffer, channel, type ,file,line);
 				va_list args;
-				va_start( args, format_ );
+				va_start( args, format_str );
 				c8* ptr = &buffer[c];
-				vsprintf(ptr, format_, args );
+				vsprintf(ptr, format_str, args );
 				va_end( args );
 				_writer.write(buffer.cstring());
 			}

@@ -2,12 +2,12 @@
 #include "crap.h"
 
 //lib includes
-#include "memory/allocatorstatic.h"
+#include "memory/stlallocatorstatic.h"
 
 namespace
 {
 
-crap::allocator_static<i32, 10>* _allsta;
+crap::stl_allocator_static<i32, 10>* _allsta;
 i32* test_prt3; 
 
 TEST(MemoryAllocatorStaticTitle)
@@ -18,12 +18,12 @@ TEST(MemoryAllocatorStaticTitle)
 TEST(MemoryAllocatorStaticConstructor)
 {
     std::cout << "\tConstruction" << std::endl;
-	_allsta = new crap::allocator_static<i32, 10>();
+	_allsta = new crap::stl_allocator_static<i32, 10>();
 }
 
 TEST(MemoryAllocatorStaticCopyConstructor)
 {
-	crap::allocator_static<i32, 10> tmp( *_allsta );
+	crap::stl_allocator_static<i32, 10> tmp( *_allsta );
 }
 
 TEST(MemoryAllocatorStaticAddress)

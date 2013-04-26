@@ -15,5 +15,7 @@ set(HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/treemap.h
    ${CMAKE_CURRENT_SOURCE_DIR}/treenode.h
    ${CMAKE_CURRENT_SOURCE_DIR}/vector.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/intrusivelist.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/indexedarray.h
    PARENT_SCOPE
 )

@@ -21,7 +21,7 @@
 #ifndef CRAP_CONTAINER_STATICSTACK_H
 #define CRAP_CONTAINER_STATICSTACK_H
 
-#include "memory/allocatordefault.h"
+#include "memory/stlallocatordefault.h"
 #include "control/copyobject.h"
 #include <stack>
 
@@ -33,7 +33,7 @@ namespace crap
  *! @brief Stack template class
  */
 
-template<typename T, typename Allocator = crap::allocator_default<T> >
+template<typename T, typename Allocator = crap::stl_allocator_default<T> >
 class stack : public std::stack<T, Allocator>
 {
 };

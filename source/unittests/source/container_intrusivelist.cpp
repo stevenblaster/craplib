@@ -20,14 +20,21 @@ struct IntrusiveStruct
 	IntrusiveStruct( void ) : node( this, _intrusive_list, false ) {}
 };
 
+TEST(ContainerIntrusiveListTitle)
+{
+    std::cout << "Testing \"container/intrusivelist.h\"" << std::endl;
+}
+
 
 TEST(ContainerIntrusiveListConstructor)
 {
+	std::cout << "Testing \"Intrusive List Constructor\"" << std::endl;
 	_intrusive_list = new crap::intrusive_list<IntrusiveStruct>();
 }
 
-TEST(ContainerIntruciveListPushback)
+TEST(ContainerIntrusiveListPushback)
 {
+	std::cout << "Testing \"Intrusive List push_back\"" << std::endl;
 	IntrusiveStruct structOne;
 	IntrusiveStruct structTwo;
 	IntrusiveStruct structThree;
@@ -53,18 +60,74 @@ TEST(ContainerIntruciveListPushback)
 	{
 		std::cout << it->number << " " << it->another_number << " " << it->str << std::endl;
 	}
+	it = _intrusive_list->begin();
+	CHECK_EQUAL( 1, it->number);
+	++it;
+	CHECK_EQUAL( 2, it->number);
+	++it;
+	CHECK_EQUAL( 3, it->number);
+	CHECK_EQUAL( (size_t32) 3, _intrusive_list->size() );
 }
 
-TEST(ContainerIntruciveListIsEmpty)
+TEST(ContainerIntrusiveListIsEmpty)
 {
-	crap::intrusive_list<IntrusiveStruct>::iterator it;
-	for(it = _intrusive_list->begin(); it != _intrusive_list->end(); ++it)
-	{
-		std::cout << it->number << " " << it->another_number << " " << it->str << std::endl;
-	}
+	std::cout << "Testing \"Intrusive List is empty\"" << std::endl;
+	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
 
-TEST(ContainerIntruciveListScopes)
+TEST(ContainerIntrusiveListRemove) 
+{
+	std::cout << "Testing \"Intrusive List remove\"" << std::endl;
+	IntrusiveStruct structOne;
+	structOne.number = 1;
+	structOne.another_number = 1.1f;
+	strcpy( structOne.str, "I am the first Struct\0" );
+	_intrusive_list->push_back( &structOne.node );
+	_intrusive_list->remove( &structOne.node );
+	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
+}
+
+//TEST(ContainerIntrusiveListPopBack) 
+//{
+//	std::cout << "Testing \"Intrusive List popback\"" << std::endl;
+//	IntrusiveStruct structOne;
+//	structOne.number = 1;
+//	structOne.another_number = 1.1f;
+//	strcpy( structOne.str, "I am the first Struct\0" );
+//	_intrusive_list->push_back( &structOne.node );
+//	_intrusive_list->pop_back();
+//	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
+//}
+
+TEST(ContainerIntrusiveListPopFront) 
+{
+	std::cout << "Testing \"Intrusive List popfront\"" << std::endl;
+	IntrusiveStruct structOne;
+	structOne.number = 1;
+	structOne.another_number = 1.1f;
+	strcpy( structOne.str, "I am the first Struct\0" );
+	_intrusive_list->push_back( &structOne.node );
+	_intrusive_list->pop_front();
+	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
+}
+
+TEST(ContainerIntrusiveListPushFront) 
+{
+	std::cout << "Testing \"Intrusive List push front\"" << std::endl;
+	IntrusiveStruct structOne;
+	structOne.number = 1;
+	structOne.another_number = 1.1f;
+	strcpy( structOne.str, "I am the first Struct\0" );
+	IntrusiveStruct structTwo;
+	structOne.number = 2;
+	structOne.another_number = 2.2f;
+	strcpy( structOne.str, "I am the second Struct\0" );
+	_intrusive_list->push_back( &structOne.node );
+	_intrusive_list->push_front( &structTwo.node );
+	CHECK_EQUAL( (size_t32) 2,_intrusive_list->size() );
+}
+
+TEST(ContainerIntrusiveListScopes)
 {
 	IntrusiveStruct structOne;
 	structOne.number = 1;
@@ -96,6 +159,18 @@ TEST(ContainerIntruciveListScopes)
 	{
 		std::cout << it->number << " " << it->another_number << " " << it->str << std::endl;
 	}
+}
+
+TEST(ContainerIntrusiveListPopBack) 
+{
+	std::cout << "Testing \"Intrusive List pop back\"" << std::endl;
+	IntrusiveStruct structOne;
+	structOne.number = 1;
+	structOne.another_number = 1.1f;
+	strcpy( structOne.str, "I am the first Struct\0" );
+	_intrusive_list->push_back( &structOne.node );
+	_intrusive_list->pop_back();
+	CHECK_EQUAL( (size_t32) 0,_intrusive_list->size() );
 }
 
 }

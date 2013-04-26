@@ -2,12 +2,12 @@
 #include "crap.h"
 
 //lib includes
-#include "memory/allocatormalloc.h"
+#include "memory/stlallocatormalloc.h"
 
 namespace
 {
 
-crap::allocator_malloc<i32>* _allmal;
+crap::stl_allocator_malloc<i32>* _allmal;
 i32* test_ptr2; 
 
 TEST(MemoryAllocatorMallocTitle)
@@ -18,12 +18,12 @@ TEST(MemoryAllocatorMallocTitle)
 TEST(MemoryAllocatorMallocConstructor)
 {
     std::cout << "\tConstruction" << std::endl;
-	_allmal = new crap::allocator_malloc<i32>();
+	_allmal = new crap::stl_allocator_malloc<i32>();
 }
 
 TEST(MemoryAllocatorMallocCopyConstructor)
 {
-	crap::allocator_malloc<i32> tmp( *_allmal );
+	crap::stl_allocator_malloc<i32> tmp( *_allmal );
 }
 
 TEST(MemoryAllocatorMallocAddress)
