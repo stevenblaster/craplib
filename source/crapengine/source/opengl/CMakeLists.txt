@@ -1,0 +1,7 @@
+set(SOURCES
+   ${SOURCES}
+   ${CMAKE_CURRENT_SOURCE_DIR}/buffer.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp
+   PARENT_SCOPE
+)
