@@ -204,7 +204,7 @@ typename indexed_array<T,S>::index_key indexed_array<T,S>::push_back( const T& o
 
 	_indices[ indices_index ].array_index = _array_count;
 	++_indices[ indices_index ].index_generation;
-	_indices[ indices_indexes ].next = ++_freelist;
+	_indices[ indices_index ].next = ++_freelist;
 
 	++_array_count;
 	return indices_index + ( S * _indices[ indices_index ].index_generation );
@@ -232,7 +232,7 @@ void indexed_array<T,S>::remove( index_key key )
 	_indices[ last_indices_index ].array_index = array_index;
 
 	T* object = _pointer_handle.as_type + array_index;
-	T->~T();
+	object->~T();
 	*(_pointer_handle.as_type + array_index) = *(_pointer_handle.as_type + last_data_index);
 
 	--_array_count;
@@ -241,17 +241,17 @@ void indexed_array<T,S>::remove( index_key key )
 template<typename T, size_t32 S>
 void indexed_array<T,S>::clear( void )
 {
-	for( size_t32 i = 0; i<S; ++i )
-	{
-		if( _indices[i].array_index != -1 )
-		{
-			i32 deletion_index = _indices[ indices_index ].array_index;
-			_indices[ indices_index ].array_index = -1;
+	//for( size_t32 i = 0; i<S; ++i )
+	//{
+	//	if( _indices[i].array_index != -1 )
+	//	{
+	//		i32 deletion_index = _indices[ i ].array_index;
+	//		_indices[ indices_index ].array_index = -1;
 
-			T* object = _pointer_handle.as_type + deletion_index;
-			T->~T();
-		}
-	}
+	//		T* object = _pointer_handle.as_type + deletion_index;
+	//		T->~T();
+	//	}
+	//}
 }
 
 template<typename T, size_t32 S>

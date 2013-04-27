@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="config">
+      <UniqueIdentifier>{acb7899d-05f4-457f-ab8e-0cccccc703ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container">
+      <UniqueIdentifier>{c9cbd8dd-c2d4-4522-aaf0-c04b2604425a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="control">
+      <UniqueIdentifier>{d27bacac-1ed7-437b-81f4-c1a10f714eb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{150b12d6-c4d2-487e-b5df-677efec2bec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="memory">
+      <UniqueIdentifier>{9551b6d0-375c-461c-929e-d0d0126784f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="threading">
+      <UniqueIdentifier>{d085a631-aa0c-4c5e-9eef-520377cf7a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="types">
+      <UniqueIdentifier>{e8127efb-d067-4e21-a3b6-e2b786b62e3d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\crap\config\compilers.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\endianness.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\math.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\memory.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\platforms.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\processors.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\simd.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\threading.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\config\types.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\queue.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\stack.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\treenode.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\vector.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\binarytree.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\bitmask.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\bitset.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\list.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\map.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\container\pair.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\endian.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\limits.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\time.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\zero.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\asserts.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\breakpoints.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\checkvtable.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\compare.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\converter.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\copyobject.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\control\cpuinfo.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\math\math.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\math\random.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\memory\memorypool.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\memory\memorytracker.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\memory\allocatordefault.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\memory\allocatormalloc.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\semaphore.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\sleep.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\thread.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\functorthread.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\mutex.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\runnable.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\threading\scopelock.h">
+      <Filter>threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\string.h">
+      <Filter>types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\staticstring.h">
+      <Filter>types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\precompiled.h" />
+    <ClInclude Include="..\..\..\src\crap\config.h" />
+    <ClInclude Include="..\..\..\src\crap\types\vector2.h">
+      <Filter>types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\vector3.h">
+      <Filter>types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\crap\types\vector4.h">
+      <Filter>types</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\crap\container\bitmask.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\control\limits.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\control\time.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\control\zero.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\control\cpuinfo.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\memory\memorytracker.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\threading\semaphore.cpp">
+      <Filter>threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\threading\sleep.cpp">
+      <Filter>threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\threading\thread.cpp">
+      <Filter>threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\threading\mutex.cpp">
+      <Filter>threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\threading\runnable.cpp">
+      <Filter>threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\crap\threading\scopelock.cpp">
+      <Filter>threading</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
