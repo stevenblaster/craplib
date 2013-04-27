@@ -241,17 +241,20 @@ void indexed_array<T,S>::remove( index_key key )
 template<typename T, size_t32 S>
 void indexed_array<T,S>::clear( void )
 {
-	//for( size_t32 i = 0; i<S; ++i )
-	//{
-	//	if( _indices[i].array_index != -1 )
-	//	{
-	//		i32 deletion_index = _indices[ i ].array_index;
-	//		_indices[ indices_index ].array_index = -1;
+  //FIXME: implement
+  /*
+	for( size_t32 i = 0; i<S; ++i )
+	{
+		if( _indices[i].array_index != -1 )
+		{
+			i32 deletion_index = _indices[ indices_index ].array_index;
+			_indices[ indices_index ].array_index = -1;
 
-	//		T* object = _pointer_handle.as_type + deletion_index;
-	//		T->~T();
-	//	}
-	//}
+			T* object = _pointer_handle.as_type + deletion_index;
+			object->~T();
+		}
+	}
+  */
 }
 
 template<typename T, size_t32 S>
