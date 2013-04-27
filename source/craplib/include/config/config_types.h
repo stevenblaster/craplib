@@ -166,16 +166,26 @@ struct pointer_t
 {
 	union
 	{
-		T*		as_type;
-		void*	as_void;
-		u8*		as_u8;
-		u16*	as_u16;
-		u32*	as_u32;
-		u64*	as_u64;
-		u128*	as_u128;
-		uptr	as_uint;
+		T*			as_type;
+		void*		as_void;
+		c8*			as_c8;
+		i8*			as_i8;
+		u8*			as_u8;
+		i16*		as_i16;
+		u16*		as_u16;
+		i32*		as_i32;
+		u32*		as_u32;
+		size_t32*	as_size_t32;
+		i64*		as_i64;
+		u64*		as_u64;
+		size_t64*	as_size_t64;
+		i128*		as_i128;
+		u128*		as_u128;
+		iptr		as_iptr;
+		uptr		as_uint;
 	};
 };
+
 
 typedef pointer_t<void> pointer_void;
 
