@@ -39,8 +39,12 @@ ExternalProject_Add(openal
 ################################################
 
 OPTION(CRAP_BUILD_UNITTEST "Build unit tests" OFF)
+OPTION(CRAP_BUILD_ENGINE "Build unit tests" ON)
 OPTION(CRAP_BUILD_EXAMPLES "Build unit tests" OFF)
 
+IF(CRAP_BUILD_ENGINE)
+  ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/crapengine)
+ENDIF(CRAP_BUILD_ENGINE)
 
 IF(CRAP_BUILD_EXAMPLES)
   ADD_SUBDIRECTORY(${CMAKE_SOURCE_DIR}/performancetests)
