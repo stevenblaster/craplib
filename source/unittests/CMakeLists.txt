@@ -4,6 +4,11 @@
 
 INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/unittest/)
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/craplib/include)
+IF(WIN32)
+	INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/unittest/Win32/)
+ELSEIF(WIN32)
+	INCLUDE_DIRECTORIES(${CRAPLIB_PATH}/unittest/Posix/)
+ENDIF(WIN32)
 
 SET( UNITTEST_SOURCEFILES
     ${CRAPLIB_PATH}/unittest/XmlTestReporter.cpp
@@ -22,9 +27,20 @@ SET( UNITTEST_SOURCEFILES
     ${CRAPLIB_PATH}/unittest/CurrentTest.cpp
     ${CRAPLIB_PATH}/unittest/Checks.cpp
     ${CRAPLIB_PATH}/unittest/AssertException.cpp
-    ${CRAPLIB_PATH}/unittest/Posix/TimeHelpers.cpp
-    ${CRAPLIB_PATH}/unittest/Posix/SignalTranslator.cpp
 )
+
+IF(WIN32)
+	SET( UNITTEST_SOURCEFILES
+		${UNITTEST_SOURCEFILES}
+		${CRAPLIB_PATH}/unittest/Win32/TimeHelpers.cpp
+		)
+ELSEIF(WIN32)
+	SET( UNITTEST_SOURCEFILES
+		${UNITTEST_SOURCEFILES}
+		${CRAPLIB_PATH}/unittest/Posix/TimeHelpers.cpp
+		${CRAPLIB_PATH}/unittest/Posix/SignalTranslator.cpp
+		)
+ENDIF(WIN32)
 
 ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/source)
 
