@@ -35,8 +35,9 @@ private:
 	{
 		i32			array_index;
 		size_t32	index_generation;
+		size_t32	next;
 
-		index( void ) : array_index(-1), index_generation(0) {}
+		index( void ) : array_index(-1), index_generation(0), next(0) {}
 	};
 
 	pointer_t<T> _pointer_handle;
@@ -163,8 +164,10 @@ private:
 	indexed_array& operator=( const indexed_array& other ) { return *this; }
 
 	size_t32 _array_count;
+	size_t32 _freelist;
 
 	index _indices[S];
+	size_t32 _data_to_index[S];
 	u8 _data[(S+1) * sizeof(T)];
 };
 
@@ -172,6 +175,12 @@ template<typename T, size_t32 S>
 indexed_array<T,S>::indexed_array( void )
 {
 	_pointer_handle.as_u8 = _data;
+	_freelist = 0;
+
+	for( size_t32 i=0; i<S; ++i )
+		_indices[i].next = i+1;
+
+	memset( _data_to_index, 0, S*sizeof(size_t32) );
 }
 
 template<typename T, size_t32 S>
@@ -183,53 +192,50 @@ indexed_array<T,S>::~indexed_array( void )
 template<typename T, size_t32 S>
 typename indexed_array<T,S>::index_key indexed_array<T,S>::push_back( const T& object )
 {
-	CRAP_ASSERT_DEBUG( _array_count != S, "Inxed array is full");
+	CRAP_ASSERT_DEBUG( _array_count != S, "Indexed array is full");
 
-	for( size_t32 i = 0; i<S; ++i )
-	{
-		if( _indices[i].array_index == -1 )
-		{
-			//found free element
-			_pointer_handle.as_u8 = _data[_array_count*sizeof(T)];
-			*(_pointer_handle.as_type) = object;
+	const size_t32 indices_index	= _freelist;
+	const size_t32 data_index		= _array_count;
+	const T*	   data_pointer		= _pointer_handle.as_type + _array_count;
 
-			_indices[i].array_index = _array_count;
-			++_indices[i].index_generation; //nah des geht net
+	*data_pointer = object;
 
-			++_array_count;
-			return i + ( S * _indices[i].index_generation );
-		}
-	}
-	CRAP_ASSERT_ERROR( "Could not add Object to indexed array" );
+	_data_to_index[ data_index ] = indices_index;
+
+	_indices[ indices_index ].array_index = _array_count;
+	++_indices[ indices_index ].index_generation;
+	_indices[ indices_indexes ].next = ++_freelist;
+
+	++_array_count;
+	return indices_index + ( S * _indices[ indices_index ].index_generation );
+
 	return 0;
 }
 
 template<typename T, size_t32 S>
 void indexed_array<T,S>::remove( index_key key )
 {
-	size_t32 generation = key / S;
-	size_t32 indices_index = key % S;
+	const size_t32 generation = key / S;
+	const size_t32 indices_index = key % S;
+	const size_t32 last_data_index = _array_count - 1;
 
 	CRAP_ASSERT_DEBUG( _indices[ indices_index ].generation == generation, "Index generation not correct" );
 
-	i32 deletion_index = _indices[ indices_index ].array_index;
+	const i32& array_index = &(_indices[ indices_index ].array_index);
 	_indices[ indices_index ].array_index = -1;
+	_indices[ indices_index ].next = _freelist;
+	_freelist = indices_index;
 
-	T* object = _pointer_handle.as_type + deletion_index;
+	const size_t32 last_indices_index = _data_to_index[ last_data_index ];
+	_data_to_index[ last_data_index ] = 0;
+	_data_to_index[ array_index ] = last_indices_index;
+	_indices[ last_indices_index ].array_index = array_index;
+
+	T* object = _pointer_handle.as_type + array_index;
 	T->~T();
+	*(_pointer_handle.as_type + array_index) = *(_pointer_handle.as_type + last_data_index);
 
-	if( _array_count - 1 != deletion_index )
-	{
-		*object = *(_pointer_handle.as_type + (_array_count - 1));
-		(_pointer_handle.as_type + (_array_count - 1))->~T();
-		for( size_t32 i = 0; i<S; ++i )
-		{
-			if( _incide_indices[i].array_index == (_pointer_handle.as_type + (_array_count - 1)) )
-			{
-				_indices[i].array_index = deletion_index;
-			}
-		}
-	}
+	--_array_count;
 }
 
 template<typename T, size_t32 S>
