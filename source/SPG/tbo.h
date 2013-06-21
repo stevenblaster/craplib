@@ -13,7 +13,8 @@ public:
 	{
 		bmp,
 		tga,
-		dds
+		dds,
+		depth
 	};
 
 	tbo( const crap::string64& id, content_manager* cm, image_type type );

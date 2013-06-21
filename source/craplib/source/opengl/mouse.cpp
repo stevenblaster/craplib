@@ -34,6 +34,8 @@ i32 mouse::_wheel = 0;
 
 i32 mouse::_wheel_movement = 0;
 
+mouse::user_button_state_callback_function mouse::_on_button_and_state_function = 0;
+
 mouse::user_button_callback_function mouse::_on_pressed_function = 0;
 
 mouse::user_button_callback_function mouse::_on_release_function = 0;
@@ -70,6 +72,9 @@ void mouse::button_callback_function( i32 button_id, i32 button_state )
 		if( _on_release_function != 0 )
 			_on_release_function( button_id );
 	}
+
+	if( _on_button_and_state_function != 0 )
+		_on_button_and_state_function( button_id, button_state );
 }
 
 void mouse::move_callback_function( i32 pos_x, i32 pos_y )
@@ -137,6 +142,11 @@ void mouse::overwrite_move_callback( void (*function)( i32 pos_x, i32 pos_y ) )
 void mouse::overwrite_wheel_callback( void (*function)( i32 pos ) )
 {
 	glfwSetMouseWheelCallback( (GLFWmousewheelfun)function );
+}
+
+void mouse::set_button_and_state_function( user_button_state_callback_function function )
+{
+	_on_button_and_state_function = function;
 }
 
 void mouse::set_on_pressed_function( void (*function)( i32 key_id ) )

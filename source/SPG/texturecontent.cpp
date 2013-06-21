@@ -8,3 +8,4 @@ texture_content::texture_content( void ) : data(0)
 {
 
 }
+

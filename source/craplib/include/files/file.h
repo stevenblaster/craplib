@@ -206,7 +206,7 @@ void file::read_text( fixed_string<S>& str, size_t32 size, i32 char_position /*=
     }
 
     set_byte_position(char_position);
-	char buffer[1024];
+	char buffer[1024] = {0};
 
 	while( fgets(buffer, 1024, _handle) != 0 ) 
 		str += buffer;

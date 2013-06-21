@@ -221,6 +221,13 @@ texture create_texture( const char* name, image_type type )
 		return texture(id, index);
 	}
 
+	if( type == depth )
+	{
+		u32 id = create_buffer();
+		u32 index = ogl_id[index_counter++];
+		return texture(id, index);
+	}
+
 	CRAP_ASSERT_ERROR("Unknown image type");
 	return texture(0,0);
 }
@@ -228,6 +235,31 @@ texture create_texture( const char* name, image_type type )
 void texture::delete_texture( void )
 {
 	glDeleteTextures(1, &_id);
+}
+
+u32 create_buffer( void )
+{
+	// Depth texture. Slower than a depth buffer, but you can sample it later in your shader
+	GLuint depthTexture;
+	glGenTextures(1, &depthTexture);
+	glBindTexture(GL_TEXTURE_2D, depthTexture);
+	glTexImage2D(GL_TEXTURE_2D, 0,GL_DEPTH_COMPONENT16, 1024, 1024, 0,GL_DEPTH_COMPONENT, GL_FLOAT, 0);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
+		 
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthTexture, 0);
+
+	// No color output in the bound framebuffer, only depth.
+	glDrawBuffer(GL_NONE);
+
+	// Always check that our framebuffer is ok
+	CRAP_ASSERT_DEBUG(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE, "Error while creating framebuffer");
+
+	return depthTexture;
 }
 
 } // namespace crap

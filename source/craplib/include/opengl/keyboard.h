@@ -186,12 +186,14 @@ public:
 		key_menu					= 256+69
 	};
 
+	typedef void (*user_callback_function)( i32 key_id );
+
 private:
 	static bit_set<256+69> _bitset;
 
 	static void callback_function( i32 key_id, i32 key_state );
 
-	typedef void (*user_callback_function)( i32 key_id );
+	//typedef void (*user_callback_function)( i32 key_id );
 	static user_callback_function _on_pressed_function;
 	static user_callback_function _on_release_function;
 

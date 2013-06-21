@@ -82,6 +82,24 @@ struct vertex_array
 	~vertex_array( void );
 };
 
+struct frame_buffer
+{
+	u32 _id;
+	size_t32 _size;
+
+	void bind( void );
+	void unbind( void );
+
+	frame_buffer( size_t32 size = 1 );
+	~frame_buffer( void );
+};
+
+struct quad_buffer : public buffer
+{
+	quad_buffer( void );
+	~quad_buffer( void );
+};
+
 } // lib namespace
 
 #endif //CRAP_BUFFER_H

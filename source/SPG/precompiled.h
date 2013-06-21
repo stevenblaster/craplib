@@ -12,6 +12,7 @@
 #else
 #define DATA_PATH crap::string256("data/")
 #define BINARY_PATH crap::string256("data/binary/")
+
 #endif
 
 #endif // PRECOMPILED_H

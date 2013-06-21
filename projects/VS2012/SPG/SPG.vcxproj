@@ -26,7 +26,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -41,16 +41,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>..\..\..\binary\crapengine\$(Configuration);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
-    <IncludePath>..\..\..\libraries\glm;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
-    <IntDir>..\..\..\build\vs2012\SPG\$(Configuration)\</IntDir>
+    <LibraryPath>E:\programming\libraries\AntTweakBar\lib;..\..\..\binary\crapengine\$(Configuration);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <IncludePath>..\..\..\libraries\glew\include;E:\programming\libraries\AntTweakBar\include;..\..\..\libraries\glm;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
+    <IntDir>..\..\..\build\SPG\$(Configuration)\</IntDir>
     <OutDir>..\..\..\binary\SPG\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>..\..\..\binary\crapengine\$(Configuration);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
-    <IncludePath>..\..\..\libraries\glm;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
-    <IntDir>..\..\..\build\vs2012\SPG\$(Configuration)\</IntDir>
+    <LibraryPath>E:\programming\libraries\AntTweakBar\lib;..\..\..\binary\crapengine\$(Configuration);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <IncludePath>..\..\..\libraries\glew\include;E:\programming\libraries\AntTweakBar\include;..\..\..\libraries\glm;..\..\..\source\crapengine\include;..\..\..\source\craplib\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
+    <IntDir>..\..\..\build\SPG\$(Configuration)\</IntDir>
     <OutDir>..\..\..\binary\SPG\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -65,7 +65,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>CRAPengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AntTweakBar.lib;CRAPengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -84,7 +84,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>CRAPengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AntTweakBar.lib;CRAPengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -93,20 +93,24 @@
     <ClCompile Include="..\..\..\source\SPG\geometryfile.cpp" />
     <ClCompile Include="..\..\..\source\SPG\geometrycontent.cpp" />
     <ClCompile Include="..\..\..\source\SPG\main.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\objloader.cpp" />
     <ClCompile Include="..\..\..\source\SPG\sbo.cpp" />
     <ClCompile Include="..\..\..\source\SPG\shaderconent.cpp" />
     <ClCompile Include="..\..\..\source\SPG\shaderfile.cpp" />
     <ClCompile Include="..\..\..\source\SPG\shadermanager.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\tangentspace.cpp" />
     <ClCompile Include="..\..\..\source\SPG\tbo.cpp" />
     <ClCompile Include="..\..\..\source\SPG\texturecontent.cpp" />
     <ClCompile Include="..\..\..\source\SPG\texturefile.cpp" />
     <ClCompile Include="..\..\..\source\SPG\vbo.cpp" />
+    <ClCompile Include="..\..\..\source\SPG\vboindexer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\SPG\camera.h" />
     <ClInclude Include="..\..\..\source\SPG\contentmanager.h" />
     <ClInclude Include="..\..\..\source\SPG\geometryfile.h" />
     <ClInclude Include="..\..\..\source\SPG\geometrycontent.h" />
+    <ClInclude Include="..\..\..\source\SPG\objloader.hpp" />
     <ClInclude Include="..\..\..\source\SPG\staticmodel.h" />
     <ClInclude Include="..\..\..\source\SPG\precompiled.h" />
     <ClInclude Include="..\..\..\source\SPG\sbo.h" />
@@ -114,10 +118,12 @@
     <ClInclude Include="..\..\..\source\SPG\shaderfile.h" />
     <ClInclude Include="..\..\..\source\SPG\shadermanager.h" />
     <ClInclude Include="..\..\..\source\SPG\stringhash.h" />
+    <ClInclude Include="..\..\..\source\SPG\tangentspace.hpp" />
     <ClInclude Include="..\..\..\source\SPG\tbo.h" />
     <ClInclude Include="..\..\..\source\SPG\texturecontent.h" />
     <ClInclude Include="..\..\..\source\SPG\texturefile.h" />
     <ClInclude Include="..\..\..\source\SPG\vbo.h" />
+    <ClInclude Include="..\..\..\source\SPG\vboindexer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -131,5 +131,43 @@ void vertex_array::bind( void )
 	glBindVertexArray(_id);
 }
 
+frame_buffer::frame_buffer( size_t32 size /* = 1*/  ) : _id(0), _size(size)
+{
+	glGenFramebuffers(size, &_id);	
+}
+
+void frame_buffer::bind( void )
+{
+	glBindFramebuffer(GL_FRAMEBUFFER, _id);
+}
+
+void frame_buffer::unbind( void )
+{
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+frame_buffer::~frame_buffer( void )
+{
+	glDeleteFramebuffers(_size, &_id);
+}
+
+quad_buffer::quad_buffer( void ) : buffer(array_buffer, static_draw, 1)
+{
+	static const GLfloat g_quad_vertex_buffer_data[] = { 
+		-1.0f, -1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
+		-1.0f,  1.0f, 0.0f,
+		-1.0f,  1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
+		 1.0f,  1.0f, 0.0f,
+	};
+
+	set_data(sizeof(g_quad_vertex_buffer_data),(void*)g_quad_vertex_buffer_data);
+}
+
+quad_buffer::~quad_buffer( void )
+{
+	glDeleteBuffers(_size, &_buffer);
+}
 
 } //namespace crap

@@ -11,7 +11,14 @@
 tbo::tbo( const crap::string64& id, content_manager* cm, image_type type ) : _id(id), _cm(cm)
 {
 	_tex = new texture_content();
-	cm->create_content( id , _tex, type_name::texture );
+	if( type != depth )
+	{
+		cm->create_content( id , _tex, type_name::texture );
+	}
+	else
+	{
+		_tex->data = new crap::texture( crap::create_texture( "", crap::depth ) );
+	}
 }
 
 tbo::~tbo( void )

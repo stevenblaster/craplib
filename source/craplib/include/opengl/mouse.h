@@ -46,6 +46,11 @@ public:
 		button_last = button_8
 	};
 
+	typedef void (*user_button_callback_function)( i32 button_id );
+	typedef int (*user_button_state_callback_function)( i32 button_id, i32 state );
+	typedef void (*user_move_callback_function)( i32 pos_x, i32 pos_y );
+	typedef void (*user_wheel_callback_function)( i32 pos );
+
 private:
 	static bit_set<8> _bitset;
 	static vector2i _position;
@@ -57,10 +62,11 @@ private:
 	static void move_callback_function( i32 pos_x, i32 pos_y );
 	static void wheel_callback_function( i32 pos );
 
-	typedef void (*user_button_callback_function)( i32 button_id );
-	typedef void (*user_move_callback_function)( i32 pos_x, i32 pos_y );
-	typedef void (*user_wheel_callback_function)( i32 pos );
+	//typedef void (*user_button_callback_function)( i32 button_id );
+	//typedef void (*user_move_callback_function)( i32 pos_x, i32 pos_y );
+	//typedef void (*user_wheel_callback_function)( i32 pos );
 
+	static user_button_state_callback_function _on_button_and_state_function;
 	static user_button_callback_function _on_pressed_function;
 	static user_button_callback_function _on_release_function;
 	static user_move_callback_function _on_move_function;
@@ -81,6 +87,7 @@ public:
 	void overwrite_move_callback( void (*function)( i32 pos_x, i32 pos_y ) );
 	void overwrite_wheel_callback( void (*function)( i32 pos ) );
 
+	void set_button_and_state_function( user_button_state_callback_function function );
 	void set_on_pressed_function( void (*function)( i32 key_id ) );
 	void set_on_release_function( void (*function)( i32 key_id ) );
 	void set_on_move_function( void (*function)( i32 pos_x, i32 pos_y ) );

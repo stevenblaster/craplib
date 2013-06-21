@@ -30,7 +30,8 @@ enum image_type
 {
 	bmp = 0,
 	tga,
-	dds
+	dds,
+	depth
 };
 
 struct texture
@@ -42,6 +43,8 @@ struct texture
 
 	void bind( void );
 	void activate( void );
+
+	
 	
 	texture( u32 id , u32 index );
 	texture( const texture& other );
@@ -52,6 +55,7 @@ texture create_texture( const char* name, image_type type );
 u32 create_texture_bmp( const char* name );
 u32 create_texture_tga( const char* name );
 u32 create_texture_dds( const char* name );
+u32 create_buffer( void );
 
 
 } //lib namespace

@@ -13,6 +13,7 @@ struct texture_content
 	crap::texture* data;
 
 	texture_content( void );
+	
 };
 
 #endif // TEXTURECONTENT_H

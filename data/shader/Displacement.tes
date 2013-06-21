@@ -1,0 +1,70 @@
+#version 410 core
+
+layout(triangles, equal_spacing, ccw) in;
+
+uniform mat4 VP;
+uniform mat4 V;
+
+uniform sampler2D	HightTextureSampler;
+uniform float		DispFactor;
+
+uniform vec3	LightPosition_worldspace;
+uniform vec3	LightDirection_worldspace;
+uniform int		lightType;
+
+in vec3 Position_es_worldspace[];
+in vec2 UV_es[];
+in vec3 Normal_es_worldspace[];
+
+out vec2 UV;
+out vec3 Position_worldspace;
+out vec3 Normal_cameraspace;
+out vec3 EyeDirection_cameraspace;
+out vec3 LightDirection_cameraspace;
+
+// Interpolate the attributes of the output vertex using the barycentric coordinates
+vec2 interpolate2D(vec2 v0, vec2 v1, vec2 v2)
+{
+	return vec2(gl_TessCoord.x) * v0 + vec2(gl_TessCoord.y) * v1 + vec2(gl_TessCoord.z) * v2;
+}
+
+// Interpolate the attributes of the output vertex using the barycentric coordinates
+vec3 interpolate3D(vec3 v0, vec3 v1, vec3 v2)
+{
+	return vec3(gl_TessCoord.x) * v0 + vec3(gl_TessCoord.y) * v1 + vec3(gl_TessCoord.z) * v2;
+} 
+
+void main()
+{
+	// Interpolated UV of the output vertex
+	UV = interpolate2D(UV_es[0], UV_es[1], UV_es[2]);
+
+	// Interpolated normal of the output vertex, in cameraspace
+	vec3 Normal_worldspace = interpolate3D(Normal_es_worldspace[0], Normal_es_worldspace[1], Normal_es_worldspace[2]);
+	Normal_worldspace = normalize(Normal_worldspace);
+	Normal_cameraspace =  (V * vec4(Normal_worldspace, 0)).xyz;
+
+	// Interpolated position of the output vertex. in worldspace
+	Position_worldspace = interpolate3D(Position_es_worldspace[0], Position_es_worldspace[1], Position_es_worldspace[2]);
+
+	// Displace the vertex along the normal
+	float Displacement = texture(HightTextureSampler, UV.xy).x;
+	Position_worldspace += Normal_worldspace * Displacement * DispFactor;
+
+	// Output position of the vertex, in clip space
+	gl_Position = VP * vec4(Position_worldspace, 1.0);
+
+	// Vector that goes from the vertex to the camera, in camera space.
+	vec3 Position_cameraspace = (V * vec4(Position_worldspace, 1)).xyz;
+	EyeDirection_cameraspace = vec3(0,0,0) - Position_cameraspace;		// In camera space, the camera is at the origin (0,0,0).
+
+	// Vector that goes from the vertex to the light, in camera space.
+	if(lightType == 1)	// point light
+	{
+		vec3 LightPosition_cameraspace = (V * vec4(LightPosition_worldspace, 1)).xyz;
+		LightDirection_cameraspace = LightPosition_cameraspace - Position_cameraspace;
+	}
+	else if(lightType == 0)  {	// directional light
+		LightDirection_cameraspace = (V * vec4(-LightDirection_worldspace, 0)).xyz;
+	}
+} 
